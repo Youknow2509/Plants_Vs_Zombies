@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.mainController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="1024.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../Assets/images/button:menus/lawn_night.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="180.0" layoutX="-12.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Assets/images/button:menus/gamemenuLoader.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="220.0" layoutX="197.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Assets/images/button:menus/progressbar.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
