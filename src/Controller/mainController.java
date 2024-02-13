@@ -11,15 +11,28 @@ import javafx.scene.layout.GridPane;
 public class mainController {
 
     @FXML
-    private GridPane lawnGrid;
+    private GridPane lawnGrid; // GridPane bãi cỏ
+    @FXML
+    private ImageView progressbarGame;
+    @FXML
+    private Label LabelSun;
+    @FXML
+    private ImageView cardSunFlower;
+    @FXML
+    private ImageView cardPeashooter;
 
-    private ImageView img;
-    String path = "/Assets/images/Plants/Peashooter.gif";
-
+    String path = "";
     @FXML
     public void initialize(){
         System.out.println("Main Controller Initialized");
         System.out.println("GridPane: " + lawnGrid);
+
+        cardSunFlower.setOnMouseClicked(e -> {
+            path = "/Assets/images/Plants/sunflower.gif";
+        });
+        cardPeashooter.setOnMouseClicked(e -> {
+            path = "/Assets/images/Plants/Peashooter.gif";
+        });
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
     public void getGridPosition(MouseEvent e) {
