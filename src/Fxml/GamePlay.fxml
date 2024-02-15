@@ -11,31 +11,31 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="GamePlayRoot" maxHeight="600.0" maxWidth="1024.0" minHeight="600.0" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.mainController">
+<AnchorPane fx:id="GamePlayRoot" maxHeight="600.0" maxWidth="1024.0" minHeight="600.0" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.GamePlayController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" pickOnBounds="true">
          <image>
-            <Image url="@../../Assets/images/button:menus/lawn_night.png" />
+            <Image url="@../../Assets/images/items/lawn_night.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="menu" fitHeight="90.0" fitWidth="150.0" layoutX="-16.0" layoutY="524.0" onMouseClicked="#menu" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="menu" fitHeight="90.0" fitWidth="150.0" layoutX="-16.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/button:menus/gamemenuLoader.png" />
+            <Image url="@../../Assets/images/items/gamemenuLoader.png" />
          </image>
       </ImageView>
-      <Label fx:id="LabelSun" layoutX="70.0" layoutY="6.0" mouseTransparent="true" prefHeight="60.0" prefWidth="123.0" text="50" textFill="WHITE">
+      <Label fx:id="sunCount" layoutX="70.0" layoutY="6.0" mouseTransparent="true" prefHeight="60.0" prefWidth="123.0" text="50" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
       <ImageView fitHeight="50.0" fitWidth="220.0" layoutX="197.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/button:menus/progressbar.png" />
+            <Image url="@../../Assets/images/items/progressbar.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/Mower,sun,pea,lock/sun.png" />
+            <Image url="@../../Assets/images/items/sun.png" />
          </image>
       </ImageView>
       <ProgressBar fx:id="progressbarGame" layoutX="207.0" layoutY="23.0" opacity="0.8" prefHeight="13.0" prefWidth="201.0" progress="0.8" />
@@ -108,15 +108,15 @@
       </GridPane>
       <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="399.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/button:menus/Flag.png" />
+            <Image url="@../../Assets/images/items/Flag.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cardSunFlower" fitHeight="50.0" fitWidth="100.0" layoutX="37.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sunflower" fitHeight="50.0" fitWidth="100.0" layoutX="37.0" layoutY="131.0" onMouseClicked="#setCardSelected" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Assets/images/Cards/sunflowerCard.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cardPeashooter" fitHeight="50.0" fitWidth="100.0" layoutX="38.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Peashooter" fitHeight="50.0" fitWidth="100.0" layoutX="38.0" layoutY="199.0" onMouseClicked="#setCardSelected" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Assets/images/Cards/peashooterCard.png" />
          </image>
