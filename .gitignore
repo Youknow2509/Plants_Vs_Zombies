@@ -1,8 +1,8 @@
 out
-*/.DS_Store
+**/.DS_Store
 .DS_Store
-*/.gradle
-*/.idea
-*/.iml
-*/.iws
+**/.gradle
+**/.idea
+**/.iml
+**/.iws
 .idea
