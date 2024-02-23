@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
 import java.util.ArrayList;
@@ -14,77 +15,94 @@ import src.Game.Plants.*;
 import src.Game.Zombies.Zombie;
 import src.Game.Zombies.*;
 import src.Game.Shovel;
+import src.Game.Plants.CardPlants;
 
 public class GamePlayController {
 
+    @FXML
+    private AnchorPane GamePlayRoot;
     @FXML
     private GridPane lawnGrid; // GridPane bãi cỏ
     @FXML
     private ImageView menu;
     @FXML
+    private ImageView btnShovel;
+    @FXML
     private Label sunCount;
+
 
     // Lưu các biến
     private String path = "";
-    private ArrayList<Plant> plant = new ArrayList<Plant>();
+    private ArrayList<Plant> plants = new ArrayList<Plant>();
     // private ArrayList<Zombie> zombie = new ArrayList<Zombie>();
-    private Shovel shovel; // Xẻng
+    private Shovel shovel = new Shovel(); // Xẻng
+    private CardPlants cardPlants = new CardPlants();
 
     private ImageView selectedCardPlant = null;
     @FXML
     public void initialize() {
         System.out.println("Main Controller Initialized");
         System.out.println("GridPane: " + lawnGrid);
-        menu.setOnMouseClicked(e -> {
+        menu.setOnMouseClicked(e -> { // Xử lí tạm thời - "Hiện tại dùng để thoát "
             System.out.println("Quit Game");
             System.exit(0);
         });
+        btnShovel.setOnMouseClicked(e -> { // Xử lí khi bấm vào xẻng
+            shovel.setIsDisabled(
+                    !shovel.getIsDisabled()
+            );
+            btnShovel.setOpacity(shovel.getOpacityBtn());
+            if (!shovel.getIsDisabled()) {
+                System.out.println("Dang thuc hien xoa cay");
+            }
+        });
+        shovel.setImageView(btnShovel);
+        initData(3);
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
+    public void initData(int level) {
+        cardPlants.getCards(GamePlayRoot, level); //
+    }
+
     public void getGridPosition(MouseEvent e) {
         Node source = (Node) e.getSource();
         // Lấy ra vị trí ô đang được click
         Integer x = lawnGrid.getColumnIndex(source);
         Integer y = lawnGrid.getRowIndex(source);
-        if (true || !shovel.getIsDisabled()) { // Loaddind ....
-            // Xử lí việc xoá cây
+
+        System.out.println("Click col" + x + " row" + y);
+
+        if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
+            System.out.println("Thuc hien xoa");
+            shovel.rmPlant(lawnGrid, plants, x, y);
         }
         if (path != "" ) { // Kiểm tra xem đã chọn cây chưa
             if (x != null && y != null) {
                 boolean flag = true;
-                for (int i = 0; i < plant.size(); i++) {
-                    if (plant.get(i).col == x && plant.get(i).row == y) {
+                for (int i = 0; i < plants.size(); i++) {
+                    if (plants.get(i).col == x && plants.get(i).row == y) {
                         flag = false;
                         break;
                     }
                 }
                 if (flag) {
-
-                    // Loadding ... hiển thị thì là đúng nhưng bên trong đang chỉ chỉ peashooter
-
                     // Tạo một cây mới
                     Plant newPlant = new PeaShooter((int)(source.getLayoutX()), (int)(source.getLayoutY()), x, y);
-                    plant.add(newPlant);
+                    plants.add(newPlant);
                     // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-                    makeImage(lawnGrid, x, y, path);
+                    newPlant.makeImage(lawnGrid, x, y, path);
                     sunCount.setText(String.valueOf(Integer.parseInt(sunCount.getText()) - newPlant.getCost()));
                     System.out.println("Add plant location col: " + String.valueOf(x) + ", row: " + String.valueOf(y));
+
+                    selectedCardPlant.setOpacity(1);
+                    path = "";
                 }
             }
         }
 
 
     }
-    // Hàm tạo một hình ảnh trong GridPane
-    public void makeImage(GridPane lawn, int col, int row, String path) {
-        // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        Image image = new Image(path, 60, 60, false, false);
-        // Tạo một ImageView để hiển thị hình ảnh
-        ImageView imageView = new ImageView(image);
-        imageView.setImage(image);
-        // Thêm hình ảnh vào GridPane
-        lawn.add(imageView, col, row, 1, 1);
-    }
+
     // Hàm xử lí khi click vào Card Plant
     public void setCardSelected(MouseEvent e) {
         Node source = (Node) e.getSource();

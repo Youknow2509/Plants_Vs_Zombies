@@ -6,6 +6,8 @@ import javafx.scene.layout.GridPane;
 
 import src.Game.GameElements;
 
+import java.util.ArrayList;
+
 // Lớp trừu tượng cây
 public abstract class Plant extends GameElements{
 
@@ -23,14 +25,16 @@ public abstract class Plant extends GameElements{
     }
 
     public int getCost() { return this.cost;}
-
     public void makeImage(GridPane lawn, int col, int row, String path) {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         Image image = new Image(path, 60, 60, false, false);
         // Tạo một ImageView để hiển thị hình ảnh
-        ImageView imageView = new ImageView(image);
+        imageView = new ImageView(image);
         imageView.setImage(image);
         // Thêm hình ảnh vào GridPane
         lawn.add(imageView, col, row, 1, 1);
+    }
+    public void addPlant(GridPane lawn, ArrayList<Plant> plants, int x, int y) {
+
     }
 }
