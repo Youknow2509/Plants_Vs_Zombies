@@ -9,7 +9,7 @@ import src.Game.GameElements;
 import java.util.ArrayList;
 
 // Lớp trừu tượng cây
-public abstract class Plant extends GameElements{
+public class Plant extends GameElements{
 
     public int col, row;
     protected int hp;
@@ -23,6 +23,9 @@ public abstract class Plant extends GameElements{
         this.row = row;
         this.cost = cost;
     }
+    public Plant() {
+        super();
+    }
 
     public int getCost() { return this.cost;}
     public void makeImage(GridPane lawn, int col, int row, String path) {
@@ -34,7 +37,24 @@ public abstract class Plant extends GameElements{
         // Thêm hình ảnh vào GridPane
         lawn.add(imageView, col, row, 1, 1);
     }
-    public void addPlant(GridPane lawn, ArrayList<Plant> plants, int x, int y) {
-
+    public static Plant getPlant(String path, int layoutX, int layoutY, int col, int row) {
+        switch (path) {
+            case "SunFlower":
+                return new SunFlower(layoutX, layoutY, col, row);
+            case "Peashooter":
+                return new PeaShooter(layoutX, layoutY, col, row);
+            case "Wallnut":
+                return new Wallnut(layoutX, layoutY, col, row);
+            case "CherryBomb":
+                return new CherryBomb(layoutX, layoutY, col, row);
+            case "PotatoMine":
+                return new PotatoMine(layoutX, layoutY, col, row);
+            case "Chomper":
+                return new Chomper(layoutX, layoutY, col, row);
+            case "Repeater":
+                return new Repeater(layoutX, layoutY, col, row);
+            default:
+                return null;
+        }
     }
 }

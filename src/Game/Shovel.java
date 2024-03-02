@@ -45,4 +45,12 @@ public class Shovel extends GameElements {
     public double getOpacityBtn(){
         return isDisabled ? 1 : 0.6;
     }
+
+
+    public void handleClick() {
+        setIsDisabled(
+                !getIsDisabled()
+        );
+        imageView.setOpacity(getOpacityBtn());
+    }
 }

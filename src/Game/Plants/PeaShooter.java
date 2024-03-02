@@ -7,6 +7,6 @@ public class PeaShooter extends Plant{
     private final static int dame = 20;
     private final static int cost = 100;
     public PeaShooter(int x, int y, int col, int row) {
-        super(x, y, "/Assets/images/Plants/Peashooter.gif", 100, 60, 60, col, row, 100);
+        super(x, y, "/Assets/images/Plants/Peashooter.gif", hp, 60, 60, col, row, cost);
     }
 }

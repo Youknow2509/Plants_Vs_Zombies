@@ -75,7 +75,7 @@
             <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-            <Region fx:id="shovel" maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" onMouseClicked="#getGridPosition" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
@@ -109,16 +109,6 @@
       <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="399.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Assets/images/items/Flag.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sunflower" fitHeight="50.0" fitWidth="100.0" layoutX="36.0" layoutY="90.0" onMouseClicked="#setCardSelected" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/Cards/sunflowerCard.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="Peashooter" fitHeight="50.0" fitWidth="100.0" layoutX="36.0" layoutY="150.0" onMouseClicked="#setCardSelected" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/Cards/peashooterCard.png" />
          </image>
       </ImageView>
       <ImageView fx:id="btnShovel" fitHeight="45.0" fitWidth="45.0" layoutX="455.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">

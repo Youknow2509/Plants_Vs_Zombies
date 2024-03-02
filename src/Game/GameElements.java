@@ -19,6 +19,13 @@ public abstract class GameElements {
         this.width = width;
         this.height = height;
     }
+    public GameElements() {
+        this.x = 0;
+        this.y = 0;
+        this.path = "";
+        this.width = 0;
+        this.height = 0;
+    }
     public void setPath(String path) {
         this.path = path;
     }
