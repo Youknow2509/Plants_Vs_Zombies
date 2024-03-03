@@ -27,7 +27,7 @@ public class PeaShooter extends Plant {
             synchronized (GamePlayController.zombies) {
                 for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                     Zombie z = GamePlayController.zombies.get(i);
-                    if (true) {
+                    if (z.getLane() == lane && z.getX() > x ){
                         Pea pea = new Pea((int) x + 50, (int) y + 25, lane);
                         pea.makeImage(lawn);
                         pea.active();

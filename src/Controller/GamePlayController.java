@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javafx.util.Duration;
 import src.Game.Plants.Plant;
 import src.Game.Shovel;
 import src.Game.Plants.CardPlants;
+import src.Game.Zombies.Conehead;
 import src.Game.Zombies.NormalZombie;
 import src.Game.Zombies.Zombie;
 
@@ -51,6 +53,11 @@ public class GamePlayController {
         normalZombie.makeImage(GamePlayRoot);
         normalZombie.move();
         zombies.add(normalZombie);
+
+        Conehead conehead = new Conehead(2);
+        conehead.makeImage(GamePlayRoot);
+        conehead.move();
+        zombies.add(conehead);
 
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
