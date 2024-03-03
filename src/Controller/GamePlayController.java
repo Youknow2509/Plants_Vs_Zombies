@@ -8,6 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import src.Game.Plants.Plant;
 import src.Game.Shovel;
@@ -28,8 +30,8 @@ public class GamePlayController {
     @FXML
     private Label sunCount;
     // Lưu các biến
-    private ArrayList<Plant> plants = new ArrayList<Plant>();
-    private ArrayList<Zombie> zombie = new ArrayList<Zombie>();
+    public static List<Plant> plants = Collections.synchronizedList(new ArrayList<Plant>());
+    public static List<Zombie> zombies = Collections.synchronizedList(new ArrayList<Zombie>());
     private Shovel shovel = new Shovel(); // Xẻng
     private CardPlants cardPlants = new CardPlants();
     public static ImageView selectedCardPlant = null;
@@ -48,17 +50,8 @@ public class GamePlayController {
         NormalZombie normalZombie = new NormalZombie(3);
         normalZombie.makeImage(GamePlayRoot);
         normalZombie.move();
-        zombie.add(normalZombie);
+        zombies.add(normalZombie);
 
-        NormalZombie normalZombie2 = new NormalZombie(4);
-        normalZombie2.makeImage(GamePlayRoot);
-        normalZombie2.move();
-        zombie.add(normalZombie);
-
-        NormalZombie normalZombie3 = new NormalZombie(5);
-        normalZombie3.makeImage(GamePlayRoot);
-        normalZombie3.move();
-        zombie.add(normalZombie);
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
     public void initData(int level) {
@@ -74,26 +67,29 @@ public class GamePlayController {
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
             shovel.rmPlant(lawnGrid, plants, x, y);
         }
-        if (path != "" ) { // Kiểm tra xem đã chọn cây chưa
+        if (path != "") { // Kiểm tra xem đã chọn cây chưa
             if (x != null && y != null) {
                 boolean flag = true;
-                for (int i = 0; i < plants.size(); i++) {
-                    if (plants.get(i).col == x && plants.get(i).row == y) {
-                        flag = false;
-                        break;
+                synchronized (plants) {
+                    for (int i = 0; i < plants.size(); i++) {
+                        if (plants.get(i).col == x && plants.get(i).row == y) {
+                            flag = false;
+                            break;
+                        }
                     }
                 }
                 if (flag) {
                     // Tạo một cây mới
-                    Plant newPlant = Plant.getPlant(path, (int)(source.getLayoutX()), (int)(source.getLayoutY()), x, y);
+                    Plant newPlant = Plant.getPlant(path, (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()), x, y);
                     newPlant.makeImage(lawnGrid, x, y);
                     plants.add(newPlant);
-
+                    newPlant.attack(GamePlayRoot);
                     sunCount.setText(String.valueOf(Integer.parseInt(sunCount.getText()) - newPlant.getCost()));
 
                     selectedCardPlant.setOpacity(1);
                     path = "";
                 }
+
             }
         }
     }

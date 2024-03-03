@@ -1,6 +1,15 @@
 package src.Game.Plants;
 
-public class PeaShooter extends Plant{
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import src.Controller.GamePlayController;
+import src.Game.Zombies.Zombie;
+
+import java.sql.Time;
+
+public class PeaShooter extends Plant {
 
     private final static String path = "/Assets/images/Plants/Peashooter.gif";
     private final static int hp = 100;
@@ -8,5 +17,25 @@ public class PeaShooter extends Plant{
     private final static int cost = 100;
     public PeaShooter(int x, int y, int col, int row) {
         super(x, y, path, hp, 60, 60, col, row, cost);
+    }
+    public PeaShooter() {
+        super();
+    }
+    @Override
+    public void attack(AnchorPane lawn) {
+        Timeline shoot = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
+            synchronized (GamePlayController.zombies) {
+                for (int i = 0; i < GamePlayController.zombies.size(); i++) {
+                    Zombie z = GamePlayController.zombies.get(i);
+                    if (true) {
+                        Pea pea = new Pea((int) x + 50, (int) y + 25, lane);
+                        pea.makeImage(lawn);
+                        pea.active();
+                    }
+                }
+            }
+        }));
+        shoot.setCycleCount(Timeline.INDEFINITE);
+        shoot.play();
     }
 }

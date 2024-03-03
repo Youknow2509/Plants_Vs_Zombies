@@ -53,19 +53,19 @@ public class Zombie extends GameElements {
     public static int laneToLayoutY(int l) {
         int LayoutY = 0;
         switch (l) {
-            case 1:
+            case 0:
                 LayoutY = 35;
                 break;
-            case 2:
+            case 1:
                 LayoutY = 135;
                 break;
-            case 3:
+            case 2:
                 LayoutY = 235;
                 break;
-            case 4:
+            case 3:
                 LayoutY = 335;
                 break;
-            case 5:
+            case 4:
                 LayoutY = 435;
                 break;
             default:

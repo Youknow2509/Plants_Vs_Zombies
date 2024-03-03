@@ -3,6 +3,7 @@ package src.Game;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 public abstract class GameElements {
 
@@ -41,11 +42,29 @@ public abstract class GameElements {
         this.imageView.setY(y);
         root.getChildren().add(this.imageView);
     }
-
+    public void removeImage(AnchorPane root) {
+        imageView.setDisable(true);
+        imageView.setVisible(false);
+        root.getChildren().remove(this.imageView);
+    }
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
     }
     public ImageView getImageView() {
         return this.imageView;
+    }
+    public double getX() {
+        return this.x;
+    }
+    public void setX(double x) {
+        this.x = x;
+        imageView.setX(x);
+    }
+    public double getY() {
+        return this.y;
+    }
+    public void setY(double y) {
+        this.y = y;
+        imageView.setY(y);
     }
 }

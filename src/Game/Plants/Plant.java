@@ -2,6 +2,7 @@ package src.Game.Plants;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import src.Game.GameElements;
@@ -13,8 +14,8 @@ public class Plant extends GameElements{
 
     public int col, row;
     protected int hp;
+    public int lane;
     protected int cost;
-
     // Constructor
     public Plant(int x, int y, String path, int hp, int width, int height, int col, int row, int cost) {
         super(x, y, path, width, height);
@@ -22,6 +23,7 @@ public class Plant extends GameElements{
         this.col = col;
         this.row = row;
         this.cost = cost;
+        this.lane = row ;
     }
     public Plant() {
         super();
@@ -56,5 +58,8 @@ public class Plant extends GameElements{
             default:
                 return null;
         }
+    }
+    public void attack(AnchorPane lawn) {
+        // TODO: Xử lí tấn công
     }
 }

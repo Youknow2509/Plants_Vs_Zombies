@@ -13,9 +13,6 @@ public class NormalZombie extends Zombie {
     private final static int DAMAGE = 10;
     private final static String PATH = "Assets/images/Zombies/NormalZombieRun.gif";
 
-    public NormalZombie() {
-        super();
-    }
     public NormalZombie(int lane) {
         super(975, laneToLayoutY(lane), PATH, 100, 130, lane, SPEED, HP, DAMAGE);
     }
