@@ -34,8 +34,12 @@ public abstract class GameElements {
         return this.path;
     }
 
-    public void makeImage(AnchorPane root, int x, int y, String path, int width, int height) { // Hàm tạo hình ảnh
-
+    public void makeImage(AnchorPane root) { // Hàm tạo hình ảnh
+        this.image = new Image(path, width, height, false, false);
+        this.imageView = new ImageView(this.image);
+        this.imageView.setX(x);
+        this.imageView.setY(y);
+        root.getChildren().add(this.imageView);
     }
 
     public void setImageView(ImageView imageView) {

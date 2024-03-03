@@ -28,7 +28,7 @@ public class Plant extends GameElements{
     }
 
     public int getCost() { return this.cost;}
-    public void makeImage(GridPane lawn, int col, int row, String path) {
+    public void makeImage(GridPane lawn, int col, int row) {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         Image image = new Image(path, 60, 60, false, false);
         // Tạo một ImageView để hiển thị hình ảnh

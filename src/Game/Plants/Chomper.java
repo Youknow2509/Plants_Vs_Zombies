@@ -5,6 +5,6 @@ public class Chomper extends Plant {
     private final static int hp = 150;
     private final static int cost = 150;
     public Chomper(int x, int y, int col, int row) {
-        super(x, y, "/Assets/images/Plants/Chomper.gif", hp, 60, 60, col, row, cost);
+        super(x, y, path, hp, 60, 60, col, row, cost);
     }
 }

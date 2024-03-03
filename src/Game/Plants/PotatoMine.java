@@ -5,6 +5,6 @@ public class PotatoMine extends Plant {
     private final static int hp = 25;
     private final static int cost = 25;
     public PotatoMine(int x, int y, int col, int row) {
-        super(x, y, "/Assets/images/Plants/PotatoMine.gif", hp, 60, 60, col, row, cost);
+        super(x, y, path, hp, 60, 60, col, row, cost);
     }
 }

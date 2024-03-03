@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import src.Game.Plants.Plant;
 import src.Game.Shovel;
 import src.Game.Plants.CardPlants;
+import src.Game.Zombies.NormalZombie;
+import src.Game.Zombies.Zombie;
 
 public class GamePlayController {
 
@@ -27,7 +29,7 @@ public class GamePlayController {
     private Label sunCount;
     // Lưu các biến
     private ArrayList<Plant> plants = new ArrayList<Plant>();
-    // private ArrayList<Zombie> zombie = new ArrayList<Zombie>();
+    private ArrayList<Zombie> zombie = new ArrayList<Zombie>();
     private Shovel shovel = new Shovel(); // Xẻng
     private CardPlants cardPlants = new CardPlants();
     public static ImageView selectedCardPlant = null;
@@ -42,6 +44,21 @@ public class GamePlayController {
             shovel.handleClick();
         });
         initData(7);
+        // Test TODO: Xóa sau khi test xong
+        NormalZombie normalZombie = new NormalZombie(3);
+        normalZombie.makeImage(GamePlayRoot);
+        normalZombie.move();
+        zombie.add(normalZombie);
+
+        NormalZombie normalZombie2 = new NormalZombie(4);
+        normalZombie2.makeImage(GamePlayRoot);
+        normalZombie2.move();
+        zombie.add(normalZombie);
+
+        NormalZombie normalZombie3 = new NormalZombie(5);
+        normalZombie3.makeImage(GamePlayRoot);
+        normalZombie3.move();
+        zombie.add(normalZombie);
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
     public void initData(int level) {
@@ -69,7 +86,7 @@ public class GamePlayController {
                 if (flag) {
                     // Tạo một cây mới
                     Plant newPlant = Plant.getPlant(path, (int)(source.getLayoutX()), (int)(source.getLayoutY()), x, y);
-                    newPlant.makeImage(lawnGrid, x, y, "/Assets/images/Plants/" + path + ".gif");
+                    newPlant.makeImage(lawnGrid, x, y);
                     plants.add(newPlant);
 
                     sunCount.setText(String.valueOf(Integer.parseInt(sunCount.getText()) - newPlant.getCost()));
