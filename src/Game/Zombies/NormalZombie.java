@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javafx.util.Pair;
+import src.Controller.GamePlayController;
 
 public class NormalZombie extends Zombie {
     private final static int HP = 100;
@@ -15,15 +16,6 @@ public class NormalZombie extends Zombie {
 
     public NormalZombie(int lane) {
         super(975, laneToLayoutY(lane), PATH, 100, 130, lane, SPEED, HP, DAMAGE);
-    }
-    public void e(){
-        if (getHp() <= 0 || getImageView().getX() < 0) {
-            moveZombie.stop();
-        }
-        else {
-            ImageView imageView = getImageView();
-            imageView.setX(imageView.getX() - getSpeed());
-        }
     }
 
     @Override
@@ -39,12 +31,14 @@ public class NormalZombie extends Zombie {
     public void TimeLineMove() {
         moveZombie = new Timeline(
                 new KeyFrame(Duration.millis(1000), e -> {
-                    if (getHp() <= 0 || getImageView().getX() < 0) {
+                    if (getHp() <= 0 || getX() < 0) {
                         moveZombie.stop();
+                        imageView.setVisible(false);
+                        imageView.setDisable(true);
+                        GamePlayController.zombies.remove(this);
                     }
                     else {
-                        ImageView imageView = getImageView();
-                        imageView.setX(imageView.getX() - getSpeed());
+                        setX(getX() - getSpeed());
                     }
                 })
         );
