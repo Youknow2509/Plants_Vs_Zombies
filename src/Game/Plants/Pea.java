@@ -29,9 +29,9 @@ public class Pea extends GameElements {
         }
         attack();
     }
-    private void remove() {
-        //imageView.setVisible(false);
-        //imageView.setDisable(true);
+    public void remove() {
+        imageView.setVisible(false);
+        imageView.setDisable(true);
         movePea.stop();
     }
     private void attack() {
@@ -39,7 +39,7 @@ public class Pea extends GameElements {
         synchronized (GamePlayController.zombies) {
             for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                 Zombie z = GamePlayController.zombies.get(i);
-                if (z.getLane() == lane && Math.abs(z.getX() - getX()) <= 3) {
+                if (z.getLane() == lane && Math.abs(z.getX() - getX()) <= 2) {
                     z.setHp(z.getHp() - damage);
                     System.out.println(z.getHp());
                     remove();

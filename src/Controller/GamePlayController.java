@@ -53,12 +53,6 @@ public class GamePlayController {
         normalZombie.makeImage(GamePlayRoot);
         normalZombie.move();
         zombies.add(normalZombie);
-
-        Conehead conehead = new Conehead(2);
-        conehead.makeImage(GamePlayRoot);
-        conehead.move();
-        zombies.add(conehead);
-
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
     public void initData(int level) {

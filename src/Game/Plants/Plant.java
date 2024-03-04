@@ -62,4 +62,20 @@ public class Plant extends GameElements{
     public void attack(AnchorPane lawn) {
         // TODO: Xử lí tấn công
     }
+
+    public int getLane() {
+        return lane;
+    }
+
+    public void setLane(int lane) {
+        this.lane = lane;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
 }
