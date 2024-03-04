@@ -18,8 +18,6 @@ public class Pea extends GameElements {
 
     public Pea(int x, int y, int lane) {
         super(x, y, path, 20, 20, lane);
-        //getImageView().setX(x + 42);
-        //getImageView().setY(y + 25);
     }
     private void movePea() {
         // Nếu đạn ra khỏi màn hình thì xóa đạn
@@ -40,7 +38,7 @@ public class Pea extends GameElements {
         synchronized (GamePlayController.zombies) {
             for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                 Zombie z = GamePlayController.zombies.get(i);
-                if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() > z.getX()) {
+                if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0){
                     z.setHp(z.getHp() - damage);
                     remove();
                     if (z.getHp() <= 0) {

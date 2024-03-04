@@ -12,7 +12,7 @@ import src.Controller.GamePlayController;
 import src.Game.Plants.Plant;
 
 public class NormalZombie extends Zombie {
-    private final static int HP = 300;
+    private final static int HP = 120;
     private final static int SPEED = 5;
     private final static int DAMAGE = 10;
     private final static String PATH = "Assets/images/Zombies/NormalZombieRun.gif";
