@@ -11,12 +11,12 @@ import src.Game.GameElements;
 import java.util.ArrayList;
 
 // Lớp trừu tượng cây
-public class Plant extends GameElements{
+public class Plant extends GameElements {
 
     private int col, row;
     private int hp;
     private int cost;
-    private Timeline movePea;
+    private Timeline tlDame;
     // Constructor
     public Plant(int x, int y, String path, int hp, int width, int height, int col, int row, int cost) {
         super(x, y, path, width, height, row);
@@ -83,11 +83,21 @@ public class Plant extends GameElements{
         // TODO: Xử lí tấn công
     }
 
-    public Timeline getMovePea() {
-        return movePea;
+    public Timeline getTlDame() {
+        return tlDame;
     }
 
-    public void setMovePea(Timeline movePea) {
-        this.movePea = movePea;
+    public void setTlDame(Timeline tlDame) {
+        this.tlDame = tlDame;
+    }
+    public void rmTlDame() {
+        if (tlDame != null) {
+            tlDame.stop();
+        }
+    }
+    public void rmImage(GridPane lawn) {
+        getImageView().setDisable(true);
+        getImageView().setVisible(false);
+        lawn.getChildren().remove(getImageView());
     }
 }

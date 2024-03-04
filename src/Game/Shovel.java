@@ -27,9 +27,8 @@ public class Shovel extends GameElements {
             for (int i = 0; i < plants.size(); i++) {
                 Plant p = plants.get(i);
                 if (p.getCol() == x && p.getRow() == y) {
-
-                    p.removeImage((AnchorPane) lawn.getParent());
-                    p.getMovePea().stop();
+                    p.rmImage((AnchorPane) lawn.getParent());
+                    p.rmTlDame();
                     plants.remove(p);
                     setIsDisabled(!getIsDisabled());
                     (getImageView()).setOpacity(getOpacityBtn());

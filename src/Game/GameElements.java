@@ -44,7 +44,7 @@ public abstract class GameElements {
         this.imageView.setY(y);
         root.getChildren().add(this.imageView);
     }
-    public void removeImage(AnchorPane root) {
+    public void rmImage(AnchorPane root) {
         imageView.setDisable(true);
         imageView.setVisible(false);
         root.getChildren().remove(this.imageView);
@@ -73,7 +73,6 @@ public abstract class GameElements {
     public Image getImage() {
         return image;
     }
-
     public void setImage(Image image) {
         this.image = image;
     }

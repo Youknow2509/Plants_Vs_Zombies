@@ -9,6 +9,8 @@ public class Zombie extends GameElements {
     private int hp;
     private int dame;
     public Timeline moveZombie;
+    private boolean flag = true; // true : zombie đang di chuyển, false: zombie dừng lại tấn công.
+
 
     public Zombie() {
         super();
@@ -63,5 +65,21 @@ public class Zombie extends GameElements {
                 break;
         }
         return LayoutY;
+    }
+
+    public Timeline getMoveZombie() {
+        return moveZombie;
+    }
+
+    public void setMoveZombie(Timeline moveZombie) {
+        this.moveZombie = moveZombie;
+    }
+
+    public boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

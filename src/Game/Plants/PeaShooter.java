@@ -35,7 +35,7 @@ public class PeaShooter extends Plant {
                 }
             }
         }));
-        setMovePea(shoot);
+        setTlDame(shoot);
         shoot.setCycleCount(Timeline.INDEFINITE);
         shoot.play();
     }

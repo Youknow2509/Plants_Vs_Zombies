@@ -2,6 +2,9 @@ package src.Game.Plants;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import src.Controller.GamePlayController;
 import src.Game.GameElements;
@@ -15,6 +18,8 @@ public class Pea extends GameElements {
 
     public Pea(int x, int y, int lane) {
         super(x, y, path, 20, 20, lane);
+        //getImageView().setX(x + 42);
+        //getImageView().setY(y + 25);
     }
     private void movePea() {
         // Nếu đạn ra khỏi màn hình thì xóa đạn
@@ -27,8 +32,7 @@ public class Pea extends GameElements {
         attack();
     }
     public void remove() {
-        //(getImageView()).setVisible(false);
-        //(getImageView()).setDisable(true);
+        //rmImage((AnchorPane) getImageView().getParent());
         movePea.stop();
     }
     private void attack() {
@@ -36,9 +40,8 @@ public class Pea extends GameElements {
         synchronized (GamePlayController.zombies) {
             for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                 Zombie z = GamePlayController.zombies.get(i);
-                if (z.getLane() == getLane() && Math.abs(z.getX() - getX()) <= 5) {
+                if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() > z.getX()) {
                     z.setHp(z.getHp() - damage);
-                    System.out.println("Zombie hp: " + z.getHp());
                     remove();
                     if (z.getHp() <= 0) {
                         GamePlayController.zombies.remove(z);
@@ -52,7 +55,6 @@ public class Pea extends GameElements {
         movePea.setCycleCount(Timeline.INDEFINITE);
         movePea.play();
     }
-
     public int getDamage() {
         return damage;
     }
