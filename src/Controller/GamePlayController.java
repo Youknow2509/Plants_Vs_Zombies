@@ -73,7 +73,7 @@ public class GamePlayController {
                 boolean flag = true;
                 synchronized (plants) {
                     for (int i = 0; i < plants.size(); i++) {
-                        if (plants.get(i).col == x && plants.get(i).row == y) {
+                        if ((plants.get(i)).getCol() == x && (plants.get(i)).getRow() == y) {
                             flag = false;
                             break;
                         }

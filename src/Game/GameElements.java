@@ -7,18 +7,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 public abstract class GameElements {
 
-    protected double x, y;
-    protected Image image;
-    protected ImageView imageView;
-    protected int width, height;
-    protected String path;
+    private double x, y;
+    private Image image;
+    private ImageView imageView;
+    private int width, height;
+    private String path;
+    private int lane;
 
-    public GameElements(double x, double y, String path, int width, int height) {
+    public GameElements(double x, double y, String path, int width, int height, int lane) {
         this.x = x;
         this.y = y;
         this.path = path;
         this.width = width;
         this.height = height;
+        this.lane = lane;
     }
     public GameElements() {
         this.x = 0;
@@ -66,5 +68,37 @@ public abstract class GameElements {
     public void setY(double y) {
         this.y = y;
         imageView.setY(y);
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getLane() {
+        return lane;
+    }
+
+    public void setLane(int lane) {
+        this.lane = lane;
     }
 }

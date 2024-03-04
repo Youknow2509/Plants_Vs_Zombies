@@ -27,14 +27,15 @@ public class PeaShooter extends Plant {
             synchronized (GamePlayController.zombies) {
                 for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                     Zombie z = GamePlayController.zombies.get(i);
-                    if (z.getLane() == lane && z.getX() > x ){
-                        Pea pea = new Pea((int) x + 50, (int) y + 25, lane);
+                    if (z.getLane() == getLane() && z.getX() > getX() + 2){
+                        Pea pea = new Pea((int) getX() + 50, (int) getY() + 25, getLane());
                         pea.makeImage(lawn);
                         pea.active();
                     }
                 }
             }
         }));
+        setMovePea(shoot);
         shoot.setCycleCount(Timeline.INDEFINITE);
         shoot.play();
     }

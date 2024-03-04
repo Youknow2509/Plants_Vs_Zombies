@@ -30,8 +30,8 @@ public class Conehead extends Zombie {
                 new KeyFrame(Duration.millis(1000), e -> {
                     if (getHp() <= 0 || getX() < 0) {
                         moveZombie.stop();
-                        imageView.setVisible(false);
-                        imageView.setDisable(true);
+                        (getImageView()).setVisible(false);
+                        (getImageView()).setDisable(true);
                         GamePlayController.zombies.remove(this);
                     }
                     else {

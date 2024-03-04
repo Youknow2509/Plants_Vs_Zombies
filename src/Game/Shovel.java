@@ -15,7 +15,7 @@ public class Shovel extends GameElements {
     protected boolean isDisabled = true; // Biến kiểm tra xem xẻng có bị vô hiệu hóa hay không
     // Constructor
     public Shovel() {
-        super(500, 10, "/Assets/images/items/Shovel.png", 60, 60);
+        super(500, 10, "/Assets/images/items/Shovel.png", 60, 60, -1);
     }
     public boolean getIsDisabled() {
         return isDisabled;
@@ -25,13 +25,14 @@ public class Shovel extends GameElements {
         // Xóa cây
         synchronized (plants) {
             for (int i = 0; i < plants.size(); i++) {
-                if (plants.get(i).col == x && plants.get(i).row == y) {
+                Plant p = plants.get(i);
+                if (p.getCol() == x && p.getRow() == y) {
 
-                    plants.get(i).removeImage((AnchorPane) lawn.getParent());
-                    plants.remove(i);
-
+                    p.removeImage((AnchorPane) lawn.getParent());
+                    p.getMovePea().stop();
+                    plants.remove(p);
                     setIsDisabled(!getIsDisabled());
-                    imageView.setOpacity(getOpacityBtn());
+                    (getImageView()).setOpacity(getOpacityBtn());
                     break;
                 }
             }
@@ -49,6 +50,6 @@ public class Shovel extends GameElements {
         setIsDisabled(
                 !getIsDisabled()
         );
-        imageView.setOpacity(getOpacityBtn());
+        (getImageView()).setOpacity(getOpacityBtn());
     }
 }

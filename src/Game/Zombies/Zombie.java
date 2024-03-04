@@ -5,7 +5,6 @@ import javafx.util.Pair;
 import src.Game.GameElements;
 
 public class Zombie extends GameElements {
-    private int lane;
     private int speed;
     private int hp;
     private int dame;
@@ -15,18 +14,10 @@ public class Zombie extends GameElements {
         super();
     }
     public Zombie(int x, int y, String path, int width, int height, int lane, int speed, int hp, int dame) {
-        super(x, y, path, width, height);
-        this.lane = lane;
+        super(x, y, path, width, height, lane);
         this.speed = speed;
         this.hp = hp;
         this.dame = dame;
-    }
-
-    public int getLane() {
-        return lane;
-    }
-    public void setLane(int lane) {
-        this.lane = lane;
     }
     public int getSpeed() {
         return speed;

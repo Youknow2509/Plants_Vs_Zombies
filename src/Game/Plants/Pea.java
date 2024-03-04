@@ -11,13 +11,10 @@ public class Pea extends GameElements {
     private final static String path = "Assets/images/items/Pea.png";
     private int damage = 20;
     private int speed = 1;
-    public int lane;
-
     private Timeline movePea;
 
     public Pea(int x, int y, int lane) {
-        super(x, y, path, 20, 20);
-        this.lane = lane;
+        super(x, y, path, 20, 20, lane);
     }
     private void movePea() {
         // Nếu đạn ra khỏi màn hình thì xóa đạn
@@ -30,8 +27,8 @@ public class Pea extends GameElements {
         attack();
     }
     public void remove() {
-        imageView.setVisible(false);
-        imageView.setDisable(true);
+        //(getImageView()).setVisible(false);
+        //(getImageView()).setDisable(true);
         movePea.stop();
     }
     private void attack() {
@@ -39,10 +36,13 @@ public class Pea extends GameElements {
         synchronized (GamePlayController.zombies) {
             for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                 Zombie z = GamePlayController.zombies.get(i);
-                if (z.getLane() == lane && Math.abs(z.getX() - getX()) <= 2) {
+                if (z.getLane() == getLane() && Math.abs(z.getX() - getX()) <= 5) {
                     z.setHp(z.getHp() - damage);
-                    System.out.println(z.getHp());
+                    System.out.println("Zombie hp: " + z.getHp());
                     remove();
+                    if (z.getHp() <= 0) {
+                        GamePlayController.zombies.remove(z);
+                    }
                 }
             }
         }
@@ -53,4 +53,27 @@ public class Pea extends GameElements {
         movePea.play();
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public Timeline getMovePea() {
+        return movePea;
+    }
+
+    public void setMovePea(Timeline movePea) {
+        this.movePea = movePea;
+    }
 }
