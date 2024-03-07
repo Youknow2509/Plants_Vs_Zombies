@@ -11,12 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.util.Duration;
 import src.Game.Plants.Plant;
 import src.Game.Shovel;
 import src.Game.Plants.CardPlants;
 import src.Game.Zombies.Conehead;
-import src.Game.Zombies.NormalZombie;
+import src.Game.Zombies.Normal;
 import src.Game.Zombies.Zombie;
 
 public class GamePlayController {
@@ -49,10 +48,15 @@ public class GamePlayController {
         });
         initData(7);
         // Test TODO: Xóa sau khi test xong
-        NormalZombie normalZombie = new NormalZombie(3);
+        Normal normalZombie = new Normal(3);
         normalZombie.makeImage(GamePlayRoot);
         normalZombie.move();
         zombies.add(normalZombie);
+
+        Conehead conehead = new Conehead(1);
+        conehead.makeImage(GamePlayRoot);
+        conehead.move();
+        zombies.add(conehead);
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
     public void initData(int level) {
