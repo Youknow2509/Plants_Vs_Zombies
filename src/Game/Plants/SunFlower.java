@@ -7,5 +7,5 @@ public class SunFlower extends Plant {
     public SunFlower(int x, int y, int col, int row) {
         super(x, y, path, hp, 60, 60, col, row, cost);
     }
-    
+
 }

@@ -82,4 +82,5 @@ public class Zombie extends GameElements {
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+
 }

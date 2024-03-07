@@ -30,7 +30,7 @@ public class Normal extends Zombie {
     }
     public void TimeLineMove() {
         moveZombie = new Timeline(
-                new KeyFrame(Duration.millis(1000), e -> {
+                new KeyFrame(Duration.seconds(1), e -> {
                     if (getFlag()) { // xử lí việc di chuyển
                         if (getX() < 0 || getHp() <= 0) {
                             moveZombie.stop();

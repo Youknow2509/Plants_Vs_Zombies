@@ -41,7 +41,10 @@ public class Pea extends GameElements {
                 if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0){
                     z.setHp(z.getHp() - damage);
                     remove();
+                    System.out.println("Zb hp: " +  z.getHp());
                     if (z.getHp() <= 0) {
+                        z.getMoveZombie().stop();
+                        z.rmImage((AnchorPane) z.getImageView().getParent());
                         GamePlayController.zombies.remove(z);
                     }
                 }
