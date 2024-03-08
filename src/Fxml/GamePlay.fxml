@@ -35,7 +35,7 @@
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/items/sun.png" />
+            <Image url="@../../Assets/images/items/Sun.png" />
          </image>
       </ImageView>
       <ProgressBar fx:id="progressbarGame" layoutX="207.0" layoutY="23.0" opacity="0.8" prefHeight="13.0" prefWidth="201.0" progress="0.8" />

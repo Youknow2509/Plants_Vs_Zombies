@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import src.Game.Plants.Plant;
+import src.Game.Plants.Sun;
 import src.Game.Shovel;
 import src.Game.Plants.CardPlants;
 import src.Game.Zombies.Conehead;
@@ -33,6 +34,8 @@ public class GamePlayController {
     // Lưu các biến
     public static List<Plant> plants = Collections.synchronizedList(new ArrayList<Plant>());
     public static List<Zombie> zombies = Collections.synchronizedList(new ArrayList<Zombie>());
+    private static int sun = 50;
+    private static Label sunDisplay;
     private Shovel shovel = new Shovel(); // Xẻng
     private CardPlants cardPlants = new CardPlants();
     public static ImageView selectedCardPlant = null;
@@ -46,17 +49,20 @@ public class GamePlayController {
         btnShovel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             shovel.handleClick();
         });
+
+        sunDisplay = sunCount;
+
         initData(7);
         // Test TODO: Xóa sau khi test xong
+
         Normal normalZombie = new Normal(3);
         normalZombie.makeImage(GamePlayRoot);
         normalZombie.move();
         zombies.add(normalZombie);
 
-        Conehead conehead = new Conehead(1);
-        conehead.makeImage(GamePlayRoot);
-        conehead.move();
-        zombies.add(conehead);
+        Sun sun = new Sun(400, 0, 0);
+        sun.makeImage(GamePlayRoot);
+        sun.dropSun();
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
     public void initData(int level) {
@@ -89,7 +95,8 @@ public class GamePlayController {
                     newPlant.makeImage(lawnGrid, x, y);
                     plants.add(newPlant);
                     newPlant.attack(GamePlayRoot);
-                    sunCount.setText(String.valueOf(Integer.parseInt(sunCount.getText()) - newPlant.getCost()));
+
+                    setSun(sun - newPlant.getCost());
 
                     selectedCardPlant.setOpacity(1);
                     path = "";
@@ -102,6 +109,15 @@ public class GamePlayController {
     // Hàm xử lí khi click vào Card Plant
     public void menuHandle(MouseEvent e) {
         System.out.println("Menu clicked");
+    }
+
+    public static int getSun() {
+        return sun;
+    }
+
+    public static void setSun(int sun) {
+        GamePlayController.sun = sun;
+        sunDisplay.setText(String.valueOf(sun));
     }
 }
 
