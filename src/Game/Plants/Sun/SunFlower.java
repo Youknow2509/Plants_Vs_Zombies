@@ -14,7 +14,7 @@ public class SunFlower extends Plant {
     }
     // Tạo ra mặt trời
     @Override
-    public void attack() {
+    public void attack() { // TODO: Cho thời gian tạo ra Sun random
         setTlDame(new Timeline(new KeyFrame(javafx.util.Duration.millis(4500), e -> {
             Sun sun = new Sun((int)this.getX() - 5,(int)this.getY() + 30, this.getRow());
             sun.makeImage();
