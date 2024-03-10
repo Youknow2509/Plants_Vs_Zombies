@@ -11,9 +11,9 @@ public class SunFlower extends Plant {
     public SunFlower(int x, int y, int col, int row) {
         super(x, y, path, hp, 60, 60, col, row, cost);
     }
+    // Tạo ra mặt trời
     @Override
     public void attack() {
-
         setTlDame(new Timeline(new KeyFrame(javafx.util.Duration.millis(4500), e -> {
             Sun sun = new Sun((int)this.getX() - 5,(int)this.getY() + 30, this.getRow());
             sun.makeImage();

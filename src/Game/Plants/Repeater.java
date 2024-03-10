@@ -14,6 +14,7 @@ public class Repeater extends Plant {
     public Repeater(int x, int y, int col, int row) {
         super(x, y, path, hp, 60, 60, col, row, cost);
     }
+    // Tấn công zombie
     @Override
     public void attack() {
         Timeline shoot = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
