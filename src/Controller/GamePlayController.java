@@ -81,7 +81,7 @@ public class GamePlayController {
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
             shovel.rmPlant(plants, x, y);
         }
-        else if (path != "") { // Xử lí việc tạo cây
+        else if (path != "") { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
             if (x != null && y != null) {
                 boolean flag = true;
                 synchronized (plants) {
