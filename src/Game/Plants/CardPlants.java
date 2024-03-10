@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import src.Controller.GamePlayController;
+import src.Game.Shovel;
 import src.Level.Level;
 
 public class CardPlants {
@@ -49,20 +50,29 @@ public class CardPlants {
     public void setCardSelected(MouseEvent e) {
         Node source = (Node) e.getSource();
         ImageView select = (ImageView) source;
+
+        Shovel.setIsDisabled(true);
+
         if (GamePlayController.selectedImageView == null) {
-            select.setOpacity(0.2);
-            GamePlayController.selectedImageView = select;
-            GamePlayController.path =  select.getId();
+            disableCard(select);
         }
         else if (GamePlayController.selectedImageView != select) {
             GamePlayController.selectedImageView.setOpacity(1);
-            select.setOpacity(0.2);
-            GamePlayController.selectedImageView = select;
-            GamePlayController.path = select.getId();
+            disableCard(select);
         } else {
-            select.setOpacity(1);
-            GamePlayController.selectedImageView = null;
-            GamePlayController.path = "";
+            setCardUnSelected();
         }
+    }
+    // Làm mờ ảnh và thêm sự kiện khi click
+    private void disableCard(ImageView select) {
+        select.setOpacity(0.2);
+        GamePlayController.selectedImageView = select;
+        GamePlayController.path =  select.getId();
+    }
+    // Hàm xử lí thẻ cây khi không được chọn
+    public static void setCardUnSelected() {
+        GamePlayController.selectedImageView.setOpacity(1);
+        GamePlayController.selectedImageView = null;
+        GamePlayController.path = "";
     }
 }
