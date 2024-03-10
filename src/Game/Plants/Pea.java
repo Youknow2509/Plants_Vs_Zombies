@@ -43,7 +43,7 @@ public class Pea extends GameElements {
                 if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0){
                     z.setHp(z.getHp() - damage);
                     remove();
-                    System.out.println("Zb hp: " +  z.getHp());
+                    System.out.println("Zb hp: " +  z.getHp()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
                     if (z.getHp() <= 0) {
                         z.getMoveZombie().stop();
                         z.rmImage();
