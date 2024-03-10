@@ -33,43 +33,43 @@ public class GamePlayController {
     private Label sunCount;
     private static AnchorPane root = null;
     // Lưu các biến
-    public static List<Plant> plants = Collections.synchronizedList(new ArrayList<Plant>());
-    public static List<Zombie> zombies = Collections.synchronizedList(new ArrayList<Zombie>());
-    private static int sun = 50;
-    private static Label sunDisplay;
+    public static List<Plant> plants = Collections.synchronizedList(new ArrayList<Plant>()); // Danh sách các cây tồn tại
+    public static List<Zombie> zombies = Collections.synchronizedList(new ArrayList<Zombie>());// Danh sách các zombie tồn tại
+    private static int sun = 50; // Giá trị số mặt trời
+    private static Label sunDisplay; // Gắn với label hiển thị số mặt trời - để  static để có thể truy cập từ class khác
     private Shovel shovel = new Shovel(); // Xẻng
-    private CardPlants cardPlants = new CardPlants();
-    public static ImageView selectedCardPlant = null;
-    public static String path = "";
+    private CardPlants cardPlants = new CardPlants(); // Danh sách thẻ các loại cây
+    public static ImageView selectedImageView = null; // ImageView được chọn trước đó bao gồm Thẻ cây và thẻ xẻng
+    public static String path = ""; // Đường dẫn ảnh của cây được chọn
+
+    // Khởi tạo game
     @FXML
     public void initialize() {
-        menu.setOnMouseClicked(e -> { // Xử lí tạm thời - "Hiện tại dùng để thoát "
+
+        menu.setOnMouseClicked(e -> { //TODO Xử lí tạm thời - "Hiện tại dùng để thoát "
             System.exit(0);
         });
+        // Tạo xẻng và gắn sự kiện cho xẻng
         shovel.setImageView(btnShovel);
         btnShovel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             shovel.handleClick();
         });
-
+        // Gán các giá trị về tĩnh để có thể truy cập từ class khác
         root = GamePlayRoot;
         sunDisplay = sunCount;
 
-        initData(7);
-        // Test TODO: Xóa sau khi test xong
+        initData(3);
 
+        // Test TODO: Xóa sau khi test xong
         Normal normalZombie = new Normal(3);
         normalZombie.makeImage();
         normalZombie.move();
         zombies.add(normalZombie);
-
-
-
     }
-    // Ham xu ly khi click vao GridPane bãi cỏ
     public void initData(int level) {
-        cardPlants.getCards(level); //
+        cardPlants.getCards(level); // Khởi tạo thẻ cây
     }
-
+    // Hàm xử lí khi click vào ô cỏ
     public void getGridPosition(MouseEvent e) {
         Node source = (Node) e.getSource();
         // Lấy ra vị trí ô đang được click
@@ -79,7 +79,7 @@ public class GamePlayController {
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
             shovel.rmPlant(plants, x, y);
         }
-        if (path != "") { // Kiểm tra xem đã chọn cây chưa
+        else if (path != "") { // Xử lí việc tạo cây
             if (x != null && y != null) {
                 boolean flag = true;
                 synchronized (plants) {
@@ -90,8 +90,8 @@ public class GamePlayController {
                         }
                     }
                 }
+                // Tạo một cây mới thêm vào game
                 if (flag) {
-                    // Tạo một cây mới
                     Plant newPlant = Plant.getPlant(path, (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()), x, y);
                     newPlant.makeImage(lawnGrid, x, y);
                     plants.add(newPlant);
@@ -99,23 +99,20 @@ public class GamePlayController {
 
                     setSun(sun - newPlant.getCost());
 
-                    selectedCardPlant.setOpacity(1);
-                    path = "";
+                    CardPlants.setCardUnSelected();
                 }
-
             }
         }
     }
-
-    // Hàm xử lí khi click vào Card Plant
+    // Hàm xử lí khi click vào menu
     public void menuHandle(MouseEvent e) {
+        // TODO tạo  menu cho một game
         System.out.println("Menu clicked");
     }
-
+    // Get và set các biến
     public static int getSun() {
         return sun;
     }
-
     public static void setSun(int sun) {
         GamePlayController.sun = sun;
         sunDisplay.setText(String.valueOf(sun));
