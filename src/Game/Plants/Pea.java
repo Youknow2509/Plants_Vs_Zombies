@@ -19,6 +19,7 @@ public class Pea extends GameElements {
     public Pea(int x, int y, int lane) {
         super(x, y, path, 20, 20, lane);
     }
+    // Di chuyển đạn
     private void movePea() {
         // Nếu đạn ra khỏi màn hình thì xóa đạn
         if (getX() < 1010) {
@@ -29,12 +30,13 @@ public class Pea extends GameElements {
         }
         attack();
     }
+    // Xóa đạn
     public void remove() {
         rmImage();
         movePea.stop();
     }
+    // Xử lí khi đạn chạm vào zombie
     private void attack() {
-        // Xử lí khi đạn chạm vào zombie
         synchronized (GamePlayController.zombies) {
             for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                 Zombie z = GamePlayController.zombies.get(i);
@@ -51,31 +53,28 @@ public class Pea extends GameElements {
             }
         }
     }
+    // Bắt đầu di chuyển đạn
     public void active() {
         movePea = new Timeline(new KeyFrame(Duration.millis(5), e -> {movePea();}));
         movePea.setCycleCount(Timeline.INDEFINITE);
         movePea.play();
     }
+    // Get và set các thuộc tính
     public int getDamage() {
         return damage;
     }
-
     public void setDamage(int damage) {
         this.damage = damage;
     }
-
     public int getSpeed() {
         return speed;
     }
-
     public void setSpeed(int speed) {
         this.speed = speed;
     }
-
     public Timeline getMovePea() {
         return movePea;
     }
-
     public void setMovePea(Timeline movePea) {
         this.movePea = movePea;
     }
