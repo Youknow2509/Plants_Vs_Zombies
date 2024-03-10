@@ -20,7 +20,7 @@ public class Sun extends GameElements {
         this.layoutYEnd = getLayoutYEnd();
         this.layoutXEnd = x - 15;
     }
-    // Lấy ra vị trí y cuối cùng khi sun rơi xuống
+    // Lấy ra vị trí điểm rơi y khi sun rơi xuống từ cây
     private int getLayoutYEnd() {
         switch (lane) {
             case 0:
@@ -37,6 +37,7 @@ public class Sun extends GameElements {
                 return 0;
         }
     }
+    // Tạo hình ảnh sun và thêm sự kiện click để nhận sun
     @Override
     public void makeImage() {
         super.makeImage();
@@ -45,15 +46,7 @@ public class Sun extends GameElements {
             rmImage();
         });
     }
-    private void moveSun() {
-        if (this.getY() <= 550) {
-            this.setY(this.getY() + 1);
-        } else {
-            tlSun.stop();
-            DisappearSun();
-        }
-    }
-    // Tạo sun từ sunflower
+    // Tạo sun từ cây
     public void flowerCreateSun() {
         timeout = 6000;
         tlSun = new Timeline(new KeyFrame(javafx.util.Duration.millis(30), e -> {
@@ -68,16 +61,21 @@ public class Sun extends GameElements {
         tlSun.setCycleCount(Timeline.INDEFINITE);
         tlSun.play();
     }
-    // Rơi sun random
+    // Tạo sun ngẫu nhiên rơi xuống
     public void CreatSunDrop() {
         timeout = 14000;
         tlSun = new Timeline(new KeyFrame(javafx.util.Duration.millis(30), e -> {
-            moveSun();
+            if (this.getY() <= 550) {
+                this.setY(this.getY() + 1);
+            } else {
+                tlSun.stop();
+                DisappearSun();
+            }
         }));
         tlSun.setCycleCount(Timeline.INDEFINITE);
         tlSun.play();
     }
-    // Làm mờ rồi xoá sun
+    // Làm mờ rồi xoá sun sau một thời gian nhất định
     private void DisappearSun() {
         Thread th = new Thread(() -> {
             try {
