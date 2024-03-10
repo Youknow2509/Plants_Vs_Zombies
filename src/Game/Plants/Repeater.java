@@ -15,7 +15,7 @@ public class Repeater extends Plant {
         super(x, y, path, hp, 60, 60, col, row, cost);
     }
     @Override
-    public void attack(AnchorPane lawn) {
+    public void attack() {
         Timeline shoot = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
             synchronized (GamePlayController.zombies) {
                 for (int i = 0; i < GamePlayController.zombies.size(); i++) {
@@ -23,9 +23,9 @@ public class Repeater extends Plant {
                     if (z.getLane() == getLane() && z.getX() > getX() + 2){
                         Pea pea1 = new Pea((int) getX() + 45, (int) getY() + 25, getLane());
                         Pea pea2 = new Pea((int) getX() + 80, (int) getY() + 25, getLane());
-                        pea1.makeImage(lawn);
+                        pea1.makeImage();
                         pea1.active();
-                        pea2.makeImage(lawn);
+                        pea2.makeImage();
                         pea2.active();
                     }
                 }

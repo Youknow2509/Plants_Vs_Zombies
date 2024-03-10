@@ -1,5 +1,7 @@
 package src.Game.Plants;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.layout.AnchorPane;
 
 public class SunFlower extends Plant {
@@ -10,8 +12,14 @@ public class SunFlower extends Plant {
         super(x, y, path, hp, 60, 60, col, row, cost);
     }
     @Override
-    public void attack(AnchorPane lawn) {
-        // SunFlower creat sun
+    public void attack() {
 
+        setTlDame(new Timeline(new KeyFrame(javafx.util.Duration.millis(4500), e -> {
+            Sun sun = new Sun((int)this.getX() - 5,(int)this.getY() + 30, this.getRow());
+            sun.makeImage();
+            sun.flowerCreateSun();
+        })));
+        getTlDame().setCycleCount(Timeline.INDEFINITE);
+        getTlDame().play();
     }
 }

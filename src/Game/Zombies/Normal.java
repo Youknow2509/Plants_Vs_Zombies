@@ -34,7 +34,7 @@ public class Normal extends Zombie {
                     if (getFlag()) { // xử lí việc di chuyển
                         if (getX() < 0 || getHp() <= 0) {
                             moveZombie.stop();
-                            rmImage((AnchorPane) getImageView().getParent());
+                            rmImage();
                         } else {
                             setX(getX() - getSpeed());
                             eatPlant();

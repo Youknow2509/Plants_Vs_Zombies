@@ -31,6 +31,7 @@ public class GamePlayController {
     private ImageView btnShovel;
     @FXML
     private Label sunCount;
+    private static AnchorPane root = null;
     // Lưu các biến
     public static List<Plant> plants = Collections.synchronizedList(new ArrayList<Plant>());
     public static List<Zombie> zombies = Collections.synchronizedList(new ArrayList<Zombie>());
@@ -50,23 +51,23 @@ public class GamePlayController {
             shovel.handleClick();
         });
 
+        root = GamePlayRoot;
         sunDisplay = sunCount;
 
         initData(7);
         // Test TODO: Xóa sau khi test xong
 
         Normal normalZombie = new Normal(3);
-        normalZombie.makeImage(GamePlayRoot);
+        normalZombie.makeImage();
         normalZombie.move();
         zombies.add(normalZombie);
 
-        Sun sun = new Sun(400, 0, 0);
-        sun.makeImage(GamePlayRoot);
-        sun.dropSun();
+
+
     }
     // Ham xu ly khi click vao GridPane bãi cỏ
     public void initData(int level) {
-        cardPlants.getCards(GamePlayRoot, level); //
+        cardPlants.getCards(level); //
     }
 
     public void getGridPosition(MouseEvent e) {
@@ -76,7 +77,7 @@ public class GamePlayController {
         Integer y = lawnGrid.getRowIndex(source);
 
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
-            shovel.rmPlant(lawnGrid, plants, x, y);
+            shovel.rmPlant(plants, x, y);
         }
         if (path != "") { // Kiểm tra xem đã chọn cây chưa
             if (x != null && y != null) {
@@ -94,7 +95,7 @@ public class GamePlayController {
                     Plant newPlant = Plant.getPlant(path, (int) (source.getLayoutX() + source.getParent().getLayoutX()), (int) (source.getLayoutY() + source.getParent().getLayoutY()), x, y);
                     newPlant.makeImage(lawnGrid, x, y);
                     plants.add(newPlant);
-                    newPlant.attack(GamePlayRoot);
+                    newPlant.attack();
 
                     setSun(sun - newPlant.getCost());
 
@@ -118,6 +119,12 @@ public class GamePlayController {
     public static void setSun(int sun) {
         GamePlayController.sun = sun;
         sunDisplay.setText(String.valueOf(sun));
+    }
+    public static AnchorPane getRoot() {
+        return root;
+    }
+    public static void setRoot(AnchorPane root) {
+        GamePlayController.root = root;
     }
 }
 

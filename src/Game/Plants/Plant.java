@@ -79,7 +79,7 @@ public class Plant extends GameElements {
                 return null;
         }
     }
-    public void attack(AnchorPane lawn) {
+    public void attack() {
         // TODO: Xử lí tấn công
     }
 

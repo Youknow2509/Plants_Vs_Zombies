@@ -21,13 +21,13 @@ public class Shovel extends GameElements {
         return isDisabled;
     }
     // Hàm xóa cây
-    public void rmPlant(GridPane lawn, List<Plant> plants, int x, int y) {
+    public void rmPlant(List<Plant> plants, int x, int y) {
         // Xóa cây
         synchronized (plants) {
             for (int i = 0; i < plants.size(); i++) {
                 Plant p = plants.get(i);
                 if (p.getCol() == x && p.getRow() == y) {
-                    p.rmImage((AnchorPane) lawn.getParent());
+                    p.rmImage();
                     p.rmTlDame();
                     plants.remove(p);
                     setIsDisabled(!getIsDisabled());

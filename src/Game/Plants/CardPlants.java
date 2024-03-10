@@ -20,7 +20,7 @@ public class CardPlants {
     private double  x = 36; // Tọa độ x 36
     private double [] y = {90, 150, 210, 270, 330, 390, 450}; // Tọa độ y
     // Hàm tạo hình ảnh
-    private void makeImage(AnchorPane root, int x, int y, String path) {
+    private void makeImage(int x, int y, String path) {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         Image image = new Image( "/Assets/images/Cards/" + path + ".png", 105, 67, false, false);
         // Tạo một ImageView để hiển thị hình ảnh
@@ -37,11 +37,11 @@ public class CardPlants {
             setCardSelected(e);
         });
         // Thêm ImageView vào AnchorPane
-        root.getChildren().add(imageView);
+        (GamePlayController.getRoot()).getChildren().add(imageView);
     }
-    public void getCards(AnchorPane GamePlayRoot, int level) {
+    public void getCards(int level) {
         for (int i = 0; i < level; i++) {
-            makeImage(GamePlayRoot, (int)x, (int)y[i], pathCards[i]);
+            makeImage((int)x, (int)y[i], pathCards[i]);
         }
     }
     public void setCardSelected(MouseEvent e) {

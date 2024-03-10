@@ -30,7 +30,7 @@ public class Pea extends GameElements {
         attack();
     }
     public void remove() {
-        //rmImage((AnchorPane) getImageView().getParent());
+        rmImage();
         movePea.stop();
     }
     private void attack() {
@@ -44,7 +44,7 @@ public class Pea extends GameElements {
                     System.out.println("Zb hp: " +  z.getHp());
                     if (z.getHp() <= 0) {
                         z.getMoveZombie().stop();
-                        z.rmImage((AnchorPane) z.getImageView().getParent());
+                        z.rmImage();
                         GamePlayController.zombies.remove(z);
                     }
                 }

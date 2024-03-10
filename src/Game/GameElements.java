@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import src.Controller.GamePlayController;
+
 public abstract class GameElements {
 
     private double x, y;
@@ -37,17 +39,17 @@ public abstract class GameElements {
         return this.path;
     }
 
-    public void makeImage(AnchorPane root) { // Hàm tạo hình ảnh
+    public void makeImage() { // Hàm tạo hình ảnh
         this.image = new Image(path, width, height, false, false);
         this.imageView = new ImageView(this.image);
         this.imageView.setX(x);
         this.imageView.setY(y);
-        root.getChildren().add(this.imageView);
+        (GamePlayController.getRoot()).getChildren().add(this.imageView);
     }
-    public void rmImage(AnchorPane root) {
+    public void rmImage() {
         imageView.setDisable(true);
         imageView.setVisible(false);
-        root.getChildren().remove(this.imageView);
+        (GamePlayController.getRoot()).getChildren().remove(this.imageView);
     }
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;

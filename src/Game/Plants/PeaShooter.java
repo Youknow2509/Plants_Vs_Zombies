@@ -22,14 +22,14 @@ public class PeaShooter extends Plant {
         super();
     }
     @Override
-    public void attack(AnchorPane lawn) {
+    public void attack() {
         Timeline shoot = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
             synchronized (GamePlayController.zombies) {
                 for (int i = 0; i < GamePlayController.zombies.size(); i++) {
                     Zombie z = GamePlayController.zombies.get(i);
                     if (z.getLane() == getLane() && z.getX() > getX() + 2){
                         Pea pea = new Pea((int) getX() + 50, (int) getY() + 25, getLane());
-                        pea.makeImage(lawn);
+                        pea.makeImage();
                         pea.active();
                     }
                 }
