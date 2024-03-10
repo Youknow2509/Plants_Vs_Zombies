@@ -71,8 +71,10 @@ public class CardPlants {
     }
     // Hàm xử lí thẻ cây khi không được chọn
     public static void setCardUnSelected() {
-        GamePlayController.selectedImageView.setOpacity(1);
-        GamePlayController.selectedImageView = null;
+        if (GamePlayController.selectedImageView != null) {
+            GamePlayController.selectedImageView.setOpacity(1);
+            GamePlayController.selectedImageView = null;
+        }
         GamePlayController.path = "";
     }
 }
