@@ -64,6 +64,7 @@ public class Sun extends GameElements {
     // Tạo sun ngẫu nhiên rơi xuống
     public void CreatSunDrop() {
         timeout = 14000;
+        setY(0);    // Đặt lại vị trí y của sun về 0 để rơi từ trên xuống
         tlSun = new Timeline(new KeyFrame(javafx.util.Duration.millis(30), e -> {
             if (this.getY() <= 550) {
                 this.setY(this.getY() + 1);
