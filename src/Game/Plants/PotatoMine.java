@@ -7,4 +7,5 @@ public class PotatoMine extends Plant {
     public PotatoMine(int x, int y, int col, int row) {
         super(x, y, path, hp, 60, 60, col, row, cost);
     }
+    // TODO chưa code PotatoMine
 }
