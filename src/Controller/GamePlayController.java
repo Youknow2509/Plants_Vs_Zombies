@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import src.Config;
 import src.Game.Plants.Plant;
+import src.Game.Plants.Sun.DropSun;
 import src.Game.Shovel;
 import src.Game.Plants.CardPlants;
 import src.Game.Zombies.Normal;
@@ -31,12 +33,13 @@ public class GamePlayController {
     private Label sunCount;
     private static AnchorPane root = null;
     // Lưu các biến
-    public static List<Plant> plants = Collections.synchronizedList(new ArrayList<Plant>()); // Danh sách các cây tồn tại
-    public static List<Zombie> zombies = Collections.synchronizedList(new ArrayList<Zombie>());// Danh sách các zombie tồn tại
+    public static List<Plant> plants = Config.getListPlants(); // Danh sách các cây tồn tại
+    public static List<Zombie> zombies = Config.getListZombies();// Danh sách các zombie tồn tại
     private static int sun = 50; // Giá trị số mặt trời
     private static Label sunDisplay; // Gắn với label hiển thị số mặt trời - để  static để có thể truy cập từ class khác
-    private Shovel shovel = new Shovel(); // Xẻng
-    private CardPlants cardPlants = new CardPlants(); // Danh sách thẻ các loại cây
+    private Shovel shovel = Config.getShovel(); // Xẻng
+    private CardPlants cardPlants = Config.getCardPlants(); // Danh sách thẻ các loại cây
+    private DropSun dropSun = Config.getDropSun(); // Sun rơi
     public static ImageView selectedImageView = null; // ImageView được chọn trước đó bao gồm Thẻ cây và thẻ xẻng
     public static String path = ""; // Đường dẫn ảnh của cây được chọn
 
@@ -57,6 +60,7 @@ public class GamePlayController {
         sunDisplay = sunCount;
 
         initData(3);
+        dropSun.initial();
 
         // Test TODO: Xóa sau khi test xong
         Normal normalZombie = new Normal(3);
