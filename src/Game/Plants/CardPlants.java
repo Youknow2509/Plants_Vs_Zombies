@@ -19,7 +19,7 @@ public class CardPlants {
     private int [] hp = {50, 100, 400, 150, 25, 150, 200}; // Máu của cây
     private double  x = 36; // Tọa độ x 36
     private double [] y = {90, 150, 210, 270, 330, 390, 450}; // Tọa độ y
-    // Hàm tạo hình ảnh
+    // Hàm tạo hình ảnh thẻ cây và thêm sự kiện
     private void makeImage(int x, int y, String path) {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         Image image = new Image( "/Assets/images/Cards/" + path + ".png", 105, 67, false, false);
@@ -39,27 +39,29 @@ public class CardPlants {
         // Thêm ImageView vào AnchorPane
         (GamePlayController.getRoot()).getChildren().add(imageView);
     }
+    // Tạo thẻ cây ứng với từng level game
     public void getCards(int level) {
         for (int i = 0; i < level; i++) {
             makeImage((int)x, (int)y[i], pathCards[i]);
         }
     }
+    // Xử lí khi click vào thẻ cây
     public void setCardSelected(MouseEvent e) {
         Node source = (Node) e.getSource();
         ImageView select = (ImageView) source;
-        if (GamePlayController.selectedCardPlant == null) {
+        if (GamePlayController.selectedImageView == null) {
             select.setOpacity(0.2);
-            GamePlayController.selectedCardPlant = select;
+            GamePlayController.selectedImageView = select;
             GamePlayController.path =  select.getId();
         }
-        else if (GamePlayController.selectedCardPlant != select) {
-            GamePlayController.selectedCardPlant.setOpacity(1);
+        else if (GamePlayController.selectedImageView != select) {
+            GamePlayController.selectedImageView.setOpacity(1);
             select.setOpacity(0.2);
-            GamePlayController.selectedCardPlant = select;
+            GamePlayController.selectedImageView = select;
             GamePlayController.path = select.getId();
         } else {
             select.setOpacity(1);
-            GamePlayController.selectedCardPlant = null;
+            GamePlayController.selectedImageView = null;
             GamePlayController.path = "";
         }
     }

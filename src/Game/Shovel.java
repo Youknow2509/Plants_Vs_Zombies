@@ -4,6 +4,7 @@ package src.Game;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import src.Controller.GamePlayController;
 import src.Game.Plants.Plant;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Shovel extends GameElements {
     public Shovel() {
         super(500, 10, "/Assets/images/items/Shovel.png", 60, 60, -1);
     }
+    // Lấy ra trạng thái xẻng
     public boolean getIsDisabled() {
         return isDisabled;
     }
@@ -37,15 +39,20 @@ public class Shovel extends GameElements {
             }
         }
     }
+    // Xét trạng thái xẻng
     public void setIsDisabled(boolean b) {
         this.isDisabled = b;
     }
+    // Trả về độ mờ khi click
     public double getOpacityBtn(){
         return isDisabled ? 1 : 0.6;
     }
-
-
+    // Xử lí khi click
     public void handleClick() {
+
+        GamePlayController.selectedImageView.setOpacity(1); // Đặt lại độ mờ của ImageView trước đó
+        GamePlayController.selectedImageView = getImageView(); // Lưu ImageView được chọn
+
         setIsDisabled(
                 !getIsDisabled()
         );
