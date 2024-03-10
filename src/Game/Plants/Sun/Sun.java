@@ -66,7 +66,7 @@ public class Sun extends GameElements {
         timeout = 14000;
         setY(0);    // Đặt lại vị trí y của sun về 0 để rơi từ trên xuống
         tlSun = new Timeline(new KeyFrame(javafx.util.Duration.millis(30), e -> {
-            if (this.getY() <= 550) {
+            if (this.getY() <= layoutYEnd) { // TODO: Lưu tạm this.getY() <= 550 để sun rơi đến cuối màn hình
                 this.setY(this.getY() + 1);
             } else {
                 tlSun.stop();
