@@ -21,6 +21,7 @@ public class PeaShooter extends Plant {
     public PeaShooter() {
         super();
     }
+    // Tấn công zombie
     @Override
     public void attack() {
         Timeline shoot = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
