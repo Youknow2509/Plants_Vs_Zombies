@@ -3,12 +3,12 @@ package src.Game.Plants;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import src.Game.GameElements;
-
-import java.util.ArrayList;
+import src.Game.Plants.Pea.PeaShooter;
+import src.Game.Plants.Pea.Repeater;
+import src.Game.Plants.Sun.SunFlower;
 
 // Lớp trừu tượng cây
 public class Plant extends GameElements {

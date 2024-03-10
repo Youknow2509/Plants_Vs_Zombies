@@ -1,10 +1,7 @@
-package src.Game.Plants;
+package src.Game.Plants.Pea;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import src.Controller.GamePlayController;
 import src.Game.GameElements;

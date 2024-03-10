@@ -12,10 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 import src.Game.Plants.Plant;
-import src.Game.Plants.Sun;
 import src.Game.Shovel;
 import src.Game.Plants.CardPlants;
-import src.Game.Zombies.Conehead;
 import src.Game.Zombies.Normal;
 import src.Game.Zombies.Zombie;
 

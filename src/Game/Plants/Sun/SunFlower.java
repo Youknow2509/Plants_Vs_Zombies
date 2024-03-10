@@ -1,8 +1,9 @@
-package src.Game.Plants;
+package src.Game.Plants.Sun;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.layout.AnchorPane;
+import src.Game.Plants.Plant;
+import src.Game.Plants.Sun.Sun;
 
 public class SunFlower extends Plant {
     private final static String path = "/Assets/images/Plants/SunFlower.gif";

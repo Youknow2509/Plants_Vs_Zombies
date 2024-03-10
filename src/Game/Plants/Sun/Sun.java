@@ -1,4 +1,4 @@
-package src.Game.Plants;
+package src.Game.Plants.Sun;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
