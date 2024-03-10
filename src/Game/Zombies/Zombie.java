@@ -1,8 +1,13 @@
 package src.Game.Zombies;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import javafx.util.Pair;
+import src.Controller.GamePlayController;
 import src.Game.GameElements;
+import src.Game.Plants.Plant;
 
 public class Zombie extends GameElements {
     private int speed; // Tốc độ di chuyển của zombie
@@ -21,9 +26,34 @@ public class Zombie extends GameElements {
     }
     // Di chuyển zombie
     public void move() {
+        TimeLineMove();
+        moveZombie.setCycleCount(Timeline.INDEFINITE);
+        moveZombie.play();
     }
     // Tấn công plant
     public void attack() {
+        synchronized (GamePlayController.plants) {
+            boolean checkZombie = false; // true là đang có zombie để ăn, false là không - xử lí khi zombie đang ăn cây thì cây bị xoá
+            for (int i = 0; i < GamePlayController.plants.size(); i++) {
+                Plant p = GamePlayController.plants.get(i);
+                if (p.getLane() == getLane() && getX() - p.getX() <= 30) {
+                    checkZombie = true;
+                    setFlag(false);
+                    p.setHp(p.getHp() - dame);
+                    if (p.getHp() <= 0) {
+                        p.rmImage((GridPane) p.getImageView().getParent());
+                        p.rmTlDame();
+                        GamePlayController.plants.remove(p);
+                        setFlag(true);
+                    }
+                    System.out.println("Plant hp: " + p.getHp()); // TODO : Để debug xem máu của cây còn lại bao nhiêu
+                    break;
+                }
+            }
+            if (!checkZombie) {
+                setFlag(true);
+            }
+        }
     }
     // Chuyển từ lane sang layoutY
     public static int laneToLayoutY(int l) {
@@ -48,6 +78,28 @@ public class Zombie extends GameElements {
                 break;
         }
         return LayoutY;
+    }
+    // Xử lí animatoin di chuyển của zombie
+    private void TimeLineMove() {
+        moveZombie = new Timeline(
+                new KeyFrame(Duration.seconds(1), e -> {
+                    // xử lí việc di chuyển
+                    if (getFlag()) {
+                        // xử lí khi zombie đi hết đường hoặc hết máu
+                        if (getX() < 0 || getHp() <= 0) {
+                            moveZombie.stop();
+                            rmImage();
+                        } else {
+                            setX(getX() - speed);
+                            attack();
+                        }
+                    }
+                    // xử lí ăn khi đi đến gần cây
+                    else {
+                        attack();
+                    }
+                })
+        );
     }
     // Get và set các thuộc tính
     public Timeline getMoveZombie() {
