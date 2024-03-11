@@ -78,17 +78,20 @@ public class Sun extends GameElements {
     }
     // Làm mờ rồi xoá sun sau một thời gian nhất định
     private void DisappearSun() {
-        Thread th = new Thread(() -> {
+        final Thread[] th = new Thread[1];
+            th[0] = new Thread(() -> {
             try {
                 Thread.sleep(timeout);
+                th[0].interrupt();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // Sử dụng để tác động lên giao diện
             Platform.runLater(() -> {
-                rmImage();
                 tlSun.stop();
+                rmImage();
             });
         });
-        th.start();
+        th[0].start();
     }
 }
