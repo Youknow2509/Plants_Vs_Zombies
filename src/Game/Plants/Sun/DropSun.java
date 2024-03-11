@@ -10,19 +10,21 @@ import src.Game.Plants.Plant;
 import java.util.Random;
 
 public class DropSun extends Plant {
+    private Random rd = Config.getRandom();
+
     public DropSun(){
         super();
     }
     // Khởi tạo Sun rơi
     public void initial() {
         // TODO: Để tạm thời 5 sun rơi, hàm for không thể để khi xử dụng trong game
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             CreatSunDrop();
         }
     }
+
     // Khởi tạo Sun rơi random sau thời gian random và vị trí random
     private void CreatSunDrop() {
-        Random rd = Config.getRandom();
         // Random thời gian rơi của sun từ 5 đến 10 giây
         int time = rd.nextInt(5) + 5;
 
