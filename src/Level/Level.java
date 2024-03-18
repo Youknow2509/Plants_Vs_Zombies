@@ -36,20 +36,21 @@ public class Level {
                 GamePlayController.zombieSpawners.add(new ZombieSpawner(32, 2, "Normal"));
                 GamePlayController.zombieSpawners.add(new ZombieSpawner(36, 3, "Normal"));
                 GamePlayController.zombieSpawners.add(new ZombieSpawner(40, 0, "Normal"));
-                sumZombies = GamePlayController.zombieSpawners.size();
-                // Sắp xếp lại thứ tự của zombieSpawners theo thời gian
-                Collections.sort(GamePlayController.zombieSpawners, new Comparator<ZombieSpawner>() {
-                    @Override
-                    public int compare(ZombieSpawner o1, ZombieSpawner o2) {
-                        return (o1.getTime() - o2.getTime());
-                    }
-                });
+
                 break;
                 // TODO: Thêm các level khác sau
             default:
                 System.out.println("Level không hợp lệ");
                 break;
         }
+        sumZombies = GamePlayController.zombieSpawners.size();
+        // Sắp xếp lại thứ tự của zombieSpawners theo thời gian
+        Collections.sort(GamePlayController.zombieSpawners, new Comparator<ZombieSpawner>() {
+            @Override
+            public int compare(ZombieSpawner o1, ZombieSpawner o2) {
+                return (o1.getTime() - o2.getTime());
+            }
+        });
     }
     // Getter and Setter
     public int getSumZombies() {

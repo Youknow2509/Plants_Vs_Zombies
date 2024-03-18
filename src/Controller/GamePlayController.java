@@ -50,6 +50,7 @@ public class GamePlayController {
     private Shovel shovel = Config.getShovel(); // Xẻng
     private CardPlants cardPlants = Config.getCardPlants(); // Danh sách thẻ các loại cây
     private DropSun dropSun = Config.getDropSun(); // Sun rơi
+    private int durationDropSun = 0; // Thời gian chờ rơi của sun
     public static ImageView selectedImageView = null; // ImageView được chọn trước đó bao gồm Thẻ cây và thẻ xẻng
     public static String path = ""; // Đường dẫn ảnh của cây được chọn
     private int tick = 0; // Đếm thời gian để tạo zombie
@@ -72,7 +73,6 @@ public class GamePlayController {
         // Test TODO: Chinh lại sau khi code xong
 
         initData(3);
-        dropSun.initial();
         level.setLevel(1);
         level.getZombieSpawners();
         GameProcess();
@@ -82,9 +82,16 @@ public class GamePlayController {
     }
     // Xử lí game
     public void GameProcess() {
-        Timeline gameLoop = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+        TimelineGame = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             tick++;
-            System.out.println("Tick: " + tick);
+            // Xử lí tạo ra dropsun sau một khoảng thời gian
+            if (durationDropSun == 0) {
+                dropSun.CreatSunDrop();
+                durationDropSun = dropSun.getDurationDropSun();
+            }
+            else {
+                durationDropSun--;
+            }
             // Xử lí tạo ra zombie
             while (zombieSpawners.size() > 0 && zombieSpawners.get(0).getTime() == tick) {
                 ZombieSpawner zombieSpawner = zombieSpawners.get(0);
@@ -96,9 +103,14 @@ public class GamePlayController {
             }
             // Kiểm tra trạng thái game và cập nhập phần trăm game
             // TODO: Thêm các trạng thái game và timneline game
+            if (zombieSpawners.size() == 0) {
+                System.out.println("Game win");
+                TimelineGame.stop();
+                System.exit(0);
+            }
         }));
-        gameLoop.setCycleCount(Timeline.INDEFINITE);
-        gameLoop.play();
+        TimelineGame.setCycleCount(Timeline.INDEFINITE);
+        TimelineGame.play();
     }
     // Hàm xử lí khi click vào ô cỏ
     public void getGridPosition(MouseEvent e) {

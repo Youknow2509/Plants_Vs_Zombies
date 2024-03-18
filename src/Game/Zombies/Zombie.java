@@ -46,7 +46,7 @@ public class Zombie extends GameElements {
                         GamePlayController.plants.remove(p);
                         setFlag(true);
                     }
-                    System.out.println("Plant hp: " + p.getHp()); // TODO : Để debug xem máu của cây còn lại bao nhiêu
+                    //System.out.println("Plant hp: " + p.getHp()); // TODO : Để debug xem máu của cây còn lại bao nhiêu
                     break;
                 }
             }

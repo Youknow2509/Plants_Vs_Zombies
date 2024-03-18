@@ -15,21 +15,10 @@ public class DropSun extends Plant {
     public DropSun(){
         super();
     }
-    // Khởi tạo Sun rơi
-    public void initial() {
-        // TODO: Để tạm thời 5 sun rơi, hàm for không thể để khi xử dụng trong game
-        for (int i = 0; i < 10; i++) {
-            CreatSunDrop();
-        }
-    }
-
     // Khởi tạo Sun rơi random sau thời gian random và vị trí random
-    private void CreatSunDrop() {
-        // Random thời gian rơi của sun từ 5 đến 10 giây
-        int time = rd.nextInt(5) + 5;
-
+    public void CreatSunDrop() {
         setTlDame(new Timeline(
-                new KeyFrame(Duration.seconds(time), event -> {
+                new KeyFrame(Duration.seconds(6), event -> {
                     int x = rd.nextInt(665) + 320;
                     int lane = rd.nextInt(5);
                     Sun sun = new Sun(x, 0, lane);
@@ -38,5 +27,11 @@ public class DropSun extends Plant {
                 })
         ));
         getTlDame().play();
+    }
+    // Lấy Duration random drop sun
+    public int getDurationDropSun() {
+        // Random thời gian rơi của sun từ 5 đến 10 giây
+        int time = rd.nextInt(16) + 8;
+        return time;
     }
 }
