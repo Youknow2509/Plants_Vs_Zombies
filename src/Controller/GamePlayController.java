@@ -1,5 +1,7 @@
 package src.Controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -7,10 +9,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
+
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javafx.util.Duration;
 import src.Config;
 import src.Game.Plants.Plant;
 import src.Game.Plants.Sun.DropSun;
@@ -18,6 +23,8 @@ import src.Game.Shovel;
 import src.Game.Plants.CardPlants;
 import src.Game.Zombies.Normal;
 import src.Game.Zombies.Zombie;
+import src.Level.Level;
+import src.Level.ZombieSpawner;
 
 public class GamePlayController {
 
@@ -35,6 +42,9 @@ public class GamePlayController {
     // Lưu các biến
     public static List<Plant> plants = Config.getListPlants(); // Danh sách các cây tồn tại
     public static List<Zombie> zombies = Config.getListZombies();// Danh sách các zombie tồn tại
+    public static List<ZombieSpawner> zombieSpawners = Config.getListZombieSpawner(); // Danh sách các zombie spawner
+    private Level level = Config.getLevel(); // Level
+    private Timeline TimelineGame; // Timeline của game
     private static int sun = 50; // Giá trị số mặt trời
     private static Label sunDisplay; // Gắn với label hiển thị số mặt trời - để  static để có thể truy cập từ class khác
     private Shovel shovel = Config.getShovel(); // Xẻng
@@ -42,6 +52,7 @@ public class GamePlayController {
     private DropSun dropSun = Config.getDropSun(); // Sun rơi
     public static ImageView selectedImageView = null; // ImageView được chọn trước đó bao gồm Thẻ cây và thẻ xẻng
     public static String path = ""; // Đường dẫn ảnh của cây được chọn
+    private int tick = 0; // Đếm thời gian để tạo zombie
 
     // Khởi tạo game
     @FXML
@@ -58,18 +69,36 @@ public class GamePlayController {
         // Gán các giá trị về tĩnh để có thể truy cập từ class khác
         root = GamePlayRoot;
         sunDisplay = sunCount;
+        // Test TODO: Chinh lại sau khi code xong
 
         initData(3);
         dropSun.initial();
-
-        // Test TODO: Xóa sau khi test xong
-        Normal normalZombie = new Normal(3);
-        normalZombie.makeImage();
-        normalZombie.move();
-        zombies.add(normalZombie);
+        level.setLevel(1);
+        level.getZombieSpawners();
+        GameProcess();
     }
     public void initData(int level) {
         cardPlants.getCards(level); // Khởi tạo thẻ cây
+    }
+    // Xử lí game
+    public void GameProcess() {
+        Timeline gameLoop = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            tick++;
+            System.out.println("Tick: " + tick);
+            // Xử lí tạo ra zombie
+            while (zombieSpawners.size() > 0 && zombieSpawners.get(0).getTime() == tick) {
+                ZombieSpawner zombieSpawner = zombieSpawners.get(0);
+                Zombie zombie = zombieSpawner.getZombie();
+                zombie.makeImage();
+                zombie.move();
+                zombies.add(zombie);
+                zombieSpawners.remove(0);
+            }
+            // Kiểm tra trạng thái game và cập nhập phần trăm game
+            // TODO: Thêm các trạng thái game và timneline game
+        }));
+        gameLoop.setCycleCount(Timeline.INDEFINITE);
+        gameLoop.play();
     }
     // Hàm xử lí khi click vào ô cỏ
     public void getGridPosition(MouseEvent e) {

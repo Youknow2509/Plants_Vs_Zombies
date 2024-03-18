@@ -6,11 +6,11 @@ import src.Game.Plants.Plant;
 import src.Game.Plants.Sun.DropSun;
 import src.Game.Shovel;
 import src.Game.Zombies.Zombie;
+import src.Level.Level;
+import src.Level.ZombieSpawner;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.io.File;
+import java.util.*;
 
 public class Config {
     // Variables
@@ -20,8 +20,22 @@ public class Config {
     private static Shovel shovel;
     private static CardPlants cardPlants;
     private static DropSun dropSun;
+    private static List<ZombieSpawner> listZombieSpawner;
+    private static Level level;
 
     // Handle the singleton pattern
+    public static Level getLevel() {
+        if (level == null) {
+            level = new Level();
+        }
+        return level;
+    }
+    public static List<ZombieSpawner> getListZombieSpawner() {
+        if (listZombieSpawner == null) {
+            listZombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());
+        }
+        return listZombieSpawner;
+    }
     public static Random getRandom() {
         if (random == null) {
             random = new Random();
