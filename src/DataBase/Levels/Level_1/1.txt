@@ -1,0 +1,10 @@
+SunFlower, Peashooter, Wallnut
+50
+1, 0, Normal
+10, 1, Normal
+15, 2, Normal
+27, 3, Normal
+19, 4, Normal
+32, 2, Normal
+36, 3, Normal
+40, 0, Normal

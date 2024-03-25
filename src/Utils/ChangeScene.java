@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.io.IOException;
 
 public class ChangeScene {
     // Var
@@ -34,8 +35,9 @@ public class ChangeScene {
             stage.setTitle(title);
             stage.show();
 
-        } catch (Exception e) {
-            System.out.println("Err: " + e);
+        } catch (IOException e) {
+            System.out.println("Loi khi load file: " + e);
+            e.printStackTrace();
             System.exit(0);
         }
     }

@@ -7,6 +7,7 @@ import src.Model.GameData;
 import src.Model.GameProcess;
 
 import javafx.scene.image.ImageView;
+import src.Utils.LoadLevel;
 import src.Utils.Shovel;
 
 public class GameMainController {
@@ -21,13 +22,17 @@ public class GameMainController {
     // Game Variables
     private GameProcess gameProcess = null;
     private GameData gameData = null;
+    private LoadLevel loadLevel = null;
     private static String path = "";
     private static ImageView imageViewClickBefore = null;
     private static Shovel shovel = null;
 
     // Initialize
+    @FXML
     public void initialize() {
-        gameData = new GameData();
+        loadLevel = new LoadLevel("/Users/v/code/java/projects/PVZ/src/DataBase/Levels/Level_1/1.txt");
+        loadLevel.read();
+        gameData = loadLevel.getGameData();
         gameProcess = new GameProcess(gameData, lawnGrid, GamePlayRoot);
         gameProcess.startGame();
 
