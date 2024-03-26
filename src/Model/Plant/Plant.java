@@ -33,9 +33,17 @@ public class Plant extends GameElements{
         this.speedAttack = speedAttack;
         this.gridPane = gridPane;
     }
-    // Tấn công
-    public void attack(List<Zombie> listZombies) {
-        // Attack ovreride in subclass
+    // Bắt đầu tấn công
+    public void startAttack(List<Zombie> listZombies) {
+        if (timelineAttack != null) {
+            timelineAttack.setCycleCount(Timeline.INDEFINITE);
+            timelineAttack.play();
+        }
+    }
+
+    // Timeline tấn công
+    private void timelineAttack() {
+        // timelineAttack ovreride in subclass
     }
     // Tao anh cay tren GridPane
     public void createImageViewInGridPane() {

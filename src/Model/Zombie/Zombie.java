@@ -31,9 +31,17 @@ public class Zombie extends GameElements {
     public void attack(List<Plant> listPlants) {
         // Attack ovreride in subclass
     }
+    // Timeline tấn công
+    private void timelineAttack() {
+        // TODO
+    }
     // Di chuyển
     public void move() {
         // Move ovreride in subclass
+    }
+    // Timeline di chuyển
+    private void timelineMove() {
+        // TODO
     }
     // Chuyển trang thái của Zombie
     public void changeState() {

@@ -43,6 +43,7 @@ public class GameProcess {
             zombie.createImageView();
 
             zombie.resumeAttack();
+            zombie.resumeMove();
         }
         // Tạp card
         cardPlants.getCards();
@@ -78,7 +79,7 @@ public class GameProcess {
     }
     // Pause Game
     public void pauseGame() {
-        // TODO Pause Game
+        // Tam dung Zombie
     }
     // Load Game
     public void loadGame() {
