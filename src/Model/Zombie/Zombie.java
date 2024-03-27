@@ -9,23 +9,30 @@ import java.util.List;
 
 public class Zombie extends GameElements {
     // Var
-    private int health;
-    private int dame;
-    private int speedMove;
-    private int speedAttack;
+    private int health = 0;
+    private int dame = 0;
+    private int move = 0;
+    private int speedMove = 0;
+    private int speedAttack = 0;
     private boolean flag = true; // true : zombie đang di chuyển, false: zombie dừng lại tấn công.
-    private Timeline timelineAttack;
-    private Timeline timelineMove;
-    private List<Plant> listPlants; // Danh sách các cây tồn tại, để kiểm tra, tấn công cây
+    private Timeline timelineAttack = null;
+    private Timeline timelineMove = null;
+    private List<Plant> listPlants = null; // Danh sách các cây tồn tại, để kiểm tra, tấn công cây
     // Constructor
-    public Zombie(AnchorPane root, double x, double y, String path, int width, int height
-            , int lane, List<Plant> listPlants, int health, int dame, int speedMove, int speedAttack) {
-        super(root, x, y, path, width, height, lane);
+
+    public Zombie() {
+        super();
+    }
+
+    public Zombie(double x, double y, String path, int width, int height, int lane
+            , List<Plant> listPlants, int health, int dame, int speedMove, int speedAttack, int move) {
+        super(x, y, path, width, height, lane);
         this.health = health;
         this.dame = dame;
         this.speedMove = speedMove;
         this.speedAttack = speedAttack;
         this.listPlants = listPlants;
+        this.move = move;
     }
     // Bat dau Animation
     public void startAnimation() {
@@ -150,5 +157,13 @@ public class Zombie extends GameElements {
 
     public void setListPlants(List<Plant> listPlants) {
         this.listPlants = listPlants;
+    }
+
+    public int getMove() {
+        return move;
+    }
+
+    public void setMove(int move) {
+        this.move = move;
     }
 }

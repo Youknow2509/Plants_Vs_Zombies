@@ -15,9 +15,8 @@ public class Shovel extends GameElements {
     private List<Plant> plants = null; // Danh sách các cây
     private boolean isDisabled = true; // Biến kiểm tra xem xẻng có bị vô hiệu hóa hay không: true là vô hiệu hoá
     // Constructor
-    public Shovel(AnchorPane anchorPane, List<Plant> plants, ImageView imageView) {
-        super(anchorPane, 500, 10, path, 60, 60, -1);
-        setAnchorPane(anchorPane);
+    public Shovel(List<Plant> plants, ImageView imageView) {
+        super(500, 10, path, 60, 60, -1);
         this.plants = plants;
         setImageView(imageView);
     }

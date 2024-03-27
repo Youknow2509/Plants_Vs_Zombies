@@ -27,7 +27,7 @@ public class CardPlants {
     private String pathPlant = ""; // Đường dẫn cây
 
     // Constructor
-    public CardPlants(AnchorPane anchorPane, List<String> pathCards) {
+    public CardPlants(List<String> pathCards) {
         super();
         this.pathCards = pathCards;
         this.anchorPane = anchorPane;
@@ -57,7 +57,7 @@ public class CardPlants {
             setCardSelected(e);
         });
         // Thêm ImageView vào AnchorPane
-        anchorPane.getChildren().add(imageView);
+        GameMainController.getAnchorPane().getChildren().add(imageView);
     }
 
     // Xử lí khi click vào thẻ cây

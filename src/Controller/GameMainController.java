@@ -23,27 +23,34 @@ public class GameMainController { // TODO để tạm thời , sẽ viết lại
     private GridPane lawnGrid;
     @FXML
     private ImageView btnShovel;
+    // Static Variables
+    private static AnchorPane anchorPane = null;
+    private static GridPane gridPane = null;
+    private static String path = "";
+    private static ImageView imageViewClickBefore = null;
+    private static Shovel shovel = null;
     // Game Variables
     private GameProcess gameProcess = null;
     private GameData gameData = null;
     private LoadLevel loadLevel = null;
-    private static String path = "";
-    private static ImageView imageViewClickBefore = null;
-    private static Shovel shovel = null;
 
     // Initialize
     @FXML
     public void initialize() {
+        // Load level
         loadLevel = new LoadLevel("/Users/v/code/java/projects/PVZ/src/DataBase/Levels/Level_1/1.txt");
         loadLevel.read();
         gameData = loadLevel.getGameData();
-        gameProcess = new GameProcess(gameData, lawnGrid, GamePlayRoot);
-        gameProcess.startGame();
-
-        shovel = new Shovel(GamePlayRoot, gameData.getListPlant(), btnShovel);
+        // init static variables
+        anchorPane = GamePlayRoot;
+        gridPane = lawnGrid;
+        shovel = new Shovel(gameData.getListPlant(), btnShovel);
         shovel.getImageView().addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, e -> {
             shovel.handleClick();
         });
+        // Start game
+        gameProcess = new GameProcess(gameData);
+        gameProcess.startGame();
     }
     // Hàm xử lí khi click vào ô cỏ
     public void getGridPosition(MouseEvent e) {
@@ -74,10 +81,10 @@ public class GameMainController { // TODO để tạm thời , sẽ viết lại
 
                     gameData.getListPlant().add(newPlant);
                     newPlant.startAnimation();
-                    newPlant.createImageView();
                     //setSun(sun - newPlant.getCost());
 
-                    //CardPlants.setCardUnSelected();
+                    imageViewClickBefore.setOpacity(1);
+                    path = "";
                 }
             }
         }
@@ -86,7 +93,7 @@ public class GameMainController { // TODO để tạm thời , sẽ viết lại
     public Plant creatPlant(int x, int y, int row, int col) {
         switch (path) {
             case "Peashooter":
-                return new PeaShooter(GamePlayRoot, lawnGrid, x, y, row, col, gameData.getZombieAlive());
+                return new PeaShooter(x, y, row, col, gameData.getZombieAlive());
         }
         return null;
     }
@@ -130,5 +137,37 @@ public class GameMainController { // TODO để tạm thời , sẽ viết lại
 
     public static void setShovel(Shovel shovel) {
         GameMainController.shovel = shovel;
+    }
+
+    public ImageView getBtnShovel() {
+        return btnShovel;
+    }
+
+    public void setBtnShovel(ImageView btnShovel) {
+        this.btnShovel = btnShovel;
+    }
+
+    public static AnchorPane getAnchorPane() {
+        return anchorPane;
+    }
+
+    public static void setAnchorPane(AnchorPane anchorPane) {
+        GameMainController.anchorPane = anchorPane;
+    }
+
+    public static GridPane getGridPane() {
+        return gridPane;
+    }
+
+    public static void setGridPane(GridPane gridPane) {
+        GameMainController.gridPane = gridPane;
+    }
+
+    public LoadLevel getLoadLevel() {
+        return loadLevel;
+    }
+
+    public void setLoadLevel(LoadLevel loadLevel) {
+        this.loadLevel = loadLevel;
     }
 }

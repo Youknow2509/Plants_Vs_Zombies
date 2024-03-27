@@ -1,6 +1,7 @@
 package src.Model.Plant;
 
 import javafx.scene.layout.GridPane;
+import src.Controller.GameMainController;
 import src.Model.GameElements;
 import javafx.animation.Timeline;
 import javafx.scene.layout.AnchorPane;
@@ -19,11 +20,10 @@ public class Plant extends GameElements {
     private int speedAttack;
     private Timeline timelineAttack;
     private List<Zombie> listZombies;
-    private GridPane gridPane;
     // Constructor
-    public Plant(AnchorPane root, GridPane gridPane, double x, double y, String path, int width, int height, int row
-            , int col , List<Zombie> listZombies, int health, int dame, int speedAttack, int cost) {
-        super(root, x, y, path, width, height, row);
+    public Plant(double x, double y, String path, int width, int height, int row, int col
+            , List<Zombie> listZombies, int health, int dame, int speedAttack, int cost) {
+        super(x, y, path, width, height, row);
         this.health = health;
         this.dame = dame;
         this.listZombies = listZombies;
@@ -31,7 +31,6 @@ public class Plant extends GameElements {
         this.col = col;
         this.cost = cost;
         this.speedAttack = speedAttack;
-        this.gridPane = gridPane;
     }
     // Bắt đầu Animation
     public void startAnimation() {
@@ -66,7 +65,7 @@ public class Plant extends GameElements {
     public void removeImageViewInGridPane() {
         getImageView().setDisable(true);
         getImageView().setVisible(false);
-        gridPane.getChildren().remove(getImageView());
+        GameMainController.getGridPane().getChildren().remove(getImageView());
     }
     // Tao anh cay tren GridPane
     public void createImageViewInGridPane() {
@@ -76,7 +75,7 @@ public class Plant extends GameElements {
         setImageView(new ImageView(getImage()));
         (getImageView()).setImage(getImage());
         // Thêm hình ảnh vào GridPane
-        gridPane.add(getImageView(), col, row, 1, 1);
+        GameMainController.getGridPane().add(getImageView(), col, row, 1, 1);
     }
     // Getter and setter
     public int getRow() {
@@ -141,13 +140,5 @@ public class Plant extends GameElements {
 
     public void setListZombies(List<Zombie> listZombies) {
         this.listZombies = listZombies;
-    }
-
-    public GridPane getGridPane() {
-        return gridPane;
-    }
-
-    public void setGridPane(GridPane gridPane) {
-        this.gridPane = gridPane;
     }
 }

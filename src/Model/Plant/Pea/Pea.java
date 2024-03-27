@@ -11,26 +11,31 @@ import src.Model.Zombie.Zombie;
 import java.util.List;
 
 // Viên đạn
-public class Pea extends PeaShooter {
+public class Pea extends GameElements {
     // Var
-    private final String path = "Assets/images/items/Pea.png";
-    private final int width = 20;
-    private final int height = 20;
-    private int dame = 20;
-    private int speed = 1;
+    private static final String PATH = "Assets/images/items/Pea.png";
+    private static final int WIDTH = 20;
+    private static final int HEIGHT = 20;
+    private int SPEED = 1;
+    private int dame = 0;
+    private List<Zombie> listZombie = null;
+    private List<Timeline> listTimelinePea = null;
     private Timeline timeline;
     // Constructor
-    public Pea(AnchorPane root, GridPane gridPane, double x, double y, int row, int col, List<Zombie> listZombie) {
-        super(root, gridPane, x, y, row, col, listZombie);
+    public Pea(double x, double y, int dame, int lane, List<Zombie> listZombie, List<Timeline> listTimelinePea) {
+        super(x, y, PATH, WIDTH, HEIGHT, lane);
+        this.listZombie = listZombie;
+        this.listTimelinePea = listTimelinePea;
+        this.dame = dame;
         createImageView();
     }
     // Bắt đầu Animation
     public void startAnimation() {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(speed), e -> {
-            // TODO: Xử lí viên đạn
+        timeline = new Timeline(new KeyFrame(Duration.seconds(SPEED), e -> {
+            setX(getX() + SPEED);
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        getListTimelinePea().add(timeline);
+        listTimelinePea.add(timeline);
         timeline.play();
     }
     // Stop Animation
@@ -43,21 +48,21 @@ public class Pea extends PeaShooter {
     private void move() {
         // Nếu đạn ra khỏi màn hình thì xóa đạn
         if (getX() < 1010) {
-            setX(getX() + speed);
+            setX(getX() + SPEED);
         }
         else {
             remove();
         }
-        attack();
+        //attack();
     }
     // Xử lí va chạm
     private void attack() {
-        synchronized (getListZombies()) {
-            for (int i = 0; i < getListZombies().size(); i++) {
-                Zombie z = getListZombies().get(i);
+        synchronized (listZombie) {
+            for (int i = 0; i < listZombie.size(); i++) {
+                Zombie z = listZombie.get(i);
                 // Xử lí va chạm
                 if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0) {
-                    z.setHealth(z.getHealth() - getDame());
+                    z.setHealth(z.getHealth() - dame);
                     remove();
                     // System.out.println("Zb hp: " +  z.getHp()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
                 }
@@ -67,8 +72,8 @@ public class Pea extends PeaShooter {
     // Xoá đạn, dừng timeline
     private void remove() {
         stopAnimation();
-        synchronized (getListTimelinePea()) {
-            getListTimelinePea().remove(timeline);
+        synchronized (listTimelinePea) {
+            listTimelinePea.remove(timeline);
         }
         removeImageView();
     }

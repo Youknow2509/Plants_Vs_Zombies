@@ -3,6 +3,7 @@ package src.Model;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import src.Controller.GameMainController;
 
 public abstract class GameElements {
     // Var
@@ -12,7 +13,6 @@ public abstract class GameElements {
     private int width, height; //  chiều rộng và chiều cao phần tử
     private String path; // Đường dẫn ảnh
     private int lane; // Lane của phần tử
-    private AnchorPane root; // Root của game - Để thêm, sửa xoá, chỉnh hình ảnh phần tử
     // Constructor
     public GameElements() {
         super();
@@ -22,7 +22,7 @@ public abstract class GameElements {
         this.width = 0;
         this.height = 0;
     }
-    public GameElements(AnchorPane root, double x, double y, String path, int width, int height, int lane) {
+    public GameElements(double x, double y, String path, int width, int height, int lane) {
         super();
         this.x = x;
         this.y = y;
@@ -30,7 +30,6 @@ public abstract class GameElements {
         this.width = width;
         this.height = height;
         this.lane = lane;
-        this.root = root;
     }
     // Tạo hình ảnh
     public void createImageView() {
@@ -38,13 +37,13 @@ public abstract class GameElements {
         this.imageView = new ImageView(this.image);
         this.imageView.setX(x);
         this.imageView.setY(y);
-        root.getChildren().add(this.imageView);
+        GameMainController.getAnchorPane().getChildren().add(this.imageView);
     }
     // Xoá hình ảnh
     public void removeImageView() {
         imageView.setDisable(true);
         imageView.setVisible(false);
-        root.getChildren().remove(this.imageView);
+        GameMainController.getAnchorPane().getChildren().remove(this.imageView);
     }
     // Getter and setter
     public double getX() {
@@ -94,11 +93,5 @@ public abstract class GameElements {
     }
     public void setLane(int lane) {
         this.lane = lane;
-    }
-    public AnchorPane getAnchorPane() {
-        return root;
-    }
-    public void setAnchorPane(AnchorPane root) {
-        this.root = root;
     }
 }

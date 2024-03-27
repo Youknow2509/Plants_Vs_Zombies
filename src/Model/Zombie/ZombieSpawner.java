@@ -16,7 +16,7 @@ public class ZombieSpawner {
         this.lane = lane;
         switch (nameZombie) {
             case "Normal":
-                //this.zombie = new Normal(lane);;
+                this.zombie = new NormalZombie();
                 break;
             case "Conehead":
                 //this.zombie = new Conehead(lane);;

@@ -13,16 +13,12 @@ import src.Utils.CardPlants;
 public class GameProcess {
     // Variables
     private GameData gameData = null;
-    private GridPane gridPane = null;
-    private AnchorPane anchorPane = null;
     private CardPlants cardPlants = null;
     private Timeline timelineGame = null;
     // Constructor
-    public GameProcess(GameData gameData, GridPane gridPane, AnchorPane anchorPane) {
+    public GameProcess(GameData gameData) {
         this.gameData = gameData;
-        this.gridPane = gridPane;
-        this.anchorPane = anchorPane;
-        cardPlants = new CardPlants(anchorPane, gameData.getListCardPlant());
+        cardPlants = new CardPlants(gameData.getListCardPlant());
     }
 
     // Start Game
@@ -32,7 +28,6 @@ public class GameProcess {
         // Tạo ảnh cây gắn hành động đang tồn tại
         for (int i = 0; i < gameData.getListPlant().size(); i++) {
             Plant plant = gameData.getListPlant().get(i);
-            plant.setGridPane(gridPane);
             plant.createImageViewInGridPane();
 
             plant.startAnimation();
@@ -40,7 +35,6 @@ public class GameProcess {
         // Tạo ảnh zombie gắn hành động Zombie đang tồn tại sẵn trong game
         for (int i = 0; i < gameData.getZombieAlive().size(); i++) {
             Zombie zombie = gameData.getZombieAlive().get(i);
-            zombie.setAnchorPane(anchorPane);
             zombie.createImageView();
 
             zombie.startAnimation();
