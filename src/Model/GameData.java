@@ -16,6 +16,7 @@ public class GameData {
     private List<ZombieSpawner> zombieSpawner = null;
     private int sun = 0;
     private int tick = 0;
+    private int durationDropSun = 0;
     // Construct
     public GameData() {
         super();
@@ -24,8 +25,8 @@ public class GameData {
         this.zombieAlive = Collections.synchronizedList(new ArrayList<Zombie>());;
         this.zombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());;
     }
-    public GameData(List<String> listCardPlant, List<Plant> listPlant
-            , List<Zombie> zombieAlive, List<ZombieSpawner> zombieSpawner, int sun, int tick) {
+    public GameData(List<String> listCardPlant, List<Plant> listPlant, List<Zombie> zombieAlive
+            , List<ZombieSpawner> zombieSpawner, int sun, int tick, int durationDropSun) {
         super();
         this.listCardPlant = listCardPlant;
         this.listPlant = listPlant;
@@ -33,6 +34,7 @@ public class GameData {
         this.zombieSpawner = zombieSpawner;
         this.sun = sun;
         this.tick = tick;
+        this.durationDropSun = durationDropSun;
     }
     // Thêm cây
     public void addPlant(Plant p) {
@@ -92,8 +94,13 @@ public class GameData {
     public List<String> getListCardPlant() {
         return listCardPlant;
     }
-
     public void setListCardPlant(List<String> listCardPlant) {
         this.listCardPlant = listCardPlant;
+    }
+    public int getDurationDropSun() {
+        return durationDropSun;
+    }
+    public void setDurationDropSun(int durationDropSun) {
+        this.durationDropSun = durationDropSun;
     }
 }

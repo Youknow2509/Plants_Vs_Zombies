@@ -27,21 +27,29 @@ public class Zombie extends GameElements {
         this.speedAttack = speedAttack;
         this.listPlants = listPlants;
     }
-    // Tấn công
-    public void attack(List<Plant> listPlants) {
-        // Attack ovreride in subclass
+    // Bat dau Animation
+    public void startAnimation() {
+        if (timelineMove != null && timelineAttack != null) {
+            timelineMove.setCycleCount(Timeline.INDEFINITE);
+            timelineMove.play();
+            timelineAttack.setCycleCount(Timeline.INDEFINITE);
+            timelineAttack.play();
+        }
+    }
+    // Stop Animation
+    public void stopAnimation() {
+        if (timelineMove != null && timelineAttack != null) {
+            timelineMove.stop();
+            timelineAttack.stop();
+        }
+    }
+    // Timline move
+    public void timelineMove() {
+        // Todo xu li zombie di chuyen - Override từng loại zombie
     }
     // Timeline tấn công
-    private void timelineAttack() {
-        // TODO
-    }
-    // Di chuyển
-    public void move() {
-        // Move ovreride in subclass
-    }
-    // Timeline di chuyển
-    private void timelineMove() {
-        // TODO
+    public void timelineAttack() {
+        // Todo xu li zombie tan cong - Override từng loại zombie
     }
     // Chuyển trang thái của Zombie
     public void changeState() {

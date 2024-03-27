@@ -17,7 +17,6 @@ public class GameProcess {
     private AnchorPane anchorPane = null;
     private CardPlants cardPlants = null;
     private Timeline timelineGame = null;
-    private int durationDropSun = 0;
     // Constructor
     public GameProcess(GameData gameData, GridPane gridPane, AnchorPane anchorPane) {
         this.gameData = gameData;
@@ -28,26 +27,31 @@ public class GameProcess {
 
     // Start Game
     public void startGame() {
-        // Tạo ảnh cây gắn hành động
+
+        // Phục hồi dữ liệu cũ (Nếu có)
+        // Tạo ảnh cây gắn hành động đang tồn tại
         for (int i = 0; i < gameData.getListPlant().size(); i++) {
             Plant plant = gameData.getListPlant().get(i);
             plant.setGridPane(gridPane);
             plant.createImageViewInGridPane();
 
-            plant.resumeAttack();
+            plant.startAnimation();
         }
-        // Tạo ảnh zombie gắn hành động
+        // Tạo ảnh zombie gắn hành động Zombie đang tồn tại sẵn trong game
         for (int i = 0; i < gameData.getZombieAlive().size(); i++) {
             Zombie zombie = gameData.getZombieAlive().get(i);
             zombie.setAnchorPane(anchorPane);
             zombie.createImageView();
 
-            zombie.resumeAttack();
-            zombie.resumeMove();
+            zombie.startAnimation();
         }
+
+
         // Tạp card
         cardPlants.getCards();
-        // Tạo timeline
+
+
+        // Chạy Timeline Game
         timelineGame = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             gameData.setTick(gameData.getTick() + 1);
 //            // Xử lí tạo ra dropsun sau một khoảng thời gian
@@ -66,7 +70,7 @@ public class GameProcess {
 
                 zombie.createImageView();
 
-                zombie.move();
+                zombie.startAnimation();
                 (gameData.getZombieAlive()).add(zombie);
                 (gameData.getZombieSpawner()).remove(0);
             }
@@ -79,7 +83,16 @@ public class GameProcess {
     }
     // Pause Game
     public void pauseGame() {
-        // Tam dung Zombie
+        // Pause Timeline main game
+        timelineGame.pause();
+        // Pause Timeline của các zombie
+        for (int i = 0; i < gameData.getZombieAlive().size(); i++) {
+            gameData.getZombieAlive().get(i).stopAnimation();
+        }
+        // Pause Timeline của các cây
+        for (int i = 0; i < gameData.getListPlant().size(); i++) {
+            gameData.getListPlant().get(i).stopAnimation();
+        }
     }
     // Load Game
     public void loadGame() {

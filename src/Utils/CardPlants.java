@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import src.Controller.GameMainController;
+import src.Model.Plant.Pea.PeaShooter;
+import src.Model.Plant.Plant;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class CardPlants {
     private double  x = 36; // Tọa độ x 36
     private double [] y = {90, 150, 210, 270, 330, 390, 450}; // Tọa độ y
     private AnchorPane anchorPane; // AnchorPane
+    private String pathPlant = ""; // Đường dẫn cây
 
     // Constructor
     public CardPlants(AnchorPane anchorPane, List<String> pathCards) {
@@ -66,12 +69,15 @@ public class CardPlants {
 
         if (GameMainController.getImageViewClickBefore() == null) {
             disableCard(select);
+            GameMainController.setPath(select.getId());
         }
         else if (GameMainController.getImageViewClickBefore() != select) {
             GameMainController.getImageViewClickBefore().setOpacity(1);
             disableCard(select);
+            GameMainController.setPath(select.getId());
         } else {
             setCardUnSelected();
+            GameMainController.setPath("");
         }
     }
     // Làm mờ ảnh và thêm sự kiện khi click
@@ -88,4 +94,5 @@ public class CardPlants {
         }
         GameMainController.setPath("");
     }
+
 }

@@ -10,7 +10,7 @@ import src.Model.Zombie.Zombie;
 
 import java.util.List;
 
-public class Plant extends GameElements{
+public class Plant extends GameElements {
     // Var
     private int row, col; // Lưu hàng và cột của phần tử trong GridPane
     private int health;
@@ -33,33 +33,22 @@ public class Plant extends GameElements{
         this.speedAttack = speedAttack;
         this.gridPane = gridPane;
     }
-    // Bắt đầu tấn công
-    public void startAttack(List<Zombie> listZombies) {
+    // Bắt đầu Animation
+    public void startAnimation() {
         if (timelineAttack != null) {
             timelineAttack.setCycleCount(Timeline.INDEFINITE);
             timelineAttack.play();
         }
     }
-
+    // Stop Animation
+    public void stopAnimation() {
+        if (timelineAttack != null) {
+            timelineAttack.stop();
+        }
+    }
     // Timeline tấn công
     private void timelineAttack() {
-        // timelineAttack ovreride in subclass
-    }
-    // Tao anh cay tren GridPane
-    public void createImageViewInGridPane() {
-        // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        setImage(new Image(getPath(), getWidth(), getHeight(), false, false));
-        // Tạo một ImageView để hiển thị hình ảnh
-        setImageView(new ImageView(getImage()));
-        (getImageView()).setImage(getImage());
-        // Thêm hình ảnh vào GridPane
-        gridPane.add(getImageView(), col, row, 1, 1);
-    }
-    // Xoa anh cay tren GridPane
-    public void removeImageViewInGridPane() {
-        getImageView().setDisable(true);
-        getImageView().setVisible(false);
-        gridPane.getChildren().remove(getImageView());
+        // Todo xu li plant tan cong - Override từng loại plant
     }
     // Dung Timeline tan cong cua cay
     public void stopAttack() {
@@ -73,7 +62,22 @@ public class Plant extends GameElements{
             timelineAttack.play();
         }
     }
-
+    // Xoa anh cay tren GridPane
+    public void removeImageViewInGridPane() {
+        getImageView().setDisable(true);
+        getImageView().setVisible(false);
+        gridPane.getChildren().remove(getImageView());
+    }
+    // Tao anh cay tren GridPane
+    public void createImageViewInGridPane() {
+        // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
+        setImage(new Image(getPath(), getWidth(), getHeight(), false, false));
+        // Tạo một ImageView để hiển thị hình ảnh
+        setImageView(new ImageView(getImage()));
+        (getImageView()).setImage(getImage());
+        // Thêm hình ảnh vào GridPane
+        gridPane.add(getImageView(), col, row, 1, 1);
+    }
     // Getter and setter
     public int getRow() {
         return row;
