@@ -1,26 +1,20 @@
 package src.Model;
 
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import src.Controller.GameMainController;
 
 public abstract class GameElements {
-    // Var
-    private double x, y; // Lưu toạ độ phần tử
-    private Image image; // Lưu hình ảnh
-    private ImageView imageView; // Lưu ImageView
-    private int width, height; //  chiều rộng và chiều cao phần tử
-    private String path; // Đường dẫn ảnh
-    private int lane; // Lane của phần tử
+    // Variables
+    private double x = 0, y = 0; // Lưu toạ độ phần tử
+    private Image image = null; // Lưu hình ảnh
+    private ImageView imageView = null; // Lưu ImageView
+    private int width = 0, height = 0; //  chiều rộng và chiều cao phần tử
+    private String path = ""; // Đường dẫn ảnh
+    private int lane = 0; // Lane của phần tử (dùng cho zombie, plant, và sun khi sinh ra từ cây)
     // Constructor
     public GameElements() {
         super();
-        this.x = 0;
-        this.y = 0;
-        this.path = "";
-        this.width = 0;
-        this.height = 0;
     }
     public GameElements(double x, double y, String path, int width, int height, int lane) {
         super();
@@ -35,8 +29,8 @@ public abstract class GameElements {
     public void createImageView() {
         this.image = new Image(path, width, height, false, false);
         this.imageView = new ImageView(this.image);
-        this.imageView.setX(x);
-        this.imageView.setY(y);
+        this.imageView.setX(getX());
+        this.imageView.setY(getY());
         GameMainController.getAnchorPane().getChildren().add(this.imageView);
     }
     // Xoá hình ảnh
@@ -51,12 +45,18 @@ public abstract class GameElements {
     }
     public void setX(double x) {
         this.x = x;
+        if (imageView != null) {
+            imageView.setX(x);
+        }
     }
     public double getY() {
         return y;
     }
     public void setY(double y) {
         this.y = y;
+        if (imageView != null){
+            imageView.setY(y);
+        }
     }
     public Image getImage() {
         return image;

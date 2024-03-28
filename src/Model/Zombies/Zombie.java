@@ -1,9 +1,12 @@
-package src.Model.Zombie;
+package src.Model.Zombies;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
+import src.Controller.GameMainController;
 import src.Model.GameElements;
-import src.Model.Plant.Plant;
+import src.Model.Plants.Plant;
 
 import java.util.List;
 
@@ -17,84 +20,88 @@ public class Zombie extends GameElements {
     private boolean flag = true; // true : zombie đang di chuyển, false: zombie dừng lại tấn công.
     private Timeline timelineAttack = null;
     private Timeline timelineMove = null;
-    private List<Plant> listPlants = null; // Danh sách các cây tồn tại, để kiểm tra, tấn công cây
-    // Constructor
 
+    // Constructor
     public Zombie() {
         super();
     }
-
     public Zombie(double x, double y, String path, int width, int height, int lane
-            , List<Plant> listPlants, int health, int dame, int speedMove, int speedAttack, int move) {
+            , int health, int dame, int speedMove, int speedAttack, int move) {
         super(x, y, path, width, height, lane);
+
         this.health = health;
         this.dame = dame;
         this.speedMove = speedMove;
         this.speedAttack = speedAttack;
-        this.listPlants = listPlants;
         this.move = move;
+
     }
-    // Bat dau Animation
-    public void startAnimation() {
-        if (timelineMove != null && timelineAttack != null) {
-            timelineMove.setCycleCount(Timeline.INDEFINITE);
-            timelineMove.play();
-            timelineAttack.setCycleCount(Timeline.INDEFINITE);
-            timelineAttack.play();
-        }
+    // Start
+    public void start() {
+
     }
-    // Stop Animation
-    public void stopAnimation() {
-        if (timelineMove != null && timelineAttack != null) {
-            timelineMove.stop();
+    // Pause tấn công
+    public void pause() {
+        if (timelineAttack != null) {
             timelineAttack.stop();
         }
-    }
-    // Timline move
-    public void timelineMove() {
-        // Todo xu li zombie di chuyen - Override từng loại zombie
-    }
-    // Timeline tấn công
-    public void timelineAttack() {
-        // Todo xu li zombie tan cong - Override từng loại zombie
-    }
-    // Chuyển trang thái của Zombie
-    public void changeState() {
-        if (flag) {
-            stopMove();
-            resumeAttack();
-        } else {
-            stopAttack();
-            resumeMove();
-        }
-        flag = !flag;
-    }
-    // Dừng hanh dong di chuyen
-    public void stopMove() {
         if (timelineMove != null) {
             timelineMove.stop();
         }
     }
-    // Dừng hanh dong tan cong
-    public void stopAttack() {
-        if (timelineAttack != null) {
-            timelineAttack.stop();
-        }
-    }
-    // Tiep tuc hanh dong tan cong
-    public void resumeAttack() {
+
+    // Resume tấn công
+    public void resume() {
         if (timelineAttack != null) {
             timelineAttack.play();
         }
-    }
-    // Tiep tuc hanh dong di chuyen
-    public void resumeMove() {
         if (timelineMove != null) {
             timelineMove.play();
         }
     }
 
-    // Getter and setter
+    // Remove image view of zombie
+    @Override
+    public void removeImageView() {
+        super.removeImageView();
+        if (timelineAttack != null) {
+            timelineAttack.stop();
+        }
+        if (timelineMove != null) {
+            timelineMove.stop();
+        }
+        getImageView().setDisable(true);
+        getImageView().setVisible(false);
+    }
+
+
+    // Help Functions
+    // Help - Chuyển từ lane sang layoutY
+    public void laneToLayoutY(int l) {
+        setX(975);
+        switch (l) {
+            case 0:
+                setY(35);
+                break;
+            case 1:
+                setY(135);
+                break;
+            case 2:
+                setY(235);
+                break;
+            case 3:
+                setY(335);
+                break;
+            case 4:
+                setY(435);
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    // Get và set các thuộc tính
     public int getHealth() {
         return health;
     }
@@ -109,6 +116,14 @@ public class Zombie extends GameElements {
 
     public void setDame(int dame) {
         this.dame = dame;
+    }
+
+    public int getMove() {
+        return move;
+    }
+
+    public void setMove(int move) {
+        this.move = move;
     }
 
     public int getSpeedMove() {
@@ -149,21 +164,5 @@ public class Zombie extends GameElements {
 
     public void setTimelineMove(Timeline timelineMove) {
         this.timelineMove = timelineMove;
-    }
-
-    public List<Plant> getListPlants() {
-        return listPlants;
-    }
-
-    public void setListPlants(List<Plant> listPlants) {
-        this.listPlants = listPlants;
-    }
-
-    public int getMove() {
-        return move;
-    }
-
-    public void setMove(int move) {
-        this.move = move;
     }
 }

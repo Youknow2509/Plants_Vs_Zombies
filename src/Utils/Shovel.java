@@ -1,42 +1,35 @@
 package src.Utils;
 
-import javafx.scene.layout.AnchorPane;
+
 import src.Controller.GameMainController;
 import src.Model.GameElements;
-import src.Model.Plant.Plant;
-import javafx.scene.image.ImageView;
+import src.Utils.CardPlants;
+import src.Model.Plants.Plant;
 
-import java.awt.event.MouseEvent;
 import java.util.List;
 
+// Lớp trừu tượng Xẻng
 public class Shovel extends GameElements {
-    // Variables
-    private static final String path = "/Assets/images/items/Shovel.png"; // Đường dẫn ảnh xẻng
-    private List<Plant> plants = null; // Danh sách các cây
-    private boolean isDisabled = true; // Biến kiểm tra xem xẻng có bị vô hiệu hóa hay không: true là vô hiệu hoá
+
+    private static boolean isDisabled = true; // Biến kiểm tra xem xẻng có bị vô hiệu hóa hay không: true là vô hiệu hoá
     // Constructor
-    public Shovel(List<Plant> plants, ImageView imageView) {
-        super(500, 10, path, 60, 60, -1);
-        this.plants = plants;
-        setImageView(imageView);
+    public Shovel() {
+        super(500, 10, "/Assets/images/items/Shovel.png", 60, 60, -1);
     }
     // Lấy ra trạng thái xẻng
     public boolean getIsDisabled() {
         return isDisabled;
     }
     // Hàm xóa cây
-    public void remotePlant(int x, int y) {
+    public void rmPlant(List<Plant> plants, int x, int y) {
         // Xóa cây
         synchronized (plants) {
             for (int i = 0; i < plants.size(); i++) {
                 Plant p = plants.get(i);
                 if (p.getCol() == x && p.getRow() == y) {
-
                     p.removeImageViewInGridPane();
-                    p.stopAttack();
-
+                    p.getTimelineAttack().stop();
                     plants.remove(p);
-
                     setIsDisabled(!getIsDisabled());
                     (getImageView()).setOpacity(getOpacityBtn());
                     break;
@@ -45,7 +38,7 @@ public class Shovel extends GameElements {
         }
     }
     // Xét trạng thái xẻng
-    public void setIsDisabled(boolean b) {
+    public static void setIsDisabled(boolean b) {
         isDisabled = b;
     }
     // Trả về độ mờ khi click
@@ -56,7 +49,7 @@ public class Shovel extends GameElements {
     public void handleClick() {
 
         CardPlants.setCardUnSelected();
-        GameMainController.setImageViewClickBefore(getImageView()); // Lưu ImageView được chọn
+        GameMainController.selectedImageView = getImageView(); // Lưu ImageView được chọn
 
         helpHandleClick();
     }
