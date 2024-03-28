@@ -32,7 +32,7 @@ public class Repeater extends Plant {
     // Start tấn công
     @Override
     public void start() {
-        setTimelineAttack(new Timeline(new KeyFrame(Duration.millis(SPEEDATTACK),
+        setTimelineAttack(new Timeline(new KeyFrame(Duration.seconds(SPEEDATTACK),
                 e -> {
                     synchronized (GameMainController.getListZombieAlive()) {
                         for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {

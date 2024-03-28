@@ -78,7 +78,7 @@ public class GameMainController {
 
         // Test TODO: Chinh lại sau khi code xong
 
-        initData(3);
+        initData(7);
         level.setLevel(1);
         level.getZombieSpawners();
         GameProcess();
