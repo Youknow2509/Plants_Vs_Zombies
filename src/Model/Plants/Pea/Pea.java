@@ -20,7 +20,7 @@ public class Pea extends GameElements {
     private Timeline timeline;
     // Var
     private List<Timeline> listTimelinePea = null;
-
+    // Constructor
     public Pea(double x, double y, int lane,
                List<Timeline> listTimelinePea) {
         super(x, y, PATH, WIDTH, HEIGHT, lane);

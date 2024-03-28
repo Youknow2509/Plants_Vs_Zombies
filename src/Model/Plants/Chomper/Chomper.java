@@ -1,4 +1,6 @@
-package src.Model.Plants;
+package src.Model.Plants.Chomper;
+
+import src.Model.Plants.Plant;
 
 public class Chomper extends Plant {
     // Variables infomation of Chomper

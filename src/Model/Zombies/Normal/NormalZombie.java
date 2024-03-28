@@ -1,32 +1,33 @@
-package src.Model.Zombies;
+package src.Model.Zombies.Normal;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Controller.GameMainController;
 import src.Model.Plants.Plant;
+import src.Model.Zombies.Zombie;
 
-public class Conehead extends Zombie {
-    // Var information of Conehead
-    private static final int HP = 150;
-    private static final int DAMAGE = 10;
+public class NormalZombie extends Zombie {
+    // Var information of normal zombie
+    private static final int HP = 120;
+    private static final int DAMAGE = 30;
     private static final int SPEED_MOVE = 1;
     private static final int SPEED_ATTACK = 1;
-    private static final int MOVE = 1;
+    private static final int MOVE = 8;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 130;
-    private static final String PATH = "Assets/images/Zombies/ConeheadZombie.gif";
+    private static final String PATH = "Assets/images/Zombies/NormalZombieRun.gif";
+    //
 
     // Constructor
-    public Conehead() {
+    public NormalZombie() {
         super();
     }
-    public Conehead(int lane) {
+    public NormalZombie(int lane) {
         super(0, 0, PATH, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE);
         laneToLayoutY(lane);
-        createImageView();
     }
-    public Conehead(double x, double y, int lane) {
+    public NormalZombie(double x, double y, int lane) {
 
         super(x, y, PATH, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE);
         createImageView();
@@ -67,6 +68,7 @@ public class Conehead extends Zombie {
                     setFlag(false);
 
                     p.setHp(p.getHp() - DAMAGE);
+                    System.out.println("Plant hp: " + p.getHp());
                     // Xử lí khi cây bị hết máu
                     if (p.getHp() <= 0) {
                         p.removeImageViewInGridPane();
@@ -83,4 +85,6 @@ public class Conehead extends Zombie {
             setFlag(true);
         }
     }
+
+    // Getter and setter
 }

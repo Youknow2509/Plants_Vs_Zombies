@@ -1,4 +1,6 @@
-package src.Model.Plants;
+package src.Model.Plants.PotanoMine;
+
+import src.Model.Plants.Plant;
 
 public class PotatoMine extends Plant {
     // Variables infomation of PotatoMine

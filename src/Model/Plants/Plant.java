@@ -1,23 +1,18 @@
 package src.Model.Plants;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 
-import javafx.util.Duration;
 import src.Controller.GameMainController;
 import src.Model.GameElements;
-import src.Model.Plants.CherryBomb;
-import src.Model.Plants.Chomper;
+import src.Model.Plants.CherryBomb.CherryBomb;
+import src.Model.Plants.Chomper.Chomper;
 import src.Model.Plants.Pea.PeaShooter;
-import src.Model.Plants.PotatoMine;
 import src.Model.Plants.Pea.Repeater;
+import src.Model.Plants.PotanoMine.PotatoMine;
 import src.Model.Plants.Sun.SunFlower;
-import src.Model.Zombies.Zombie;
-
-import java.util.List;
+import src.Model.Plants.Wallnut.Wallnut;
 
 public class Plant extends GameElements {
     // Variables

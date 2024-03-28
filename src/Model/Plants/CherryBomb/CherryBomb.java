@@ -1,4 +1,6 @@
-package src.Model.Plants;
+package src.Model.Plants.CherryBomb;
+
+import src.Model.Plants.Plant;
 
 public class CherryBomb extends Plant {
     // Variables infomation of CherryBomb

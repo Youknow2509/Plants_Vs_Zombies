@@ -1,4 +1,6 @@
-package src.Model.Plants;
+package src.Model.Plants.Wallnut;
+
+import src.Model.Plants.Plant;
 
 public class Wallnut extends Plant {
     // Variables infomation of Wallnut
