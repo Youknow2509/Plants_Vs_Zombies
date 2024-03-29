@@ -23,6 +23,10 @@ public class Repeater extends Plant {
     // Var
     private List<Timeline> listTimelinePea = null;
     // Constructor
+    public Repeater() {
+        super();
+        listTimelinePea = new ArrayList<Timeline>();
+    }
     public Repeater(int x, int y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
 

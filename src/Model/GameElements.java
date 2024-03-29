@@ -94,4 +94,14 @@ public abstract class GameElements {
     public void setLane(int lane) {
         this.lane = lane;
     }
+
+    public enum PlantType {
+        SUNFLOWER,
+        PEASHOOTER,
+        WALLNUT,
+        CHERRYBOMB,
+        REPEATER,
+        POTATOMINE,
+        CHOMPER,
+    }
 }

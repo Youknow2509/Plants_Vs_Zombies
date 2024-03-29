@@ -14,6 +14,9 @@ public class Wallnut extends Plant {
     //
 
     // Constructor of Wallnut
+    public Wallnut() {
+        super();
+    }
     public Wallnut(double x, double y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAMAGE);
         createImageViewInGridPane();

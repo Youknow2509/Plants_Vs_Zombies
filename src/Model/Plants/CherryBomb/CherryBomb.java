@@ -14,6 +14,9 @@ public class CherryBomb extends Plant {
     //
 
     // Constructor of CherryBomb
+    public CherryBomb() {
+        super();
+    }
     public CherryBomb(double x, double y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAMAGE);
         createImageViewInGridPane();

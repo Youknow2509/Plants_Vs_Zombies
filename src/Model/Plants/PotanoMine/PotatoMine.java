@@ -14,6 +14,9 @@ public class PotatoMine extends Plant {
     //
 
     // Constructor of Chomper
+    public PotatoMine() {
+        super();
+    }
     public PotatoMine(double x, double y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAMAGE);
         createImageViewInGridPane();

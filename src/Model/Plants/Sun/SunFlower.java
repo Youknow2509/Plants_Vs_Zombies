@@ -18,6 +18,9 @@ public class SunFlower extends Plant {
     // 
     
     // Constructor
+    public SunFlower() {
+        super();
+    }
     public SunFlower(double x, double y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAME);
         createImageViewInGridPane();
