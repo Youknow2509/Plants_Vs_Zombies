@@ -20,6 +20,8 @@ public class Pea extends GameElements {
     private Timeline timeline;
     // Var
     private List<Timeline> listTimelinePea = null;
+    private Zombie z;
+
     // Constructor
     public Pea(double x, double y, int lane,
                List<Timeline> listTimelinePea) {
@@ -60,7 +62,7 @@ public class Pea extends GameElements {
                     if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0) {
                         z.setHealth(z.getHealth() - DAMAGE);
                         remove();
-                        System.out.println("Zb hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
+                        System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
                         if (z.getHealth() <= 0) {
                             z.removeImageView();
                             GameMainController.getListZombieAlive().remove(z);

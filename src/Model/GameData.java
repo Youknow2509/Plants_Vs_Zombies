@@ -103,4 +103,5 @@ public class GameData {
     public void setDurationDropSun(int durationDropSun) {
         this.durationDropSun = durationDropSun;
     }
+
 }

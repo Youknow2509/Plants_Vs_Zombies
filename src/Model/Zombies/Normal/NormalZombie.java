@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Controller.GameMainController;
+import src.Model.Act;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
 
@@ -18,7 +19,7 @@ public class NormalZombie extends Zombie {
     private static final int HEIGHT = 130;
     private static final String PATH = "Assets/images/Zombies/NormalZombieRun.gif";
     //
-
+    private Act act = null;
     // Constructor
     public NormalZombie() {
         super();
@@ -26,6 +27,7 @@ public class NormalZombie extends Zombie {
     public NormalZombie(int lane) {
         super(0, 0, PATH, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE);
         laneToLayoutY(lane);
+        act = new ActNormalZombie(this);
     }
     public NormalZombie(double x, double y, int lane) {
 
@@ -40,19 +42,20 @@ public class NormalZombie extends Zombie {
         setTimelineMove(new Timeline(new KeyFrame(Duration.seconds(SPEED_MOVE),
                 e -> {
                     // xử lí việc di chuyển
-                    if (isFlag()) {
-                        // xử lí khi zombie đi hết đường hoặc hết máu
-                        if (getX() < 0 || getHealth() <= 0) {
-                            removeImageView();
-                        } else {
-                            setX(getX() - MOVE);
-                            attack();
-                        }
-                    }
-                    // xử lí ăn khi đi đến gần cây
-                    else {
-                        attack();
-                    }
+//                    if (isFlag()) {
+//                        // xử lí khi zombie đi hết đường hoặc hết máu
+//                        if (getX() < 0 || getHealth() <= 0) {
+//                            removeImageView();
+//                        } else {
+//                            setX(getX() - MOVE);
+//                            attack();
+//                        }
+//                    }
+//                    // xử lí ăn khi đi đến gần cây
+//                    else {
+//                        attack();
+//                    }
+                    act.handle();
                 }
         )));
         getTimelineMove().setCycleCount(Timeline.INDEFINITE);

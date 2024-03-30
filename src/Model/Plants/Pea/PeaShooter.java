@@ -3,9 +3,8 @@ package src.Model.Plants.Pea;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import src.Controller.GameMainController;
+import src.Model.Act;
 import src.Model.Plants.Plant;
-import src.Model.Zombies.Zombie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,7 @@ public class PeaShooter extends Plant {
     private static final  int HEIGHT = 60;
     // Var
     private List<Timeline> listTimelinePea = null;
+    private Act act = null;
     // Constructor
     public PeaShooter() {
         super();
@@ -30,22 +30,24 @@ public class PeaShooter extends Plant {
 
         createImageViewInGridPane();
         listTimelinePea = new ArrayList<Timeline>();
+        act = new ActPeaShooter(this);
     }
     // Start tấn công
     @Override
     public void start() {
         setTimelineAttack(new Timeline(new KeyFrame(Duration.seconds(SPEEDATTACK),
                 e -> {
-                    synchronized (GameMainController.getListZombieAlive()) {
-                        if (GameMainController.getListZombieAlive() != null && GameMainController.getListZombieAlive().size() > 0)
-                            for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {
-                                Zombie z = GameMainController.getListZombieAlive().get(i);
-                                if (z.getLane() == getLane() && z.getX() > getX() + 2) {
-                                    Pea pea = new Pea((int) getX() + 50, (int) getY() + 25, getLane(), listTimelinePea);
-                                    pea.start();
-                                }
-                            }
-                    }
+//                    synchronized (GameMainController.getListZombieAlive()) {
+//                        if (GameMainController.getListZombieAlive() != null && GameMainController.getListZombieAlive().size() > 0)
+//                            for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {
+//                                Zombie z = GameMainController.getListZombieAlive().get(i);
+//                                if (z.getLane() == getLane() && z.getX() > getX() + 2) {
+//                                    Pea pea = new Pea((int) getX() + 50, (int) getY() + 25, getLane(), listTimelinePea);
+//                                    pea.start();
+//                                }
+//                            }
+//                    }
+                    act.handle();
                 }
         )));
         getTimelineAttack().setCycleCount(Timeline.INDEFINITE);

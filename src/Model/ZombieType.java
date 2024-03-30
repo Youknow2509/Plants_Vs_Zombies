@@ -1,4 +1,4 @@
-package src.Model.Zombies;
+package src.Model;
 
 public enum ZombieType {
     NORMMALZOMBIE,
