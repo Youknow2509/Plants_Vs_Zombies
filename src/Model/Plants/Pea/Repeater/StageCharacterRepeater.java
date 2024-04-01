@@ -1,37 +1,38 @@
-package src.Model.Plants.Pea.PeaShooter;
+package src.Model.Plants.Pea.Repeater;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+import src.Model.Plants.Pea.Repeater.Repeater;
 import src.Model.StageCharacter;
 
-public class StageCharacterPeaShooter implements StageCharacter {
+public class StageCharacterRepeater implements StageCharacter {
     // Var
-    PeaShooter peaShooter;
-    
+    Repeater repeater;
+
     // Constructor
-    public StageCharacterPeaShooter(PeaShooter peaShooter) {
-        this.peaShooter = peaShooter;
+    public StageCharacterRepeater(Repeater repeater) {
+        this.repeater = repeater;
     }
 
     @Override
     public void start() {
-        peaShooter.setTimeline(new Timeline(new KeyFrame(Duration.seconds(peaShooter.getSpeedAttack()),
+        repeater.setTimeline(new Timeline(new KeyFrame(Duration.seconds(repeater.getSpeedAttack()),
                 e -> {
-                    peaShooter.getAct().handle();
+                    repeater.getAct().handle();
                 }
         )));
-        peaShooter.getTimeline().setCycleCount(Timeline.INDEFINITE);
-        peaShooter.getTimeline().play();
+        repeater.getTimeline().setCycleCount(Timeline.INDEFINITE);
+        repeater.getTimeline().play();
     }
 
     @Override
     public void stop() {
-        if (peaShooter.getTimeline() != null) {
-            peaShooter.getTimeline().stop();
+        if (repeater.getTimeline() != null) {
+            repeater.getTimeline().stop();
         }
-        if (peaShooter.getListTimelinePea() != null) {
-            for (Timeline timeline : peaShooter.getListTimelinePea()) {
+        if (repeater.getListTimelinePea() != null) {
+            for (Timeline timeline : repeater.getListTimelinePea()) {
                 timeline.stop();
             }
         }
@@ -39,11 +40,11 @@ public class StageCharacterPeaShooter implements StageCharacter {
 
     @Override
     public void pause() {
-        if (peaShooter.getTimeline() != null) {
-            peaShooter.getTimeline().pause();
+        if (repeater.getTimeline() != null) {
+            repeater.getTimeline().pause();
         }
-        if (peaShooter.getListTimelinePea() != null) {
-            for (Timeline timeline : peaShooter.getListTimelinePea()) {
+        if (repeater.getListTimelinePea() != null) {
+            for (Timeline timeline : repeater.getListTimelinePea()) {
                 timeline.pause();
             }
         }
@@ -51,11 +52,11 @@ public class StageCharacterPeaShooter implements StageCharacter {
 
     @Override
     public void resume() {
-        if (peaShooter.getTimeline() != null) {
-            peaShooter.getTimeline().play();
+        if (repeater.getTimeline() != null) {
+            repeater.getTimeline().play();
         }
-        if (peaShooter.getListTimelinePea() != null) {
-            for (Timeline timeline : peaShooter.getListTimelinePea()) {
+        if (repeater.getListTimelinePea() != null) {
+            for (Timeline timeline : repeater.getListTimelinePea()) {
                 timeline.play();
             }
         }

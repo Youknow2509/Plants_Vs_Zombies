@@ -1,13 +1,12 @@
-package src.Model;
+package src.Model.Plants;
 
 import src.Model.GameElements;
 import src.Model.Plants.CherryBomb.CherryBomb;
 import src.Model.Plants.Chomper.Chomper;
-import src.Model.Plants.Pea.Repeater;
-import src.Model.Plants.Plant;
+import src.Model.Plants.Pea.Repeater.Repeater;
 import src.Model.Plants.PotanoMine.PotatoMine;
 import src.Model.Plants.Sun.SunFlower;
-import src.Model.Plants.Pea.PeaShooter;
+import src.Model.Plants.Pea.PeaShooter.PeaShooter;
 import src.Model.Plants.Wallnut.Wallnut;
 
 public class PlantFactory {

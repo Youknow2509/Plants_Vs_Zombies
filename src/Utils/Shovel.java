@@ -28,7 +28,7 @@ public class Shovel extends GameElements {
                 Plant p = plants.get(i);
                 if (p.getCol() == x && p.getRow() == y) {
                     p.removeImageViewInGridPane();
-                    p.getTimelineAttack().stop();
+                    p.getTimeline().stop();
                     plants.remove(p);
                     setIsDisabled(!getIsDisabled());
                     (getImageView()).setOpacity(getOpacityBtn());

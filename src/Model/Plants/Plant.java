@@ -5,14 +5,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import src.Controller.GameMainController;
+import src.Model.Act;
 import src.Model.GameElements;
 import src.Model.Plants.CherryBomb.CherryBomb;
 import src.Model.Plants.Chomper.Chomper;
-import src.Model.Plants.Pea.PeaShooter;
-import src.Model.Plants.Pea.Repeater;
+import src.Model.Plants.Pea.PeaShooter.PeaShooter;
+import src.Model.Plants.Pea.Repeater.Repeater;
 import src.Model.Plants.PotanoMine.PotatoMine;
 import src.Model.Plants.Sun.SunFlower;
 import src.Model.Plants.Wallnut.Wallnut;
+import src.Model.StageCharacter;
 
 public class Plant extends GameElements {
     // Variables
@@ -21,13 +23,13 @@ public class Plant extends GameElements {
     private int dame = 0;
     private int cost = 0;
     private int speedAttack = 0;
-    private Timeline timelineAttack = null;
-
+    private Timeline timeline = null;
+    private Act act = null;
+    private StageCharacter stageCharacter = null;
     // Constructor
     public Plant() {
         super();
     }
-
     public Plant(double x, double y, String path, int width, int height, // lane == row
                  int hp, int col, int row, int cost, int speedAttack, int dame) {
 
@@ -46,21 +48,25 @@ public class Plant extends GameElements {
     public void start() {
         // Tạo timeline tấn công và chạy
     }
-
+    // Stop
+    public void stop() {
+        if (timeline != null) {
+            timeline.stop();
+        }
+    }
     // Pause tấn công
     public void pause() {
-        if (timelineAttack != null) {
-            timelineAttack.pause();
+        if (timeline != null) {
+            timeline.pause();
         }
     }
 
     // Resume tấn công
     public void resume() {
-        if (timelineAttack != null) {
-            timelineAttack.play();
+        if (timeline != null) {
+            timeline.play();
         }
     }
-
     // Tao anh cay tren GridPane
     public void createImageViewInGridPane() {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
@@ -76,8 +82,8 @@ public class Plant extends GameElements {
     public void removeImageViewInGridPane() {
         getImageView().setDisable(true);
         getImageView().setVisible(false);
-        if (timelineAttack != null) {
-            timelineAttack.stop();
+        if (timeline != null) {
+            timeline.stop();
         }
         GameMainController.getGridPane().getChildren().remove(getImageView());
     }
@@ -153,11 +159,27 @@ public class Plant extends GameElements {
         this.speedAttack = speedAttack;
     }
 
-    public Timeline getTimelineAttack() {
-        return timelineAttack;
+    public Timeline getTimeline() {
+        return timeline;
     }
 
-    public void setTimelineAttack(Timeline timelineAttack) {
-        this.timelineAttack = timelineAttack;
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
+    }
+
+    public Act getAct() {
+        return act;
+    }
+
+    public void setAct(Act act) {
+        this.act = act;
+    }
+
+    public StageCharacter getStageCharacter() {
+        return stageCharacter;
+    }
+
+    public void setStageCharacter(StageCharacter stageCharacter) {
+        this.stageCharacter = stageCharacter;
     }
 }

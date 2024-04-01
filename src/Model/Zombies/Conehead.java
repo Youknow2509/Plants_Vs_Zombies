@@ -1,4 +1,4 @@
-package src.Model.Zombies.Normal;
+package src.Model.Zombies;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -7,7 +7,7 @@ import src.Controller.GameMainController;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
 
-public class Conehead extends Zombie {
+public class Conehead extends Zombie { // Todo format lại code
     // Var information of Conehead
     private static final int HP = 150;
     private static final int DAMAGE = 10;
@@ -37,7 +37,7 @@ public class Conehead extends Zombie {
     @Override
     public void start() {
         super.start();
-        setTimelineMove(new Timeline(new KeyFrame(Duration.seconds(SPEED_MOVE),
+        setTimeline(new Timeline(new KeyFrame(Duration.seconds(SPEED_MOVE),
                 e -> {
                     // xử lí việc di chuyển
                     if (isFlag()) {
@@ -55,8 +55,8 @@ public class Conehead extends Zombie {
                     }
                 }
         )));
-        getTimelineMove().setCycleCount(Timeline.INDEFINITE);
-        getTimelineMove().play();
+        getTimeline().setCycleCount(Timeline.INDEFINITE);
+        getTimeline().play();
     }
     // Attack plant
     private void attack() {

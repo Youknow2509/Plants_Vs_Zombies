@@ -1,7 +1,5 @@
 package src.Model.Zombies;
 
-import src.Model.ZombieType;
-import src.Model.Zombies.Normal.Conehead;
 import src.Model.Zombies.Normal.NormalZombie;
 
 public class ZombieFactory {

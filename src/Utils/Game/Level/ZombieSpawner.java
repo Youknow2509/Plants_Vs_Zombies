@@ -1,6 +1,6 @@
 package src.Utils.Game.Level;
 
-import src.Model.Zombies.Normal.Conehead;
+import src.Model.Zombies.Conehead;
 import src.Model.Zombies.Normal.NormalZombie;
 import src.Model.Zombies.Zombie;
 

@@ -20,7 +20,7 @@ public class DropSun extends Plant {
     }
     // Khởi tạo Sun rơi random sau thời gian random và vị trí random
     public void CreatSunDrop() {
-        setTimelineAttack(new Timeline(
+        setTimeline(new Timeline(
                 new KeyFrame(Duration.seconds(6), event -> {
 
                     int x = Config.getRandom().nextInt(665) + 320;
@@ -31,7 +31,7 @@ public class DropSun extends Plant {
                     sun.CreatSunDrop();
                 })
         ));
-        getTimelineAttack().play();
+        getTimeline().play();
     }
     // Lấy Duration random drop sun
     public int getDurationDropSun() {

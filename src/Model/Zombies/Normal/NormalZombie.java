@@ -19,7 +19,6 @@ public class NormalZombie extends Zombie {
     private static final int HEIGHT = 130;
     private static final String PATH = "Assets/images/Zombies/NormalZombieRun.gif";
     //
-    private Act act = null;
     // Constructor
     public NormalZombie() {
         super();
@@ -27,67 +26,41 @@ public class NormalZombie extends Zombie {
     public NormalZombie(int lane) {
         super(0, 0, PATH, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE);
         laneToLayoutY(lane);
-        act = new ActNormalZombie(this);
+        setAct(new ActNormalZombie(this));
+        setStageCharacter(new StageCharacterNormalZombie(this));
     }
     public NormalZombie(double x, double y, int lane) {
 
         super(x, y, PATH, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE);
         createImageView();
+        setAct(new ActNormalZombie(this));
+        setStageCharacter(new StageCharacterNormalZombie(this));
     }
 
     // Start
     @Override
     public void start() {
         super.start();
-        setTimelineMove(new Timeline(new KeyFrame(Duration.seconds(SPEED_MOVE),
-                e -> {
-                    // xử lí việc di chuyển
-//                    if (isFlag()) {
-//                        // xử lí khi zombie đi hết đường hoặc hết máu
-//                        if (getX() < 0 || getHealth() <= 0) {
-//                            removeImageView();
-//                        } else {
-//                            setX(getX() - MOVE);
-//                            attack();
-//                        }
-//                    }
-//                    // xử lí ăn khi đi đến gần cây
-//                    else {
-//                        attack();
-//                    }
-                    act.handle();
-                }
-        )));
-        getTimelineMove().setCycleCount(Timeline.INDEFINITE);
-        getTimelineMove().play();
+        getStageCharacter().start();
     }
-    // Attack plant
-    private void attack() {
-        boolean havePlant = false;
-        synchronized (GameMainController.getListPlant()) {
-            for (Plant p : GameMainController.getListPlant()) {
-                if (p.getLane() == getLane() && getX() - p.getX() <= 30) {
-                    havePlant = true;
-                    setFlag(false);
-
-                    p.setHp(p.getHp() - DAMAGE);
-                    System.out.println("Plant hp: " + p.getHp());
-                    // Xử lí khi cây bị hết máu
-                    if (p.getHp() <= 0) {
-                        p.removeImageViewInGridPane();
-                        GameMainController.getListPlant().remove(p);
-
-                        setFlag(true);
-                    }
-                    //System.out.println("Plant hp: " + p.getHp()); // TODO : Để debug xem máu của cây còn lại bao nhiêu
-                    break;
-                }
-            }
-        }
-        if (!havePlant) {
-            setFlag(true);
-        }
+    // Stop
+    @Override
+    public void stop() {
+        super.stop();
+        getStageCharacter().stop();
     }
-
+    // Pause
+    @Override
+    public void pause() {
+        super.pause();
+        getStageCharacter().pause();
+    }
+    // Resume
+    @Override
+    public void resume() {
+        super.resume();
+        getStageCharacter().resume();
+    }
     // Getter and setter
+
 }

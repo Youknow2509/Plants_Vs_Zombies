@@ -5,8 +5,10 @@ import javafx.animation.Timeline;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import src.Controller.GameMainController;
+import src.Model.Act;
 import src.Model.GameElements;
 import src.Model.Plants.Plant;
+import src.Model.StageCharacter;
 
 import java.util.List;
 
@@ -18,8 +20,9 @@ public class Zombie extends GameElements {
     private int speedMove = 0;
     private int speedAttack = 0;
     private boolean flag = true; // true : zombie đang di chuyển, false: zombie dừng lại tấn công.
-    private Timeline timelineAttack = null;
-    private Timeline timelineMove = null;
+    private Timeline timeline = null;
+    private Act act = null;
+    private StageCharacter stageCharacter = null;
 
     // Constructor
     public Zombie() {
@@ -40,23 +43,27 @@ public class Zombie extends GameElements {
     public void start() {
 
     }
+    // Stop
+    public void stop() {
+
+    }
     // Pause tấn công
     public void pause() {
-        if (timelineAttack != null) {
-            timelineAttack.stop();
+        if (timeline != null) {
+            timeline.stop();
         }
-        if (timelineMove != null) {
-            timelineMove.stop();
+        if (timeline != null) {
+            timeline.stop();
         }
     }
 
     // Resume tấn công
     public void resume() {
-        if (timelineAttack != null) {
-            timelineAttack.play();
+        if (timeline != null) {
+            timeline.play();
         }
-        if (timelineMove != null) {
-            timelineMove.play();
+        if (timeline != null) {
+            timeline.play();
         }
     }
 
@@ -64,11 +71,11 @@ public class Zombie extends GameElements {
     @Override
     public void removeImageView() {
         super.removeImageView();
-        if (timelineAttack != null) {
-            timelineAttack.stop();
+        if (timeline != null) {
+            timeline.stop();
         }
-        if (timelineMove != null) {
-            timelineMove.stop();
+        if (timeline != null) {
+            timeline.stop();
         }
         getImageView().setDisable(true);
         getImageView().setVisible(false);
@@ -150,19 +157,27 @@ public class Zombie extends GameElements {
         this.flag = flag;
     }
 
-    public Timeline getTimelineAttack() {
-        return timelineAttack;
+    public Timeline getTimeline() {
+        return timeline;
     }
 
-    public void setTimelineAttack(Timeline timelineAttack) {
-        this.timelineAttack = timelineAttack;
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
     }
 
-    public Timeline getTimelineMove() {
-        return timelineMove;
+    public Act getAct() {
+        return act;
     }
 
-    public void setTimelineMove(Timeline timelineMove) {
-        this.timelineMove = timelineMove;
+    public void setAct(Act act) {
+        this.act = act;
+    }
+
+    public StageCharacter getStageCharacter() {
+        return stageCharacter;
+    }
+
+    public void setStageCharacter(StageCharacter stageCharacter) {
+        this.stageCharacter = stageCharacter;
     }
 }

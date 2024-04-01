@@ -1,10 +1,11 @@
-package src.Model.Plants.Pea;
+package src.Model.Plants.Pea.PeaShooter;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Model.Act;
 import src.Model.Plants.Plant;
+import src.Model.StageCharacter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,6 @@ public class PeaShooter extends Plant {
     private static final  int HEIGHT = 60;
     // Var
     private List<Timeline> listTimelinePea = null;
-    private Act act = null;
     // Constructor
     public PeaShooter() {
         super();
@@ -30,52 +30,28 @@ public class PeaShooter extends Plant {
 
         createImageViewInGridPane();
         listTimelinePea = new ArrayList<Timeline>();
-        act = new ActPeaShooter(this);
+        setAct(new ActPeaShooter(this));
+        setStageCharacter(new StageCharacterPeaShooter(this));
     }
     // Start tấn công
     @Override
     public void start() {
-        setTimelineAttack(new Timeline(new KeyFrame(Duration.seconds(SPEEDATTACK),
-                e -> {
-//                    synchronized (GameMainController.getListZombieAlive()) {
-//                        if (GameMainController.getListZombieAlive() != null && GameMainController.getListZombieAlive().size() > 0)
-//                            for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {
-//                                Zombie z = GameMainController.getListZombieAlive().get(i);
-//                                if (z.getLane() == getLane() && z.getX() > getX() + 2) {
-//                                    Pea pea = new Pea((int) getX() + 50, (int) getY() + 25, getLane(), listTimelinePea);
-//                                    pea.start();
-//                                }
-//                            }
-//                    }
-                    act.handle();
-                }
-        )));
-        getTimelineAttack().setCycleCount(Timeline.INDEFINITE);
-        getTimelineAttack().play();
+        getStageCharacter().start();
+    }
+    // Stop
+    @Override
+    public void stop() {
+        getStageCharacter().stop();
     }
     // Pause tấn công
     @Override
     public void pause() {
-        if (getTimelineAttack() != null) {
-            getTimelineAttack().pause();
-        }
-        if (listTimelinePea != null) {
-            for (Timeline timeline : listTimelinePea) {
-                timeline.pause();
-            }
-        }
+        getStageCharacter().pause();
     }
     // Continue tấn công
     @Override
     public void resume() {
-        if (getTimelineAttack() != null) {
-            getTimelineAttack().play();
-        }
-        if (listTimelinePea != null) {
-            for (Timeline timeline : listTimelinePea) {
-                timeline.play();
-            }
-        }
+        getStageCharacter().resume();
     }
     // Getter and Setter
     public List<Timeline> getListTimelinePea() {

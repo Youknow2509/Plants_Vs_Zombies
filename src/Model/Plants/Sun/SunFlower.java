@@ -28,11 +28,11 @@ public class SunFlower extends Plant {
     // Tạo ra mặt trời - Adapter Pattern
     @Override
     public void start() {
-        setTimelineAttack(new Timeline(new KeyFrame(javafx.util.Duration.millis(SPEED_ATTACK), e -> {
+        setTimeline(new Timeline(new KeyFrame(javafx.util.Duration.millis(SPEED_ATTACK), e -> {
             Sun sun = new Sun((int)this.getX() - 5,(int)this.getY() + 30, this.getRow());
             sun.flowerCreateSun();
         })));
-        getTimelineAttack().setCycleCount(Timeline.INDEFINITE);
-        getTimelineAttack().play();
+        getTimeline().setCycleCount(Timeline.INDEFINITE);
+        getTimeline().play();
     }
 }

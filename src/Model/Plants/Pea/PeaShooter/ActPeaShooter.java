@@ -1,7 +1,8 @@
-package src.Model.Plants.Pea;
+package src.Model.Plants.Pea.PeaShooter;
 
 import src.Controller.GameMainController;
 import src.Model.Act;
+import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
 
