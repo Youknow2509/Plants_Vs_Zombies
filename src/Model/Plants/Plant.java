@@ -1,19 +1,9 @@
 package src.Model.Plants;
 
 import javafx.animation.Timeline;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import src.Controller.GameMainController;
 import src.Model.Act;
 import src.Model.GameElements;
-import src.Model.Plants.CherryBomb.CherryBomb;
-import src.Model.Plants.Chomper.Chomper;
-import src.Model.Plants.Pea.PeaShooter.PeaShooter;
-import src.Model.Plants.Pea.Repeater.Repeater;
-import src.Model.Plants.PotanoMine.PotatoMine;
-import src.Model.Plants.Sun.SunFlower;
-import src.Model.Plants.Wallnut.Wallnut;
 import src.Model.StageCharacter;
 import src.Utils.HandleInGridPane;
 

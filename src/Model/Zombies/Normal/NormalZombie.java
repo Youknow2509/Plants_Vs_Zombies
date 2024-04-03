@@ -1,11 +1,5 @@
 package src.Model.Zombies.Normal;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
-import src.Controller.GameMainController;
-import src.Model.Act;
-import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
 import src.Utils.LaneToLayoutY;
 

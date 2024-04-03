@@ -1,14 +1,8 @@
 package src.Model.Plants.Pea.Repeater;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.util.Duration;
-import src.Controller.GameMainController;
-import src.Model.Plants.Pea.PeaShooter.ActPeaShooter;
-import src.Model.Plants.Pea.PeaShooter.StageCharacterPeaShooter;
 import src.Model.Plants.Plant;
-import src.Model.Zombies.Zombie;
-import src.Model.Plants.Pea.Pea;
+
 import java.util.ArrayList;
 
 import java.util.List;

@@ -31,6 +31,14 @@ public class FactoryCardPlant {
             listCardPlant.add(cardPlant);
         }
     }
+    public void createCardPlant(List<CardPlant> listCardPlant) {
+        for (int i = 0; i < listCardPlant.size(); i++) {
+            CardPlant cardPlant = listCardPlant.get(i);
+            cardPlant.createImage();
+
+            this.listCardPlant.add(cardPlant);
+        }
+    }
     // Getter and Setter
     public double getX() {
         return x;

@@ -2,7 +2,7 @@ package src.Utils;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import src.Controller.GameMainController;
+import src.Controller.GameMainControllerSave;
 import src.Model.Plants.Plant;
 
 public class HandleInGridPane {
@@ -26,7 +26,7 @@ public class HandleInGridPane {
         p.setImageView(new ImageView(image));
         (p.getImageView()).setImage(image);
         // Thêm hình ảnh vào GridPane
-        (GameMainController.getGridPane()).add(p.getImageView(), p.getCol(), p.getRow(), 1, 1);
+        (GameMainControllerSave.getGridPane()).add(p.getImageView(), p.getCol(), p.getRow(), 1, 1);
     }
 
     // Xoa anh cay tren GridPane
@@ -36,6 +36,6 @@ public class HandleInGridPane {
         if (p.getTimeline() != null) {
             p.getTimeline().stop();
         }
-        GameMainController.getGridPane().getChildren().remove(p.getImageView());
+        GameMainControllerSave.getGridPane().getChildren().remove(p.getImageView());
     }
 }

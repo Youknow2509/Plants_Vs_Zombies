@@ -1,16 +1,9 @@
 package src.Model.Zombies;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
-import src.Controller.GameMainController;
 import src.Model.Act;
 import src.Model.GameElements;
-import src.Model.Plants.Plant;
 import src.Model.StageCharacter;
-
-import java.util.List;
 
 public class Zombie extends GameElements {
     // Var

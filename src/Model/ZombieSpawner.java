@@ -1,4 +1,4 @@
-package src.Help.Level;
+package src.Model;
 
 import src.Model.Zombies.Conehead.ConeheadZombie;
 import src.Model.Zombies.Normal.NormalZombie;
