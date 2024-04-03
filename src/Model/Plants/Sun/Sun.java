@@ -6,6 +6,8 @@ import javafx.application.Platform;
 import javafx.util.Duration;
 import src.Controller.GameMainController;
 import src.Model.GameElements;
+import src.Utils.LaneToLayoutY;
+
 public class Sun extends GameElements {
     // Var infomation of sun
     private static final String PATH = "/Assets/images/items/Sun.png";
@@ -22,29 +24,16 @@ public class Sun extends GameElements {
     private Timeline tlSun = null;
 
     // Constructor
+    public Sun() {
+        super();
+    }
     public Sun(int x, int y, int lane) {
         super(x, y, PATH, WIDTH, HEIGHT, lane);
         this.lane = lane;
-        this.layoutYEnd = getLayoutYEnd();
+        this.layoutYEnd = LaneToLayoutY.sunGetLayoutY(lane);
         this.layoutXEnd = x - 15;
     }
-    // Lấy ra vị trí điểm rơi y khi sun rơi xuống từ cây
-    private int getLayoutYEnd() {
-        switch (lane) {
-            case 0:
-                return 140; // x0 : 315  320 - 85
-            case 1:
-                return 240;
-            case 2:
-                return 340;
-            case 3:
-                return 440;
-            case 4:
-                return 540;
-            default:
-                return 0;
-        }
-    }
+
     // Tạo hình ảnh sun và thêm sự kiện click để nhận sun
     @Override
     public void createImageView() {
@@ -54,6 +43,7 @@ public class Sun extends GameElements {
             removeImageView();
         });
     }
+
     // Tạo sun từ cây
     public void flowerCreateSun() {
         timeout = TIMEOUT_FLOWERSUN;
@@ -71,11 +61,13 @@ public class Sun extends GameElements {
         tlSun.setCycleCount(Timeline.INDEFINITE);
         tlSun.play();
     }
+
     // Tạo sun ngẫu nhiên rơi xuống
     public void CreatSunDrop() {
         timeout = TIMEOUT_DROPSUN;
         setY(0);    // Đặt lại vị trí y của sun về 0 để rơi từ trên xuống
         createImageView();
+
         tlSun = new Timeline(new KeyFrame(javafx.util.Duration.millis(30), e -> {
             if (this.getY() <= layoutYEnd) { // TODO: Lưu tạm this.getY() <= 550 để sun rơi đến cuối màn hình
                 this.setY(this.getY() + 1);
@@ -87,10 +79,12 @@ public class Sun extends GameElements {
         tlSun.setCycleCount(Timeline.INDEFINITE);
         tlSun.play();
     }
+
     // Làm mờ rồi xoá sun sau một thời gian nhất định
     private void DisappearSun() {
-        final Thread[] th = new Thread[1];
-            th[0] = new Thread(() -> {
+        final Thread[] th = new Thread[1]; // Dùng mảng để thay đổi được
+
+        th[0] = new Thread(() -> {
             try {
                 Thread.sleep(timeout);
                 th[0].interrupt();
@@ -103,6 +97,7 @@ public class Sun extends GameElements {
                 removeImageView();
             });
         });
+
         th[0].start();
     }
 }

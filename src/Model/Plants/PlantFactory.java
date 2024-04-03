@@ -10,22 +10,22 @@ import src.Model.Plants.Pea.PeaShooter.PeaShooter;
 import src.Model.Plants.Wallnut.Wallnut;
 
 public class PlantFactory {
-    public Plant createPlant(GameElements.PlantType type) {
+    public static Plant createPlant(GameElements.PlantType type, double x, double y, int col, int row) {
         switch (type) {
             case SUNFLOWER:
-                return new SunFlower();
+                return new SunFlower(x, y, row, col);
             case PEASHOOTER:
-                return new PeaShooter();
+                return new PeaShooter(x, y, row, col);
             case REPEATER:
-                return new Repeater();
+                return new Repeater(x, y, row, col);
             case POTATOMINE:
-                return new PotatoMine();
+                return new PotatoMine(x, y, row, col);
             case CHOMPER:
-                return new Chomper();
+                return new Chomper(x, y, row, col);
             case WALLNUT:
-                return new Wallnut();
+                return new Wallnut(x, y, row, col);
             case CHERRYBOMB:
-                return new CherryBomb();
+                return new CherryBomb(x, y, row, col);
             default:
                 return null;
         }

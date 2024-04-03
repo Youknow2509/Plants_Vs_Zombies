@@ -1,4 +1,4 @@
-package src.Utils;
+package src.Help;
 
 
 import src.Controller.GameMainController;

@@ -1,4 +1,4 @@
-package src.Utils;
+package src.Help.CardPlants;
 
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -7,25 +7,38 @@ import javafx.scene.input.MouseEvent;
 import src.Controller.GameMainController;
 import src.Help.Shovel;
 
-public class CardPlants {
+public class CardPlant {
+    // Var
+    private final static int width = 105;
+    private final static int height = 67;
+    private final static int fitWidth = 85;
+    private final static int fitHeight = 50;
 
-    // SnowPea, PuffShroom, SunShroom, FumeShroom
-    private String [] pathCards = {"SunFlower", "Peashooter", "Wallnut", "CherryBomb", "PotatoMine", "Chomper", "Repeater"}; // "/Assets/images/Cards/" + path + ".png"
-    private double  x = 36; // Tọa độ x 36
-    private double [] y = {90, 150, 210, 270, 330, 390, 450}; // Tọa độ y
-    // Hàm tạo hình ảnh thẻ cây và thêm sự kiện
-    private void makeImage(int x, int y, String path) {
+    private double x, y;
+    private String path;
+    // Constructor
+    public CardPlant() {
+        super();
+    }
+    public CardPlant(double x, double y, String path) {
+        super();
+        this.x = x;
+        this.y = y;
+        this.path = path;
+    }
+    // Method
+    public void createImage() {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        Image image = new Image( "/Assets/images/Cards/" + path + ".png", 105, 67, false, false);
+        Image image = new Image( "/Assets/images/Cards/" + path + ".png", width, height, false, false);
         // Tạo một ImageView để hiển thị hình ảnh
         ImageView imageView = new ImageView(image);
         imageView.setImage(image);
         // Đặt vị trí của ImageView trong AnchorPane
         imageView.setLayoutX(x);
         imageView.setLayoutY(y);
-        imageView.setFitWidth(85);
-        imageView.setFitHeight(50);
-        //
+        imageView.setFitWidth(fitWidth);
+        imageView.setFitHeight(fitHeight);
+        // Đặt id cho ImageView
         imageView.setId(path.toUpperCase());
         // Thêm sự kiện vào ImageView
         imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
@@ -33,12 +46,6 @@ public class CardPlants {
         });
         // Thêm ImageView vào AnchorPane
         (GameMainController.getAnchorPane()).getChildren().add(imageView);
-    }
-    // Tạo thẻ cây ứng với từng level game
-    public void getCards(int level) {
-        for (int i = 0; i < level; i++) {
-            makeImage((int)x, (int)y[i], pathCards[i]);
-        }
     }
     // Xử lí khi click vào thẻ cây
     public void setCardSelected(MouseEvent e) {
@@ -57,13 +64,11 @@ public class CardPlants {
             setCardUnSelected();
         }
     }
-    // Làm mờ ảnh và thêm sự kiện khi click
     private void disableCard(ImageView select) {
         select.setOpacity(0.2);
         GameMainController.selectedImageView = select;
-        GameMainController.setPathImageViewSelected("select.getId()");
+        GameMainController.setPathImageViewSelected(select.getId());
     }
-    // Hàm xử lí thẻ cây khi không được chọn
     public static void setCardUnSelected() {
         if (GameMainController.selectedImageView != null) {
             GameMainController.selectedImageView.setOpacity(1);
@@ -71,4 +76,7 @@ public class CardPlants {
         }
         GameMainController.setPathImageViewSelected("");
     }
+
+    // Getter and Setter
+
 }

@@ -1,6 +1,6 @@
-package src.Utils.Game.Level;
+package src.Help.Level;
 
-import src.Model.Zombies.Conehead;
+import src.Model.Zombies.Conehead.ConeheadZombie;
 import src.Model.Zombies.Normal.NormalZombie;
 import src.Model.Zombies.Zombie;
 
@@ -18,8 +18,8 @@ public class ZombieSpawner {
             case "NormalZombie":
                 this.zombie = new NormalZombie(lane);;
                 break;
-            case "Conehead":
-                this.zombie = new Conehead(lane);;
+            case "ConeheadZombie":
+                this.zombie = new ConeheadZombie(lane);;
                 break;
                 // TODO: Thêm các loại zombie khác sau
             default:

@@ -15,6 +15,7 @@ import src.Model.Plants.PotanoMine.PotatoMine;
 import src.Model.Plants.Sun.SunFlower;
 import src.Model.Plants.Wallnut.Wallnut;
 import src.Model.StageCharacter;
+import src.Utils.HandleInGridPane;
 
 public class Plant extends GameElements {
     // Variables
@@ -24,8 +25,10 @@ public class Plant extends GameElements {
     private int cost = 0;
     private int speedAttack = 0;
     private Timeline timeline = null;
+    //
     private Act act = null;
     private StageCharacter stageCharacter = null;
+    private HandleInGridPane handleInGridPane = null;
     // Constructor
     public Plant() {
         super();
@@ -41,7 +44,7 @@ public class Plant extends GameElements {
         this.cost = cost;
         this.speedAttack = speedAttack;
         this.dame = dame;
-
+        handleInGridPane = new HandleInGridPane(this);
     }
 
     // Start tấn công
@@ -69,45 +72,12 @@ public class Plant extends GameElements {
     }
     // Tao anh cay tren GridPane
     public void createImageViewInGridPane() {
-        // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        Image image = new Image(getPath(), 60, 60, false, false);
-        // Tạo một ImageView để hiển thị hình ảnh
-        setImageView(new ImageView(image));
-        (getImageView()).setImage(image);
-        // Thêm hình ảnh vào GridPane
-        (GameMainController.getGridPane()).add(getImageView(), col, row, 1, 1);
+        handleInGridPane.createImageViewInGridPane();
     }
 
     // Xoa anh cay tren GridPane
     public void removeImageViewInGridPane() {
-        getImageView().setDisable(true);
-        getImageView().setVisible(false);
-        if (timeline != null) {
-            timeline.stop();
-        }
-        GameMainController.getGridPane().getChildren().remove(getImageView());
-    }
-
-    // Trả về cây tương ứng với path và vị trí trên game
-    public static Plant getPlant(String path, int layoutX, int layoutY, int col, int row) {
-        switch (path) {
-            case "SunFlower":
-                return new SunFlower(layoutX, layoutY, col, row);
-            case "Peashooter":
-                return new PeaShooter(layoutX, layoutY, col, row);
-            case "Wallnut":
-                return new Wallnut(layoutX, layoutY, col, row);
-            case "CherryBomb":
-                return new CherryBomb(layoutX, layoutY, col, row);
-            case "PotatoMine":
-                return new PotatoMine(layoutX, layoutY, col, row);
-            case "Chomper":
-                return new Chomper(layoutX, layoutY, col, row);
-            case "Repeater":
-                return new Repeater(layoutX, layoutY, col, row);
-            default:
-                return null;
-        }
+        handleInGridPane.removeImageViewInGridPane();
     }
 
     // Get và set các thuộc tính

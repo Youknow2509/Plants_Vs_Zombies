@@ -27,6 +27,7 @@ public class Zombie extends GameElements {
     // Constructor
     public Zombie() {
         super();
+        setX(975);
     }
     public Zombie(double x, double y, String path, int width, int height, int lane
             , int health, int dame, int speedMove, int speedAttack, int move) {
@@ -80,33 +81,6 @@ public class Zombie extends GameElements {
         getImageView().setDisable(true);
         getImageView().setVisible(false);
     }
-
-
-    // Help Functions
-    // Help - Chuyển từ lane sang layoutY
-    public void laneToLayoutY(int l) {
-        setX(975);
-        switch (l) {
-            case 0:
-                setY(35);
-                break;
-            case 1:
-                setY(135);
-                break;
-            case 2:
-                setY(235);
-                break;
-            case 3:
-                setY(335);
-                break;
-            case 4:
-                setY(435);
-                break;
-            default:
-                break;
-        }
-    }
-
 
     // Get và set các thuộc tính
     public int getHealth() {

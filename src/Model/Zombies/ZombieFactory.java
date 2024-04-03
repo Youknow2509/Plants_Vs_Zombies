@@ -1,5 +1,6 @@
 package src.Model.Zombies;
 
+import src.Model.Zombies.Conehead.ConeheadZombie;
 import src.Model.Zombies.Normal.NormalZombie;
 
 public class ZombieFactory {
@@ -8,7 +9,7 @@ public class ZombieFactory {
             case NORMMALZOMBIE:
                 return new NormalZombie();
             case CONEZOMBIE:
-                return new Conehead();
+                return new ConeheadZombie();
             default:
                 return null;
         }

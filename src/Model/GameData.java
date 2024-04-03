@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import src.Utils.Game.Level.ZombieSpawner;
+import src.Help.CardPlants.CardPlant;
+import src.Help.Level.ZombieSpawner;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
 
 public class GameData {
     // Var
-    private List<String> cardPlantList = null;
+    private List<CardPlant> cardPlantList = null;
     private List<Plant> listPlant = null;
     private List<Zombie> zombieAlive = null;
     private List<ZombieSpawner> zombieSpawner = null;
@@ -20,12 +21,12 @@ public class GameData {
     // Construct
     public GameData() {
         super();
-        this.cardPlantList = new ArrayList<String>();
+        this.cardPlantList = new ArrayList<CardPlant>();
         this.listPlant = Collections.synchronizedList(new ArrayList<Plant>()); // Xử dụng Collections.synchronizedList để đồng bộ dữ liệu 
         this.zombieAlive = Collections.synchronizedList(new ArrayList<Zombie>());;
         this.zombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());;
     }
-    public GameData(List<String> cardPlantList, List<Plant> listPlant, List<Zombie> zombieAlive
+    public GameData(List<CardPlant> cardPlantList, List<Plant> listPlant, List<Zombie> zombieAlive
             , List<ZombieSpawner> zombieSpawner, int sun, int tick, int durationDropSun) {
         super();
         this.cardPlantList = cardPlantList;
@@ -91,12 +92,6 @@ public class GameData {
     public void setTick(int tick) {
         this.tick = tick;
     }
-    public List<String> getcardPlantList() {
-        return cardPlantList;
-    }
-    public void setcardPlantList(List<String> cardPlantList) {
-        this.cardPlantList = cardPlantList;
-    }
     public int getDurationDropSun() {
         return durationDropSun;
     }
@@ -104,4 +99,11 @@ public class GameData {
         this.durationDropSun = durationDropSun;
     }
 
+    public List<CardPlant> getCardPlantList() {
+        return cardPlantList;
+    }
+
+    public void setCardPlantList(List<CardPlant> cardPlantList) {
+        this.cardPlantList = cardPlantList;
+    }
 }

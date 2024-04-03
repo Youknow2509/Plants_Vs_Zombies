@@ -4,28 +4,27 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.Label;
+import javafx.util.Duration;
+import src.Help.Level.Level;
+import src.Help.Level.ZombieSpawner;
+import src.Help.Shovel;
+import src.Model.GameElements;
+import src.Model.Plants.Plant;
+import src.Model.Plants.PlantFactory;
+import src.Model.Plants.Sun.DropSun;
+import src.Model.Zombies.Zombie;
+import src.Utils.CardPlants;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.util.Duration;
-import src.Model.GameElements;
-import src.Model.Plants.Plant;
-import src.Model.Plants.PlantFactory;
-import src.Model.Plants.Sun.DropSun;
-import src.Help.Shovel;
-import src.Utils.CardPlants;
-import src.Model.Zombies.Zombie;
-import src.Help.Level.Level;
-import src.Help.Level.ZombieSpawner;
-
-public class GameMainController {
+public class GameMainControllerTest {
     // Variables FXML
     @FXML
     private AnchorPane GamePlayRoot;
@@ -166,7 +165,7 @@ public class GameMainController {
         return sun;
     }
     public static void setSun(int sun) {
-        GameMainController.sun = sun;
+        GameMainControllerTest.sun = sun;
         sunDisplay.setText(String.valueOf(sun));
     }
 
@@ -215,7 +214,7 @@ public class GameMainController {
     }
 
     public static void setAnchorPane(AnchorPane anchorPane) {
-        GameMainController.anchorPane = anchorPane;
+        GameMainControllerTest.anchorPane = anchorPane;
     }
 
     public static GridPane getGridPane() {
@@ -223,7 +222,7 @@ public class GameMainController {
     }
 
     public static void setGridPane(GridPane gridPane) {
-        GameMainController.gridPane = gridPane;
+        GameMainControllerTest.gridPane = gridPane;
     }
 
     public Level getLevel() {
@@ -247,7 +246,7 @@ public class GameMainController {
     }
 
     public static void setSunDisplay(Label sunDisplay) {
-        GameMainController.sunDisplay = sunDisplay;
+        GameMainControllerTest.sunDisplay = sunDisplay;
     }
 
     public Shovel getShovel() {
@@ -287,7 +286,7 @@ public class GameMainController {
     }
 
     public static void setSelectedImageView(ImageView selectedImageView) {
-        GameMainController.selectedImageView = selectedImageView;
+        GameMainControllerTest.selectedImageView = selectedImageView;
     }
 
     public static String getPathImageViewSelected() {
@@ -295,7 +294,7 @@ public class GameMainController {
     }
 
     public static void setPathImageViewSelected(String pathImageViewSelected) {
-        GameMainController.pathImageViewSelected = pathImageViewSelected;
+        GameMainControllerTest.pathImageViewSelected = pathImageViewSelected;
     }
 
     public int getTick() {
@@ -311,7 +310,7 @@ public class GameMainController {
     }
 
     public static void setListPlant(List<Plant> listPlant) {
-        GameMainController.listPlant = listPlant;
+        GameMainControllerTest.listPlant = listPlant;
     }
 
     public static List<Zombie> getListZombieAlive() {
@@ -319,7 +318,7 @@ public class GameMainController {
     }
 
     public static void setListZombieAlive(List<Zombie> listZombieAlive) {
-        GameMainController.listZombieAlive = listZombieAlive;
+        GameMainControllerTest.listZombieAlive = listZombieAlive;
     }
 
     public static List<ZombieSpawner> getListZombieSpawner() {
@@ -327,7 +326,7 @@ public class GameMainController {
     }
 
     public static void setListZombieSpawner(List<ZombieSpawner> listZombieSpawner) {
-        GameMainController.listZombieSpawner = listZombieSpawner;
+        GameMainControllerTest.listZombieSpawner = listZombieSpawner;
     }
 }
 

@@ -29,7 +29,7 @@ public class Repeater extends Plant {
         super();
         listTimelinePea = new ArrayList<Timeline>();
     }
-    public Repeater(int x, int y, int col, int row) {
+    public Repeater(double x, double y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
 
         createImageViewInGridPane();
