@@ -65,7 +65,6 @@ public class GameMainController {
         HandleLoadLevel handleLoadLevel = new HandleLoadLevel(1);
         FactoryCardPlant factoryCardPlant = new FactoryCardPlant();
         gameData = handleLoadLevel.loadLevel();
-        factoryCardPlant.createCardPlant(gameData.getCardPlantList());
         gameProcess = new GameProcess(gameData);
 
         gameProcess.startGame();

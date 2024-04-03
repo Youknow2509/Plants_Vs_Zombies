@@ -76,9 +76,18 @@ public class CardPlant {
         }
         GameMainControllerSave.setPathImageViewSelected("");
     }
+    // To string
+
+    @Override
+    public String toString() {
+        return "CardPlant{" +
+                "x=" + x +
+                ", y=" + y +
+                ", path='" + path + '\'' +
+                '}';
+    }
 
     // Getter and Setter
-
     public double getX() {
         return x;
     }

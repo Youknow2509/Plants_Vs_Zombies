@@ -26,17 +26,8 @@ public class FactoryCardPlant {
     public void createCardPlant() {
         for (int i = 0; i < pathCardPlant.length; i++) {
             CardPlant cardPlant = new CardPlant(x, y[i], pathCardPlant[i]);
-            cardPlant.createImage();
 
             listCardPlant.add(cardPlant);
-        }
-    }
-    public void createCardPlant(List<CardPlant> listCardPlant) {
-        for (int i = 0; i < listCardPlant.size(); i++) {
-            CardPlant cardPlant = listCardPlant.get(i);
-            cardPlant.createImage();
-
-            this.listCardPlant.add(cardPlant);
         }
     }
     // Getter and Setter
