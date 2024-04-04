@@ -1,6 +1,6 @@
 package src.Help.Level;
 
-import src.Controller.GameMainControllerSave;
+import src.Controller.GameMainController;
 import src.Model.ZombieSpawner;
 
 import java.util.Collections;
@@ -19,15 +19,15 @@ public class Level {
     public void getZombieSpawners() {
         switch (level) {
             case 1:
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(1, 0, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(10, 1, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(15, 0, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(15, 2, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(27, 3, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(19, 4, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(32, 2, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(36, 3, "NormalZombie"));
-                GameMainControllerSave.getListZombieSpawner().add(new ZombieSpawner(40, 0, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(1, 0, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(10, 1, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 0, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 2, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(27, 3, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(19, 4, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(32, 2, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(36, 3, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(40, 0, "NormalZombie"));
 
                 break;
                 // TODO: Thêm các level khác sau
@@ -35,9 +35,9 @@ public class Level {
                 System.out.println("Level không hợp lệ");
                 break;
         }
-        sumZombies = GameMainControllerSave.getListZombieSpawner().size();
+        sumZombies = GameMainController.getListZombieSpawner().size();
         // Sắp xếp lại thứ tự của zombieSpawners theo thời gian
-        Collections.sort(GameMainControllerSave.getListZombieSpawner(), new Comparator<ZombieSpawner>() {
+        Collections.sort(GameMainController.getListZombieSpawner(), new Comparator<ZombieSpawner>() {
             @Override
             public int compare(ZombieSpawner o1, ZombieSpawner o2) {
                 return (o1.getTime() - o2.getTime());

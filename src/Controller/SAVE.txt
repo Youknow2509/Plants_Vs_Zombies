@@ -15,9 +15,9 @@ import java.util.Collections;
 import java.util.List;
 
 import javafx.util.Duration;
-import src.Model.GameElements;
 import src.Model.Plants.Plant;
 import src.Model.Plants.PlantFactory;
+import src.Model.Plants.PlantType;
 import src.Model.Plants.Sun.DropSun;
 import src.Help.Shovel;
 import src.Utils.CardPlants;
@@ -25,7 +25,7 @@ import src.Model.Zombies.Zombie;
 import src.Help.Level.Level;
 import src.Model.ZombieSpawner;
 
-public class GameMainControllerSave {
+public class GameMainController {
     // Variables FXML
     @FXML
     private AnchorPane GamePlayRoot;
@@ -81,7 +81,7 @@ public class GameMainControllerSave {
 
         // Test TODO: Chinh lại sau khi code xong
 
-        initData(7);
+        initData(3);
         level.setLevel(1);
         level.getZombieSpawners();
         GameProcess();
@@ -140,7 +140,7 @@ public class GameMainControllerSave {
                 }
                 // Tạo một cây mới thêm vào game
                 if (flag) {
-                    GameElements.PlantType type = GameElements.PlantType.valueOf(pathImageViewSelected.toUpperCase());
+                    PlantType type = PlantType.valueOf(pathImageViewSelected.toUpperCase());
                     Plant newPlant = PlantFactory.createPlant(type, (int) (source.getLayoutX() + source.getParent().getLayoutX())
                             , (int) (source.getLayoutY() + source.getParent().getLayoutY())
                             , y
@@ -166,7 +166,7 @@ public class GameMainControllerSave {
         return sun;
     }
     public static void setSun(int sun) {
-        GameMainControllerSave.sun = sun;
+        GameMainController.sun = sun;
         sunDisplay.setText(String.valueOf(sun));
     }
 
@@ -215,7 +215,7 @@ public class GameMainControllerSave {
     }
 
     public static void setAnchorPane(AnchorPane anchorPane) {
-        GameMainControllerSave.anchorPane = anchorPane;
+        GameMainController.anchorPane = anchorPane;
     }
 
     public static GridPane getGridPane() {
@@ -223,7 +223,7 @@ public class GameMainControllerSave {
     }
 
     public static void setGridPane(GridPane gridPane) {
-        GameMainControllerSave.gridPane = gridPane;
+        GameMainController.gridPane = gridPane;
     }
 
     public Level getLevel() {
@@ -247,7 +247,7 @@ public class GameMainControllerSave {
     }
 
     public static void setSunDisplay(Label sunDisplay) {
-        GameMainControllerSave.sunDisplay = sunDisplay;
+        GameMainController.sunDisplay = sunDisplay;
     }
 
     public Shovel getShovel() {
@@ -287,7 +287,7 @@ public class GameMainControllerSave {
     }
 
     public static void setSelectedImageView(ImageView selectedImageView) {
-        GameMainControllerSave.selectedImageView = selectedImageView;
+        GameMainController.selectedImageView = selectedImageView;
     }
 
     public static String getPathImageViewSelected() {
@@ -295,7 +295,7 @@ public class GameMainControllerSave {
     }
 
     public static void setPathImageViewSelected(String pathImageViewSelected) {
-        GameMainControllerSave.pathImageViewSelected = pathImageViewSelected;
+        GameMainController.pathImageViewSelected = pathImageViewSelected;
     }
 
     public int getTick() {
@@ -311,7 +311,7 @@ public class GameMainControllerSave {
     }
 
     public static void setListPlant(List<Plant> listPlant) {
-        GameMainControllerSave.listPlant = listPlant;
+        GameMainController.listPlant = listPlant;
     }
 
     public static List<Zombie> getListZombieAlive() {
@@ -319,7 +319,7 @@ public class GameMainControllerSave {
     }
 
     public static void setListZombieAlive(List<Zombie> listZombieAlive) {
-        GameMainControllerSave.listZombieAlive = listZombieAlive;
+        GameMainController.listZombieAlive = listZombieAlive;
     }
 
     public static List<ZombieSpawner> getListZombieSpawner() {
@@ -327,7 +327,7 @@ public class GameMainControllerSave {
     }
 
     public static void setListZombieSpawner(List<ZombieSpawner> listZombieSpawner) {
-        GameMainControllerSave.listZombieSpawner = listZombieSpawner;
+        GameMainController.listZombieSpawner = listZombieSpawner;
     }
 }
 

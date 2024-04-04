@@ -1,22 +1,29 @@
 package src.Controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import src.DataBase.Handle.HandleLoadLevel;
-import src.Help.CardPlants.FactoryCardPlant;
-import src.Model.GameData;
-import src.Model.GameProcess;
-import src.Help.Shovel;
-import src.Model.GameElements;
+import javafx.scene.control.Label;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javafx.util.Duration;
 import src.Model.Plants.Plant;
 import src.Model.Plants.PlantFactory;
+import src.Model.Plants.PlantType;
 import src.Model.Plants.Sun.DropSun;
+import src.Help.Shovel;
 import src.Utils.CardPlants;
+import src.Model.Zombies.Zombie;
+import src.Help.Level.Level;
+import src.Model.ZombieSpawner;
 
 public class GameMainController {
     // Variables FXML
@@ -31,21 +38,31 @@ public class GameMainController {
     @FXML
     private Label sunCount;
 
-    // Variables
-    private GameData gameData;
-    private GameProcess gameProcess;
-    private static AnchorPane anchorPane;
-    private static GridPane gridPane;
-    private Shovel shovel = new Shovel(); // Xẻng
-    private DropSun dropSun = new DropSun(); // Sun rơi
+    // Var static
+    private static AnchorPane anchorPane = null;
+    private static GridPane gridPane = null;
+    private static List<Plant> listPlant = Collections.synchronizedList(new ArrayList<Plant>()); // Danh sách các cây tồn tại
+    private static List<Zombie> listZombieAlive = Collections.synchronizedList(new ArrayList<Zombie>());// Danh sách các zombie tồn tại
+    private static List<ZombieSpawner> listZombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>()); // Danh sách các zombie spawner
     private static int sun = 50; // Giá trị số mặt trời
     private static Label sunDisplay; // Gắn với label hiển thị số mặt trời - để  static để có thể truy cập từ class khác
+    // Var static xử lí thẻ cây
     public static ImageView selectedImageView = null; // ImageView được chọn trước đó bao gồm Thẻ cây và thẻ xẻng
     public static String pathImageViewSelected = ""; // Đường dẫn ảnh của cây được chọn
 
-    // Init
+    // Var game
+    private Level level = new Level(); // Level
+    private Timeline TimelineGame; // Timeline của game
+    private Shovel shovel = new Shovel(); // Xẻng
+    private CardPlants cardPlants = new CardPlants(); // Danh sách thẻ các loại cây
+    private DropSun dropSun = new DropSun(); // Sun rơi
+    private int durationDropSun = 0; // Thời gian chờ rơi của sun
+    private int tick = 0; // Đếm thời gian để tạo zombie
+
+    // Khởi tạo game
     @FXML
     public void initialize() {
+
         // Gán các giá trị static
         anchorPane = GamePlayRoot;
         gridPane = lawnGrid;
@@ -62,13 +79,43 @@ public class GameMainController {
             shovel.handleClick();
         });
 
-        HandleLoadLevel handleLoadLevel = new HandleLoadLevel(1);
-        FactoryCardPlant factoryCardPlant = new FactoryCardPlant();
-        gameData = handleLoadLevel.loadLevel();
-        gameProcess = new GameProcess(gameData);
+        // Test TODO: Chinh lại sau khi code xong
 
-        gameProcess.startGame();
-        // todo fix add card plant
+        initData(3);
+        level.setLevel(1);
+        level.getZombieSpawners();
+        GameProcess();
+    }
+    public void initData(int level) {
+        cardPlants.getCards(level); // Khởi tạo thẻ cây
+    }
+    // Xử lí game
+    public void GameProcess() {
+        TimelineGame = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            tick++;
+            // Xử lí tạo ra dropsun sau một khoảng thời gian
+            if (durationDropSun == 0) {
+                dropSun.CreatSunDrop();
+                durationDropSun = dropSun.getDurationDropSun();
+            }
+            else {
+                durationDropSun--;
+            }
+            // Xử lí tạo ra zombie
+            while (listZombieSpawner.size() > 0 && listZombieSpawner.get(0).getTime() == tick) {
+                ZombieSpawner zombieSpawner = listZombieSpawner.get(0);
+                Zombie zombie = zombieSpawner.getZombie();
+                zombie.createImageView();
+                zombie.start();
+                listZombieAlive.add(zombie);
+                listZombieSpawner.remove(0);
+            }
+            // Kiểm tra trạng thái game và cập nhập phần trăm game
+            // TODO: Thêm các trạng thái game và timneline game
+
+        }));
+        TimelineGame.setCycleCount(Timeline.INDEFINITE);
+        TimelineGame.play();
     }
     // Hàm xử lí khi click vào ô cỏ
     public void getGridPosition(MouseEvent e) {
@@ -78,14 +125,14 @@ public class GameMainController {
         Integer y = lawnGrid.getRowIndex(source);
 
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
-            shovel.rmPlant(gameData.getListPlant(), x, y);
+            shovel.rmPlant(listPlant, x, y);
         }
         else if (pathImageViewSelected != "") { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
             if (x != null && y != null) {
                 boolean flag = true;
-                synchronized (gameData.getListPlant()) {
-                    for (int i = 0; i < gameData.getListPlant().size(); i++) {
-                        if ((gameData.getListPlant().get(i)).getCol() == x && (gameData.getListPlant().get(i)).getRow() == y) {
+                synchronized (listPlant) {
+                    for (int i = 0; i < listPlant.size(); i++) {
+                        if ((listPlant.get(i)).getCol() == x && (listPlant.get(i)).getRow() == y) {
                             flag = false;
                             break;
                         }
@@ -93,13 +140,13 @@ public class GameMainController {
                 }
                 // Tạo một cây mới thêm vào game
                 if (flag) {
-                    GameElements.PlantType type = GameElements.PlantType.valueOf(pathImageViewSelected.toUpperCase());
+                    PlantType type = PlantType.valueOf(pathImageViewSelected.toUpperCase());
                     Plant newPlant = PlantFactory.createPlant(type, (int) (source.getLayoutX() + source.getParent().getLayoutX())
                             , (int) (source.getLayoutY() + source.getParent().getLayoutY())
                             , y
                             , x);
 
-                    gameData.getListPlant().add(newPlant);
+                    listPlant.add(newPlant);
                     newPlant.start();
 
                     setSun(sun - newPlant.getCost());
@@ -114,8 +161,7 @@ public class GameMainController {
         // TODO tạo  menu cho một game
         System.out.println("Menu clicked");
     }
-
-    // Getter and Setter
+    // Get và set các biến
     public static int getSun() {
         return sun;
     }
@@ -164,22 +210,6 @@ public class GameMainController {
         this.sunCount = sunCount;
     }
 
-    public GameData getGameData() {
-        return gameData;
-    }
-
-    public void setGameData(GameData gameData) {
-        this.gameData = gameData;
-    }
-
-    public GameProcess getGameProcess() {
-        return gameProcess;
-    }
-
-    public void setGameProcess(GameProcess gameProcess) {
-        this.gameProcess = gameProcess;
-    }
-
     public static AnchorPane getAnchorPane() {
         return anchorPane;
     }
@@ -196,12 +226,44 @@ public class GameMainController {
         GameMainController.gridPane = gridPane;
     }
 
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
+    public Timeline getTimelineGame() {
+        return TimelineGame;
+    }
+
+    public void setTimelineGame(Timeline timelineGame) {
+        TimelineGame = timelineGame;
+    }
+
+    public static Label getSunDisplay() {
+        return sunDisplay;
+    }
+
+    public static void setSunDisplay(Label sunDisplay) {
+        GameMainController.sunDisplay = sunDisplay;
+    }
+
     public Shovel getShovel() {
         return shovel;
     }
 
     public void setShovel(Shovel shovel) {
         this.shovel = shovel;
+    }
+
+    public CardPlants getCardPlants() {
+        return cardPlants;
+    }
+
+    public void setCardPlants(CardPlants cardPlants) {
+        this.cardPlants = cardPlants;
     }
 
     public DropSun getDropSun() {
@@ -212,12 +274,12 @@ public class GameMainController {
         this.dropSun = dropSun;
     }
 
-    public static Label getSunDisplay() {
-        return sunDisplay;
+    public int getDurationDropSun() {
+        return durationDropSun;
     }
 
-    public static void setSunDisplay(Label sunDisplay) {
-        GameMainController.sunDisplay = sunDisplay;
+    public void setDurationDropSun(int durationDropSun) {
+        this.durationDropSun = durationDropSun;
     }
 
     public static ImageView getSelectedImageView() {
@@ -234,6 +296,38 @@ public class GameMainController {
 
     public static void setPathImageViewSelected(String pathImageViewSelected) {
         GameMainController.pathImageViewSelected = pathImageViewSelected;
+    }
+
+    public int getTick() {
+        return tick;
+    }
+
+    public void setTick(int tick) {
+        this.tick = tick;
+    }
+
+    public static List<Plant> getListPlant() {
+        return listPlant;
+    }
+
+    public static void setListPlant(List<Plant> listPlant) {
+        GameMainController.listPlant = listPlant;
+    }
+
+    public static List<Zombie> getListZombieAlive() {
+        return listZombieAlive;
+    }
+
+    public static void setListZombieAlive(List<Zombie> listZombieAlive) {
+        GameMainController.listZombieAlive = listZombieAlive;
+    }
+
+    public static List<ZombieSpawner> getListZombieSpawner() {
+        return listZombieSpawner;
+    }
+
+    public static void setListZombieSpawner(List<ZombieSpawner> listZombieSpawner) {
+        GameMainController.listZombieSpawner = listZombieSpawner;
     }
 }
 

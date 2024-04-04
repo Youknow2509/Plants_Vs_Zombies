@@ -1,6 +1,5 @@
 package src.Model.Plants;
 
-import src.Model.GameElements;
 import src.Model.Plants.CherryBomb.CherryBomb;
 import src.Model.Plants.Chomper.Chomper;
 import src.Model.Plants.Pea.Repeater.Repeater;
@@ -10,7 +9,7 @@ import src.Model.Plants.Pea.PeaShooter.PeaShooter;
 import src.Model.Plants.Wallnut.Wallnut;
 
 public class PlantFactory {
-    public static Plant createPlant(GameElements.PlantType type, double x, double y, int col, int row) {
+    public static Plant createPlant(PlantType type, double x, double y, int col, int row) {
         switch (type) {
             case SUNFLOWER:
                 return new SunFlower(x, y, row, col);

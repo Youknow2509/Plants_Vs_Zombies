@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import src.Controller.GameMainControllerSave;
+import src.Controller.GameMainController;
 import src.Help.Shovel;
 
 public class CardPlant {
@@ -45,7 +45,7 @@ public class CardPlant {
             setCardSelected(e);
         });
         // Thêm ImageView vào AnchorPane
-        (GameMainControllerSave.getAnchorPane()).getChildren().add(imageView);
+        (GameMainController.getAnchorPane()).getChildren().add(imageView);
     }
     // Xử lí khi click vào thẻ cây
     public void setCardSelected(MouseEvent e) {
@@ -54,11 +54,11 @@ public class CardPlant {
 
         Shovel.setIsDisabled(true);
 
-        if (GameMainControllerSave.selectedImageView == null) {
+        if (GameMainController.selectedImageView == null) {
             disableCard(select);
         }
-        else if (GameMainControllerSave.selectedImageView != select) {
-            GameMainControllerSave.selectedImageView.setOpacity(1);
+        else if (GameMainController.selectedImageView != select) {
+            GameMainController.selectedImageView.setOpacity(1);
             disableCard(select);
         } else {
             setCardUnSelected();
@@ -66,15 +66,15 @@ public class CardPlant {
     }
     private void disableCard(ImageView select) {
         select.setOpacity(0.2);
-        GameMainControllerSave.selectedImageView = select;
-        GameMainControllerSave.setPathImageViewSelected(select.getId());
+        GameMainController.selectedImageView = select;
+        GameMainController.setPathImageViewSelected(select.getId());
     }
     public static void setCardUnSelected() {
-        if (GameMainControllerSave.selectedImageView != null) {
-            GameMainControllerSave.selectedImageView.setOpacity(1);
-            GameMainControllerSave.selectedImageView = null;
+        if (GameMainController.selectedImageView != null) {
+            GameMainController.selectedImageView.setOpacity(1);
+            GameMainController.selectedImageView = null;
         }
-        GameMainControllerSave.setPathImageViewSelected("");
+        GameMainController.setPathImageViewSelected("");
     }
     // To string
 

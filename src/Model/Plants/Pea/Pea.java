@@ -3,7 +3,7 @@ package src.Model.Plants.Pea;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import src.Controller.GameMainControllerSave;
+import src.Controller.GameMainController;
 import src.Model.GameElements;
 import src.Model.Zombies.Zombie;
 
@@ -55,17 +55,17 @@ public class Pea extends GameElements {
     }
     // Xử lí khi đạn chạm vào zombie
     private void attack() {
-        synchronized (GameMainControllerSave.getListZombieAlive()) {
-            if (GameMainControllerSave.getListZombieAlive() != null && GameMainControllerSave.getListZombieAlive().size() > 0) {
-                for (int i = 0; i < GameMainControllerSave.getListZombieAlive().size(); i++) {
-                    Zombie z = GameMainControllerSave.getListZombieAlive().get(i);
+        synchronized (GameMainController.getListZombieAlive()) {
+            if (GameMainController.getListZombieAlive() != null && GameMainController.getListZombieAlive().size() > 0) {
+                for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {
+                    Zombie z = GameMainController.getListZombieAlive().get(i);
                     if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0) {
                         z.setHealth(z.getHealth() - DAMAGE);
                         remove();
                         System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
                         if (z.getHealth() <= 0) {
                             z.removeImageView();
-                            GameMainControllerSave.getListZombieAlive().remove(z);
+                            GameMainController.getListZombieAlive().remove(z);
                         }
                     }
                 }

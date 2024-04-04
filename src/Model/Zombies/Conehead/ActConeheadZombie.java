@@ -1,6 +1,6 @@
 package src.Model.Zombies.Conehead;
 
-import src.Controller.GameMainControllerSave;
+import src.Controller.GameMainController;
 import src.Model.Act;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
@@ -21,8 +21,8 @@ public class ActConeheadZombie implements Act {
     // handle chọn trạng thái
     public void handle() {
         boolean flag = true;
-        synchronized (GameMainControllerSave.getListPlant()) {
-            for (Plant p : GameMainControllerSave.getListPlant()) {
+        synchronized (GameMainController.getListPlant()) {
+            for (Plant p : GameMainController.getListPlant()) {
                 if (p.getLane() == zombie.getLane() && zombie.getX() - p.getX() <= 30) {
                     attack(p);
                     flag = false;
@@ -45,7 +45,7 @@ public class ActConeheadZombie implements Act {
         // Xử lí khi cây bị hết máu
         if (plant.getHp() <= 0) {
             plant.removeImageViewInGridPane();
-            GameMainControllerSave.getListPlant().remove(plant);
+            GameMainController.getListPlant().remove(plant);
         }
     }
     // Move

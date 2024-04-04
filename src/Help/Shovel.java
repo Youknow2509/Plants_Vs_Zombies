@@ -1,7 +1,7 @@
 package src.Help;
 
 
-import src.Controller.GameMainControllerSave;
+import src.Controller.GameMainController;
 import src.Model.GameElements;
 import src.Utils.CardPlants;
 import src.Model.Plants.Plant;
@@ -49,7 +49,7 @@ public class Shovel extends GameElements {
     public void handleClick() {
 
         CardPlants.setCardUnSelected();
-        GameMainControllerSave.selectedImageView = getImageView(); // Lưu ImageView được chọn
+        GameMainController.selectedImageView = getImageView(); // Lưu ImageView được chọn
 
         helpHandleClick();
     }

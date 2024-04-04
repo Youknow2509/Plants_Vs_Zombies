@@ -1,6 +1,6 @@
 package src.Model.Plants.Pea.PeaShooter;
 
-import src.Controller.GameMainControllerSave;
+import src.Controller.GameMainController;
 import src.Model.Act;
 import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
@@ -19,10 +19,10 @@ public class ActPeaShooter implements Act {
     }
     @Override
     public void handle() {
-        synchronized (GameMainControllerSave.getListZombieAlive()) {
-            if (GameMainControllerSave.getListZombieAlive() != null && GameMainControllerSave.getListZombieAlive().size() > 0)
-                for (int i = 0; i < GameMainControllerSave.getListZombieAlive().size(); i++) {
-                    Zombie z = GameMainControllerSave.getListZombieAlive().get(i);
+        synchronized (GameMainController.getListZombieAlive()) {
+            if (GameMainController.getListZombieAlive() != null && GameMainController.getListZombieAlive().size() > 0)
+                for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {
+                    Zombie z = GameMainController.getListZombieAlive().get(i);
                     if (z.getLane() == plant.getLane() && z.getX() > plant.getX() + 2) {
                         attack(z);
                     }
