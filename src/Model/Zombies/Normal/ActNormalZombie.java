@@ -26,7 +26,6 @@ public class ActNormalZombie implements Act {
                 if (p.getLane() == zombie.getLane() && zombie.getX() - p.getX() <= 30) {
                     attack(p);
                     flag = false;
-                    //System.out.println("Plant hp: " + p.getHp()); // TODO : Để debug xem máu của cây còn lại bao nhiêu
                     break;
                 }
             }

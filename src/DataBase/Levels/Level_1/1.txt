@@ -1,11 +1,6 @@
 50, 0, 0
 SunFlower, Peashooter, Wallnut
 1, 0, NormalZombie
-10, 1, NormalZombie
-15, 0, NormalZombie
-15, 2, NormalZombie
-27, 3, NormalZombie
-19, 4, NormalZombie
-32, 2, NormalZombie
-36, 3, NormalZombie
-40, 0, NormalZombie
+3, 0, NormalZombie
+5, 0, NormalZombie
+

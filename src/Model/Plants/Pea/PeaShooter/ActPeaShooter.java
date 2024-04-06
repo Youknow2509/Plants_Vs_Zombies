@@ -25,6 +25,7 @@ public class ActPeaShooter implements Act {
                     Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
                     if (z.getLane() == plant.getLane() && z.getX() > plant.getX() + 2) {
                         attack(z);
+                        break; // 1 lan tan cong chi tan cong 1 zombie
                     }
                 }
         }

@@ -21,7 +21,7 @@ public class StageCharacterPeaShooter implements StageCharacter {
                     peaShooter.getAct().handle();
                 }
         )));
-        peaShooter.getTimeline().setCycleCount(Timeline.INDEFINITE);
+        peaShooter.getTimeline().setCycleCount(Timeline.INDEFINITE); // Số lượng đạn bắt ra là vô hạn, cứ có Zombie là bắn
         peaShooter.getTimeline().play();
     }
 

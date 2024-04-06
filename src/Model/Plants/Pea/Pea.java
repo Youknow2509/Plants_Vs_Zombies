@@ -75,8 +75,8 @@ public class Pea extends GameElements {
     // Xóa đạn
     public void remove() {
         removeImageView();
-        timeline.stop();
         listTimelinePea.remove(timeline);
+        //timeline.stop();
     }
 
     // Get và set các thuộc tính
