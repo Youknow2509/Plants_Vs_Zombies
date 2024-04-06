@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import src.DataBase.Handle.HandleLoadLevel;
 import src.Help.CardPlants.CardPlant;
 import src.Help.CardPlants.FactoryCardPlant;
 import src.Model.GameData;
@@ -16,8 +15,7 @@ import src.Help.Shovel;
 import src.Model.Plants.Plant;
 import src.Model.Plants.PlantFactory;
 import src.Model.Plants.PlantType;
-import src.Model.Plants.Sun.DropSun;
-import src.Utils.CardPlants;
+
 
 import java.util.List;
 
@@ -97,13 +95,17 @@ public class GameMainController {
         Integer y = lawnGrid.getRowIndex(source);
 
         // Lay ra loai cay dang duoc chon
-        PlantType type = PlantType.valueOf(pathImageViewSelected.toUpperCase());
+        PlantType type = null;
+        if (pathImageViewSelected != "") {
+            type = PlantType.valueOf(pathImageViewSelected.toUpperCase());
+        }
 
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
             shovel.rmPlant(gameData.getListPlant(), x, y);
         }
         else if (pathImageViewSelected != ""
-                && getSun() >= PlantFactory.getCost(type)) { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
+                //&& getSun() >= PlantFactory.getCost(type)) { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
+            ) {
             if (x != null && y != null) {
                 boolean flag = true;
                 synchronized (gameData.getListPlant()) {
@@ -127,7 +129,7 @@ public class GameMainController {
 
                     setSun(sun - newPlant.getCost());
 
-                    CardPlants.setCardUnSelected();
+                    CardPlant.setCardUnSelected();
                 }
             }
         }

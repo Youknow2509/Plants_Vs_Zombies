@@ -3,8 +3,8 @@ package src.Help;
 
 import src.Controller.GameMainController;
 import src.Model.GameElements;
-import src.Utils.CardPlants;
 import src.Model.Plants.Plant;
+import src.Help.CardPlants.CardPlant;
 
 import java.util.List;
 
@@ -28,7 +28,9 @@ public class Shovel extends GameElements {
                 Plant p = plants.get(i);
                 if (p.getCol() == x && p.getRow() == y) {
                     p.removeImageViewInGridPane();
-                    p.getTimeline().stop();
+                    if (p.getTimeline() != null) {
+                        p.getTimeline().stop();
+                    }
                     plants.remove(p);
                     setIsDisabled(!getIsDisabled());
                     (getImageView()).setOpacity(getOpacityBtn());
@@ -48,7 +50,7 @@ public class Shovel extends GameElements {
     // Xử lí khi click
     public void handleClick() {
 
-        CardPlants.setCardUnSelected();
+        CardPlant.setCardUnSelected();
         GameMainController.selectedImageView = getImageView(); // Lưu ImageView được chọn
 
         helpHandleClick();
