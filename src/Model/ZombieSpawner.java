@@ -15,10 +15,10 @@ public class ZombieSpawner {
     public ZombieSpawner(int time, int lane, String nameZombie) {
         this.time = time;
         switch (nameZombie) {
-            case "NormalZombie":
+            case "NORMALZOMBIE": // NormalZombie
                 this.zombie = new NormalZombie(lane);;
                 break;
-            case "ConeheadZombie":
+            case "CONEHEADZOMBIE": // ConeheadZombie
                 this.zombie = new ConeheadZombie(lane);;
                 break;
                 // TODO: Thêm các loại zombie khác sau

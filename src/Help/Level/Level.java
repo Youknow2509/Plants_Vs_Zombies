@@ -19,15 +19,15 @@ public class Level {
     public void getZombieSpawners() {
         switch (level) {
             case 1:
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(1, 0, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(10, 1, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 0, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 2, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(27, 3, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(19, 4, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(32, 2, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(36, 3, "NormalZombie"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(40, 0, "NormalZombie"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(1, 0, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(10, 1, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 0, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 2, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(27, 3, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(19, 4, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(32, 2, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(36, 3, "NORMALZOMBIE"));
+                GameMainController.getListZombieSpawner().add(new ZombieSpawner(40, 0, "NORMALZOMBIE"));
 
                 break;
                 // TODO: Thêm các level khác sau
