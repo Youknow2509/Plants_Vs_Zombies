@@ -24,6 +24,7 @@ public class GameProcess {
 
     // Start Game
     public void startGame() {
+        gameData.setDropSun(new DropSun());
         timelineGame = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             // Random Sun
             if (gameData.getDurationDropSun() == 0) {

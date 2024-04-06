@@ -58,7 +58,7 @@ public class HandleLoadLevel {
                     gameData.addZombieSpawner(
                             new ZombieSpawner(Integer.parseInt(lLine[0]),
                                     Integer.parseInt(lLine[1]),
-                                    lLine[2])
+                                    lLine[2].toUpperCase())
                     );
                 }
             }

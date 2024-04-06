@@ -1,3 +1,3 @@
 Sun, Tick, GameDucation
 String path (ListCard)
-ZombieSpawer
+ZombieSpawer - (Name to uppper case)

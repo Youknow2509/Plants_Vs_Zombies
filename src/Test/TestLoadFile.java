@@ -4,6 +4,8 @@ import src.DataBase.Handle.Handle;
 import src.DataBase.Handle.HandleLoadLevel;
 import src.Model.GameData;
 
+import java.util.Scanner;
+
 public class TestLoadFile {
 
     private static void showGameData(GameData gameData) {
@@ -21,12 +23,15 @@ public class TestLoadFile {
     }
     public static void main(String [] args) {
         System.out.println("Test Load File");
-        HandleLoadLevel handleLoadLevel = new HandleLoadLevel(1);
+        int level = 0;
+        Scanner scanner = new Scanner(System.in);
+        level = scanner.nextInt();
+        HandleLoadLevel handleLoadLevel = new HandleLoadLevel(level);
         GameData gameData = handleLoadLevel.loadLevel();
 
         showGameData(gameData);
 
+        scanner.close();
         return;
-
     }
 }

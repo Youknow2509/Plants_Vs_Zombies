@@ -55,17 +55,17 @@ public class Pea extends GameElements {
     }
     // Xử lí khi đạn chạm vào zombie
     private void attack() {
-        synchronized (GameMainController.getListZombieAlive()) {
-            if (GameMainController.getListZombieAlive() != null && GameMainController.getListZombieAlive().size() > 0) {
-                for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {
-                    Zombie z = GameMainController.getListZombieAlive().get(i);
+        synchronized ((GameMainController.getGameData()).getZombieAlive()) {
+            if ((GameMainController.getGameData()).getZombieAlive() != null && (GameMainController.getGameData()).getZombieAlive().size() > 0) {
+                for (int i = 0; i < (GameMainController.getGameData()).getZombieAlive().size(); i++) {
+                    Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
                     if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0) {
                         z.setHealth(z.getHealth() - DAMAGE);
                         remove();
                         System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
                         if (z.getHealth() <= 0) {
                             z.removeImageView();
-                            GameMainController.getListZombieAlive().remove(z);
+                            (GameMainController.getGameData()).getZombieAlive().remove(z);
                         }
                     }
                 }

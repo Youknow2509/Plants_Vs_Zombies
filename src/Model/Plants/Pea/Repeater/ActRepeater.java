@@ -19,10 +19,10 @@ public class ActRepeater implements Act {
     }
     @Override
     public void handle() {
-        synchronized (GameMainController.getListZombieAlive()) {
-            if (GameMainController.getListZombieAlive() != null && GameMainController.getListZombieAlive().size() > 0)
-                for (int i = 0; i < GameMainController.getListZombieAlive().size(); i++) {
-                    Zombie z = GameMainController.getListZombieAlive().get(i);
+        synchronized ((GameMainController.getGameData()).getZombieAlive()) {
+            if ((GameMainController.getGameData()).getZombieAlive() != null && (GameMainController.getGameData()).getZombieAlive().size() > 0)
+                for (int i = 0; i < (GameMainController.getGameData()).getZombieAlive().size(); i++) {
+                    Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
                     if (z.getLane() == plant.getLane() && z.getX() > plant.getX() + 2) {
                         attack(z);
                     }

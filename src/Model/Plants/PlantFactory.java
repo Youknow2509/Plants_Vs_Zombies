@@ -9,6 +9,7 @@ import src.Model.Plants.Pea.PeaShooter.PeaShooter;
 import src.Model.Plants.Wallnut.Wallnut;
 
 public class PlantFactory {
+    // Factory method to create Plant
     public static Plant createPlant(PlantType type, double x, double y, int col, int row) {
         switch (type) {
             case SUNFLOWER:
@@ -27,6 +28,27 @@ public class PlantFactory {
                 return new CherryBomb(x, y, row, col);
             default:
                 return null;
+        }
+    }
+    // Factory get Cost
+    public static int getCost(PlantType type) {
+        switch (type) {
+            case SUNFLOWER:
+                return 50;
+            case PEASHOOTER:
+                return 100;
+            case REPEATER:
+                return 200;
+            case POTATOMINE:
+                return 25;
+            case CHOMPER:
+                return 150;
+            case WALLNUT:
+                return 50;
+            case CHERRYBOMB:
+                return 150;
+            default:
+                return 0;
         }
     }
 }

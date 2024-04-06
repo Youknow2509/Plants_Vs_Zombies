@@ -21,8 +21,8 @@ public class ActConeheadZombie implements Act {
     // handle chọn trạng thái
     public void handle() {
         boolean flag = true;
-        synchronized (GameMainController.getListPlant()) {
-            for (Plant p : GameMainController.getListPlant()) {
+        synchronized ((GameMainController.getGameData()).getListPlant()) {
+            for (Plant p : (GameMainController.getGameData()).getListPlant()) {
                 if (p.getLane() == zombie.getLane() && zombie.getX() - p.getX() <= 30) {
                     attack(p);
                     flag = false;
@@ -45,7 +45,7 @@ public class ActConeheadZombie implements Act {
         // Xử lí khi cây bị hết máu
         if (plant.getHp() <= 0) {
             plant.removeImageViewInGridPane();
-            GameMainController.getListPlant().remove(plant);
+            (GameMainController.getGameData()).getListPlant().remove(plant);
         }
     }
     // Move

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import src.DataBase.Handle.HandleLoadLevel;
 import src.Utils.ChangeScene;
 
 public class Main extends Application {
@@ -16,7 +17,8 @@ public class Main extends Application {
         int height = 600;
         String path = "/src/View/GameMain.fxml";
         ChangeScene changeScene = new ChangeScene(primaryStage, title, width, height, path);
-        changeScene.change();
+        HandleLoadLevel handleLoadLevel = new HandleLoadLevel(1);
+        changeScene.changeToGame(handleLoadLevel.loadLevel());
     }
 
     public static void main(String[] args) {

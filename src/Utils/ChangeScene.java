@@ -4,6 +4,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import src.Controller.GameMainController;
+import src.DataBase.Handle.Handle;
+import src.DataBase.Handle.HandleLoadLevel;
+import src.Model.GameData;
 
 import java.io.IOException;
 
@@ -42,7 +46,23 @@ public class ChangeScene {
             System.exit(0);
         }
     }
+    public void changeToGame(GameData gameData) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/GameMain.fxml"));
+            Parent root = loader.load();
+            GameMainController gameMainController = loader.getController();
+            gameMainController.initialize(gameData);
+            Scene scene = new Scene(root, width, height);
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.show();
 
+        } catch (IOException e) {
+            System.out.println("Loi khi load file: " + e);
+            e.printStackTrace();
+            System.exit(0);
+        }
+    }
 
     // Getter and setter
     public String getPath() {

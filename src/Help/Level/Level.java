@@ -19,15 +19,6 @@ public class Level {
     public void getZombieSpawners() {
         switch (level) {
             case 1:
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(1, 0, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(10, 1, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 0, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(15, 2, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(27, 3, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(19, 4, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(32, 2, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(36, 3, "NORMALZOMBIE"));
-                GameMainController.getListZombieSpawner().add(new ZombieSpawner(40, 0, "NORMALZOMBIE"));
 
                 break;
                 // TODO: Thêm các level khác sau
@@ -35,9 +26,9 @@ public class Level {
                 System.out.println("Level không hợp lệ");
                 break;
         }
-        sumZombies = GameMainController.getListZombieSpawner().size();
+        sumZombies = (GameMainController.getGameData()).getZombieSpawner().size();
         // Sắp xếp lại thứ tự của zombieSpawners theo thời gian
-        Collections.sort(GameMainController.getListZombieSpawner(), new Comparator<ZombieSpawner>() {
+        Collections.sort((GameMainController.getGameData()).getZombieSpawner(), new Comparator<ZombieSpawner>() {
             @Override
             public int compare(ZombieSpawner o1, ZombieSpawner o2) {
                 return (o1.getTime() - o2.getTime());
