@@ -6,6 +6,7 @@ import java.util.Collections;
 
 import src.Help.CardPlants.CardPlant;
 import src.Model.Plants.Plant;
+import src.Model.Plants.Sun.DropSun;
 import src.Model.Zombies.Zombie;
 
 public class GameData {
@@ -14,6 +15,7 @@ public class GameData {
     private List<Plant> listPlant = null;
     private List<Zombie> zombieAlive = null;
     private List<ZombieSpawner> zombieSpawner = null;
+    private DropSun dropSun = null;
     private int sun = 0;
     private int tick = 0;
     private int durationDropSun = 0;
@@ -35,6 +37,7 @@ public class GameData {
         this.sun = sun;
         this.tick = tick;
         this.durationDropSun = durationDropSun;
+        this.dropSun = new DropSun();
     }
     // Thêm cây
     public void addPlant(Plant p) {
@@ -104,5 +107,13 @@ public class GameData {
 
     public void setCardPlantList(List<CardPlant> cardPlantList) {
         this.cardPlantList = cardPlantList;
+    }
+
+    public DropSun getDropSun() {
+        return dropSun;
+    }
+
+    public void setDropSun(DropSun dropSun) {
+        this.dropSun = dropSun;
     }
 }

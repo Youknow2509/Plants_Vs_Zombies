@@ -3,6 +3,8 @@ package src.Model;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+import src.Model.Plants.Pea.Pea;
+import src.Model.Plants.Plant;
 import src.Model.Plants.Sun.DropSun;
 import src.Model.Zombies.Zombie;
 public class GameProcess {
@@ -22,12 +24,11 @@ public class GameProcess {
 
     // Start Game
     public void startGame() {
-        DropSun dropSun = new DropSun();
         timelineGame = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             // Random Sun
             if (gameData.getDurationDropSun() == 0) {
-                dropSun.CreatSunDrop();
-                gameData.setDurationDropSun(dropSun.getDurationDropSun());
+                gameData.getDropSun().CreatSunDrop();
+                gameData.setDurationDropSun(gameData.getDropSun().getDurationDropSun());
             } else {
                 gameData.setDurationDropSun(gameData.getDurationDropSun() - 1);
             }
@@ -51,17 +52,53 @@ public class GameProcess {
 
     // Stop Game
     public void stopGame() {
-        // TODO Stop Game
+        // Stop zombie
+        for (Zombie zombie : gameData.getZombieAlive()) {
+            zombie.stop();
+        }
+        // Stop dropsun
+        gameData.getDropSun().stop();
+        // Stop plants
+        for (Plant plant : gameData.getListPlant()) {
+            plant.stop();
+        }
+        // Stop timeline
+        timelineGame.stop();
+        // TODO chua check stop pea cua peashooter
     }
 
     // Pause Game
     public void pauseGame() {
-        // TODO Pause Game
+        // Pause zombie
+        for (Zombie zombie : gameData.getZombieAlive()) {
+            zombie.pause();
+        }
+        // Pause dropsun
+        gameData.getDropSun().pause();
+        // Pause plants
+        for (Plant plant : gameData.getListPlant()) {
+            plant.pause();
+        }
+        // Stop timeline
+        timelineGame.pause();
+        // TODO chua check pause pea cua peashooter
     }
 
     // Resume Game
     public void resumeGame() {
-        // TODO Resume Game
+        // resume zombie
+        for (Zombie zombie : gameData.getZombieAlive()) {
+            zombie.resume();
+        }
+        // resume dropsun
+        gameData.getDropSun().resume();
+        // resume plants
+        for (Plant plant : gameData.getListPlant()) {
+            plant.resume();
+        }
+        // resume timeline
+        timelineGame.pause();
+        // TODO chua check resume pea cua peashooter
     }
 
     // Load Game
@@ -75,4 +112,19 @@ public class GameProcess {
     }
 
     // Getters and Setters
+    public GameData getGameData() {
+        return gameData;
+    }
+
+    public void setGameData(GameData gameData) {
+        this.gameData = gameData;
+    }
+
+    public Timeline getTimelineGame() {
+        return timelineGame;
+    }
+
+    public void setTimelineGame(Timeline timelineGame) {
+        this.timelineGame = timelineGame;
+    }
 }
