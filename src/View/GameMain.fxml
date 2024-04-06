@@ -116,35 +116,5 @@
             <Image url="@../../Assets/images/items/Shovel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="230.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/items/lawnMower_Idle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="230.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/items/lawnMower_Idle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="230.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/items/lawnMower_Idle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="230.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/items/lawnMower_Idle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="230.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/items/lawnMower_Idle.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="130.0" fitWidth="100.0" layoutX="265.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Assets/images/Zombies/NormalZombieRun.gif" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
