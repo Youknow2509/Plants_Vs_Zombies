@@ -1,4 +1,4 @@
-package src.Help;
+package src.Help.Shovel;
 
 
 import src.Controller.GameMainController;

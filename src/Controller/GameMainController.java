@@ -10,9 +10,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import src.Help.CardPlants.CardPlant;
 import src.Help.CardPlants.FactoryCardPlant;
+import src.Help.LawnMower.FactoryLawnMower;
 import src.Model.GameData;
 import src.Model.GameProcess;
-import src.Help.Shovel;
+import src.Help.Shovel.Shovel;
 import src.Model.Plants.Plant;
 import src.Model.Plants.PlantFactory;
 import src.Model.Plants.PlantType;
@@ -76,6 +77,12 @@ public class GameMainController {
         for (CardPlant cardPlant : gameData.getCardPlantList()) {
             cardPlant.createImage();
         }
+        // Tải LawnMower
+        // todo test
+        for (int i = 0; i < 5; i++) {
+            FactoryLawnMower.createLawnMower(i);
+        }
+
     }
 // Handle action in view
 
