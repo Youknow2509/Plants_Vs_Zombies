@@ -93,6 +93,7 @@ public class GameMainController {
             }
         }
     }
+
     // Su kien trong o lawnGrid
     private void handleInLawnGrid(MouseEvent e) {
         Node source = (Node) e.getSource();
@@ -140,12 +141,15 @@ public class GameMainController {
             }
         }
     }
+
+    // Menu handle
     public void menuHandle(MouseEvent e) {
         // TODO tạo  menu cho một game
         System.out.println("Menu clicked");
         System.exit(0);
     }
-    // Getter and setter
+
+// Getter and setter
     public static int getSun() {
         return sun;
     }
