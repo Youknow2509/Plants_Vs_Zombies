@@ -3,6 +3,7 @@ package src.Model;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+import src.Controller.GameMainController;
 import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
 import src.Model.Plants.Sun.DropSun;
@@ -20,11 +21,11 @@ public class GameProcess {
     public GameProcess(GameData gameData) {
         super();
         this.gameData = gameData;
+        gameData.loadSumZombie();
     }
 
     // Start Game
     public void startGame() {
-        gameData.setDropSun(new DropSun());
         timelineGame = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             // Random Sun
             if (gameData.getDurationDropSun() == 0) {
@@ -42,7 +43,20 @@ public class GameProcess {
                 gameData.getZombieAlive().add(zombie);
                 gameData.getZombieSpawner().remove(0);
             }
-
+            // Xử lí hiển thị phần trăm game
+            GameMainController.getProgressBar().setProgress((double) (gameData.getSumZombie() - gameData.getZombieSpawner().size())
+                                                                        /gameData.getSumZombie());
+            if (GameMainController.getWonGame() == 1 ||
+                (gameData.getZombieSpawner().size() == 0 && gameData.getZombieAlive().size() == 0)) {
+                // todo xử lí thắng
+                System.out.println("You win");
+                System.exit(0);
+            }
+            if (GameMainController.getWonGame() == 0) {
+                // todo xử lí thua
+                System.out.println("You loss");
+                System.exit(0);
+            }
             // Tang tick
             gameData.setTick(gameData.getTick() + 1);
         }

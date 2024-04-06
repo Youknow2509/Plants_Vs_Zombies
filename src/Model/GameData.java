@@ -10,7 +10,7 @@ import src.Model.Plants.Sun.DropSun;
 import src.Model.Zombies.Zombie;
 
 public class GameData {
-    // Var
+// Var
     private List<CardPlant> cardPlantList = null;
     private List<Plant> listPlant = null;
     private List<Zombie> zombieAlive = null;
@@ -19,13 +19,15 @@ public class GameData {
     private int sun = 0;
     private int tick = 0;
     private int durationDropSun = 0;
-    // Construct
+    private int sumZombie = 0;
+// Construct
     public GameData() {
         super();
         this.cardPlantList = new ArrayList<CardPlant>();
         this.listPlant = Collections.synchronizedList(new ArrayList<Plant>()); // Xử dụng Collections.synchronizedList để đồng bộ dữ liệu 
         this.zombieAlive = Collections.synchronizedList(new ArrayList<Zombie>());;
-        this.zombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());;
+        this.zombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());
+        this.dropSun = new DropSun();
     }
     public GameData(List<CardPlant> cardPlantList, List<Plant> listPlant, List<Zombie> zombieAlive
             , List<ZombieSpawner> zombieSpawner, int sun, int tick, int durationDropSun) {
@@ -38,32 +40,44 @@ public class GameData {
         this.tick = tick;
         this.durationDropSun = durationDropSun;
         this.dropSun = new DropSun();
+        loadSumZombie();
     }
+
     // Thêm cây
     public void addPlant(Plant p) {
         listPlant.add(p);
     }
-    // Xoá cây 
+
+    // Xoá cây
     public void remotePlant(Plant p) {
         listPlant.remove(p);
     }
+
     // Thêm Zombie vào game
     public void addZombieAlive(Zombie z) {
         zombieAlive.add(z);
     }
+
     // Xoá Zombie tồn tại - Zombie chết
     public void remoteZombieAlive(Zombie z) {
         zombieAlive.remove(z);
     }
+
     // Thêm Zombie vào hàng đợi
     public void addZombieSpawner(ZombieSpawner z) {
         zombieSpawner.add(z);
     }
+
     // Xoá Zombie hàng đợi
     public void remoteZombieSpawner(ZombieSpawner z) {
         zombieSpawner.remove(z);
     }
-    // Getter and setter
+
+    // Lấy ra tổng số Zombie
+    public void loadSumZombie() {
+        this.sumZombie = zombieAlive.size() + zombieSpawner.size();
+    }
+// Getter and setter
     public List<Plant> getListPlant() {
         return listPlant;
     }
@@ -112,8 +126,15 @@ public class GameData {
     public DropSun getDropSun() {
         return dropSun;
     }
-
     public void setDropSun(DropSun dropSun) {
         this.dropSun = dropSun;
+    }
+
+    public int getSumZombie() {
+        return sumZombie;
+    }
+
+    public void setSumZombie(int sumZombie) {
+        this.sumZombie = sumZombie;
     }
 }

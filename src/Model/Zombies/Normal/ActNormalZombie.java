@@ -51,8 +51,9 @@ public class ActNormalZombie implements Act {
     @Override
     public void move() {
         zombie.setX(zombie.getX() - zombie.getMove());
-        if (zombie.getX() < 10) {
+        if (zombie.getX() < 195) {
             zombie.removeImageView();
+            GameMainController.setWonGame(0);
         }
     }
 }

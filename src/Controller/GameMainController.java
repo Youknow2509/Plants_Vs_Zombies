@@ -3,6 +3,7 @@ package src.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -31,11 +32,15 @@ public class GameMainController {
     private ImageView btnShovel;
     @FXML
     private Label sunCount;
+    @FXML
+    private ProgressBar progressbarGame;
 
     // Variables static
     private static AnchorPane anchorPane = null;
     private static GridPane gridPane = null;
+    private static ProgressBar progressBar = null;
     private static GameData gameData; // Dữ liệu game
+    private static int wonGame = -1; // 0: thua, 1: thắng, -1: chưa kết thúc
     public static ImageView selectedImageView = null; // ImageView được chọn trước đó bao gồm Thẻ cây và thẻ xẻng
     public static String pathImageViewSelected = ""; // Đường dẫn ảnh của cây được chọn
     private static int sun = 0;
@@ -49,24 +54,25 @@ public class GameMainController {
     @FXML
     public void initialize(GameData g) {
         gameData = g;
-        // Load data game to Controller
-        gameProcess = new GameProcess(gameData); // todo fix
+        // Tải dữ liệu của Game vào Controller
+        gameProcess = new GameProcess(gameData);
         gameProcess.startGame();
-        // Load sun count to View
+        // Tải Sun từ Controller vào view và gán sự kiện
         sun = gameData.getSun();
         sunCount.setText(String.valueOf(sun));
         sunDisplay = sunCount;
-        // Load lawnGrid to View
+        // Gắn sự kiện cho GridPane
         addHandleGridPane();
         // Load Shovel to View - Tạo xẻng và gắn sự kiện cho xẻng
         shovel.setImageView(btnShovel);
         btnShovel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             shovel.handleClick();
         });
-        // Gán các giá trị static
+        // Gán giá trị cho các biến static nắm giữ các element - để dễ dàng truy cập từ các class khác ( Thêm, xoá hình ảnh, v.v)
         anchorPane = GamePlayRoot;
         gridPane = lawnGrid;
-        // Load card plants to View
+        progressBar = progressbarGame;
+        // Tải các thẻ cây vào View
         for (CardPlant cardPlant : gameData.getCardPlantList()) {
             cardPlant.createImage();
         }
@@ -250,6 +256,38 @@ public class GameMainController {
 
     public void setFactoryCardPlant(FactoryCardPlant factoryCardPlant) {
         this.factoryCardPlant = factoryCardPlant;
+    }
+
+    public ProgressBar getProgressbarGame() {
+        return progressbarGame;
+    }
+
+    public void setProgressbarGame(ProgressBar progressbarGame) {
+        this.progressbarGame = progressbarGame;
+    }
+
+    public static ProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    public static void setProgressBar(ProgressBar progressBar) {
+        GameMainController.progressBar = progressBar;
+    }
+
+    public static Label getSunDisplay() {
+        return sunDisplay;
+    }
+
+    public static void setSunDisplay(Label sunDisplay) {
+        GameMainController.sunDisplay = sunDisplay;
+    }
+
+    public static int getWonGame() {
+        return wonGame;
+    }
+
+    public static void setWonGame(int wonGame) {
+        GameMainController.wonGame = wonGame;
     }
 }
 
