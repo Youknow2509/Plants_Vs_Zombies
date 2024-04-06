@@ -110,8 +110,8 @@ public class GameMainController {
             shovel.rmPlant(gameData.getListPlant(), x, y);
         }
         else if (pathImageViewSelected != ""
-                //&& getSun() >= PlantFactory.getCost(type)) { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
-            ) {
+                && getSun() >= PlantFactory.getCost(type)) { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
+           // ) {
             if (x != null && y != null) {
                 boolean flag = true;
                 synchronized (gameData.getListPlant()) {
