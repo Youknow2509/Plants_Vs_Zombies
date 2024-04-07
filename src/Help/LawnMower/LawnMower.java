@@ -2,6 +2,7 @@ package src.Help.LawnMower;
 
 import javafx.animation.Timeline;
 import src.Model.GameElements;
+import src.Model.StageCharacter;
 
 public class LawnMower extends GameElements {
     // Var infor LawnMower
@@ -14,6 +15,7 @@ public class LawnMower extends GameElements {
     // Var
     private Timeline timeline;
     private ActLawnMower actLawnMower;
+    private StageCharacter stageLawnMower;
     // Constructor
     public LawnMower() {
         super();
@@ -21,9 +23,31 @@ public class LawnMower extends GameElements {
     public LawnMower(double x, double y, int lane) {
         super(x, y, PATH_IMAGE, WIDTH, HEIGHT, lane);
         this.actLawnMower = new ActLawnMower(this);
+        this.stageLawnMower = new StageLawnMower(this);
+
         createImageView();
-        actLawnMower.start();
+        start(); // Thuc hien timeline lang nghe ngay khi duoc khoi tao
     }
+    // Start
+    public void start() {
+        stageLawnMower.start();
+    }
+
+    // Stop
+    public void stop() {
+        stageLawnMower.stop();
+    }
+
+    // Pause
+    public void pause() {
+        stageLawnMower.pause();
+    }
+
+    // Resume
+    public void resume() {
+        stageLawnMower.resume();
+    }
+
     // Getter and Setter
     public static String getPathImageActive() {
         return PATH_IMAGE_ACTIVE;
@@ -36,5 +60,20 @@ public class LawnMower extends GameElements {
     }
     public void setTimeline(Timeline timeline) {
         this.timeline = timeline;
+    }
+    public ActLawnMower getActLawnMower() {
+        return actLawnMower;
+    }
+
+    public void setActLawnMower(ActLawnMower actLawnMower) {
+        this.actLawnMower = actLawnMower;
+    }
+
+    public StageCharacter getStageLawnMower() {
+        return stageLawnMower;
+    }
+
+    public void setStageLawnMower(StageCharacter stageLawnMower) {
+        this.stageLawnMower = stageLawnMower;
     }
 }

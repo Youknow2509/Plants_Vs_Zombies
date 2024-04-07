@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import src.DataBase.Handle.HandleLoadLevel;
 import src.Utils.ChangeScene;
 
-public class Main extends Application {
+public class main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
