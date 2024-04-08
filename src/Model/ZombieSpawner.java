@@ -27,4 +27,12 @@ public class ZombieSpawner {
     public Zombie getZombie() {
         return zombie;
     }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public void setZombie(Zombie zombie) {
+        this.zombie = zombie;
+    }
 }
