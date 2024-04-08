@@ -1,4 +1,4 @@
-package src.Model.Plants.Pea.Repeater;
+package src.Model.Plants.PeaShooter;
 
 import src.Controller.GameMainController;
 import src.Model.Act;
@@ -6,14 +6,14 @@ import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
 
-public class ActRepeater implements Act {
+public class ActPeaShooter implements Act {
     // Var
     Plant plant;
     // Constructor
-    public ActRepeater() {
+    public ActPeaShooter() {
         super();
     }
-    public ActRepeater(Plant plant) {
+    public ActPeaShooter(Plant plant) {
         super();
         this.plant = plant;
     }
@@ -25,6 +25,7 @@ public class ActRepeater implements Act {
                     Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
                     if (z.getLane() == plant.getLane() && z.getX() > plant.getX() + 2) {
                         attack(z);
+                        break; // 1 lan tan cong chi tan cong 1 zombie
                     }
                 }
         }
@@ -35,9 +36,8 @@ public class ActRepeater implements Act {
 
     @Override
     public void attack(Object object) {
-        Pea pea1 = new Pea((int) plant.getX() + 45, (int) plant.getY() + 25, plant.getLane(), ((Repeater)plant).getListTimelinePea());
-        Pea pea2 = new Pea((int) plant.getX() + 80, (int) plant.getY() + 25, plant.getLane(), ((Repeater)plant).getListTimelinePea());
-        pea1.start();
-        pea2.start();
+        Pea pea = new Pea((int) plant.getX() + 50, (int) plant.getY() + 25, plant.getLane(), ((PeaShooter)plant).getListPea());
+        pea.start();
+        ((PeaShooter)plant).getListPea().add(pea);
     }
 }

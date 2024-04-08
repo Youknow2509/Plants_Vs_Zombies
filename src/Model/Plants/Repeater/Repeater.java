@@ -1,6 +1,7 @@
-package src.Model.Plants.Pea.Repeater;
+package src.Model.Plants.Repeater;
 
 import javafx.animation.Timeline;
+import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
 
 import java.util.ArrayList;
@@ -17,17 +18,17 @@ public class Repeater extends Plant {
     private static final  int WIDTH = 60;
     private static final  int HEIGHT = 60;
     // Var
-    private List<Timeline> listTimelinePea = null;
+    private List<Pea> listPea;
     // Constructor
     public Repeater() {
         super();
-        listTimelinePea = new ArrayList<Timeline>();
+        listPea = new ArrayList<Pea>();
     }
     public Repeater(double x, double y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
 
         createImageViewInGridPane();
-        listTimelinePea = new ArrayList<Timeline>();
+        listPea = new ArrayList<Pea>();
         setAct(new ActRepeater(this));
         setStageCharacter(new StageCharacterRepeater(this));
     }
@@ -51,11 +52,12 @@ public class Repeater extends Plant {
         getStageCharacter().resume();
     }
     // Getter and Setter
-    public List<Timeline> getListTimelinePea() {
-        return listTimelinePea;
-    }
-    public void setListTimelinePea(List<Timeline> listTimelinePea) {
-        this.listTimelinePea = listTimelinePea;
+
+    public List<Pea> getListPea() {
+        return listPea;
     }
 
+    public void setListPea(List<Pea> listPea) {
+        this.listPea = listPea;
+    }
 }

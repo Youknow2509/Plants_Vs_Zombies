@@ -1,11 +1,8 @@
-package src.Model.Plants.Pea.PeaShooter;
+package src.Model.Plants.PeaShooter;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.util.Duration;
-import src.Model.Act;
+import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
-import src.Model.StageCharacter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +17,18 @@ public class PeaShooter extends Plant {
     private static final  int WIDTH = 60;
     private static final  int HEIGHT = 60;
     // Var
-    private List<Timeline> listTimelinePea = null;
+    private List<Pea> listPea = null;
     // Constructor
     public PeaShooter() {
         super();
+        listPea = new ArrayList<Pea>();
+
     }
     public PeaShooter(double x, double y, int col, int row) {
         super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
 
         createImageViewInGridPane();
-        listTimelinePea = new ArrayList<Timeline>();
+        listPea = new ArrayList<Pea>();
         setAct(new ActPeaShooter(this));
         setStageCharacter(new StageCharacterPeaShooter(this));
     }
@@ -54,10 +53,10 @@ public class PeaShooter extends Plant {
         getStageCharacter().resume();
     }
     // Getter and Setter
-    public List<Timeline> getListTimelinePea() {
-        return listTimelinePea;
+    public List<Pea> getListPea() {
+        return listPea;
     }
-    public void setListTimelinePea(List<Timeline> listTimelinePea) {
-        this.listTimelinePea = listTimelinePea;
+    public void setListPea(List<Pea> listPea) {
+        this.listPea = listPea;
     }
 }

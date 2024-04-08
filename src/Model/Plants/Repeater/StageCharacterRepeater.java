@@ -1,9 +1,9 @@
-package src.Model.Plants.Pea.Repeater;
+package src.Model.Plants.Repeater;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import src.Model.Plants.Pea.Repeater.Repeater;
+import src.Model.Plants.Pea.Pea;
 import src.Model.StageCharacter;
 
 public class StageCharacterRepeater implements StageCharacter {
@@ -23,6 +23,7 @@ public class StageCharacterRepeater implements StageCharacter {
                 }
         )));
         repeater.getTimeline().setCycleCount(Timeline.INDEFINITE);
+        playPeaBefore();
         repeater.getTimeline().play();
     }
 
@@ -31,9 +32,9 @@ public class StageCharacterRepeater implements StageCharacter {
         if (repeater.getTimeline() != null) {
             repeater.getTimeline().stop();
         }
-        if (repeater.getListTimelinePea() != null) {
-            for (Timeline timeline : repeater.getListTimelinePea()) {
-                timeline.stop();
+        if (repeater.getListPea() != null) {
+            for (Pea p : repeater.getListPea()) {
+                p.stop();
             }
         }
     }
@@ -43,9 +44,9 @@ public class StageCharacterRepeater implements StageCharacter {
         if (repeater.getTimeline() != null) {
             repeater.getTimeline().pause();
         }
-        if (repeater.getListTimelinePea() != null) {
-            for (Timeline timeline : repeater.getListTimelinePea()) {
-                timeline.pause();
+        if (repeater.getListPea() != null) {
+            for (Pea p : repeater.getListPea()) {
+                p.pause();
             }
         }
     }
@@ -55,9 +56,13 @@ public class StageCharacterRepeater implements StageCharacter {
         if (repeater.getTimeline() != null) {
             repeater.getTimeline().play();
         }
-        if (repeater.getListTimelinePea() != null) {
-            for (Timeline timeline : repeater.getListTimelinePea()) {
-                timeline.play();
+        playPeaBefore();
+    }
+    // Play pea before
+    private void playPeaBefore() {
+        if (repeater.getListPea() != null) {
+            for (Pea p : repeater.getListPea()) {
+                p.start();
             }
         }
     }

@@ -1,8 +1,9 @@
-package src.Model.Plants.Pea.PeaShooter;
+package src.Model.Plants.PeaShooter;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+import src.Model.Plants.Pea.Pea;
 import src.Model.StageCharacter;
 
 public class StageCharacterPeaShooter implements StageCharacter {
@@ -22,6 +23,7 @@ public class StageCharacterPeaShooter implements StageCharacter {
                 }
         )));
         peaShooter.getTimeline().setCycleCount(Timeline.INDEFINITE); // Số lượng đạn bắt ra là vô hạn, cứ có Zombie là bắn
+        playPeaBefore();
         peaShooter.getTimeline().play();
     }
 
@@ -30,9 +32,9 @@ public class StageCharacterPeaShooter implements StageCharacter {
         if (peaShooter.getTimeline() != null) {
             peaShooter.getTimeline().stop();
         }
-        if (peaShooter.getListTimelinePea() != null) {
-            for (Timeline timeline : peaShooter.getListTimelinePea()) {
-                timeline.stop();
+        if (peaShooter.getListPea() != null) {
+            for (Pea pea : peaShooter.getListPea()) {
+                pea.stop();
             }
         }
     }
@@ -42,9 +44,9 @@ public class StageCharacterPeaShooter implements StageCharacter {
         if (peaShooter.getTimeline() != null) {
             peaShooter.getTimeline().pause();
         }
-        if (peaShooter.getListTimelinePea() != null) {
-            for (Timeline timeline : peaShooter.getListTimelinePea()) {
-                timeline.pause();
+        if (peaShooter.getListPea() != null) {
+            for (Pea pea : peaShooter.getListPea()) {
+                pea.pause();
             }
         }
     }
@@ -54,9 +56,13 @@ public class StageCharacterPeaShooter implements StageCharacter {
         if (peaShooter.getTimeline() != null) {
             peaShooter.getTimeline().play();
         }
-        if (peaShooter.getListTimelinePea() != null) {
-            for (Timeline timeline : peaShooter.getListTimelinePea()) {
-                timeline.play();
+        playPeaBefore();
+    }
+    // Play pea before
+    private void playPeaBefore() {
+        if (peaShooter.getListPea() != null) {
+            for (Pea pea : peaShooter.getListPea()) {
+                pea.start();
             }
         }
     }

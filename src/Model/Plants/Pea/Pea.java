@@ -4,7 +4,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Controller.GameMainController;
+import src.Model.Act;
 import src.Model.GameElements;
+import src.Model.StageCharacter;
 import src.Model.Zombies.Zombie;
 
 import java.util.List;
@@ -19,63 +21,44 @@ public class Pea extends GameElements {
     private static int HEIGHT = 20;
     private Timeline timeline;
     // Var
-    private List<Timeline> listTimelinePea = null;
-    private Zombie z;
-
+    private List<Pea> listPea = null; // Danh sách đạn của đối tượng đang xử dụng nó
+    private Act act;
+    private StageCharacter stageCharacter;
     // Constructor
     public Pea(double x, double y, int lane,
-               List<Timeline> listTimelinePea) {
+               List<Pea> listPea) {
         super(x, y, PATH, WIDTH, HEIGHT, lane);
 
         createImageView();
         
-        this.listTimelinePea = listTimelinePea;
+        this.listPea = listPea;
+        act = new ActPea(this);
+        stageCharacter = new StageCharacterPea(this);
     }
-    // Start tấn công
+    
     public void start() {
-        timeline = new Timeline(new KeyFrame(Duration.millis(SPEED_ATTACK),
-                e -> {
-                    movePea();
-                }
-        ));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-        listTimelinePea.add(timeline);
+        getStageCharacter().start();
     }
-    // Di chuyển đạn
-    private void movePea() {
-        // Nếu đạn ra khỏi màn hình thì xóa đạn
-        if (getX() < 1010) {
-            setX(getX() + SPEED);
-        }
-        else {
-            remove();
-        }
-        attack();
+    // Stop
+    
+    public void stop() {
+        getStageCharacter().stop();
     }
-    // Xử lí khi đạn chạm vào zombie
-    private void attack() {
-        synchronized ((GameMainController.getGameData()).getZombieAlive()) {
-            if ((GameMainController.getGameData()).getZombieAlive() != null && (GameMainController.getGameData()).getZombieAlive().size() > 0) {
-                for (int i = 0; i < (GameMainController.getGameData()).getZombieAlive().size(); i++) {
-                    Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
-                    if (z.getLane() == getLane() && getX() - z.getX() <= 30 && getX() - z.getX() >= 0) {
-                        z.setHealth(z.getHealth() - DAMAGE);
-                        remove();
-                        System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
-                        if (z.getHealth() <= 0) {
-                            z.removeImageView();
-                            (GameMainController.getGameData()).getZombieAlive().remove(z);
-                        }
-                    }
-                }
-            }
-        }
+    // Pause tấn công
+    
+    public void pause() {
+        getStageCharacter().pause();
     }
+    // Continue tấn công
+    
+    public void resume() {
+        getStageCharacter().resume();
+    }
+    
     // Xóa đạn
     public void remove() {
         removeImageView();
-        listTimelinePea.remove(timeline);
+        listPea.remove(this);
         timeline.stop();
     }
 
@@ -117,11 +100,27 @@ public class Pea extends GameElements {
         this.timeline = timeline;
     }
 
-    public List<Timeline> getListTimelinePea() {
-        return listTimelinePea;
+    public static int getSpeedAttack() {
+        return SPEED_ATTACK;
     }
 
-    public void setListTimelinePea(List<Timeline> listTimelinePea) {
-        this.listTimelinePea = listTimelinePea;
+    public static void setSpeedAttack(int speedAttack) {
+        SPEED_ATTACK = speedAttack;
+    }
+
+    public Act getAct() {
+        return act;
+    }
+
+    public void setAct(Act act) {
+        this.act = act;
+    }
+
+    public StageCharacter getStageCharacter() {
+        return stageCharacter;
+    }
+
+    public void setStageCharacter(StageCharacter stageCharacter) {
+        this.stageCharacter = stageCharacter;
     }
 }
