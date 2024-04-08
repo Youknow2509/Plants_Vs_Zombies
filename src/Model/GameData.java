@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import src.Help.CardPlants.CardPlant;
+import src.Help.LawnMower.LawnMower;
 import src.Model.Plants.Plant;
 import src.Model.Plants.Sun.DropSun;
 import src.Model.Zombies.Zombie;
@@ -15,6 +16,7 @@ public class GameData {
     private List<Plant> listPlant = null;
     private List<Zombie> zombieAlive = null;
     private List<ZombieSpawner> zombieSpawner = null;
+    private List<LawnMower> lawnMowers = null;
     private DropSun dropSun = null;
     private int sun = 0;
     private int tick = 0;
@@ -27,10 +29,11 @@ public class GameData {
         this.listPlant = Collections.synchronizedList(new ArrayList<Plant>()); // Xử dụng Collections.synchronizedList để đồng bộ dữ liệu 
         this.zombieAlive = Collections.synchronizedList(new ArrayList<Zombie>());;
         this.zombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());
+        this.lawnMowers = new ArrayList<LawnMower>();
         this.dropSun = new DropSun();
     }
     public GameData(List<CardPlant> cardPlantList, List<Plant> listPlant, List<Zombie> zombieAlive
-            , List<ZombieSpawner> zombieSpawner, int sun, int tick, int durationDropSun) {
+            , List<ZombieSpawner> zombieSpawner, List<LawnMower> lawnMowers, int sun, int tick, int durationDropSun) {
         super();
         this.cardPlantList = cardPlantList;
         this.listPlant = listPlant;
@@ -39,6 +42,7 @@ public class GameData {
         this.sun = sun;
         this.tick = tick;
         this.durationDropSun = durationDropSun;
+        this.lawnMowers = lawnMowers;
         this.dropSun = new DropSun();
         loadSumZombie();
     }
@@ -136,5 +140,13 @@ public class GameData {
 
     public void setSumZombie(int sumZombie) {
         this.sumZombie = sumZombie;
+    }
+
+    public List<LawnMower> getLawnMowers() {
+        return lawnMowers;
+    }
+
+    public void setLawnMowers(List<LawnMower> lawnMowers) {
+        this.lawnMowers = lawnMowers;
     }
 }

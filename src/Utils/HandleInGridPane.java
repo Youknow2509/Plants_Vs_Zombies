@@ -25,11 +25,11 @@ public class HandleInGridPane {
         // Tạo một ImageView để hiển thị hình ảnh
         p.setImageView(new ImageView(image));
         (p.getImageView()).setImage(image);
-        // Thêm hình ảnh vào GridPane
+        // Thêm hình ảnh vào NodeGridPane
         (GameMainController.getGridPane()).add(p.getImageView(), p.getCol(), p.getRow(), 1, 1);
     }
 
-    // Xoa anh cay tren GridPane
+    // Xoa anh cay tren NodeGridPane
     public void removeImageViewInGridPane() {
         p.getImageView().setDisable(true);
         p.getImageView().setVisible(false);

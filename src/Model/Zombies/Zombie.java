@@ -7,6 +7,8 @@ import src.Model.StageCharacter;
 
 public class Zombie extends GameElements {
     // Var
+    private String path_run = "";
+    private String path_eat = "";
     private int health = 0;
     private int dame = 0;
     private int move = 0;
@@ -23,7 +25,7 @@ public class Zombie extends GameElements {
         setX(975);
     }
     public Zombie(double x, double y, String path, int width, int height, int lane
-            , int health, int dame, int speedMove, int speedAttack, int move) {
+            , int health, int dame, int speedMove, int speedAttack, int move, String path_eat) {
         super(x, y, path, width, height, lane);
 
         this.health = health;
@@ -31,7 +33,8 @@ public class Zombie extends GameElements {
         this.speedMove = speedMove;
         this.speedAttack = speedAttack;
         this.move = move;
-
+        this.path_run = path;
+        this.path_eat = path_eat;
     }
     // Start
     public void start() {
@@ -146,5 +149,21 @@ public class Zombie extends GameElements {
 
     public void setStageCharacter(StageCharacter stageCharacter) {
         this.stageCharacter = stageCharacter;
+    }
+
+    public String getPath_run() {
+        return path_run;
+    }
+
+    public void setPath_run(String path_run) {
+        this.path_run = path_run;
+    }
+
+    public String getPath_eat() {
+        return path_eat;
+    }
+
+    public void setPath_eat(String path_eat) {
+        this.path_eat = path_eat;
     }
 }

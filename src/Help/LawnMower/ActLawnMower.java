@@ -48,7 +48,7 @@ public class ActLawnMower {
     // Move
     private void move() {
         lawnMower.getTimeline().stop();
-        //changeImageActive();
+        lawnMower.changeImageView(lawnMower.getPathImageActive());
         lawnMower.setTimeline(new Timeline(new KeyFrame(Duration.millis(60)
                 , e -> {
                     if (lawnMower.getX() < 1010) {
@@ -80,13 +80,6 @@ public class ActLawnMower {
                 }
             }
         }
-    }
-
-    // Change image when active
-    private void changeImageActive() {
-        lawnMower.removeImageView();
-        lawnMower.setPath(LawnMower.getPathImageActive());
-        lawnMower.createImageView();
     }
 
     // Getter and Setter

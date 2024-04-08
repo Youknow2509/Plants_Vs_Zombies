@@ -1,6 +1,7 @@
 package src.DataBase.Handle;
 
 import src.Help.CardPlants.FactoryCardPlant;
+import src.Help.LawnMower.FactoryLawnMower;
 import src.Model.GameData;
 import src.Model.ZombieSpawner;
 
@@ -52,7 +53,10 @@ public class HandleLoadLevel {
                 gameData.setCardPlantList(factoryCardPlant.getListCardPlant());
             }
             // Load ZombieSpawner
-            while ((line = bufferedReader.readLine()) != null) {
+            line = bufferedReader.readLine();
+            int countZombieSpawner = Integer.parseInt(line);
+            while (countZombieSpawner > 0 && (line = bufferedReader.readLine()) != null) {
+                countZombieSpawner--;
                 lLine = line.split(", ");
                 if (lLine.length == 3) {
                     gameData.addZombieSpawner(
@@ -61,6 +65,12 @@ public class HandleLoadLevel {
                                     lLine[2].toUpperCase())
                     );
                 }
+            }
+            // Load LawnMower
+            line = bufferedReader.readLine();
+            lLine = line.split(", ");
+            for (int i = 0; i < lLine.length; i++) {
+                gameData.getLawnMowers().add(FactoryLawnMower.createLawnMower(Integer.parseInt(lLine[i])));
             }
         } catch (Exception e) {
             e.printStackTrace();

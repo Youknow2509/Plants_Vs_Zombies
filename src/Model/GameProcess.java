@@ -34,7 +34,7 @@ public class GameProcess {
             } else {
                 gameData.setDurationDropSun(gameData.getDurationDropSun() - 1);
             }
-            // Xử lí tạo ra zombie
+            // Xử lí tạo ra zombie sản sinh
             while (gameData.getZombieSpawner().size() > 0 && gameData.getZombieSpawner().get(0).getTime() == gameData.getTick()) {
                 ZombieSpawner zombieSpawner = gameData.getZombieSpawner().get(0);
                 Zombie zombie = zombieSpawner.getZombie();
@@ -62,6 +62,7 @@ public class GameProcess {
         }
         ));
         timelineGame.setCycleCount(Timeline.INDEFINITE);
+        loadGame();
         timelineGame.play();
     }
 
@@ -118,7 +119,25 @@ public class GameProcess {
 
     // Load Game
     public void loadGame() {
-        // TODO Load Game
+        // Tải các thẻ cây
+        for (int i = 0; i < gameData.getCardPlantList().size(); i++) {
+            gameData.getCardPlantList().get(i).createImage();
+        }
+        // Tải các zombie đang tồn tại
+        for (int i = 0; i < gameData.getZombieAlive().size(); i++) {
+            gameData.getZombieAlive().get(i).createImageView();
+            gameData.getZombieAlive().get(i).start();
+        }
+        // Tải các thực thể cây đang tồn tại
+        for (int i = 0; i < gameData.getListPlant().size(); i++) {
+            gameData.getListPlant().get(i).createImageView();
+            gameData.getListPlant().get(i).start();
+        }
+        // Xử lí lấy ra LawnMower
+        for (int i = 0; i < gameData.getLawnMowers().size(); i++) {
+            gameData.getLawnMowers().get(i).createImageView();
+            gameData.getLawnMowers().get(i).start();
+        }
     }
 
     // Save Game

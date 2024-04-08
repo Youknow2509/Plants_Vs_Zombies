@@ -24,9 +24,6 @@ public class LawnMower extends GameElements {
         super(x, y, PATH_IMAGE, WIDTH, HEIGHT, lane);
         this.actLawnMower = new ActLawnMower(this);
         this.stageLawnMower = new StageLawnMower(this);
-
-        createImageView();
-        start(); // Thuc hien timeline lang nghe ngay khi duoc khoi tao
     }
     // Start
     public void start() {

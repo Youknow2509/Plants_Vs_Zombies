@@ -39,6 +39,13 @@ public abstract class GameElements {
         imageView.setVisible(false);
         GameMainController.getAnchorPane().getChildren().remove(this.imageView);
     }
+    // Change ImageView
+    public void changeImageView(String path) {
+        this.path = path;
+        this.image = new Image(path, width, height, false, false);
+        this.imageView.setImage(this.image);
+    }
+
     // Getter and setter
     public double getX() {
         return x;

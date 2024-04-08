@@ -26,7 +26,7 @@ public class GameMainController {
     @FXML
     private AnchorPane GamePlayRoot;
     @FXML
-    private GridPane lawnGrid; // GridPane bãi cỏ
+    private GridPane lawnGrid; // NodeGridPane bãi cỏ
     @FXML
     private ImageView menu;
     @FXML
@@ -55,6 +55,10 @@ public class GameMainController {
     @FXML
     public void initialize(GameData g) {
         gameData = g;
+        // Gán giá trị cho các biến static nắm giữ các element - để dễ dàng truy cập từ các class khác ( Thêm, xoá hình ảnh, v.v)
+        anchorPane = GamePlayRoot;
+        gridPane = lawnGrid;
+        progressBar = progressbarGame;
         // Tải dữ liệu của Game vào Controller
         gameProcess = new GameProcess(gameData);
         gameProcess.startGame();
@@ -62,30 +66,15 @@ public class GameMainController {
         sun = gameData.getSun();
         sunCount.setText(String.valueOf(sun));
         sunDisplay = sunCount;
-        // Gắn sự kiện cho GridPane
+        // Gắn sự kiện cho NodeGridPane
         addHandleGridPane();
         // Load Shovel to View - Tạo xẻng và gắn sự kiện cho xẻng
         shovel.setImageView(btnShovel);
         btnShovel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             shovel.handleClick();
         });
-        // Gán giá trị cho các biến static nắm giữ các element - để dễ dàng truy cập từ các class khác ( Thêm, xoá hình ảnh, v.v)
-        anchorPane = GamePlayRoot;
-        gridPane = lawnGrid;
-        progressBar = progressbarGame;
-        // Tải các thẻ cây vào View
-        for (CardPlant cardPlant : gameData.getCardPlantList()) {
-            cardPlant.createImage();
-        }
-        // Tải LawnMower
-        // todo test
-        for (int i = 0; i < 5; i++) {
-            FactoryLawnMower.createLawnMower(i);
-        }
-
     }
 // Handle action in view
-
     // Them su kien cho cac o trong lawnGrid
     private void addHandleGridPane() {
         List<Node> lNode = lawnGrid.getChildren();

@@ -5,8 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import src.Controller.GameMainController;
-import src.DataBase.Handle.Handle;
-import src.DataBase.Handle.HandleLoadLevel;
 import src.Model.GameData;
 
 import java.io.IOException;

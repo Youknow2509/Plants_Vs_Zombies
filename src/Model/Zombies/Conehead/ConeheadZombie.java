@@ -12,20 +12,21 @@ public class ConeheadZombie extends Zombie { // Todo format lại code
     private static final int MOVE = 1;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 130;
-    private static final String PATH = "Assets/images/Zombies/ConeheadZombie.gif";
+    private static final String PATH_RUN = "Assets/images/Zombies/ConeheadZombie.gif";
+    private static final String PATH_EAT = "Assets/images/Zombies/ConeheadZombie.gif";
 
     // Constructor
     public ConeheadZombie() {
         super();
     }
     public ConeheadZombie(int lane) {
-        super(975, 0, PATH, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE);
+        super(975, 0, PATH_RUN, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, PATH_EAT);
         setY(LaneToLayoutY.zombieGetLayoutY(lane));
         setAct(new ActConeheadZombie(this));
         setStageCharacter(new StageCharacterConeheadZombie(this));
     }
     public ConeheadZombie(double x, double y, int lane) {
-        super(x, y, PATH, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE);
+        super(x, y, PATH_RUN, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, PATH_EAT);
         setAct(new ActConeheadZombie(this));
         setStageCharacter(new StageCharacterConeheadZombie(this));
         createImageView();

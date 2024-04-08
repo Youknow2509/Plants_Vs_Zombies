@@ -60,12 +60,12 @@ public class Plant extends GameElements {
             timeline.play();
         }
     }
-    // Tao anh cay tren GridPane
+    // Tao anh cay tren NodeGridPane
     public void createImageViewInGridPane() {
         handleInGridPane.createImageViewInGridPane();
     }
 
-    // Xoa anh cay tren GridPane
+    // Xoa anh cay tren NodeGridPane
     public void removeImageViewInGridPane() {
         handleInGridPane.removeImageViewInGridPane();
     }
