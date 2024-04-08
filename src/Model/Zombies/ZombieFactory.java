@@ -4,12 +4,12 @@ import src.Model.Zombies.Conehead.ConeheadZombie;
 import src.Model.Zombies.Normal.NormalZombie;
 
 public class ZombieFactory {
-    public Zombie createZombie(ZombieType type) {
+    public static Zombie createZombie(ZombieType type, int lane) {
         switch (type) {
-            case NORMMALZOMBIE:
-                return new NormalZombie();
+            case NORMALZOMBIE:
+                return new NormalZombie(lane);
             case CONEZOMBIE:
-                return new ConeheadZombie();
+                return new ConeheadZombie(lane);
             default:
                 return null;
         }
