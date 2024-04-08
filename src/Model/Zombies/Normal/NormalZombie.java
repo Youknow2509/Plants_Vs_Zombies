@@ -14,7 +14,6 @@ public class NormalZombie extends Zombie {
     private static final int HEIGHT = 130;
     private static final String PATH_RUN = "Assets/images/Zombies/NormalZombieRun.gif";
     private static final String PATH_EAT = "Assets/images/Zombies/NormalZombieEat.gif";
-    //
     // Constructor
     public NormalZombie() {
         super();
