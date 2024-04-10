@@ -49,7 +49,7 @@ public class HandleLoadLevel {
             lLine = line.split(", ");
             if (lLine.length > 0) {
                 FactoryListCardPlant factoryListCardPlant = new FactoryListCardPlant(lLine);
-                factoryListCardPlant.createCardPlant();
+                factoryListCardPlant.createListCardPlant();
                 gameData.setCardPlantList(factoryListCardPlant.getListCardPlant());
             }
             // Load ZombieSpawner

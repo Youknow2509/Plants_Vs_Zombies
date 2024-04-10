@@ -41,8 +41,7 @@ public class GameMainController {
     private static ProgressBar progressBar = null;
     private static GameData gameData; // Dữ liệu game
     private static int wonGame = -1; // 0: thua, 1: thắng, -1: chưa kết thúc
-    public static ImageView selectedImageView = null; // ImageView được chọn trước đó bao gồm Thẻ cây và thẻ xẻng
-    public static String pathImageViewSelected = ""; // Đường dẫn ảnh của cây được chọn
+    private static CardPlant cardPlantClicked = null; // CardPlant đang được chọn
     private static int sun = 0;
     private static Label sunDisplay;
 
@@ -95,17 +94,16 @@ public class GameMainController {
         // Lấy ra vị trí ô đang được click
         Integer x = lawnGrid.getColumnIndex(source);
         Integer y = lawnGrid.getRowIndex(source);
-
         // Lay ra loai cay dang duoc chon
         PlantType type = null;
-        if (pathImageViewSelected != "") {
-            type = PlantType.valueOf(pathImageViewSelected.toUpperCase());
+        if (cardPlantClicked != null) {
+            type = PlantType.valueOf(cardPlantClicked.getName());
         }
 
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
             shovel.rmPlant(gameData.getListPlant(), x, y);
         }
-        else if (pathImageViewSelected != ""
+        else if (cardPlantClicked != null
                 && getSun() >= PlantFactory.getCost(type)) { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
            // ) {
             if (x != null && y != null) {
@@ -131,7 +129,7 @@ public class GameMainController {
 
                     setSun(sun - newPlant.getCost());
 
-                    CardPlant.setCardUnSelected();
+                    cardPlantClicked.setTimeOutToBuyPlant(10);
                 }
             }
         }
@@ -216,23 +214,6 @@ public class GameMainController {
     public static void setGameData(GameData gameData) {
         GameMainController.gameData = gameData;
     }
-
-    public static ImageView getSelectedImageView() {
-        return selectedImageView;
-    }
-
-    public static void setSelectedImageView(ImageView selectedImageView) {
-        GameMainController.selectedImageView = selectedImageView;
-    }
-
-    public static String getPathImageViewSelected() {
-        return pathImageViewSelected;
-    }
-
-    public static void setPathImageViewSelected(String pathImageViewSelected) {
-        GameMainController.pathImageViewSelected = pathImageViewSelected;
-    }
-
     public GameProcess getGameProcess() {
         return gameProcess;
     }
@@ -287,6 +268,14 @@ public class GameMainController {
 
     public static void setWonGame(int wonGame) {
         GameMainController.wonGame = wonGame;
+    }
+
+    public static CardPlant getCardPlantClicked() {
+        return cardPlantClicked;
+    }
+
+    public static void setCardPlantClicked(CardPlant cardPlantClicked) {
+        GameMainController.cardPlantClicked = cardPlantClicked;
     }
 }
 

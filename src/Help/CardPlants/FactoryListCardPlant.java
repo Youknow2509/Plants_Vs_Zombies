@@ -23,18 +23,12 @@ public class FactoryListCardPlant {
 
     // Method
     // Them the cay vao list
-    public void createCardPlant() {
+    public void createListCardPlant() {
         for (int i = 0; i < pathCardPlant.length; i++) {
             CardPlant cardPlant = FactoryCardPlant.createCardPlant(pathCardPlant[i]);
             cardPlant.setX(x);
             cardPlant.setY(y[i]);
             listCardPlant.add(cardPlant);
-        }
-    }
-    // Tao anh the cay
-    public void createImageCardPlant() {
-        for (CardPlant cardPlant : listCardPlant) {
-            cardPlant.createImage();
         }
     }
     // Getter and Setter

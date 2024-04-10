@@ -50,8 +50,9 @@ public class Shovel extends GameElements {
     // Xử lí khi click
     public void handleClick() {
 
-        CardPlant.setCardUnSelected();
-        GameMainController.selectedImageView = getImageView(); // Lưu ImageView được chọn
+        if (GameMainController.getCardPlantClicked() != null) {
+            GameMainController.getCardPlantClicked().getImageView().setOpacity(1);
+        }
 
         helpHandleClick();
     }

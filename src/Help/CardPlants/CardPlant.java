@@ -14,10 +14,13 @@ public class CardPlant {
     private final static int fitWidth = 85;
     private final static int fitHeight = 50;
 
+    private ImageView imageView;
+    private Image image;
     private double x, y;
     private boolean haveBuy = true;
     private String path;
     private String name;
+    private HandleCardPlant handleCardPlant = new HandleCardPlant(this);
 
     // Constructor
     public CardPlant() {
@@ -38,55 +41,13 @@ public class CardPlant {
     }
     // Method
     public void createImage() {
-        // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        Image image = new Image( path, width, height, false, false);
-        // Tạo một ImageView để hiển thị hình ảnh
-        ImageView imageView = new ImageView(image);
-        imageView.setImage(image);
-        // Đặt vị trí của ImageView trong AnchorPane
-        imageView.setLayoutX(x);
-        imageView.setLayoutY(y);
-        imageView.setFitWidth(fitWidth);
-        imageView.setFitHeight(fitHeight);
-        // Đặt id cho ImageView
-        imageView.setId(path.toUpperCase());
-        // Thêm sự kiện vào ImageView
-        imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-            setCardSelected(e);
-        });
-        // Thêm ImageView vào AnchorPane
-        (GameMainController.getAnchorPane()).getChildren().add(imageView);
+        handleCardPlant.creatImageView();
     }
-    // Xử lí khi click vào thẻ cây
-    public void setCardSelected(MouseEvent e) {
-        Node source = (Node) e.getSource();
-        ImageView select = (ImageView) source;
-        if (haveBuy) {
-            if (GameMainController.selectedImageView == null) {
-                disableCard(select);
-            }
-            else if (GameMainController.selectedImageView != select) {
-                GameMainController.selectedImageView.setOpacity(1);
-                disableCard(select);
-            } else {
-                setCardUnSelected();
-            }
-        }
-    }
-    private void disableCard(ImageView select) {
-        select.setOpacity(0.2);
-        GameMainController.selectedImageView = select;
-        GameMainController.setPathImageViewSelected(select.getId());
-    }
-    public static void setCardUnSelected() {
-        if (GameMainController.selectedImageView != null) {
-            GameMainController.selectedImageView.setOpacity(1);
-            GameMainController.selectedImageView = null;
-        }
-        GameMainController.setPathImageViewSelected("");
+    // Set time out to buy Plant
+    public void setTimeOutToBuyPlant(int time) {
+        handleCardPlant.setTimeOutBuyPlant(time);
     }
     // To string
-
     @Override
     public String toString() {
         return "CardPlant{" +
@@ -137,5 +98,33 @@ public class CardPlant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+    public static int getWidth() {
+        return width;
+    }
+    public static int getHeight() {
+        return height;
+    }
+    public static int getFitWidth() {
+        return fitWidth;
+    }
+    public static int getFitHeight() {
+        return fitHeight;
     }
 }
