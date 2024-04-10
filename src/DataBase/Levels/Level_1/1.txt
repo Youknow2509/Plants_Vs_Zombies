@@ -1,5 +1,5 @@
 1000, 0, 0
-SunFlower, Peashooter, Wallnut
+SunFlower, PeaShooter, WallNut
 1
 1, 0, NormalZombie
 0, 1, 2, 3, 4

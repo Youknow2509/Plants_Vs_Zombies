@@ -9,8 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import src.Help.CardPlants.CardPlant;
-import src.Help.CardPlants.FactoryCardPlant;
-import src.Help.LawnMower.FactoryLawnMower;
+import src.Help.CardPlants.FactoryListCardPlant;
 import src.Model.GameData;
 import src.Model.GameProcess;
 import src.Help.Shovel.Shovel;
@@ -50,7 +49,7 @@ public class GameMainController {
     // Variables
     private GameProcess gameProcess;
     private Shovel shovel = new Shovel();
-    private FactoryCardPlant factoryCardPlant;
+    private FactoryListCardPlant factoryListCardPlant;
     // Initialize
     @FXML
     public void initialize(GameData g) {
@@ -250,12 +249,12 @@ public class GameMainController {
         this.shovel = shovel;
     }
 
-    public FactoryCardPlant getFactoryCardPlant() {
-        return factoryCardPlant;
+    public FactoryListCardPlant getFactoryCardPlant() {
+        return factoryListCardPlant;
     }
 
-    public void setFactoryCardPlant(FactoryCardPlant factoryCardPlant) {
-        this.factoryCardPlant = factoryCardPlant;
+    public void setFactoryCardPlant(FactoryListCardPlant factoryListCardPlant) {
+        this.factoryListCardPlant = factoryListCardPlant;
     }
 
     public ProgressBar getProgressbarGame() {

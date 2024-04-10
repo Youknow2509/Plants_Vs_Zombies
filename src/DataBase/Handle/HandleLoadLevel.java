@@ -1,6 +1,6 @@
 package src.DataBase.Handle;
 
-import src.Help.CardPlants.FactoryCardPlant;
+import src.Help.CardPlants.FactoryListCardPlant;
 import src.Help.LawnMower.FactoryLawnMower;
 import src.Model.GameData;
 import src.Model.ZombieSpawner;
@@ -48,9 +48,9 @@ public class HandleLoadLevel {
             line = bufferedReader.readLine();
             lLine = line.split(", ");
             if (lLine.length > 0) {
-                FactoryCardPlant factoryCardPlant = new FactoryCardPlant(lLine);
-                factoryCardPlant.createCardPlant();
-                gameData.setCardPlantList(factoryCardPlant.getListCardPlant());
+                FactoryListCardPlant factoryListCardPlant = new FactoryListCardPlant(lLine);
+                factoryListCardPlant.createCardPlant();
+                gameData.setCardPlantList(factoryListCardPlant.getListCardPlant());
             }
             // Load ZombieSpawner
             line = bufferedReader.readLine();

@@ -15,21 +15,31 @@ public class CardPlant {
     private final static int fitHeight = 50;
 
     private double x, y;
+    private boolean haveBuy = true;
     private String path;
+    private String name;
+
     // Constructor
     public CardPlant() {
         super();
     }
-    public CardPlant(double x, double y, String path) {
+    public CardPlant(String path, String name) {
+        super();
+        this.path = path;
+        this.name = name;
+    }
+
+    public CardPlant(double x, double y, String path, String name) {
         super();
         this.x = x;
         this.y = y;
         this.path = path;
+        this.name = name;
     }
     // Method
     public void createImage() {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        Image image = new Image( "/Assets/images/Cards/" + path + ".png", width, height, false, false);
+        Image image = new Image( path, width, height, false, false);
         // Tạo một ImageView để hiển thị hình ảnh
         ImageView imageView = new ImageView(image);
         imageView.setImage(image);
@@ -51,17 +61,16 @@ public class CardPlant {
     public void setCardSelected(MouseEvent e) {
         Node source = (Node) e.getSource();
         ImageView select = (ImageView) source;
-
-        Shovel.setIsDisabled(true);
-
-        if (GameMainController.selectedImageView == null) {
-            disableCard(select);
-        }
-        else if (GameMainController.selectedImageView != select) {
-            GameMainController.selectedImageView.setOpacity(1);
-            disableCard(select);
-        } else {
-            setCardUnSelected();
+        if (haveBuy) {
+            if (GameMainController.selectedImageView == null) {
+                disableCard(select);
+            }
+            else if (GameMainController.selectedImageView != select) {
+                GameMainController.selectedImageView.setOpacity(1);
+                disableCard(select);
+            } else {
+                setCardUnSelected();
+            }
         }
     }
     private void disableCard(ImageView select) {
@@ -83,7 +92,9 @@ public class CardPlant {
         return "CardPlant{" +
                 "x=" + x +
                 ", y=" + y +
+                ", haveBuy=" + haveBuy +
                 ", path='" + path + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 
@@ -110,5 +121,21 @@ public class CardPlant {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public boolean isHaveBuy() {
+        return haveBuy;
+    }
+
+    public void setHaveBuy(boolean haveBuy) {
+        this.haveBuy = haveBuy;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

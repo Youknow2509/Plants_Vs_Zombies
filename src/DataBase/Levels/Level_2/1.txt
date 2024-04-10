@@ -1,5 +1,5 @@
 50, 0, 0
-SunFlower, Peashooter, Wallnut
+SunFlower, PeaShooter, WallNut
 47
 30, 1, NORMALZOMBIE
 60, 1, NORMALZOMBIE
