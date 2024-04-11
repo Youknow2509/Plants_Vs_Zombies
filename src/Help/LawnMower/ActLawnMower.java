@@ -53,12 +53,12 @@ public class ActLawnMower {
                 , e -> {
                     if (lawnMower.getX() < 1010) {
                         lawnMower.setX(lawnMower.getX() + lawnMower.getSpeed());
+                        attack();
                     }
                     else {
                         lawnMower.removeImageView();
                         lawnMower.getTimeline().stop();
                     }
-                    attack();
                 }
         )));
         lawnMower.getTimeline().setCycleCount(Timeline.INDEFINITE);
@@ -77,6 +77,7 @@ public class ActLawnMower {
                     // Remove zombie
                     zombie.removeImageView();
                     (GameMainController.getGameData()).getZombieAlive().remove(zombie);
+                    break; // todo
                 }
             }
         }
