@@ -2,10 +2,10 @@
 SunFlower, PeaShooter, WallNut
 6
 1, 0, NormalZombie
-5, 0, NormalZombie
-8, 0, NormalZombie
+11, 0, NormalZombie
 4, 2, NormalZombie
 9, 2, NormalZombie
-15, 0, NormalZombie
+26, 0, NormalZombie
+30, 2, NormalZombie
 0, 1, 2, 3, 4
 

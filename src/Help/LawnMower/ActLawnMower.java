@@ -30,7 +30,7 @@ public class ActLawnMower {
     }
 
     // Handle
-    private void handle() {
+    private void handle() { // Xử lý lắng nghe xem Zombie có ở trước không, nếu có sẽ đổi trạng thái di chuyển và tấn công
         synchronized (GameMainController.getGameData().getZombieAlive()) {
             for (int i = 0; i < GameMainController.getGameData().getZombieAlive().size(); i++) {
                 Zombie zombie = GameMainController.getGameData().getZombieAlive().get(i);
@@ -38,7 +38,7 @@ public class ActLawnMower {
                         && zombie.getX() - lawnMower.getX() < 35
                         && lawnMower.getX() < zombie.getX())
                 {
-                    move();
+                    attack();
                     break;
                 }
             }
@@ -47,40 +47,48 @@ public class ActLawnMower {
 
     // Move
     private void move() {
-        lawnMower.getTimeline().stop();
-        lawnMower.changeImageView(lawnMower.getPathImageActive());
-        lawnMower.setTimeline(new Timeline(new KeyFrame(Duration.millis(60)
-                , e -> {
-                    if (lawnMower.getX() < 1010) {
-                        lawnMower.setX(lawnMower.getX() + lawnMower.getSpeed());
-                        attack();
-                    }
-                    else {
-                        lawnMower.removeImageView();
-                        lawnMower.getTimeline().stop();
-                    }
-                }
-        )));
-        lawnMower.getTimeline().setCycleCount(Timeline.INDEFINITE);
-        lawnMower.getTimeline().play();
+        if (lawnMower.getX() < 1010) {
+            lawnMower.setX(lawnMower.getX() + lawnMower.getSpeed());
+        }
+        else {
+            lawnMower.removeImageView();
+            lawnMower.getTimeline().stop();
+        }
     }
 
     // Attack zombie
     private void attack() {
-        synchronized (GameMainController.getGameData().getZombieAlive()) {
-            for (int i = 0; i < GameMainController.getGameData().getZombieAlive().size(); i++) {
-                Zombie zombie = GameMainController.getGameData().getZombieAlive().get(i);
-                if (zombie.getLane() == lawnMower.getLane()
-                        && zombie.getX() - lawnMower.getX() > 10
-                        && zombie.getX() > lawnMower.getX())
-                {
-                    // Remove zombie
-                    zombie.removeImageView();
-                    (GameMainController.getGameData()).getZombieAlive().remove(zombie);
-                    break; // todo
-                }
-            }
-        }
+
+        lawnMower.getTimeline().stop();
+        lawnMower.changeImageView(lawnMower.getPathImageActive());
+        lawnMower.setTimeline(new Timeline(new KeyFrame(Duration.millis(60)
+                , e -> {
+                    synchronized (GameMainController.getGameData().getZombieAlive()) {
+                        boolean f = true;
+                        for (int i = 0; i < GameMainController.getGameData().getZombieAlive().size(); i++) {
+                            Zombie zombie = GameMainController.getGameData().getZombieAlive().get(i);
+                            if (zombie.getLane() == lawnMower.getLane()
+                                    && zombie.getX() - lawnMower.getX() <= 10
+                                    && zombie.getX() > lawnMower.getX())
+                            {
+                                // Remove zombie
+                                zombie.removeImageView();
+                                System.out.println("LawnMower: " + lawnMower.getX() + " attack zombie: " + zombie.getLane()  + " " + zombie.getX());
+                                (GameMainController.getGameData()).getZombieAlive().remove(zombie);
+
+                                f = false;
+
+                                break;
+                            }
+                        }
+                        if (f) {
+                            move();
+                        }
+                    }}
+                )
+        ));
+        lawnMower.getTimeline().setCycleCount(Timeline.INDEFINITE);
+        lawnMower.getTimeline().play();
     }
 
     // Getter and Setter
