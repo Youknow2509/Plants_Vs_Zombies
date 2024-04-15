@@ -6,6 +6,9 @@ import src.Model.GameData;
 import src.Model.ZombieSpawner;
 
 import java.io.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 
 public class HandleLoadLevel {
@@ -66,6 +69,13 @@ public class HandleLoadLevel {
                     );
                 }
             }
+            // Sort ZombieSpawner
+            Collections.sort(gameData.getZombieSpawner(), new Comparator<ZombieSpawner>() {
+                @Override
+                public int compare(ZombieSpawner o1, ZombieSpawner o2) {
+                    return o1.getTime() - o2.getTime();
+                }
+            });
             // Load LawnMower
             line = bufferedReader.readLine();
             lLine = line.split(", ");
@@ -76,7 +86,9 @@ public class HandleLoadLevel {
             e.printStackTrace();
         }
         return gameData;
-    }// Random file
+    }
+
+    // Random file
     private File randomFile(File file) {
         File [] lFIle = file.listFiles();
         Random random = new Random();

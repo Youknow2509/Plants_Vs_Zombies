@@ -23,7 +23,7 @@ public class ActNormalZombie implements Act {
         boolean flag = true;
         synchronized ((GameMainController.getGameData()).getListPlant()) {
             for (Plant p : (GameMainController.getGameData()).getListPlant()) {
-                if (p.getLane() == zombie.getLane() && zombie.getX() - p.getX() <= 30) {
+                if (p.getLane() == zombie.getLane() && zombie.getX() - p.getX() <= 30 && zombie.getX() > p.getX()) {
                     attack(p);
                     flag = false;
                     break;
