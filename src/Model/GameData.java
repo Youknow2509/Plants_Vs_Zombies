@@ -12,6 +12,8 @@ import src.Model.Zombies.Zombie;
 
 public class GameData {
 // Var
+    private static final long serialVersionUID = 1L;
+    private int ID;
     private List<CardPlant> cardPlantList = null;
     private List<Plant> listPlant = null;
     private List<Zombie> zombieAlive = null;
@@ -148,5 +150,13 @@ public class GameData {
 
     public void setLawnMowers(List<LawnMower> lawnMowers) {
         this.lawnMowers = lawnMowers;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

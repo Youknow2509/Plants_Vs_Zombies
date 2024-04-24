@@ -15,12 +15,12 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="1024.0" pickOnBounds="true">
          <image>
-            <Image url="@../../Assets/images/items/lawn_night.png" />
+            <Image url="@../../../Assets/images/items/lawn_night.png" />
          </image>
       </ImageView>
       <ImageView fx:id="menu" fitHeight="90.0" fitWidth="150.0" layoutX="-16.0" layoutY="524.0" onMouseClicked="#menuHandle" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/items/gamemenuLoader.png" />
+            <Image url="@../../../Assets/images/items/gamemenuLoader.png" />
          </image>
       </ImageView>
       <Label fx:id="sunCount" layoutX="70.0" layoutY="6.0" mouseTransparent="true" prefHeight="60.0" prefWidth="123.0" text="50" textFill="WHITE">
@@ -30,12 +30,12 @@
       </Label>
       <ImageView fitHeight="50.0" fitWidth="220.0" layoutX="197.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/items/progressbar.png" />
+            <Image url="@../../../Assets/images/items/progressbar.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/items/Sun.png" />
+            <Image url="@../../../Assets/images/items/Sun.png" />
          </image>
       </ImageView>
       <ProgressBar fx:id="progressbarGame" layoutX="207.0" layoutY="23.0" opacity="0.8" prefHeight="13.0" prefWidth="201.0" progress="0.8" />
@@ -108,12 +108,12 @@
       </GridPane>
       <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="399.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/items/Flag.png" />
+            <Image url="@../../../Assets/images/items/Flag.png" />
          </image>
       </ImageView>
       <ImageView fx:id="btnShovel" fitHeight="45.0" fitWidth="45.0" layoutX="455.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Assets/images/items/Shovel.png" />
+            <Image url="@../../../Assets/images/items/Shovel.png" />
          </image>
       </ImageView>
    </children>

@@ -1,5 +1,5 @@
 1000, 0, 0
-SunFlower, PeaShooter, WallNut
+SunFlower, PeaShooter, WallNut, Repeater
 6
 1, 0, NormalZombie
 11, 0, NormalZombie

@@ -13,7 +13,7 @@ public class main extends Application {
         String title = "Plants vs Zombies";
         int width = 1024;
         int height = 600;
-        String path = "/src/View/GameMain.fxml";
+        String path = "/src/View/Game/GameMain.fxml";
         ChangeScene changeScene = new ChangeScene(primaryStage, title, width, height, path);
         HandleLoadLevel handleLoadLevel = new HandleLoadLevel(1);
         changeScene.changeToGame(handleLoadLevel.loadLevel());

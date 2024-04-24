@@ -46,7 +46,7 @@ public class ChangeScene {
     }
     public void changeToGame(GameData gameData) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/GameMain.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/Game/GameMain.fxml"));
             Parent root = loader.load();
             GameMainController gameMainController = loader.getController();
             gameMainController.initialize(gameData);
