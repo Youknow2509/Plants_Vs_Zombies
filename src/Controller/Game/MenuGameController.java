@@ -31,6 +31,7 @@ public class MenuGameController {
         this.gameProcess = gameProcess;
         //
         gameProcess.pauseGame();
+        //
     }
 
     //

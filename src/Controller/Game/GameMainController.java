@@ -154,6 +154,11 @@ public class GameMainController {
             Stage popupStage = new Stage();
             // popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(root));
+
+            (popupStage.getScene().getWindow()).setOnCloseRequest(e -> {
+                gameProcess.resumeGame();
+            });
+
             popupStage.showAndWait();
             popupStage.centerOnScreen();
             popupStage.setResizable(false);
