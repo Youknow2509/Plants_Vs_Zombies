@@ -1,5 +1,6 @@
 
 # TODO-List
+- [x] **Stage THread sunflower - sun**
 - [x] **Menu Game**
 - [x] **Level**
 - [x] **Save**
