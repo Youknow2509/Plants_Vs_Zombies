@@ -6,6 +6,8 @@ import javafx.util.Duration;
 import src.Model.GameElements;
 import src.Model.Plants.Plant;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import src.Config.Config;
 
@@ -13,10 +15,12 @@ public class DropSun extends Plant {
     // Var infomation drop sun
     private static final int TIMEOUT_DROPSUN = 14000;
     // Var of
+    private List<Timeline> listTlSun;
 
     // Constructor
     public DropSun(){
         super();
+        listTlSun = new ArrayList<Timeline>();
     }
     // Khởi tạo Sun rơi random sau thời gian random và vị trí random
     public void CreatSunDrop() {
@@ -26,9 +30,10 @@ public class DropSun extends Plant {
                     int x = Config.getRandom().nextInt(665) + 320;
                     int lane = Config.getRandom().nextInt(5);
 
-                    Sun sun = new Sun(x, 0, lane);
+                    Sun sun = new Sun(x, 0, lane, listTlSun);
 
                     sun.CreatSunDrop();
+                    listTlSun.add(sun.getTlSun());
                 })
         ));
         getTimeline().play();
@@ -39,4 +44,52 @@ public class DropSun extends Plant {
         int time = Config.getRandom().nextInt(16) + 8;
         return time;
     }
+
+    // Stage
+    @Override
+    public void start() {
+        if (getTimeline() != null) {
+            getTimeline().play();
+        }
+        if (listTlSun != null) {
+            for (Timeline tlSun : listTlSun) {
+                tlSun.play();
+            }
+        }
+    }
+    @Override
+    public void stop() {
+        if (getTimeline() != null) {
+            getTimeline().stop();
+        }
+        if (listTlSun != null) {
+            for (Timeline tlSun : listTlSun) {
+                tlSun.stop();
+            }
+        }
+    }
+    @Override
+    public void pause() {
+        if (getTimeline() != null) {
+            getTimeline().pause();
+        }
+        if (listTlSun != null) {
+            for (Timeline tlSun : listTlSun) {
+                tlSun.pause();
+            }
+        }
+    }
+    @Override
+    public void resume() {
+        if (getTimeline() != null) {
+            getTimeline().play();
+        }
+        if (listTlSun != null) {
+            for (Timeline tlSun : listTlSun) {
+                tlSun.play();
+            }
+        }
+    }
+
+
 }

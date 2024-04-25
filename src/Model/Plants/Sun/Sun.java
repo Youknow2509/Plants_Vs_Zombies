@@ -8,6 +8,8 @@ import src.Controller.Game.GameMainController;
 import src.Model.GameElements;
 import src.Utils.LaneToLayoutY;
 
+import java.util.List;
+
 public class Sun extends GameElements {
     // Var infomation of sun
     private static final String PATH = "/Assets/images/items/Sun.png";
@@ -22,12 +24,12 @@ public class Sun extends GameElements {
     private int layoutYEnd = 0;
     private int timeout = 0;
     private Timeline tlSun = null;
-
+    private List<Timeline> listTlSun;
     // Constructor
     public Sun() {
         super();
     }
-    public Sun(int x, int y, int lane) {
+    public Sun(int x, int y, int lane , List<Timeline> listTlSun) {
         super(x, y, PATH, WIDTH, HEIGHT, lane);
         this.lane = lane;
         this.layoutYEnd = LaneToLayoutY.sunGetLayoutY(lane);
@@ -45,7 +47,7 @@ public class Sun extends GameElements {
     }
 
     // Tạo sun từ cây
-    public void flowerCreateSun() {
+    public void flowerCreateSun() { // todo stop drop sun
         timeout = TIMEOUT_FLOWERSUN;
         createImageView();
 
@@ -99,5 +101,48 @@ public class Sun extends GameElements {
         });
 
         th[0].start();
+    }
+
+    // Getter - Setter
+    @Override
+    public int getLane() {
+        return lane;
+    }
+
+    @Override
+    public void setLane(int lane) {
+        this.lane = lane;
+    }
+
+    public int getLayoutXEnd() {
+        return layoutXEnd;
+    }
+
+    public void setLayoutXEnd(int layoutXEnd) {
+        this.layoutXEnd = layoutXEnd;
+    }
+
+    public int getLayoutYEnd() {
+        return layoutYEnd;
+    }
+
+    public void setLayoutYEnd(int layoutYEnd) {
+        this.layoutYEnd = layoutYEnd;
+    }
+
+    public int getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
+    }
+
+    public Timeline getTlSun() {
+        return tlSun;
+    }
+
+    public void setTlSun(Timeline tlSun) {
+        this.tlSun = tlSun;
     }
 }

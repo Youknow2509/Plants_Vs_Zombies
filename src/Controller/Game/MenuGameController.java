@@ -49,5 +49,6 @@ public class MenuGameController {
     public void quayLaiHome(ActionEvent event) {
         // todo
         System.out.println("Clicked Quay Lai Home");
+        System.exit(0);
     }
 }
