@@ -3,7 +3,7 @@ package src.Help.LawnMower;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 import src.Model.Zombies.Zombie;
 
 public class ActLawnMower {

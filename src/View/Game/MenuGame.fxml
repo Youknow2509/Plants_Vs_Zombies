@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="hBox" alignment="CENTER" maxHeight="300.0" maxWidth="250.0" minHeight="300.0" minWidth="250.0" prefHeight="300.0" prefWidth="250.0" styleClass="menuBG" stylesheets="@../CSS/MenuGame.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Game.MenuGameController">
+    <children>
+        <VBox alignment="CENTER" maxHeight="211.0" maxWidth="110.0" minHeight="211.0" minWidth="110.0" prefHeight="211.0" prefWidth="110.0" spacing="25.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Button fx:id="tiepTuc" layoutX="-6.0" layoutY="3.0" maxHeight="55.0" maxWidth="130.0" minHeight="55.0" minWidth="130.0" mnemonicParsing="false" onAction="#tiepTuc" prefHeight="55.0" prefWidth="130.0" text="Tiếp Tục" VBox.vgrow="ALWAYS">
+                    <styleClass>
+                        <String fx:value="menu" />
+                        <String fx:value="menuText" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="luu" layoutX="-6.0" layoutY="3.0" maxHeight="55.0" maxWidth="130.0" minHeight="55.0" minWidth="130.0" mnemonicParsing="false" onAction="#luu" prefHeight="55.0" prefWidth="130.0" text="Lưu Game" VBox.vgrow="ALWAYS">
+                    <styleClass>
+                        <String fx:value="menu" />
+                        <String fx:value="menuText" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="quayLaiHome" layoutX="-6.0" layoutY="3.0" maxHeight="55.0" maxWidth="130.0" minHeight="55.0" minWidth="130.0" mnemonicParsing="false" onAction="#quayLaiHome" prefHeight="55.0" prefWidth="130.0" text="Quay Lại" VBox.vgrow="ALWAYS">
+                    <styleClass>
+                        <String fx:value="menu" />
+                        <String fx:value="menuText" />
+                    </styleClass>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</HBox>

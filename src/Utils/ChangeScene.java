@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 import src.Model.GameData;
 
 import java.io.IOException;
@@ -37,7 +37,8 @@ public class ChangeScene {
             stage.setScene(scene);
             stage.setTitle(title);
             stage.show();
-
+            stage.setResizable(false);
+            stage.centerOnScreen();
         } catch (IOException e) {
             System.out.println("Loi khi load file: " + e);
             e.printStackTrace();

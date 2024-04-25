@@ -1,6 +1,6 @@
 package src.Model.Zombies.Normal;
 
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 import src.Model.Act;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;

@@ -2,7 +2,7 @@ package src.Utils;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 import src.Model.Plants.Plant;
 
 public class HandleInGridPane {

@@ -1,13 +1,18 @@
-package src.Controller;
+package src.Controller.Game;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import src.Help.CardPlants.CardPlant;
 import src.Help.CardPlants.FactoryListCardPlant;
 import src.Model.GameData;
@@ -18,6 +23,7 @@ import src.Model.Plants.PlantFactory;
 import src.Model.Plants.PlantType;
 
 
+import java.io.IOException;
 import java.util.List;
 
 public class GameMainController {
@@ -136,10 +142,24 @@ public class GameMainController {
     }
 
     // Menu handle
-    public void menuHandle(MouseEvent e) {
-        // TODO tạo  menu cho một game
-        System.out.println("Menu clicked");
-        System.exit(0);
+    public void menuHandle(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/Game/MenuGame.fxml"));
+            Parent root = loader.load();
+
+            MenuGameController menuController = loader.getController();
+
+            menuController.initialize((Stage) anchorPane.getScene().getWindow(), gameProcess);
+
+            Stage popupStage = new Stage();
+            // popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(root));
+            popupStage.showAndWait();
+            popupStage.centerOnScreen();
+            popupStage.setResizable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 // Getter and setter

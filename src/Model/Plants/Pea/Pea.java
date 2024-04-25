@@ -1,13 +1,9 @@
 package src.Model.Plants.Pea;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.util.Duration;
-import src.Controller.GameMainController;
 import src.Model.Act;
 import src.Model.GameElements;
 import src.Model.StageCharacter;
-import src.Model.Zombies.Zombie;
 
 import java.util.List;
 

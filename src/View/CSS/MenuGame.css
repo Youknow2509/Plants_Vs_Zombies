@@ -1,0 +1,39 @@
+
+.menuBG {
+    -fx-padding: 6px 5px 5px 5px;
+    -fx-alignment: center;
+    -fx-background-radius: 62px;
+    -fx-background-color: #DBE755;
+}
+
+.flex {
+    -fx-pref-width: 110px;
+        -fx-pref-height: 211px;
+        -fx-padding: 3px 0px 2px 0px;
+        -fx-alignment: center;
+        -fx-hgap: 10px;
+        -fx-vgap: 10px;
+}
+
+.menu {
+    -fx-padding: 15px 20px;
+    -fx-alignment: center;
+    -fx-background-radius: 20px;
+    -fx-background-color: #D9D9D9;
+}
+
+.menu:hover {
+    -fx-background-color: #BDBDBD;
+}
+.menu:pressed {
+    -fx-background-color: #FFF;
+}
+
+.menuText {
+    -fx-text-fill: #000;
+    -fx-alignment: center;
+    -fx-font-family: "Inter";
+    -fx-font-size: 20px;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
+}

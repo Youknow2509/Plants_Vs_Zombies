@@ -8,9 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import src.Controller.GameMainController;
-
-import java.util.Timer;
+import src.Controller.Game.GameMainController;
 
 public class HandleCardPlant {
     // Var

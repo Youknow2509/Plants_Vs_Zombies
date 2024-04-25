@@ -1,6 +1,6 @@
 package src.Model.Plants.PeaShooter;
 
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 import src.Model.Act;
 import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;

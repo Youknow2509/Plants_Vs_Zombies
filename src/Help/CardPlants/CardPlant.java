@@ -1,11 +1,7 @@
 package src.Help.CardPlants;
 
-import javafx.scene .Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import src.Controller.GameMainController;
-import src.Help.Shovel.Shovel;
 
 public class CardPlant {
     // Var

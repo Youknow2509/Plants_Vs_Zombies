@@ -3,10 +3,8 @@ package src.Model;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import src.Controller.GameMainController;
-import src.Model.Plants.Pea.Pea;
+import src.Controller.Game.GameMainController;
 import src.Model.Plants.Plant;
-import src.Model.Plants.Sun.DropSun;
 import src.Model.Zombies.Zombie;
 public class GameProcess {
     // Variables

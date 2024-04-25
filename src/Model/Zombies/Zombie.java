@@ -46,22 +46,12 @@ public class Zombie extends GameElements {
     }
     // Pause tấn công
     public void pause() {
-        if (timeline != null) {
-            timeline.stop();
-        }
-        if (timeline != null) {
-            timeline.stop();
-        }
+
     }
 
     // Resume tấn công
     public void resume() {
-        if (timeline != null) {
-            timeline.play();
-        }
-        if (timeline != null) {
-            timeline.play();
-        }
+
     }
 
     // Remove image view of zombie

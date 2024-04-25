@@ -1,10 +1,9 @@
 package src.Help.Shovel;
 
 
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 import src.Model.GameElements;
 import src.Model.Plants.Plant;
-import src.Help.CardPlants.CardPlant;
 
 import java.util.List;
 

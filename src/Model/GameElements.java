@@ -2,7 +2,7 @@ package src.Model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 
 public abstract class GameElements {
     // Variables

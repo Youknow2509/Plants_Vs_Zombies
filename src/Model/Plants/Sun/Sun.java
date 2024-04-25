@@ -4,7 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.util.Duration;
-import src.Controller.GameMainController;
+import src.Controller.Game.GameMainController;
 import src.Model.GameElements;
 import src.Utils.LaneToLayoutY;
 
