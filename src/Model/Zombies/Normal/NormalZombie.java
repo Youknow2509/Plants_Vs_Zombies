@@ -1,5 +1,6 @@
 package src.Model.Zombies.Normal;
 
+import src.Config.Path;
 import src.Model.Zombies.Zombie;
 import src.Utils.LaneToLayoutY;
 
@@ -12,21 +13,20 @@ public class NormalZombie extends Zombie {
     private static final int MOVE = 10;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 130;
-    private static final String PATH_RUN = "Assets/images/Zombies/NormalZombieRun.gif";
-    private static final String PATH_EAT = "Assets/images/Zombies/NormalZombieEat.gif";
+
     // Constructor
     public NormalZombie() {
         super();
     }
     public NormalZombie(int lane) {
-        super(975, 0, PATH_RUN, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, PATH_EAT);
+        super(975, 0, Path.ASSETS_Image_NormalZombie_Run, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, Path.ASSETS_Image_NormalZombie_Eat);
         setY(LaneToLayoutY.zombieGetLayoutY(lane));
         setAct(new ActNormalZombie(this));
         setStageCharacter(new StageCharacterNormalZombie(this));
     }
     public NormalZombie(double x, double y, int lane) {
 
-        super(x, y, PATH_RUN, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, PATH_EAT);
+        super(x, y, Path.ASSETS_Image_NormalZombie_Run, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, Path.ASSETS_Image_NormalZombie_Eat);
         createImageView();
         setAct(new ActNormalZombie(this));
         setStageCharacter(new StageCharacterNormalZombie(this));

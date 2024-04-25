@@ -3,6 +3,7 @@ package src;
 import javafx.application.Application;
 
 import javafx.stage.Stage;
+import src.Config.Path;
 import src.DataBase.Handle.HandleLoadLevel;
 import src.Utils.ChangeScene;
 
@@ -13,7 +14,7 @@ public class main extends Application {
         String title = "Plants vs Zombies";
         int width = 1024;
         int height = 600;
-        String path = "/src/View/Game/GameMain.fxml";
+        String path = Path.VIEW_GameMain;
         ChangeScene changeScene = new ChangeScene(primaryStage, title, width, height, path);
         HandleLoadLevel handleLoadLevel = new HandleLoadLevel(1);
         changeScene.changeToGame(handleLoadLevel.loadLevel());

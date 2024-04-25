@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.util.Duration;
+import src.Config.Path;
 import src.Controller.Game.GameMainController;
 import src.Model.GameElements;
 import src.Utils.LaneToLayoutY;
@@ -12,7 +13,6 @@ import java.util.List;
 
 public class Sun extends GameElements {
     // Var infomation of sun
-    private static final String PATH = "/Assets/images/items/Sun.png";
     private static final int VALUE = 25;
     private static final int WIDTH = 45;
     private static final int HEIGHT = 45;
@@ -30,7 +30,7 @@ public class Sun extends GameElements {
         super();
     }
     public Sun(int x, int y, int lane , List<Timeline> listTlSun) {
-        super(x, y, PATH, WIDTH, HEIGHT, lane);
+        super(x, y, Path.ASSETS_Image_Sun, WIDTH, HEIGHT, lane);
         this.lane = lane;
         this.layoutYEnd = LaneToLayoutY.sunGetLayoutY(lane);
         this.layoutXEnd = x - 15;

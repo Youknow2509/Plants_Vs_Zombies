@@ -1,6 +1,7 @@
 package src.Model.Plants.Pea;
 
 import javafx.animation.Timeline;
+import src.Config.Path;
 import src.Model.Act;
 import src.Model.GameElements;
 import src.Model.StageCharacter;
@@ -9,7 +10,6 @@ import java.util.List;
 
 public class Pea extends GameElements {
     // Đặc điểm của đạn
-    private static final String PATH = "Assets/images/items/Pea.png";
     private static int DAMAGE = 20;
     private static int SPEED = 1;
     private static int SPEED_ATTACK = 5;
@@ -23,7 +23,7 @@ public class Pea extends GameElements {
     // Constructor
     public Pea(double x, double y, int lane,
                List<Pea> listPea) {
-        super(x, y, PATH, WIDTH, HEIGHT, lane);
+        super(x, y, Path.ASSETS_Image_Pea, WIDTH, HEIGHT, lane);
 
         createImageView();
         

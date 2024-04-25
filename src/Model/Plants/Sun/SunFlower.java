@@ -2,6 +2,7 @@ package src.Model.Plants.Sun;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import src.Config.Path;
 import src.Model.Plants.Plant;
 import src.Model.Plants.Sun.Sun;
 
@@ -10,7 +11,6 @@ import java.util.List;
 
 public class SunFlower extends Plant {
     // Var infomation of SunFlower
-    private static final  String PATH = "/Assets/images/Plants/SunFlower.gif";
     private static final  int HP = 100;
     private static final  int COST = 50;
     private static final  int WIDTH = 60;
@@ -26,7 +26,7 @@ public class SunFlower extends Plant {
         timelineList = new ArrayList<Timeline>();
     }
     public SunFlower(double x, double y, int col, int row) {
-        super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAME);
+        super(x, y, Path.ASSETS_Image_SunFlower, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAME);
         createImageViewInGridPane();
         timelineList = new ArrayList<Timeline>();
     }

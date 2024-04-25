@@ -1,6 +1,7 @@
 package src.Help.Shovel;
 
 
+import src.Config.Path;
 import src.Controller.Game.GameMainController;
 import src.Model.GameElements;
 import src.Model.Plants.Plant;
@@ -13,7 +14,7 @@ public class Shovel extends GameElements {
     private static boolean isDisabled = true; // Biến kiểm tra xem xẻng có bị vô hiệu hóa hay không: true là vô hiệu hoá
     // Constructor
     public Shovel() {
-        super(500, 10, "/Assets/images/items/Shovel.png", 60, 60, -1);
+        super(500, 10, Path.ASSETS_Image_Shovel, 60, 60, -1);
     }
     // Lấy ra trạng thái xẻng
     public boolean getIsDisabled() {

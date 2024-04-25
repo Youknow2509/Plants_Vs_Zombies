@@ -1,5 +1,6 @@
 package src.Model.Zombies.Conehead;
 
+import src.Config.Path;
 import src.Model.Zombies.Zombie;
 import src.Utils.LaneToLayoutY;
 
@@ -12,21 +13,19 @@ public class ConeheadZombie extends Zombie { // Todo format lại code
     private static final int MOVE = 1;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 130;
-    private static final String PATH_RUN = "Assets/images/Zombies/ConeheadZombie.gif";
-    private static final String PATH_EAT = "Assets/images/Zombies/ConeheadZombie.gif";
 
     // Constructor
     public ConeheadZombie() {
         super();
     }
     public ConeheadZombie(int lane) {
-        super(975, 0, PATH_RUN, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, PATH_EAT);
+        super(975, 0, Path.ASSETS_Image_ConeheadZombie_Run, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, Path.ASSETS_Image_ConeheadZombie_Eat);
         setY(LaneToLayoutY.zombieGetLayoutY(lane));
         setAct(new ActConeheadZombie(this));
         setStageCharacter(new StageCharacterConeheadZombie(this));
     }
     public ConeheadZombie(double x, double y, int lane) {
-        super(x, y, PATH_RUN, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, PATH_EAT);
+        super(x, y, Path.ASSETS_Image_ConeheadZombie_Run, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, Path.ASSETS_Image_ConeheadZombie_Eat);
         setAct(new ActConeheadZombie(this));
         setStageCharacter(new StageCharacterConeheadZombie(this));
         createImageView();

@@ -1,6 +1,6 @@
 package src.Model.Plants.PeaShooter;
 
-import javafx.animation.Timeline;
+import src.Config.Path;
 import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
 
@@ -9,7 +9,6 @@ import java.util.List;
 
 public class PeaShooter extends Plant {
     // Đặc điểm của PeaShooter
-    private static final String PATH = "/Assets/images/Plants/Peashooter.gif";
     private static final  int HP = 100;
     private static final  int DAME = 20;
     private static final  int COST = 100;
@@ -25,7 +24,7 @@ public class PeaShooter extends Plant {
 
     }
     public PeaShooter(double x, double y, int col, int row) {
-        super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
+        super(x, y, Path.ASSETS_Image_PeaShooter, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
 
         createImageViewInGridPane();
         listPea = new ArrayList<Pea>();

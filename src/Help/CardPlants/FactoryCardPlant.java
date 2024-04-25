@@ -1,21 +1,19 @@
 package src.Help.CardPlants;
 
+import src.Config.Path;
+
 public class FactoryCardPlant {
     public static CardPlant createCardPlant(String name) {
-        String path = "Assets/images/Cards/" + name + ".png";
+        name = name.toUpperCase();
         switch (name) {
-            case "SunFlower":
-                return new CardPlant(path, name.toUpperCase());
-            case "PeaShooter":
-                return new CardPlant(path, name.toUpperCase());
-            case "WallNut":
-                return new CardPlant(path, name.toUpperCase());
-            case "CherryBomb":
-                return new CardPlant(path, name.toUpperCase());
-            case "Repeater":
-                return new CardPlant(path, name.toUpperCase());
-            case "Chomper":
-                return new CardPlant(path, name.toUpperCase());
+            case "SUNFLOWER":
+                return new CardPlant(Path.ASSETS_Image_Card_SunFlower, name);
+            case "PEASHOOTER":
+                return new CardPlant(Path.ASSETS_Image_Card_PeaShooter, name);
+            case "WALLNUT":
+                return new CardPlant(Path.ASSETS_Image_Card_WallNut, name);
+            case "REPEATER":
+                return new CardPlant(Path.ASSETS_Image_Card_Repeater, name);
             default:
                 return null;
         }

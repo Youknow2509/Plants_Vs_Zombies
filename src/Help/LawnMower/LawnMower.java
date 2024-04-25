@@ -1,6 +1,7 @@
 package src.Help.LawnMower;
 
 import javafx.animation.Timeline;
+import src.Config.Path;
 import src.Model.GameElements;
 import src.Model.StageCharacter;
 
@@ -10,8 +11,6 @@ public class LawnMower extends GameElements {
     private static final int HEIGHT = 80;
     private static final int DAMAGE = 10000;
     private static final int SPEED = 8;
-    private static final String PATH_IMAGE = "Assets/images/items/lawnMower_Idle.gif";
-    private static final String PATH_IMAGE_ACTIVE = "Assets/images/items/lawnMower_Active.gif";
     // Var
     private Timeline timeline;
     private ActLawnMower actLawnMower;
@@ -21,7 +20,7 @@ public class LawnMower extends GameElements {
         super();
     }
     public LawnMower(double x, double y, int lane) {
-        super(x, y, PATH_IMAGE, WIDTH, HEIGHT, lane);
+        super(x, y, Path.ASSETS_Image_LawnMower, WIDTH, HEIGHT, lane);
         this.actLawnMower = new ActLawnMower(this);
         this.stageLawnMower = new StageLawnMower(this);
     }
@@ -47,7 +46,7 @@ public class LawnMower extends GameElements {
 
     // Getter and Setter
     public static String getPathImageActive() {
-        return PATH_IMAGE_ACTIVE;
+        return Path.ASSETS_Image_LawnMower_Active;
     }
     public static int getSpeed() {
         return SPEED;

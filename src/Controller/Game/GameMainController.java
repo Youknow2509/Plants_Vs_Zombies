@@ -11,8 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import src.Config.Path;
 import src.Help.CardPlants.CardPlant;
 import src.Help.CardPlants.FactoryListCardPlant;
 import src.Model.GameData;
@@ -144,7 +144,7 @@ public class GameMainController {
     // Menu handle
     public void menuHandle(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/Game/MenuGame.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.VIEW_GameMenu));
             Parent root = loader.load();
 
             MenuGameController menuController = loader.getController();

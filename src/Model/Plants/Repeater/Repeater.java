@@ -1,6 +1,6 @@
 package src.Model.Plants.Repeater;
 
-import javafx.animation.Timeline;
+import src.Config.Path;
 import src.Model.Plants.Pea.Pea;
 import src.Model.Plants.Plant;
 
@@ -25,7 +25,7 @@ public class Repeater extends Plant {
         listPea = new ArrayList<Pea>();
     }
     public Repeater(double x, double y, int col, int row) {
-        super(x, y, PATH, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
+        super(x, y, Path.ASSETS_Image_Repeater, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
 
         createImageViewInGridPane();
         listPea = new ArrayList<Pea>();

@@ -73,7 +73,6 @@ public class ActLawnMower {
                             {
                                 // Remove zombie
                                 zombie.removeImageView();
-                                System.out.println("LawnMower: " + lawnMower.getX() + " attack zombie: " + zombie.getLane()  + " " + zombie.getX());
                                 (GameMainController.getGameData()).getZombieAlive().remove(zombie);
 
                                 f = false;
