@@ -27,7 +27,6 @@ public class StageCharacterNormalZombie implements StageCharacter {
         if (normalZombie.getTimeline() != null) {
             normalZombie.getTimeline().stop();
             // todo thay gif to png
-            System.out.println("Stop NormalZombie");
         }
     }
 
@@ -36,7 +35,6 @@ public class StageCharacterNormalZombie implements StageCharacter {
         if (normalZombie.getTimeline() != null) {
             normalZombie.getTimeline().pause();
             // todo thay gif to png
-            System.out.println("Pause NormalZombie");
         }
     }
 

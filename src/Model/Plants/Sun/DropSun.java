@@ -16,11 +16,13 @@ public class DropSun extends Plant {
     private static final int TIMEOUT_DROPSUN = 14000;
     // Var of
     private List<Timeline> listTlSun;
+    private List<Timeline> DisappearSunList;
 
     // Constructor
     public DropSun(){
         super();
         listTlSun = new ArrayList<Timeline>();
+        DisappearSunList = new ArrayList<Timeline>();
     }
     // Khởi tạo Sun rơi random sau thời gian random và vị trí random
     public void CreatSunDrop() {
@@ -30,10 +32,9 @@ public class DropSun extends Plant {
                     int x = Config.getRandom().nextInt(665) + 320;
                     int lane = Config.getRandom().nextInt(5);
 
-                    Sun sun = new Sun(x, 0, lane, listTlSun);
+                    Sun sun = new Sun(x, 0, lane, listTlSun, DisappearSunList);
 
                     sun.CreatSunDrop();
-                    listTlSun.add(sun.getTlSun());
                 })
         ));
         getTimeline().play();
@@ -90,6 +91,4 @@ public class DropSun extends Plant {
             }
         }
     }
-
-
 }

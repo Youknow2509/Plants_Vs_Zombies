@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
+import src.Help.LawnMower.LawnMower;
 import src.Model.Plants.Plant;
 import src.Model.Zombies.Zombie;
 public class GameProcess {
@@ -76,9 +77,12 @@ public class GameProcess {
         for (Plant plant : gameData.getListPlant()) {
             plant.stop();
         }
+        // Stop LawnMower todo chua check
+        for (LawnMower lawnMower : gameData.getLawnMowers()) {
+            lawnMower.stop();
+        }
         // Stop timeline
         timelineGame.stop();
-        // TODO chua check stop pea cua peashooter
     }
 
     // Pause Game
@@ -93,9 +97,12 @@ public class GameProcess {
         for (Plant plant : gameData.getListPlant()) {
             plant.pause();
         }
+        // Pause LawnMower todo chua check
+        for (LawnMower lawnMower : gameData.getLawnMowers()) {
+            lawnMower.pause();
+        }
         // Stop timeline
         timelineGame.pause();
-        // TODO chua check pause pea cua peashooter
     }
 
     // Resume Game
@@ -110,9 +117,12 @@ public class GameProcess {
         for (Plant plant : gameData.getListPlant()) {
             plant.resume();
         }
+        // resume LawnMower todo chua check
+        for (LawnMower lawnMower : gameData.getLawnMowers()) {
+            lawnMower.resume();
+        }
         // resume timeline
-        timelineGame.pause();
-        // TODO chua check resume pea cua peashooter
+        timelineGame.play();
     }
 
     // Load Game

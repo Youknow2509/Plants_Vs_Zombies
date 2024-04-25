@@ -46,7 +46,7 @@ public class ActPea implements Act {
                     if (z.getLane() == pea.getLane() && pea.getX() - z.getX() <= 30 && pea.getX() - z.getX() >= 0) {
                         z.setHealth(z.getHealth() - pea.getDAMAGE());
                         pea.remove();
-                        System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
+                        //System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
                         if (z.getHealth() <= 0) {
                             z.removeImageView();
                             (GameMainController.getGameData()).getZombieAlive().remove(z);

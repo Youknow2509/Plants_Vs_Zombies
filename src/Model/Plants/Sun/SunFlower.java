@@ -20,25 +20,78 @@ public class SunFlower extends Plant {
     private static final int DAME = 0;
     // Var
     private List<Timeline> timelineList;
+    private List<Timeline> DisappearSunList;
+
     // Constructor
     public SunFlower() {
         super();
         timelineList = new ArrayList<Timeline>();
+        DisappearSunList = new ArrayList<Timeline>();
     }
     public SunFlower(double x, double y, int col, int row) {
         super(x, y, Path.ASSETS_Image_SunFlower, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAME);
         createImageViewInGridPane();
         timelineList = new ArrayList<Timeline>();
+        DisappearSunList = new ArrayList<Timeline>();
     }
     // Tạo ra mặt trời - Adapter Pattern
     @Override
     public void start() {
         setTimeline(new Timeline(new KeyFrame(javafx.util.Duration.millis(SPEED_ATTACK), e -> {
-            Sun sun = new Sun((int)this.getX() - 5,(int)this.getY() + 30, this.getRow(), timelineList);
+            Sun sun = new Sun((int)this.getX() - 5,(int)this.getY() + 30, this.getRow(), timelineList, DisappearSunList);
             sun.flowerCreateSun();
         })));
         getTimeline().setCycleCount(Timeline.INDEFINITE);
         getTimeline().play();
     }
-    
+    // Stage
+    @Override
+    public void stop() {
+        if (getTimeline() != null) {
+            getTimeline().stop();
+        }
+        if (timelineList != null) {
+            for (Timeline tlSun : timelineList) {
+                tlSun.stop();
+            }
+        }
+        if (DisappearSunList != null) {
+            for (Timeline tlSun : DisappearSunList) {
+                tlSun.stop();
+            }
+        }
+    }
+    @Override
+    public void pause() {
+        if (getTimeline() != null) {
+            getTimeline().pause();
+        }
+        if (timelineList != null) {
+            for (Timeline tlSun : timelineList) {
+                tlSun.pause();
+            }
+        }
+        if (DisappearSunList != null) {
+            for (Timeline tlSun : DisappearSunList) {
+                tlSun.pause();
+            }
+        }
+    }
+    @Override
+    public void resume() {
+        if (getTimeline() != null) {
+            getTimeline().play();
+        }
+        if (timelineList != null) {
+            for (Timeline tlSun : timelineList) {
+                tlSun.play();
+            }
+        }
+        if (DisappearSunList != null) {
+            for (Timeline tlSun : DisappearSunList) {
+                tlSun.pause();
+            }
+        }
+    }
+
 }

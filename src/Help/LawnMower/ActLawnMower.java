@@ -53,6 +53,7 @@ public class ActLawnMower {
         else {
             lawnMower.removeImageView();
             lawnMower.getTimeline().stop();
+            GameMainController.getGameData().getLawnMowers().remove(lawnMower);
         }
     }
 

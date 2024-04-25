@@ -55,7 +55,8 @@ public class ChangeScene {
             stage.setScene(scene);
             stage.setTitle(title);
             stage.show();
-
+            stage.setResizable(false);
+            stage.centerOnScreen();
         } catch (IOException e) {
             System.out.println("Loi khi load file: " + e);
             e.printStackTrace();

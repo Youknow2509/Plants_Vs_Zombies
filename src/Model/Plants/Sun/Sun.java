@@ -24,16 +24,21 @@ public class Sun extends GameElements {
     private int layoutYEnd = 0;
     private int timeout = 0;
     private Timeline tlSun = null;
+    private Timeline tlSunDisappearSun;
     private List<Timeline> listTlSun;
+    private List<Timeline> DisappearSunList;
+
     // Constructor
     public Sun() {
         super();
     }
-    public Sun(int x, int y, int lane , List<Timeline> listTlSun) {
+    public Sun(int x, int y, int lane , List<Timeline> listTlSun, List<Timeline> DisappearSunList) {
         super(x, y, Path.ASSETS_Image_Sun, WIDTH, HEIGHT, lane);
         this.lane = lane;
         this.layoutYEnd = LaneToLayoutY.sunGetLayoutY(lane);
         this.layoutXEnd = x - 15;
+        this.listTlSun = listTlSun;
+        this.DisappearSunList = DisappearSunList;
     }
 
     // Tạo hình ảnh sun và thêm sự kiện click để nhận sun
@@ -57,11 +62,13 @@ public class Sun extends GameElements {
                 this.setX(this.getX() - 0.2);
             } else {
                 tlSun.stop();
+                listTlSun.remove(tlSun);
                 DisappearSun();
             }
         }));
         tlSun.setCycleCount(Timeline.INDEFINITE);
         tlSun.play();
+        listTlSun.add(tlSun);
     }
 
     // Tạo sun ngẫu nhiên rơi xuống
@@ -75,33 +82,27 @@ public class Sun extends GameElements {
                 this.setY(this.getY() + 1);
             } else {
                 tlSun.stop();
+                listTlSun.remove(tlSun);
                 DisappearSun();
             }
         }));
         tlSun.setCycleCount(Timeline.INDEFINITE);
         tlSun.play();
+        listTlSun.add(tlSun);
     }
 
     // Làm mờ rồi xoá sun sau một thời gian nhất định
     private void DisappearSun() {
-        final Thread[] th = new Thread[1]; // Dùng mảng để thay đổi được
-
-        th[0] = new Thread(() -> {
-            try {
-                Thread.sleep(timeout);
-                th[0].interrupt();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            // Sử dụng để tác động lên giao diện
-            Platform.runLater(() -> {
-                tlSun.stop();
-                removeImageView();
-            });
-        });
-
-        th[0].start();
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(timeout), event -> {
+            tlSun.stop();
+            removeImageView();
+            listTlSun.remove(tlSun);
+        }));
+        timeline.setCycleCount(1);  // Chỉ chạy một lần
+        timeline.play();
+        DisappearSunList.add(timeline);
     }
+
 
     // Getter - Setter
     @Override
@@ -144,5 +145,29 @@ public class Sun extends GameElements {
 
     public void setTlSun(Timeline tlSun) {
         this.tlSun = tlSun;
+    }
+
+    public List<Timeline> getListTlSun() {
+        return listTlSun;
+    }
+
+    public void setListTlSun(List<Timeline> listTlSun) {
+        this.listTlSun = listTlSun;
+    }
+
+    public List<Timeline> getDisappearSunList() {
+        return DisappearSunList;
+    }
+
+    public void setDisappearSunList(List<Timeline> disappearSunList) {
+        DisappearSunList = disappearSunList;
+    }
+
+    public Timeline getTlSunDisappearSun() {
+        return tlSunDisappearSun;
+    }
+
+    public void setTlSunDisappearSun(Timeline tlSunDisappearSun) {
+        this.tlSunDisappearSun = tlSunDisappearSun;
     }
 }

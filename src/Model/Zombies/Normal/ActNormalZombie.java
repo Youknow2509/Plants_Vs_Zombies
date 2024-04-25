@@ -43,7 +43,7 @@ public class ActNormalZombie implements Act {
         }
         Plant plant = (Plant) object;
         plant.setHp(plant.getHp() - zombie.getDame());
-        System.out.println("Plant hp: " + plant.getHp());
+        //System.out.println("Plant hp: " + plant.getHp());
         // Xử lí khi cây bị hết máu
         if (plant.getHp() <= 0) {
             plant.removeImageViewInGridPane();
