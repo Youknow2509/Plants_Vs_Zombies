@@ -19,6 +19,7 @@ public class FactoryListCardPlant {
         super();
         this.pathCardPlant = pathCardPlant;
         listCardPlant = new ArrayList<CardPlant>();
+        createListCardPlant();
     }
 
     // Method

@@ -83,7 +83,28 @@ public class GameData {
     public void loadSumZombie() {
         this.sumZombie = zombieAlive.size() + zombieSpawner.size();
     }
-// Getter and setter
+
+    // To String
+
+
+    @Override
+    public String toString() {
+        return "GameData{" +
+                "ID=" + ID +
+                "\n, cardPlantList=" + cardPlantList +
+                "\n, listPlant=" + listPlant +
+                "\n, zombieAlive=" + zombieAlive +
+                "\n, zombieSpawner=" + zombieSpawner +
+                "\n, lawnMowers=" + lawnMowers +
+                "\n, dropSun=" + dropSun +
+                "\n, sun=" + sun +
+                "\n, tick=" + tick +
+                "\n, durationDropSun=" + durationDropSun +
+                "\n, sumZombie=" + sumZombie +
+                '}';
+    }
+
+    // Getter and setter
     public List<Plant> getListPlant() {
         return listPlant;
     }
@@ -159,4 +180,5 @@ public class GameData {
     public void setID(int ID) {
         this.ID = ID;
     }
+
 }

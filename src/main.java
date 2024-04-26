@@ -4,8 +4,11 @@ import javafx.application.Application;
 
 import javafx.stage.Stage;
 import src.Config.Path;
-import src.DataBase.Handle.HandleLoadLevel;
+import src.DataBase.Handle.HandleData;
+import src.DataBase.Handle.HandleDataFile;
+
 import src.Utils.ChangeScene;
+import src.Utils.RandomListGameData;
 
 public class main extends Application {
 
@@ -16,8 +19,9 @@ public class main extends Application {
         int height = 600;
         String path = Path.VIEW_GameMain;
         ChangeScene changeScene = new ChangeScene(primaryStage, title, width, height, path);
-        HandleLoadLevel handleLoadLevel = new HandleLoadLevel(2);
-        changeScene.changeToGame(handleLoadLevel.loadLevel());
+        HandleData handleData = new HandleDataFile();
+        int level = 1;
+        changeScene.changeToGame(RandomListGameData.random(handleData.getDatalevel(level)));
     }
 
     public static void main(String[] args) {

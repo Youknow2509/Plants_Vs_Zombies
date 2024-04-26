@@ -5,7 +5,6 @@
 - [x] **Level**
 - [x] **Save**
 - [x] **Load**
-- [x] **Pause**
 - [x] **Beaty Image**
 - [x] **Sound**
 - [x] **Effect**
