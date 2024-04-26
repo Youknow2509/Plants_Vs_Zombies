@@ -2,7 +2,9 @@ package src.Help.LawnMower;
 
 import src.Model.StageCharacter;
 
-public class StageLawnMower implements StageCharacter {
+import java.io.Serializable;
+
+public class StageLawnMower implements StageCharacter, Serializable {
 // Variables
     private LawnMower lawnMower;
 // Constructors

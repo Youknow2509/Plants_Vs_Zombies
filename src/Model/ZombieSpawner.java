@@ -6,7 +6,9 @@ import src.Model.Zombies.Zombie;
 import src.Model.Zombies.ZombieFactory;
 import src.Model.Zombies.ZombieType;
 
-public class ZombieSpawner {
+import java.io.Serializable;
+
+public class ZombieSpawner implements Serializable {
     // Var
     private int time;
     private Zombie zombie;

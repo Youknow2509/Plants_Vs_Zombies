@@ -10,7 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
 
-public class HandleCardPlant {
+import java.io.Serializable;
+
+public class HandleCardPlant implements Serializable {
     // Var
     private CardPlant cardPlant;
 

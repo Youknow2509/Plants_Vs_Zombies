@@ -6,17 +6,29 @@ import src.Model.GameData;
 import src.Help.CardPlants.FactoryCardPlant;
 import src.Model.ZombieSpawner;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HandleDataFile implements HandleData {
     // Var
     private String pathDataSave = "src/DataBase/";
-    private int maxLevel = 2;
-    //
+    private int maxLevel = 0;
+
+    // Constructor
+    public HandleDataFile() {
+        File folder = new File(pathDataSave + "Levels");
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
+        maxLevel = folder.listFiles().length;
+
+        folder = new File(pathDataSave + "SaveGames");
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+    }
 
     // Implementation
     @Override
@@ -64,7 +76,7 @@ public class HandleDataFile implements HandleData {
                 for (String lawnMower : ListLawnMower) {
                     gameDataAdd.getLawnMowers().add(
                             FactoryLawnMower.createLawnMower(Integer.parseInt(lawnMower)
-                    ));
+                            ));
                 }
 
                 // Load sumZombie
@@ -88,22 +100,83 @@ public class HandleDataFile implements HandleData {
 
     @Override
     public List<GameData> getDataSave() {
-        return List.of();
+        String pathFolder = pathDataSave + "SaveGames";
+        List<GameData> listGameData = new ArrayList<GameData>();
+
+        File folder = new File(pathFolder);
+        File[] listFile = folder.listFiles();
+        for (File file : listFile) {
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            try {
+                fis = new FileInputStream(file);
+                ois = new ObjectInputStream(fis);
+                listGameData.add((GameData) ois.readObject());
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ois != null) ois.close();
+                    if (fis != null) fis.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return listGameData;
     }
 
     @Override
-    public void addDataSave(GameData gameData) {
+    public void addDataSave(GameData gameData, String nameSaveGame) {
+        String pathFile = pathDataSave + "SaveGames/" + nameSaveGame + ".ser";
 
+        File folder = new File(pathFile);
+        if (folder.exists()) {
+            System.out.println("File ton tai !!!");
+            return;
+        }
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(pathFile);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(gameData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (oos != null) oos.close();
+                if (fos != null) fos.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
-    public void updateDataSave(GameData gameData) {
+    public void updateDataSave(GameData gameData, String nameSaveGame) {
+        String pathFile = pathDataSave + "SaveGames/" + nameSaveGame + ".ser";
 
+        File folder = new File(pathFile);
+        if (!folder.exists()) {
+            System.out.println("File khong ton tai !!!");
+            return;
+        }
+        deleteDataSave(nameSaveGame);
+        addDataSave(gameData, nameSaveGame);
     }
 
     @Override
-    public void deleteDataSave(GameData gameData) {
+    public void deleteDataSave(String nameSaveGame) {
+        String pathFile = pathDataSave + "SaveGames/" + nameSaveGame + ".ser";
 
+        File folder = new File(pathFile);
+        if (!folder.exists()) {
+            System.out.println("File khong ton tai !!!");
+            return;
+        }
+        folder.delete();
     }
 
     @Override
@@ -111,12 +184,25 @@ public class HandleDataFile implements HandleData {
         return 0;
     }
 
-    // Main test
-    public static void main(String [] arg) {
-        HandleDataFile handleDataFile = new HandleDataFile();
-        List<GameData> listGameData = handleDataFile.getDatalevel(1);
-        for (GameData gameData : listGameData) {
-            System.out.println(gameData);
-        }
+
+    // Getter - Setter
+    public String getPathDataSave() {
+        return pathDataSave;
+    }
+
+    public void setPathDataSave(String pathDataSave) {
+        this.pathDataSave = pathDataSave;
+    }
+
+    public int getMaxLevel() {
+        return maxLevel;
+    }
+
+    public void setMaxLevel(int maxLevel) {
+        this.maxLevel = maxLevel;
     }
 }
+
+
+
+

@@ -1,6 +1,6 @@
 
 # TODO-List
-- [x] **Stage THread sunflower - sun**
+- [x] ** Tái tạo lại Timeline, kiểm tra vị trí đặt - khi save và load lai game
 - [x] **Menu Game**
 - [x] **Level**
 - [x] **Save**

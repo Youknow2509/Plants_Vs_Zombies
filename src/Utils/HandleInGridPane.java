@@ -5,7 +5,9 @@ import javafx.scene.image.ImageView;
 import src.Controller.Game.GameMainController;
 import src.Model.Plants.Plant;
 
-public class HandleInGridPane {
+import java.io.Serializable;
+
+public class HandleInGridPane implements Serializable {
     // Var
     private Plant p;
 

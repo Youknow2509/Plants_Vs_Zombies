@@ -19,20 +19,16 @@ public class SunFlower extends Plant {
     private static final int SPEED_ATTACK = 4500;
     private static final int DAME = 0;
     // Var
-    private List<Timeline> timelineList;
-    private List<Timeline> DisappearSunList;
+    private transient List<Timeline> timelineList = new ArrayList<Timeline>();
+    private transient List<Timeline> DisappearSunList = new ArrayList<Timeline>();
 
     // Constructor
     public SunFlower() {
         super();
-        timelineList = new ArrayList<Timeline>();
-        DisappearSunList = new ArrayList<Timeline>();
     }
     public SunFlower(double x, double y, int col, int row) {
         super(x, y, Path.ASSETS_Image_SunFlower, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAME);
         createImageViewInGridPane();
-        timelineList = new ArrayList<Timeline>();
-        DisappearSunList = new ArrayList<Timeline>();
     }
     // Tạo ra mặt trời - Adapter Pattern
     @Override

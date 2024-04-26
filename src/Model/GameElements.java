@@ -4,11 +4,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import src.Controller.Game.GameMainController;
 
-public abstract class GameElements {
+import java.io.Serializable;
+
+public abstract class GameElements implements Serializable {
     // Variables
     private double x = 0, y = 0; // Lưu toạ độ phần tử
-    private Image image = null; // Lưu hình ảnh
-    private ImageView imageView = null; // Lưu ImageView
+    private transient Image image = null; // Lưu hình ảnh
+    private transient ImageView imageView = null; // Lưu ImageView
     private int width = 0, height = 0; //  chiều rộng và chiều cao phần tử
     private String path = ""; // Đường dẫn ảnh
     private int lane = 0; // Lane của phần tử (dùng cho zombie, plant, và sun khi sinh ra từ cây)

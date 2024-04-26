@@ -5,7 +5,9 @@ import src.Model.Act;
 import src.Model.GameElements;
 import src.Model.StageCharacter;
 
-public class Zombie extends GameElements {
+import java.io.Serializable;
+
+public class Zombie extends GameElements implements Serializable {
     // Var
     private String path_run = "";
     private String path_eat = "";
@@ -15,7 +17,7 @@ public class Zombie extends GameElements {
     private int speedMove = 0;
     private int speedAttack = 0;
     private boolean flag = true; // true : zombie đang di chuyển, false: zombie dừng lại tấn công.
-    private Timeline timeline = null;
+    private transient Timeline timeline = null;
     private Act act = null;
     private StageCharacter stageCharacter = null;
 

@@ -3,15 +3,17 @@ package src.Help.CardPlants;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class CardPlant {
+import java.io.Serializable;
+
+public class CardPlant implements Serializable {
     // Var
     private final static int width = 105;
     private final static int height = 67;
     private final static int fitWidth = 85;
     private final static int fitHeight = 50;
 
-    private ImageView imageView;
-    private Image image;
+    private transient ImageView imageView;
+    private transient Image image;
     private double x, y;
     private boolean haveBuy = true;
     private String path;

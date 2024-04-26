@@ -23,10 +23,10 @@ public class Sun extends GameElements {
     private int layoutXEnd = 0;
     private int layoutYEnd = 0;
     private int timeout = 0;
-    private Timeline tlSun = null;
-    private Timeline tlSunDisappearSun;
-    private List<Timeline> listTlSun;
-    private List<Timeline> DisappearSunList;
+    private transient Timeline tlSun = null;
+    private transient Timeline tlSunDisappearSun;
+    private transient List<Timeline> listTlSun;
+    private transient List<Timeline> DisappearSunList;
 
     // Constructor
     public Sun() {

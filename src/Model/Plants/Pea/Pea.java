@@ -15,7 +15,7 @@ public class Pea extends GameElements {
     private static int SPEED_ATTACK = 5;
     private static int WIDTH = 20;
     private static int HEIGHT = 20;
-    private Timeline timeline;
+    private transient Timeline timeline;
     // Var
     private List<Pea> listPea = null; // Danh sách đạn của đối tượng đang xử dụng nó
     private Act act;

@@ -10,7 +10,7 @@ import src.Model.Zombies.Zombie;
 public class GameProcess {
     // Variables
     private GameData gameData = null;
-    private Timeline timelineGame = null;
+    private transient Timeline timelineGame = null;
 
     // Constructor
     public GameProcess() {
@@ -129,7 +129,7 @@ public class GameProcess {
     public void loadGame() {
         // Tải các thẻ cây
         for (int i = 0; i < gameData.getCardPlantList().size(); i++) {
-            gameData.getCardPlantList().get(i).createImage();
+            gameData.getCardPlantList().get(i).createImage(); // tái tạo lại hình ảnh
         }
         // Tải các zombie đang tồn tại
         for (int i = 0; i < gameData.getZombieAlive().size(); i++) {

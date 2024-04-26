@@ -6,7 +6,9 @@ import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
 import src.Model.Zombies.Zombie;
 
-public class ActLawnMower {
+import java.io.Serializable;
+
+public class ActLawnMower implements Serializable {
 // Var
     private LawnMower lawnMower;
 // Constructor

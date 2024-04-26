@@ -7,14 +7,16 @@ import src.Model.GameElements;
 import src.Model.StageCharacter;
 import src.Utils.HandleInGridPane;
 
-public class Plant extends GameElements {
+import java.io.Serializable;
+
+public class Plant extends GameElements implements Serializable {
     // Variables
     private int col = 0, row = 0;
     private int hp = 0;
     private int dame = 0;
     private int cost = 0;
     private int speedAttack = 0;
-    private Timeline timeline = null;
+    private transient Timeline timeline = null;
     //
     private Act act = null;
     private StageCharacter stageCharacter = null;

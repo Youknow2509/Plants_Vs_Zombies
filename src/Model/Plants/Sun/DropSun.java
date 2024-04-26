@@ -6,17 +6,18 @@ import javafx.util.Duration;
 import src.Model.GameElements;
 import src.Model.Plants.Plant;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import src.Config.Config;
 
-public class DropSun extends Plant {
+public class DropSun extends Plant implements Serializable {
     // Var infomation drop sun
     private static final int TIMEOUT_DROPSUN = 14000;
     // Var of
-    private List<Timeline> listTlSun;
-    private List<Timeline> DisappearSunList;
+    private transient List<Timeline> listTlSun;
+    private transient List<Timeline> DisappearSunList;
 
     // Constructor
     public DropSun(){

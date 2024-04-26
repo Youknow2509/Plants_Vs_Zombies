@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import src.DataBase.Handle.HandleData;
+import src.DataBase.Handle.HandleDataFile;
 import src.Model.GameData;
 import src.Model.GameProcess;
 
@@ -24,6 +26,7 @@ public class MenuGameController {
     Stage stageBefore;
     GameData gameData;
     GameProcess gameProcess;
+    HandleData handleData;
     // Initialize
     public void initialize(Stage stage, GameProcess gameProcess) {
         //
@@ -32,6 +35,7 @@ public class MenuGameController {
         //
         gameProcess.pauseGame();
         //
+        handleData = new HandleDataFile();
     }
 
     //
@@ -45,6 +49,7 @@ public class MenuGameController {
     public void luu(ActionEvent event) {
         // todo
         System.out.println("Clicked Luu");
+        handleData.addDataSave(gameProcess.getGameData(), "save");
     }
 
     public void quayLaiHome(ActionEvent event) {

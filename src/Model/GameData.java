@@ -1,5 +1,6 @@
 package src.Model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +11,7 @@ import src.Model.Plants.Plant;
 import src.Model.Plants.Sun.DropSun;
 import src.Model.Zombies.Zombie;
 
-public class GameData {
+public class GameData implements Serializable {
 // Var
     private static final long serialVersionUID = 1L;
     private int ID;

@@ -21,7 +21,6 @@ public class PeaShooter extends Plant {
     public PeaShooter() {
         super();
         listPea = new ArrayList<Pea>();
-
     }
     public PeaShooter(double x, double y, int col, int row) {
         super(x, y, Path.ASSETS_Image_PeaShooter, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);

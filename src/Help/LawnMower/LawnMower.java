@@ -5,14 +5,16 @@ import src.Config.Path;
 import src.Model.GameElements;
 import src.Model.StageCharacter;
 
-public class LawnMower extends GameElements {
+import java.io.Serializable;
+
+public class LawnMower extends GameElements implements Serializable {
     // Var infor LawnMower
     private static final int WIDTH = 80;
     private static final int HEIGHT = 80;
     private static final int DAMAGE = 10000;
     private static final int SPEED = 8;
     // Var
-    private Timeline timeline;
+    private transient Timeline timeline;
     private ActLawnMower actLawnMower;
     private StageCharacter stageLawnMower;
     // Constructor

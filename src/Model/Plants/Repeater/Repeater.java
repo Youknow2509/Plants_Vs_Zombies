@@ -14,9 +14,9 @@ public class Repeater extends Plant {
     private static final int HP = 200;
     private static final int COST = 200;
     private static final int DAME = 20;
-    private static final  int SPEEDATTACK = 3;
-    private static final  int WIDTH = 60;
-    private static final  int HEIGHT = 60;
+    private static final int SPEEDATTACK = 3;
+    private static final int WIDTH = 60;
+    private static final int HEIGHT = 60;
     // Var
     private List<Pea> listPea;
     // Constructor

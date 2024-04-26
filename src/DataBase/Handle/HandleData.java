@@ -12,13 +12,13 @@ public interface HandleData {
     List<GameData> getDataSave();
 
     // Thêm dữ liệu vào save Game
-    void addDataSave(GameData gameData);
+    void addDataSave(GameData gameData, String nameSaveGame);
 
     // Cập nhật dữ liệu save Game
-    void updateDataSave(GameData gameData);
+    void updateDataSave(GameData gameData, String nameSaveGame);
 
     // Xóa dữ liệu save Game
-    void deleteDataSave(GameData gameData);
+    void deleteDataSave(String nameSaveGame);
 
     // Lấy ID lớn nhất của save Game - dùng để tạo ID mới
     int getIDMaxDataSave();
