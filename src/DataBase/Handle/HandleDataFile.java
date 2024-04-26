@@ -97,27 +97,12 @@ public class HandleDataFile implements HandleData {
     }
 
     @Override
-    public void addDataLevel(GameData gameData) {
-
-    }
-
-    @Override
-    public void updateDataLevel(GameData gameData) {
-
-    }
-
-    @Override
     public void updateDataSave(GameData gameData) {
 
     }
 
     @Override
     public void deleteDataSave(GameData gameData) {
-
-    }
-
-    @Override
-    public void deleteDataLevel(GameData gameData) {
 
     }
 
