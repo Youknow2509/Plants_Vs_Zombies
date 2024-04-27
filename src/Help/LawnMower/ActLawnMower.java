@@ -4,7 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
-import src.Model.Zombies.Zombie;
+import src.Model.Characters.Zombies.Zombie;
 
 import java.io.Serializable;
 

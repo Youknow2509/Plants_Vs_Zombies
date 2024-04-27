@@ -18,9 +18,9 @@ import src.Help.CardPlants.FactoryListCardPlant;
 import src.Model.GameData;
 import src.Model.GameProcess;
 import src.Help.Shovel.Shovel;
-import src.Model.Plants.Plant;
-import src.Model.Plants.PlantFactory;
-import src.Model.Plants.PlantType;
+import src.Model.Characters.Plants.Plant;
+import src.Model.Characters.Plants.PlantFactory;
+import src.Model.Characters.Plants.PlantType;
 
 
 import java.io.IOException;

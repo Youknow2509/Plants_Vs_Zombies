@@ -7,9 +7,10 @@ import java.util.Collections;
 
 import src.Help.CardPlants.CardPlant;
 import src.Help.LawnMower.LawnMower;
-import src.Model.Plants.Plant;
-import src.Model.Plants.Sun.DropSun;
-import src.Model.Zombies.Zombie;
+import src.Model.Characters.Plants.Plant;
+import src.Model.Characters.Plants.Sun.DropSun;
+import src.Model.Characters.Zombies.Zombie;
+import src.Model.Characters.ZombieSpawner;
 
 public class GameData implements Serializable {
 // Var

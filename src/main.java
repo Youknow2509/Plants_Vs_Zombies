@@ -31,8 +31,8 @@ public class main extends Application {
         String path = Path.VIEW_GameMain;
         ChangeScene changeScene = new ChangeScene(primaryStage, title, width, height, path);
 
-        GameData gameData = getGameDataSave();
-        //GameData gameData = getGameDataLevel(1);
+        //GameData gameData = getGameDataSave();
+        GameData gameData = getGameDataLevel(1);
 
         changeScene.changeToGame(gameData);
     }

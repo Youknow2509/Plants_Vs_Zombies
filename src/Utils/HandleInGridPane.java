@@ -3,7 +3,7 @@ package src.Utils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import src.Controller.Game.GameMainController;
-import src.Model.Plants.Plant;
+import src.Model.Characters.Plants.Plant;
 
 import java.io.Serializable;
 

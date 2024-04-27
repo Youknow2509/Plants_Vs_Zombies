@@ -5,8 +5,10 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
 import src.Help.LawnMower.LawnMower;
-import src.Model.Plants.Plant;
-import src.Model.Zombies.Zombie;
+import src.Model.Characters.Plants.Plant;
+import src.Model.Characters.Zombies.Zombie;
+import src.Model.Characters.ZombieSpawner;
+
 public class GameProcess {
     // Variables
     private GameData gameData = null;

@@ -1,6 +1,6 @@
 
 # TODO-List
-- [x] ** Tái tạo lại Timeline, kiểm tra vị trí đặt - khi save và load lai game
+- [x] ** Tái tạo lại Timeline, kiểm tra vị trí đặt - khi save và load lai 
 - [x] **Menu Game**
 - [x] **Level**
 - [x] **Save**

@@ -1,6 +1,6 @@
 package src.Help.LawnMower;
 
-import src.Model.StageCharacter;
+import src.Model.StageCharacter.StageCharacter;
 
 import java.io.Serializable;
 
