@@ -8,7 +8,7 @@ import java.util.Collections;
 import src.Help.CardPlants.CardPlant;
 import src.Help.LawnMower.LawnMower;
 import src.Model.Characters.Plants.Plant;
-import src.Model.Characters.Plants.Sun.DropSun;
+import src.Model.Characters.Plants.SunDrop.DropSun;
 import src.Model.Characters.Zombies.Zombie;
 import src.Model.Characters.ZombieSpawner;
 
@@ -24,7 +24,6 @@ public class GameData implements Serializable {
     private DropSun dropSun = null;
     private int sun = 0;
     private int tick = 0;
-    private int durationDropSun = 0;
     private int sumZombie = 0;
 // Construct
     public GameData() {
@@ -37,7 +36,7 @@ public class GameData implements Serializable {
         this.dropSun = new DropSun();
     }
     public GameData(List<CardPlant> cardPlantList, List<Plant> listPlant, List<Zombie> zombieAlive
-            , List<ZombieSpawner> zombieSpawner, List<LawnMower> lawnMowers, int sun, int tick, int durationDropSun) {
+            , List<ZombieSpawner> zombieSpawner, List<LawnMower> lawnMowers, int sun, int tick) {
         super();
         this.cardPlantList = cardPlantList;
         this.listPlant = listPlant;
@@ -45,7 +44,6 @@ public class GameData implements Serializable {
         this.zombieSpawner = zombieSpawner;
         this.sun = sun;
         this.tick = tick;
-        this.durationDropSun = durationDropSun;
         this.lawnMowers = lawnMowers;
         this.dropSun = new DropSun();
         loadSumZombie();
@@ -101,7 +99,6 @@ public class GameData implements Serializable {
                 "\n, dropSun=" + dropSun +
                 "\n, sun=" + sun +
                 "\n, tick=" + tick +
-                "\n, durationDropSun=" + durationDropSun +
                 "\n, sumZombie=" + sumZombie +
                 '}';
     }
@@ -137,13 +134,6 @@ public class GameData implements Serializable {
     public void setTick(int tick) {
         this.tick = tick;
     }
-    public int getDurationDropSun() {
-        return durationDropSun;
-    }
-    public void setDurationDropSun(int durationDropSun) {
-        this.durationDropSun = durationDropSun;
-    }
-
     public List<CardPlant> getCardPlantList() {
         return cardPlantList;
     }

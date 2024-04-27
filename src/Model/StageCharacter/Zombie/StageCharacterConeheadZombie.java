@@ -14,6 +14,9 @@ public class StageCharacterConeheadZombie implements StageCharacter {
     }
     @Override
     public void start() {
+
+        helpStart();
+
         coneheadZombie.setTimeline(new Timeline(new KeyFrame(Duration.seconds(coneheadZombie.getSpeedAttack()),
                 e -> {
                     coneheadZombie.getAct().handle();
@@ -40,7 +43,15 @@ public class StageCharacterConeheadZombie implements StageCharacter {
     @Override
     public void resume() {
         if (coneheadZombie.getTimeline() != null) {
+
+            helpStart();
+
             coneheadZombie.getTimeline().play();
         }
+    }
+
+    // Help start
+    private void helpStart() {
+        coneheadZombie.createImageView();
     }
 }

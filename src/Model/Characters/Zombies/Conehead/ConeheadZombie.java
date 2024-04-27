@@ -30,7 +30,6 @@ public class ConeheadZombie extends Zombie { // Todo format lại code
         super(x, y, Path.ASSETS_Image_ConeheadZombie_Run, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, Path.ASSETS_Image_ConeheadZombie_Eat);
         setAct(new ActConeheadZombie(this));
         setStageCharacter(new StageCharacterConeheadZombie(this));
-        createImageView();
     }
 
     // Medthod

@@ -28,8 +28,6 @@ public class Repeater extends Plant {
     }
     public Repeater(double x, double y, int col, int row) {
         super(x, y, Path.ASSETS_Image_Repeater, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
-
-        createImageViewInGridPane();
         listPea = new ArrayList<Pea>();
         setAct(new ActRepeater(this));
         setStageCharacter(new StageCharacterRepeater(this));

@@ -18,6 +18,9 @@ public class StageLawnMower implements StageCharacter, Serializable {
 // Methods
     @Override
     public void start() {
+
+        helpStart();
+
         lawnMower.getActLawnMower().start();
     }
 
@@ -38,8 +41,14 @@ public class StageLawnMower implements StageCharacter, Serializable {
     @Override
     public void resume() {
         if (lawnMower.getTimeline() != null) {
+            helpStart();
             lawnMower.getTimeline().play();
         }
+    }
+
+    // Help start the lawn mower
+    public void helpStart() {
+        lawnMower.createImageView();
     }
 
 // Getters and Setters

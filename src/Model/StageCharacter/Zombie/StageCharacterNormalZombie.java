@@ -14,6 +14,7 @@ public class StageCharacterNormalZombie implements StageCharacter {
     }
     @Override
     public void start() {
+        helpStart();
         normalZombie.setTimeline(new Timeline(new KeyFrame(Duration.seconds(normalZombie.getSpeedAttack()),
                 e -> {
                     normalZombie.getAct().handle();
@@ -42,7 +43,13 @@ public class StageCharacterNormalZombie implements StageCharacter {
     @Override
     public void resume() {
         if (normalZombie.getTimeline() != null) {
+            helpStart();
             normalZombie.getTimeline().play();
         }
+    }
+
+    // Help start
+    private void helpStart() {
+        normalZombie.createImageView();
     }
 }

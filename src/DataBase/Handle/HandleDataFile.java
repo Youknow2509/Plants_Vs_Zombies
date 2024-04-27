@@ -69,7 +69,7 @@ public class HandleDataFile implements HandleData {
                             )
                     );
                 }
-
+                gameDataAdd.getZombieSpawner().sort((o1, o2) -> o1.getTime() - o2.getTime());
                 // Read ListLawnMower
                 String [] ListLawnMower = br.readLine().split(", ");
                 for (String lawnMower : ListLawnMower) {

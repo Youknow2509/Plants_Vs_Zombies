@@ -20,6 +20,9 @@ public class StageCharacterPea implements StageCharacter {
 
     @Override
     public void start() {
+
+        helpStart();
+
         pea.setTimeline(new Timeline((new KeyFrame(Duration.millis(pea.getSpeedAttack())
                 , e -> {
                     pea.getAct().handle();
@@ -48,5 +51,10 @@ public class StageCharacterPea implements StageCharacter {
         if (pea.getTimeline() != null) {
             pea.getTimeline().play();
         }
+    }
+
+    // Help Start
+    private void helpStart() {
+        pea.createImageView();
     }
 }

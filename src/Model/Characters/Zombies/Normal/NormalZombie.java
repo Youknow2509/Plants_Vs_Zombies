@@ -29,7 +29,6 @@ public class NormalZombie extends Zombie {
     public NormalZombie(double x, double y, int lane) {
 
         super(x, y, Path.ASSETS_Image_NormalZombie_Run, WIDTH, HEIGHT, lane, HP, DAMAGE, SPEED_MOVE, SPEED_ATTACK, MOVE, Path.ASSETS_Image_NormalZombie_Eat);
-        createImageView();
         setAct(new ActNormalZombie(this));
         setStageCharacter(new StageCharacterNormalZombie(this));
     }

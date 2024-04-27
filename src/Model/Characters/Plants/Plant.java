@@ -29,7 +29,6 @@ public class Plant extends GameElements implements Serializable {
                  int hp, int col, int row, int cost, int speedAttack, int dame) {
 
         super(x, y, path, width, height, row);
-
         this.hp = hp;
         this.col = col;
         this.row = row;

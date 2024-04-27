@@ -1,7 +1,7 @@
 package src.Model.Characters.Plants;
 
 import src.Model.Characters.Plants.Repeater.Repeater;
-import src.Model.Characters.Plants.Sun.SunFlower;
+import src.Model.Characters.Plants.SunFlower.SunFlower;
 import src.Model.Characters.Plants.PeaShooter.PeaShooter;
 import src.Model.Characters.Plants.Wallnut.Wallnut;
 

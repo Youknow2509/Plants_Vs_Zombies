@@ -5,7 +5,11 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 import src.Config.Path;
 import src.Controller.Game.GameMainController;
+import src.Model.ActCharacter.Act;
+import src.Model.ActCharacter.Plant.ActSun;
 import src.Model.Characters.GameElements;
+import src.Model.StageCharacter.Plant.StageSun;
+import src.Model.StageCharacter.StageCharacter;
 import src.Utils.LaneToLayoutY;
 
 import java.util.List;
@@ -15,91 +19,79 @@ public class Sun extends GameElements {
     private static final int VALUE = 25;
     private static final int WIDTH = 45;
     private static final int HEIGHT = 45;
-    private static final int TIMEOUT_DROPSUN = 14000;
-    private static final int TIMEOUT_FLOWERSUN = 6000;
-    // Var of sun
+
+    // Var
     private int lane = 0;
-    private int layoutXEnd = 0;
-    private int layoutYEnd = 0;
-    private int timeout = 0;
-    private transient Timeline tlSun = null;
-    private transient Timeline tlSunDisappearSun;
-    private transient List<Timeline> listTlSun;
-    private transient List<Timeline> DisappearSunList;
+    private int layoutXEnd = 0; // Vị trí x của sun sau khi rơi
+    private int layoutYEnd = 0; // Vị trí y của sun sau khi rơi
+    private int timeout = 0; // Thời gian mờ và xoá sun
+    private transient Timeline timeline = null;
+    private Act act;
+    private StageCharacter stageCharacter;
+
+    // Var list sun
+    private List<Sun> listSun;
 
     // Constructor
     public Sun() {
         super();
+        act = new ActSun(this);
+        stageCharacter = new StageSun(this);
     }
-    public Sun(int x, int y, int lane , List<Timeline> listTlSun, List<Timeline> DisappearSunList) {
+    public Sun(int x, int y, int lane, int timeOutDisappear , List<Sun> listSun) {
         super(x, y, Path.ASSETS_Image_Sun, WIDTH, HEIGHT, lane);
         this.lane = lane;
         this.layoutYEnd = LaneToLayoutY.sunGetLayoutY(lane);
         this.layoutXEnd = x - 15;
-        this.listTlSun = listTlSun;
-        this.DisappearSunList = DisappearSunList;
+        this.timeout = timeOutDisappear;
+        this.listSun = listSun;
+
+        act = new ActSun(this);
+        stageCharacter = new StageSun(this);
     }
 
     // Tạo hình ảnh sun và thêm sự kiện click để nhận sun
     @Override
     public void createImageView() {
-        super.createImageView();
-        getImageView().setOnMouseClicked((e) -> {
-            GameMainController.setSun(GameMainController.getSun() + VALUE);
-            removeImageView();
-        });
-    }
-
-    // Tạo sun từ cây
-    public void flowerCreateSun() { // todo stop drop sun
-        timeout = TIMEOUT_FLOWERSUN;
-        createImageView();
-
-        tlSun = new Timeline(new KeyFrame(Duration.millis(30), e -> {
-            if (this.getY() < layoutYEnd) {
-                this.setY(this.getY() + 1);
-                this.setX(this.getX() - 0.2);
-            } else {
-                tlSun.stop();
-                listTlSun.remove(tlSun);
-                DisappearSun();
-            }
-        }));
-        tlSun.setCycleCount(Timeline.INDEFINITE);
-        tlSun.play();
-        listTlSun.add(tlSun);
-    }
-
-    // Tạo sun ngẫu nhiên rơi xuống
-    public void CreatSunDrop() {
-        timeout = TIMEOUT_DROPSUN;
-        setY(0);    // Đặt lại vị trí y của sun về 0 để rơi từ trên xuống
-        createImageView();
-
-        tlSun = new Timeline(new KeyFrame(javafx.util.Duration.millis(30), e -> {
-            if (this.getY() <= layoutYEnd) { // TODO: Lưu tạm this.getY() <= 550 để sun rơi đến cuối màn hình
-                this.setY(this.getY() + 1);
-            } else {
-                tlSun.stop();
-                listTlSun.remove(tlSun);
-                DisappearSun();
-            }
-        }));
-        tlSun.setCycleCount(Timeline.INDEFINITE);
-        tlSun.play();
-        listTlSun.add(tlSun);
+        if (getImageView() == null) {
+            super.createImageView();
+            getImageView().setOnMouseClicked((e) -> {
+                GameMainController.setSun(GameMainController.getSun() + VALUE);
+                removeImageView();
+                listSun.remove(this);
+            });
+        }
     }
 
     // Làm mờ rồi xoá sun sau một thời gian nhất định
-    private void DisappearSun() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(timeout), event -> {
-            tlSun.stop();
+    public void DisappearSun() {
+        timeline = new Timeline(new KeyFrame(Duration.millis(timeout), event -> {
             removeImageView();
-            listTlSun.remove(tlSun);
+            timeline.stop();
+            listSun.remove(this);
         }));
         timeline.setCycleCount(1);  // Chỉ chạy một lần
         timeline.play();
-        DisappearSunList.add(timeline);
+    }
+
+    public void start1() {
+        ((StageSun)stageCharacter).start1();
+    }
+
+    public void start2() {
+        ((StageSun)stageCharacter).start2();
+    }
+
+    public void stop() {
+        (stageCharacter).stop();
+    }
+
+    public void pause() {
+        (stageCharacter).pause();
+    }
+
+    public void resume() {
+        (stageCharacter).resume();
     }
 
 
@@ -138,35 +130,35 @@ public class Sun extends GameElements {
         this.timeout = timeout;
     }
 
-    public Timeline getTlSun() {
-        return tlSun;
+    public List<Sun> getListSun() {
+        return listSun;
     }
 
-    public void setTlSun(Timeline tlSun) {
-        this.tlSun = tlSun;
+    public void setListSun(List<Sun> listSun) {
+        this.listSun = listSun;
     }
 
-    public List<Timeline> getListTlSun() {
-        return listTlSun;
+    public Act getAct() {
+        return act;
     }
 
-    public void setListTlSun(List<Timeline> listTlSun) {
-        this.listTlSun = listTlSun;
+    public void setAct(Act act) {
+        this.act = act;
     }
 
-    public List<Timeline> getDisappearSunList() {
-        return DisappearSunList;
+    public StageCharacter getStageCharacter() {
+        return stageCharacter;
     }
 
-    public void setDisappearSunList(List<Timeline> disappearSunList) {
-        DisappearSunList = disappearSunList;
+    public void setStageCharacter(StageCharacter stageCharacter) {
+        this.stageCharacter = stageCharacter;
     }
 
-    public Timeline getTlSunDisappearSun() {
-        return tlSunDisappearSun;
+    public Timeline getTimeline() {
+        return timeline;
     }
 
-    public void setTlSunDisappearSun(Timeline tlSunDisappearSun) {
-        this.tlSunDisappearSun = tlSunDisappearSun;
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
     }
 }

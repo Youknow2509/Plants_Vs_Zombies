@@ -18,13 +18,15 @@ public class StageCharacterPeaShooter implements StageCharacter {
 
     @Override
     public void start() {
+
+        helpStart();
+
         peaShooter.setTimeline(new Timeline(new KeyFrame(Duration.seconds(peaShooter.getSpeedAttack()),
                 e -> {
                     peaShooter.getAct().handle();
                 }
         )));
         peaShooter.getTimeline().setCycleCount(Timeline.INDEFINITE); // Số lượng đạn bắt ra là vô hạn, cứ có Zombie là bắn
-        playPeaBefore();
         peaShooter.getTimeline().play();
     }
 
@@ -55,16 +57,22 @@ public class StageCharacterPeaShooter implements StageCharacter {
     @Override
     public void resume() {
         if (peaShooter.getTimeline() != null) {
+
+            helpStart();
+
             peaShooter.getTimeline().play();
         }
-        playPeaBefore();
     }
-    // Play pea before
-    private void playPeaBefore() {
-        if (peaShooter.getListPea() != null) {
-            for (Pea pea : peaShooter.getListPea()) {
-                pea.start();
-            }
+
+    // Help Start
+    private void helpStart() {
+
+        if (peaShooter.getImageView() == null || peaShooter.getImage() == null) {
+            peaShooter.createImageViewInGridPane();
+        }
+
+        for (int i = 0; i < peaShooter.getListPea().size(); i++) {
+            peaShooter.getListPea().get(i).start();
         }
     }
 }

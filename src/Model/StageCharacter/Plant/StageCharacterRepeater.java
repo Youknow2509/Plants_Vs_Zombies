@@ -18,13 +18,13 @@ public class StageCharacterRepeater implements StageCharacter {
 
     @Override
     public void start() {
+        helpStart();
         repeater.setTimeline(new Timeline(new KeyFrame(Duration.seconds(repeater.getSpeedAttack()),
                 e -> {
                     repeater.getAct().handle();
                 }
         )));
         repeater.getTimeline().setCycleCount(Timeline.INDEFINITE);
-        playPeaBefore();
         repeater.getTimeline().play();
     }
 
@@ -55,16 +55,20 @@ public class StageCharacterRepeater implements StageCharacter {
     @Override
     public void resume() {
         if (repeater.getTimeline() != null) {
+            helpStart();
             repeater.getTimeline().play();
         }
-        playPeaBefore();
     }
-    // Play pea before
-    private void playPeaBefore() {
-        if (repeater.getListPea() != null) {
-            for (Pea p : repeater.getListPea()) {
-                p.start();
-            }
+
+    // Help start
+    private void helpStart() {
+        if (repeater.getImage() == null || repeater.getImageView() == null) {
+            repeater.createImageViewInGridPane();
+        }
+
+        for (int i = 0 ; i < repeater.getListPea().size(); i++) {
+            repeater.getListPea().get(i).start();
         }
     }
+
 }

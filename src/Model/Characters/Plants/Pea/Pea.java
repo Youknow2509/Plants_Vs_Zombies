@@ -26,9 +26,6 @@ public class Pea extends GameElements {
     public Pea(double x, double y, int lane,
                List<Pea> listPea) {
         super(x, y, Path.ASSETS_Image_Pea, WIDTH, HEIGHT, lane);
-
-        createImageView();
-        
         this.listPea = listPea;
         act = new ActPea(this);
         stageCharacter = new StageCharacterPea(this);

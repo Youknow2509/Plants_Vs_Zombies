@@ -28,18 +28,10 @@ public class GameProcess {
     // Start Game
     public void startGame() {
         timelineGame = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-            // Random Sun
-            if (gameData.getDurationDropSun() == 0) {
-                gameData.getDropSun().CreatSunDrop();
-                gameData.setDurationDropSun(gameData.getDropSun().getDurationDropSun());
-            } else {
-                gameData.setDurationDropSun(gameData.getDurationDropSun() - 1);
-            }
             // Xử lí tạo ra zombie sản sinh
             while (gameData.getZombieSpawner().size() > 0 && gameData.getZombieSpawner().get(0).getTime() == gameData.getTick()) {
                 ZombieSpawner zombieSpawner = gameData.getZombieSpawner().get(0);
                 Zombie zombie = zombieSpawner.getZombie();
-                zombie.createImageView();
                 zombie.start();
                 gameData.getZombieAlive().add(zombie);
                 gameData.getZombieSpawner().remove(0);
@@ -129,23 +121,22 @@ public class GameProcess {
 
     // Load Game
     public void loadGame() {
+        // Tải dropsun
+        gameData.getDropSun().start();
         // Tải các thẻ cây
         for (int i = 0; i < gameData.getCardPlantList().size(); i++) {
             gameData.getCardPlantList().get(i).createImage(); // tái tạo lại hình ảnh
         }
         // Tải các zombie đang tồn tại
         for (int i = 0; i < gameData.getZombieAlive().size(); i++) {
-            gameData.getZombieAlive().get(i).createImageView();
             gameData.getZombieAlive().get(i).start();
         }
         // Tải các thực thể cây đang tồn tại
         for (int i = 0; i < gameData.getListPlant().size(); i++) {
-            gameData.getListPlant().get(i).createImageView();
             gameData.getListPlant().get(i).start();
         }
         // Xử lí lấy ra LawnMower
         for (int i = 0; i < gameData.getLawnMowers().size(); i++) {
-            gameData.getLawnMowers().get(i).createImageView();
             gameData.getLawnMowers().get(i).start();
         }
     }

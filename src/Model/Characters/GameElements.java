@@ -29,6 +29,9 @@ public abstract class GameElements implements Serializable {
     }
     // Tạo hình ảnh
     public void createImageView() {
+        if (this.image != null || this.imageView != null) {
+            return;
+        }
         this.image = new Image(path, width, height, false, false);
         this.imageView = new ImageView(this.image);
         this.imageView.setX(getX());
@@ -37,6 +40,9 @@ public abstract class GameElements implements Serializable {
     }
     // Xoá hình ảnh
     public void removeImageView() {
+        if (this.imageView == null || this.image == null) {
+            return;
+        }
         imageView.setDisable(true);
         imageView.setVisible(false);
         GameMainController.getAnchorPane().getChildren().remove(this.imageView);
