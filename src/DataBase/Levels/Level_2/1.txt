@@ -1,4 +1,4 @@
-50, 0, 0
+50, 0
 SunFlower, PeaShooter, WallNut
 47
 30, 1, NORMALZOMBIE

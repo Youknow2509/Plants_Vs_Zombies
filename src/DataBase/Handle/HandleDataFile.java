@@ -50,7 +50,6 @@ public class HandleDataFile implements HandleData {
                 String [] Sun_Tic_GameDucation = br.readLine().split(", ");
                 gameDataAdd.setSun(Integer.parseInt(Sun_Tic_GameDucation[0]));
                 gameDataAdd.setTick(Integer.parseInt(Sun_Tic_GameDucation[1]));
-                gameDataAdd.setDurationDropSun(Integer.parseInt(Sun_Tic_GameDucation[2]));
 
                 // Read ListCard
                 String [] ListCard = br.readLine().split(", ");
@@ -130,11 +129,6 @@ public class HandleDataFile implements HandleData {
     public void addDataSave(GameData gameData, String nameSaveGame) {
         String pathFile = pathDataSave + "SaveGames/" + nameSaveGame + ".ser";
 
-        File folder = new File(pathFile);
-        if (folder.exists()) {
-            System.out.println("File ton tai !!!");
-            return;
-        }
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {

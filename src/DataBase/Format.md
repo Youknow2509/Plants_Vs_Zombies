@@ -1,4 +1,4 @@
-Sun, Tick, GameDucation: Ghi trên một dòng
+Sun, Tickn: Ghi trên một dòng
 String path (ListCard): Ghi trên một dòng
 Số ZombieSpawer
 ZombieSpawer - (Tên loại ZombieSpawer in hoa): Thông tin mỗi loại ZombieSpawwer viết trên mọt dòng

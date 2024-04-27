@@ -29,6 +29,9 @@ public class HandleCardPlant implements Serializable {
 
     // Creat ImageView for CardPlant
     public void creatImageView() {
+        if (cardPlant == null || cardPlant.getImage() != null || cardPlant.getImageView() != null) {
+            return;
+        }
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         cardPlant.setImage(new Image(cardPlant.getPath(), cardPlant.getWidth(), cardPlant.getHeight(), false, false));
         // Tạo một ImageView để hiển thị hình ảnh

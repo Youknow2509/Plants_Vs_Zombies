@@ -22,11 +22,16 @@ public class HandleInGridPane implements Serializable {
     }
     // Method
     public void createImageViewInGridPane() {
+        if ((GameMainController.getGridPane()).getChildren().contains(p.getImageView())
+            || p.getImage() != null || p.getImageView() != null ) {
+
+                return;
+        }
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        Image image = new Image(p.getPath(), p.getWidth(), p.getHeight(), false, false);
+        p.setImage(new Image(p.getPath(), p.getWidth(), p.getHeight(), false, false));
         // Tạo một ImageView để hiển thị hình ảnh
-        p.setImageView(new ImageView(image));
-        (p.getImageView()).setImage(image);
+        p.setImageView(new ImageView(p.getImage()));
+        (p.getImageView()).setImage(p.getImage());
         // Thêm hình ảnh vào NodeGridPane
         (GameMainController.getGridPane()).add(p.getImageView(), p.getCol(), p.getRow(), 1, 1);
     }
