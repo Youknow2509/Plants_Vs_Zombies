@@ -29,9 +29,13 @@ public class HandleCardPlant implements Serializable {
 
     // Creat ImageView for CardPlant
     public void creatImageView() {
-        if (cardPlant == null || cardPlant.getImage() != null || cardPlant.getImageView() != null) {
+        if (cardPlant == null || cardPlant.getImage() != null || cardPlant.getImageView() != null
+        || (GameMainController.getAnchorPane()).getChildren().contains(cardPlant.getImageView())) {
             return;
         }
+
+        cardPlant.setHaveBuy(true);
+
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         cardPlant.setImage(new Image(cardPlant.getPath(), cardPlant.getWidth(), cardPlant.getHeight(), false, false));
         // Tạo một ImageView để hiển thị hình ảnh
@@ -47,6 +51,7 @@ public class HandleCardPlant implements Serializable {
         // Thêm sự kiện vào ImageView
         cardPlant.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             HandleEventClickToCard(e);
+            System.out.println(cardPlant.getName());
         });
         // Thêm ImageView vào AnchorPane
         (GameMainController.getAnchorPane()).getChildren().add(cardPlant.getImageView());

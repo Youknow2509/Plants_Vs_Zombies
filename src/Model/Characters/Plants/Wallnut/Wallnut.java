@@ -1,6 +1,7 @@
 package src.Model.Characters.Plants.Wallnut;
 
 import src.Config.Path;
+import src.Model.ActCharacter.Act;
 import src.Model.Characters.Plants.Plant;
 
 public class Wallnut extends Plant {
@@ -19,7 +20,28 @@ public class Wallnut extends Plant {
     }
     public Wallnut(double x, double y, int col, int row) {
         super(x, y, Path.ASSETS_Image_Wallnut, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAMAGE);
+    }
+
+    // Start tấn công
+    @Override
+    public void start() {
         createImageViewInGridPane();
     }
-    // TODO chưa code Wallnut
+    // Stop
+    @Override
+    public void stop() {
+
+    }
+    // Pause tấn công
+    @Override
+    public void pause() {
+
+    }
+
+    // Resume tấn công
+    @Override
+    public void resume() {
+
+    }
+
 }

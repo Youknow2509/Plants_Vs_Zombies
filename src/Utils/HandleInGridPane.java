@@ -38,6 +38,9 @@ public class HandleInGridPane implements Serializable {
 
     // Xoa anh cay tren NodeGridPane
     public void removeImageViewInGridPane() {
+        if (p.getImageView() == null || !((GameMainController.getGridPane()).getChildren().contains(p.getImageView()))) {
+            return;
+        }
         p.getImageView().setDisable(true);
         p.getImageView().setVisible(false);
         if (p.getTimeline() != null) {

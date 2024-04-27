@@ -15,7 +15,7 @@ public class CardPlant implements Serializable {
     private transient ImageView imageView;
     private transient Image image;
     private double x, y;
-    private boolean haveBuy = true;
+    private boolean haveBuy = true; // True: have buy, False: haven't buy
     private String path;
     private String name;
     private HandleCardPlant handleCardPlant = new HandleCardPlant(this);
