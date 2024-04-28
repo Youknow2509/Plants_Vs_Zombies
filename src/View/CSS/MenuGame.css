@@ -37,3 +37,30 @@
     -fx-font-style: normal;
     -fx-font-weight: bold;
 }
+
+.img_check {
+    -fx-pref-width: 35px;
+    -fx-pref-height: 40px;
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.img_check:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.2;
+}
+
+.bg_img_check {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 40px;
+    -fx-padding: 0px 7.5px;
+    -fx-border-radius: 20px;
+    -fx-background-color: #D9D9D9;
+}
+
+.textFile_ip_newGame {
+    -fx-pref-width: 123px;
+        -fx-pref-height: 51px;
+        -fx-border-radius: 20px;
+        -fx-background-color: #D9D9D9;
+}

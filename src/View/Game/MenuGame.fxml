@@ -2,6 +2,10 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -15,12 +19,30 @@
                         <String fx:value="menuText" />
                     </styleClass>
                 </Button>
-                <Button fx:id="luu" layoutX="-6.0" layoutY="3.0" maxHeight="55.0" maxWidth="130.0" minHeight="55.0" minWidth="130.0" mnemonicParsing="false" onAction="#luu" prefHeight="55.0" prefWidth="130.0" text="Lưu Game" VBox.vgrow="ALWAYS">
-                    <styleClass>
-                        <String fx:value="menu" />
-                        <String fx:value="menuText" />
-                    </styleClass>
-                </Button>
+            <AnchorPane maxHeight="51.0" minHeight="51.0" prefHeight="51.0" prefWidth="200.0">
+               <children>
+                      <Button fx:id="luu" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-2.0" maxHeight="55.0" maxWidth="130.0" minHeight="55.0" minWidth="130.0" mnemonicParsing="false" onAction="#luu" prefHeight="55.0" prefWidth="130.0" text="Lưu Game">
+                          <styleClass>
+                              <String fx:value="menu" />
+                              <String fx:value="menuText" />
+                          </styleClass>
+                      </Button>
+                  <HBox fx:id="box_Input_Name_Game" alignment="CENTER" maxHeight="51.0" maxWidth="186.0" minHeight="51.0" minWidth="186.0" prefHeight="51.0" prefWidth="186.0" spacing="13.0" visible="false">
+                     <children>
+                        <TextField fx:id="textNameGame" promptText="Nhập tên game" styleClass="textFile_ip_newGame" />
+                        <ImageView fx:id="btn_InputName" onMouseClicked="#inputNameGame" fitHeight="40.0" fitWidth="35.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../../../Assets/icon/check-solid.png" />
+                           </image>
+                           <styleClass>
+                              <String fx:value="img_check" />
+                              <String fx:value="bg_img_check" />
+                           </styleClass>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
                 <Button fx:id="quayLaiHome" layoutX="-6.0" layoutY="3.0" maxHeight="55.0" maxWidth="130.0" minHeight="55.0" minWidth="130.0" mnemonicParsing="false" onAction="#quayLaiHome" prefHeight="55.0" prefWidth="130.0" text="Quay Lại" VBox.vgrow="ALWAYS">
                     <styleClass>
                         <String fx:value="menu" />

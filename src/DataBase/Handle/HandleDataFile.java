@@ -164,12 +164,12 @@ public class HandleDataFile implements HandleData {
     public void deleteDataSave(String nameSaveGame) {
         String pathFile = pathDataSave + "SaveGames/" + nameSaveGame + ".ser";
 
-        File folder = new File(pathFile);
-        if (!folder.exists()) {
+        File file = new File(pathFile);
+        if (!file.exists()) {
             System.out.println("File khong ton tai !!!");
             return;
         }
-        folder.delete();
+        file.delete();
     }
 
     @Override
