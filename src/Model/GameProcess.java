@@ -11,6 +11,9 @@ import src.Model.Characters.ZombieSpawner;
 
 public class GameProcess {
     // Variables
+    private int idGame;
+    private String nameGame = null;
+    private int Level;
     private GameData gameData = null;
     private transient Timeline timelineGame = null;
 
@@ -23,6 +26,13 @@ public class GameProcess {
         super();
         this.gameData = gameData;
         gameData.loadSumZombie();
+    }
+
+    public GameProcess(int idGame, String nameGame, int level, GameData gameData) {
+        this.idGame = idGame;
+        this.nameGame = nameGame;
+        Level = level;
+        this.gameData = gameData;
     }
 
     // Start Game
@@ -161,5 +171,29 @@ public class GameProcess {
 
     public void setTimelineGame(Timeline timelineGame) {
         this.timelineGame = timelineGame;
+    }
+
+    public int getIdGame() {
+        return idGame;
+    }
+
+    public void setIdGame(int idGame) {
+        this.idGame = idGame;
+    }
+
+    public String getNameGame() {
+        return nameGame;
+    }
+
+    public void setNameGame(String nameGame) {
+        this.nameGame = nameGame;
+    }
+
+    public int getLevel() {
+        return Level;
+    }
+
+    public void setLevel(int level) {
+        Level = level;
     }
 }

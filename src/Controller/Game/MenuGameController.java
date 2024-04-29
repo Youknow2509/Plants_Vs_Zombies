@@ -59,11 +59,11 @@ public class MenuGameController {
 
     @FXML
     public void luu(ActionEvent event) {
-        String nameGameData = gameData.getNameGameData();
+        String nameGameData = gameProcess.getNameGame();
         if (nameGameData == null || nameGameData.equals("")) {
             changeInputNameGame_save();
         } else {
-            handleData.updateDataSave(gameData, nameGameData);
+            handleData.updateDataSave(gameProcess);
         }
     }
 
@@ -76,8 +76,8 @@ public class MenuGameController {
     public void inputNameGame(MouseEvent event) {
         String nameInput = textNameGame.getText();
         if (nameInput != null && !nameInput.equals("")) {
-            gameData.setNameGameData(nameInput);
-            handleData.addDataSave(gameData, nameInput);
+            gameProcess.setNameGame(nameInput);
+            handleData.addDataSave(gameProcess);
             changeInputNameGame_save();
         }
     }

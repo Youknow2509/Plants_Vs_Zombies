@@ -57,14 +57,14 @@ public class GameMainController {
     private FactoryListCardPlant factoryListCardPlant;
     // Initialize
     @FXML
-    public void initialize(GameData g) {
-        gameData = g;
+    public void initialize(GameProcess gameProcess) {
+        this.gameProcess = gameProcess;
+        gameData = gameProcess.getGameData();
         // Gán giá trị cho các biến static nắm giữ các element - để dễ dàng truy cập từ các class khác ( Thêm, xoá hình ảnh, v.v)
         anchorPane = GamePlayRoot;
         gridPane = lawnGrid;
         progressBar = progressbarGame;
         // Tải dữ liệu của Game vào Controller
-        gameProcess = new GameProcess(gameData);
         gameProcess.startGame();
         // Tải Sun từ Controller vào view và gán sự kiện
         sun = gameData.getSun();

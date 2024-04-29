@@ -1,15 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="src.Controller.LoadData.ListGameSaveController"
             stylesheets="@../CSS/ListGameSave.css"
             prefHeight="400.0" prefWidth="600.0">
-
+    <children>
+        <ImageView fx:id="backToHome" fitHeight="62.0" fitWidth="54.25" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true" styleClass="btn" x="30.0" y="19.0">
+            <image>
+                <Image url="@../../../Assets/icon/long-arrow-alt-left-solid.png" />
+            </image>
+        </ImageView>
+        <HBox layoutX="75.0" layoutY="75.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+            <children>
+                <TableView fx:id="tableView" maxHeight="750.0" maxWidth="994.0" minHeight="750.0" minWidth="994.0" prefHeight="750.0" prefWidth="994.0">
+                    <columns>
+                        <TableColumn fx:id="colName" editable="false" prefWidth="250.0" text="Tên" />
+                        <TableColumn fx:id="colTypeGame" editable="false" minWidth="0.0" prefWidth="150.0" text="Loại game" />
+                        <TableColumn fx:id="colDate" editable="false" minWidth="0.0" prefWidth="200.0" text="Thời gian" />
+                        <TableColumn fx:id="colHealth" editable="false" minWidth="0.0" prefWidth="200.0" text="Số mạng còn lại" />
+                        <TableColumn fx:id="colEmpty" editable="false" minWidth="0.0" prefWidth="200.0" text="Số ô trống còn lại" />
+                    </columns>
+                    <styleClass>
+                        <String fx:value="column-header" />
+                        <String fx:value="column-header-background" />
+                        <String fx:value="decrement-button" />
+                        <String fx:value="decrement-button" />
+                        <String fx:value="increment-button" />
+                        <String fx:value="scroll-bar" />
+                        <String fx:value="table-cell" />
+                        <String fx:value="table-row-cell" />
+                        <String fx:value="table-view" />
+                        <String fx:value="thumb" />
+                        <String fx:value="track" />
+                        <String fx:value="track-background" />
+                        <String fx:value="virtual-flow" />
+                    </styleClass>
+                </TableView>
+                <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="83.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <ImageView fx:id="del" fitHeight="80.0" fitWidth="80.0" onMouseClicked="#delete" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                                    <image>
+                                        <Image url="@../../../Assets/icon/trash-solid.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="edit" fitHeight="80.0" fitWidth="80.0" onMouseClicked="#edit" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                                    <image>
+                                        <Image url="@../../../Assets/icon/pen-to-square-regular.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                            <padding>
+                                <Insets bottom="40.0" />
+                            </padding>
+                        </HBox>
+                        <ImageView fx:id="play" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#play" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                            <image>
+                                <Image url="@../../../Assets/icon/right-long-solid.png" />
+                            </image>
+                            <VBox.margin>
+                                <Insets left="40.0" />
+                            </VBox.margin></ImageView>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

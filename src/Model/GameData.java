@@ -16,7 +16,6 @@ public class GameData implements Serializable {
 // Var
     private static final long serialVersionUID = 1L;
     private int ID;
-    private String nameGameData;
     private List<CardPlant> cardPlantList = null;
     private List<Plant> listPlant = null;
     private List<Zombie> zombieAlive = null;
@@ -90,7 +89,6 @@ public class GameData implements Serializable {
     public String toString() {
         return "GameData{" +
                 "ID=" + ID +
-                ", nameGameData='" + nameGameData + '\'' +
                 ", cardPlantList=" + cardPlantList +
                 ", listPlant=" + listPlant +
                 ", zombieAlive=" + zombieAlive +
@@ -171,13 +169,5 @@ public class GameData implements Serializable {
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public String getNameGameData() {
-        return nameGameData;
-    }
-
-    public void setNameGameData(String nameGameData) {
-        this.nameGameData = nameGameData;
     }
 }

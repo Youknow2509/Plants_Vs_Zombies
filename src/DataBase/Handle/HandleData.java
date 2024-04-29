@@ -1,6 +1,8 @@
 package src.DataBase.Handle;
 
+import src.Controller.Game.GameMainController;
 import src.Model.GameData;
+import src.Model.GameProcess;
 
 import java.util.List;
 
@@ -9,13 +11,13 @@ public interface HandleData {
     List<GameData> getDatalevel(int level);
 
     // Lấy dữ liệu từ save Game
-    List<GameData> getDataSave();
+    List<GameProcess> getDataSave();
 
     // Thêm dữ liệu vào save Game
-    void addDataSave(GameData gameData, String nameSaveGame);
+    void addDataSave(GameProcess gameProcess);
 
     // Cập nhật dữ liệu save Game
-    void updateDataSave(GameData gameData, String nameSaveGame);
+    void updateDataSave(GameProcess gameProcess);
 
     // Xóa dữ liệu save Game
     void deleteDataSave(String nameSaveGame);

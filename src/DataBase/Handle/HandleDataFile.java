@@ -4,6 +4,7 @@ import src.Help.CardPlants.FactoryListCardPlant;
 import src.Help.LawnMower.FactoryLawnMower;
 import src.Model.GameData;
 import src.Model.Characters.ZombieSpawner;
+import src.Model.GameProcess;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -97,9 +98,9 @@ public class HandleDataFile implements HandleData {
     }
 
     @Override
-    public List<GameData> getDataSave() {
+    public List<GameProcess> getDataSave() {
         String pathFolder = pathDataSave + "SaveGames";
-        List<GameData> listGameData = new ArrayList<GameData>();
+        List<GameProcess> listGameData = new ArrayList<GameProcess>();
 
         File folder = new File(pathFolder);
         File[] listFile = folder.listFiles();
@@ -109,7 +110,7 @@ public class HandleDataFile implements HandleData {
             try {
                 fis = new FileInputStream(file);
                 ois = new ObjectInputStream(fis);
-                listGameData.add((GameData) ois.readObject());
+                listGameData.add((GameProcess) ois.readObject());
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -126,7 +127,8 @@ public class HandleDataFile implements HandleData {
     }
 
     @Override
-    public void addDataSave(GameData gameData, String nameSaveGame) {
+    public void addDataSave(GameProcess gameProcess) {
+        String nameSaveGame = gameProcess.getNameGame();
         String pathFile = pathDataSave + "SaveGames/" + nameSaveGame + ".ser";
 
         FileOutputStream fos = null;
@@ -134,7 +136,7 @@ public class HandleDataFile implements HandleData {
         try {
             fos = new FileOutputStream(pathFile);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(gameData);
+            oos.writeObject(gameProcess);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -148,7 +150,9 @@ public class HandleDataFile implements HandleData {
     }
 
     @Override
-    public void updateDataSave(GameData gameData, String nameSaveGame) {
+    public void updateDataSave(GameProcess gameProcess) {
+        String nameSaveGame = gameProcess.getNameGame();
+
         String pathFile = pathDataSave + "SaveGames/" + nameSaveGame + ".ser";
 
         File folder = new File(pathFile);
@@ -157,7 +161,7 @@ public class HandleDataFile implements HandleData {
             return;
         }
         deleteDataSave(nameSaveGame);
-        addDataSave(gameData, nameSaveGame);
+        addDataSave(gameProcess);
     }
 
     @Override

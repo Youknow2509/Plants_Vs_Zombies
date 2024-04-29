@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import src.Controller.Game.GameMainController;
 import src.Model.GameData;
+import src.Model.GameProcess;
 
 import java.io.IOException;
 
@@ -45,12 +46,14 @@ public class ChangeScene {
             System.exit(0);
         }
     }
-    public void changeToGame(GameData gameData) {
+    public void changeToGame(GameProcess gameProcess) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/Game/GameMain.fxml"));
             Parent root = loader.load();
+
             GameMainController gameMainController = loader.getController();
-            gameMainController.initialize(gameData);
+            gameMainController.initialize(gameProcess);
+
             Scene scene = new Scene(root, width, height);
             stage.setScene(scene);
             stage.setTitle(title);
