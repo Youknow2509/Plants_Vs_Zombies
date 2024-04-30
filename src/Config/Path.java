@@ -4,6 +4,10 @@ public class Path {
     // View
     public static final String VIEW_GameMain = "/src/View/Game/GameMain.fxml";
     public static final String VIEW_GameMenu = "/src/View/Game/MenuGame.fxml";
+    public static final String VIEW_Home = "/src/View/Home/Home.fxml";
+    public static final String VIEW_ListGameSave = "/src/View/LoadData/ListGameSave.fxml";
+    public static final String VIEW_EditGameSave = "/src/View/LoadData/EditGameSave.fxml";
+
 
     // CSS
     public static final String CSS_GameMenu = "/src/Assets/css/MenuGame.css";

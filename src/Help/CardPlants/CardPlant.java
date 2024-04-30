@@ -1,7 +1,9 @@
 package src.Help.CardPlants;
 
+import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import src.Controller.Game.GameMainController;
 
 import java.io.Serializable;
 
@@ -37,6 +39,7 @@ public class CardPlant implements Serializable {
         this.path = path;
         this.name = name;
     }
+
     // Method
     public void createImage() {
         handleCardPlant.creatImageView();

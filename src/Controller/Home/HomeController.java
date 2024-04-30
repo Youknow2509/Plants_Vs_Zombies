@@ -5,6 +5,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import src.Config.Path;
+import src.Utils.ChangeScene;
 
 public class HomeController {
     // Var fxml
@@ -25,7 +28,9 @@ public class HomeController {
 
     // Load
     public void clickLoad(MouseEvent event) {
-
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        ChangeScene changeScene = new ChangeScene(stage, "Load Data", 1440, 850, Path.VIEW_ListGameSave);
+        changeScene.change();
     }
     // Play
     public void clickNewGame(MouseEvent event) {

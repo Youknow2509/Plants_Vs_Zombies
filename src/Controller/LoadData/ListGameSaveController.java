@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import src.Config.Path;
 import src.Controller.Game.GameMainController;
 import src.DataBase.Handle.HandleData;
 import src.DataBase.Handle.HandleDataFile;
@@ -72,12 +73,11 @@ public class ListGameSaveController implements Initializable {
         if (gameProcess == null) {
             return;
         }
-        String path = "/src/View/Game/GameMain.fxml";
         int width = 1024;
         int height = 600 ;
         String title = "Game Main";
         Stage stage = (Stage) anchorPane.getScene().getWindow();
-        ChangeScene changeScene = new ChangeScene(stage, title, width, height, path);
+        ChangeScene changeScene = new ChangeScene(stage, title, width, height, Path.VIEW_GameMain);
         changeScene.changeToGame(gameProcess);
     }
 
@@ -88,7 +88,7 @@ public class ListGameSaveController implements Initializable {
             return;
         }
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/LoadData/EditGameSave.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.VIEW_EditGameSave));
             AnchorPane root = loader.load();
 
             EditGameSaveController editGameSaveController = loader.getController();
@@ -105,12 +105,11 @@ public class ListGameSaveController implements Initializable {
 
     @FXML
     public void back(MouseEvent event) {
-        String path = "/src/View/Home/Home.fxml";
         int width = 1024;
         int height = 576 ;
         String title = "Home";
         Stage stage = (Stage) anchorPane.getScene().getWindow();
-        ChangeScene changeScene = new ChangeScene(stage, title, width, height, path);
+        ChangeScene changeScene = new ChangeScene(stage, title, width, height, Path.VIEW_Home);
         changeScene.change();
     }
 

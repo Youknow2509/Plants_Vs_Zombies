@@ -25,8 +25,6 @@ public class HandleCardPlant implements Serializable {
         this.cardPlant = cardPlant;
     }
 
-    // Methods
-
     // Creat ImageView for CardPlant
     public void creatImageView() {
         if (cardPlant == null || cardPlant.getImage() != null || cardPlant.getImageView() != null
