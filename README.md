@@ -1,11 +1,8 @@
 
 # TODO-List
-- [x] ** Tái tạo lại Timeline, kiểm tra vị trí đặt - khi save và load lai 
-- [x] **Menu Game**
-- [x] **Level**
-- [x] **Save**
-- [x] **Load**
-- [x] **Beaty Image**
+- [x] **Thêm thông số thời gian chờ cho từng cây**
+- [x] **Stop settimeout card**
+- [x] **Làm level**
 - [x] **Sound**
 - [x] **Effect**
 v.v
