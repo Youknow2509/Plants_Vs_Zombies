@@ -32,43 +32,63 @@ public class LevelController {
     public void clickLevel_1(MouseEvent event) {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         ChangeScene cs = new ChangeScene(stage, "Game", 1024, 600, Path.VIEW_GameMain);
-        cs.changeToGame(new GameProcess(
-                        RandomListGameData.randomGameData(
-                                handleData.getDatalevel(1))
+
+        int level = 1;
+        GameProcess gameProcess = new GameProcess(
+                RandomListGameData.randomGameData(
+                        handleData.getDatalevel(level)
                 )
         );
+        gameProcess.setLevel(level);
+
+        cs.changeToGame(gameProcess);
     }
 
     @FXML
     public void clickLevel_2(MouseEvent event) {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         ChangeScene cs = new ChangeScene(stage, "Game", 1024, 600, Path.VIEW_GameMain);
-        cs.changeToGame(new GameProcess(
+
+        int level = 2;
+        GameProcess gameProcess = new GameProcess(
                 RandomListGameData.randomGameData(
-                        handleData.getDatalevel(2))
+                        handleData.getDatalevel(level)
                 )
         );
+        gameProcess.setLevel(level);
+
+        cs.changeToGame(gameProcess);
     }
 
     @FXML
     public void clickLevel_3(MouseEvent event) {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         ChangeScene cs = new ChangeScene(stage, "Game", 1024, 600, Path.VIEW_GameMain);
-        cs.changeToGame(new GameProcess(
-                        RandomListGameData.randomGameData(
-                                handleData.getDatalevel(3))
+
+        int level = 3;
+        GameProcess gameProcess = new GameProcess(
+                RandomListGameData.randomGameData(
+                        handleData.getDatalevel(level)
                 )
         );
+        gameProcess.setLevel(level);
+
+        cs.changeToGame(gameProcess);
     }
 
     @FXML
     public void clickLevel_4(MouseEvent event) {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         ChangeScene cs = new ChangeScene(stage, "Game", 1024, 600, Path.VIEW_GameMain);
-        cs.changeToGame(new GameProcess(
-                        RandomListGameData.randomGameData(
-                                handleData.getDatalevel(4))
+
+        int level = 4;
+        GameProcess gameProcess = new GameProcess(
+                RandomListGameData.randomGameData(
+                        handleData.getDatalevel(level)
                 )
         );
+        gameProcess.setLevel(level);
+
+        cs.changeToGame(gameProcess);
     }
 }
