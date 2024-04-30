@@ -1,6 +1,8 @@
 
 # TODO-List
 - [x] **Thêm thông số thời gian chờ cho từng cây**
+- [x] **Sun dissapear**
+- [x] **Win lose**
 - [x] **Stop settimeout card**
 - [x] **Làm level**
 - [x] **Sound**
