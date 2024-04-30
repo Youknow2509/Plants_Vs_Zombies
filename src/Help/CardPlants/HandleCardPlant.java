@@ -51,7 +51,6 @@ public class HandleCardPlant implements Serializable {
         // Thêm sự kiện vào ImageView
         cardPlant.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             HandleEventClickToCard(e);
-            System.out.println(cardPlant.getName());
         });
         // Thêm ImageView vào AnchorPane
         (GameMainController.getAnchorPane()).getChildren().add(cardPlant.getImageView());

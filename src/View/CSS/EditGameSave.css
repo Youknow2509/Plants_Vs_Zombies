@@ -1,0 +1,37 @@
+.backgroup {
+    -fx-background-color: #D7DF74;
+    -fx-pref-width: 350;
+    -fx-pref-height: 500;
+    -fx-background-radius: 40;
+}
+
+.text1 {
+    -fx-text-fill: #000;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 16px;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 0.2px;
+}
+
+.text2 {
+    -fx-text-fill: #000;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 14px;
+    -fx-font-style: normal;
+    -fx-font-weight: normal;
+    -fx-letter-spacing: 0.2px;
+}
+
+.boxText1 {
+    -fx-pref-width: 60;
+    -fx-pref-height: 20;
+    -fx-border-width: 0 0 8
+}
+
+.btn:hover {
+    -fx-opacity: 0.2;
+}
+.btn:pressed {
+    -fx-opacity: 0;
+}

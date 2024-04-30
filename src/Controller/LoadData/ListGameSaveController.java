@@ -4,6 +4,7 @@ package src.Controller.LoadData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -12,9 +13,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import src.Controller.Game.GameMainController;
 import src.DataBase.Handle.HandleData;
 import src.DataBase.Handle.HandleDataFile;
 import src.Model.GameProcess;
+import src.Utils.ChangeScene;
 
 import java.net.URL;
 import java.util.List;
@@ -39,7 +43,7 @@ public class ListGameSaveController implements Initializable {
 
     // Var
     private ObservableList<GameProcess> observableList;
-    private HandleData handleData = new HandleDataFile();
+    private final HandleData handleData = new HandleDataFile();
     private List<GameProcess> listGameProsess;
 
     // Init
@@ -64,18 +68,59 @@ public class ListGameSaveController implements Initializable {
 
     @FXML
     public void play(MouseEvent event) {
+        GameProcess gameProcess = tableView.getSelectionModel().getSelectedItem();
+        if (gameProcess == null) {
+            return;
+        }
+        String path = "/src/View/Game/GameMain.fxml";
+        int width = 1024;
+        int height = 600 ;
+        String title = "Game Main";
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        ChangeScene changeScene = new ChangeScene(stage, title, width, height, path);
+        changeScene.changeToGame(gameProcess);
     }
 
     @FXML
     public void edit(MouseEvent event) {
+        GameProcess gameProcess = tableView.getSelectionModel().getSelectedItem();
+        if (gameProcess == null) {
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/View/LoadData/EditGameSave.fxml"));
+            AnchorPane root = loader.load();
+
+            EditGameSaveController editGameSaveController = loader.getController();
+            editGameSaveController.initialize(gameProcess, tableView);
+
+            Stage stage = new Stage();
+            stage.setTitle("Edit Game Save");
+            stage.setScene(new javafx.scene.Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void back(MouseEvent event) {
+        String path = "/src/View/Home/Home.fxml";
+        int width = 1024;
+        int height = 576 ;
+        String title = "Home";
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        ChangeScene changeScene = new ChangeScene(stage, title, width, height, path);
+        changeScene.change();
     }
 
     @FXML
     public void delete(MouseEvent event) {
-
+        GameProcess gameProcess = tableView.getSelectionModel().getSelectedItem();
+        if (gameProcess == null) {
+            return;
+        }
+        handleData.deleteDataSave(gameProcess.getNameGame());
+        observableList.remove(gameProcess);
     }
 }
