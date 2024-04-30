@@ -9,7 +9,9 @@ import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Zombies.Zombie;
 import src.Model.Characters.ZombieSpawner;
 
-public class GameProcess {
+import java.io.Serializable;
+
+public class GameProcess implements Serializable {
     // Variables
     private int idGame;
     private String nameGame = null;
@@ -151,9 +153,15 @@ public class GameProcess {
         }
     }
 
-    // Save Game
-    public void saveGame() {
-        // TODO Save Game
+    // To String
+    @Override
+    public String toString() {
+        return "GameProcess{" +
+                "idGame=" + idGame +
+                ", nameGame='" + nameGame + '\'' +
+                ", Level=" + Level +
+                ", gameData=" + gameData +
+                '}';
     }
 
     // Getters and Setters
@@ -195,5 +203,20 @@ public class GameProcess {
 
     public void setLevel(int level) {
         Level = level;
+    }
+
+    // Get Zombie Alive
+    public int getZombieAlive() {
+        return gameData.getZombieAlive().size();
+    }
+
+    // Get Zombie Spawner
+    public int getZombieSpawner() {
+        return gameData.getZombieSpawner().size();
+    }
+
+    // Get Plant Alive
+    public int getPlantAlive() {
+        return gameData.getListPlant().size();
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,14 +9,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="src.Controller.LoadData.ListGameSaveController"
-            stylesheets="@../CSS/ListGameSave.css"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/ListGameSave.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.LoadData.ListGameSaveController">
     <children>
         <ImageView fx:id="backToHome" fitHeight="62.0" fitWidth="54.25" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true" styleClass="btn" x="30.0" y="19.0">
             <image>
@@ -29,10 +22,10 @@
                 <TableView fx:id="tableView" maxHeight="750.0" maxWidth="994.0" minHeight="750.0" minWidth="994.0" prefHeight="750.0" prefWidth="994.0">
                     <columns>
                         <TableColumn fx:id="colName" editable="false" prefWidth="250.0" text="Tên" />
-                        <TableColumn fx:id="colTypeGame" editable="false" minWidth="0.0" prefWidth="150.0" text="Loại game" />
-                        <TableColumn fx:id="colDate" editable="false" minWidth="0.0" prefWidth="200.0" text="Thời gian" />
-                        <TableColumn fx:id="colHealth" editable="false" minWidth="0.0" prefWidth="200.0" text="Số mạng còn lại" />
-                        <TableColumn fx:id="colEmpty" editable="false" minWidth="0.0" prefWidth="200.0" text="Số ô trống còn lại" />
+                        <TableColumn fx:id="colLevel" editable="false" minWidth="0.0" prefWidth="150.0" text="Level" />
+                        <TableColumn fx:id="colPlantAlive" editable="false" minWidth="0.0" prefWidth="200.0" text="Plant Alive" />
+                        <TableColumn fx:id="colZombieAlive" editable="false" minWidth="0.0" prefWidth="200.0" text="Zombie Alive" />
+                        <TableColumn fx:id="colZombieSpawner" editable="false" minWidth="0.0" prefWidth="200.0" text="Zombie Spawner" />
                     </columns>
                     <styleClass>
                         <String fx:value="column-header" />
