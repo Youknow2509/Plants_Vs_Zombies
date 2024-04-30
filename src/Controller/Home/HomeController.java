@@ -34,7 +34,9 @@ public class HomeController {
     }
     // Play
     public void clickNewGame(MouseEvent event) {
-
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        ChangeScene changeScene = new ChangeScene(stage, "New Game", 1440, 850, Path.VIEW_Level);
+        changeScene.change();
     }
     // Exit
     public void clickExit(MouseEvent event) {

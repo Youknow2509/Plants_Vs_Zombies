@@ -9,10 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import src.Config.Path;
 import src.DataBase.Handle.HandleData;
 import src.DataBase.Handle.HandleDataFile;
 import src.Model.GameData;
 import src.Model.GameProcess;
+import src.Utils.ChangeScene;
 
 public class MenuGameController {
     // Var fxml
@@ -69,7 +71,11 @@ public class MenuGameController {
 
     @FXML
     public void quayLaiHome(ActionEvent event) {
-        System.exit(0);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+        gameProcess.stopGame();
+        ChangeScene changeScene = new ChangeScene(stageBefore, "Home", 1024, 576, Path.VIEW_Home);
+        changeScene.change();
     }
 
     @FXML

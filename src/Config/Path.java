@@ -7,7 +7,7 @@ public class Path {
     public static final String VIEW_Home = "/src/View/Home/Home.fxml";
     public static final String VIEW_ListGameSave = "/src/View/LoadData/ListGameSave.fxml";
     public static final String VIEW_EditGameSave = "/src/View/LoadData/EditGameSave.fxml";
-
+    public static final String VIEW_Level = "/src/View/Level/Level.fxml";
 
     // CSS
     public static final String CSS_GameMenu = "/src/Assets/css/MenuGame.css";
