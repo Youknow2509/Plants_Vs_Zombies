@@ -65,10 +65,11 @@ public class Sun extends GameElements {
 
     // Làm mờ rồi xoá sun sau một thời gian nhất định
     public void DisappearSun() {
+        timeline.stop();
         timeline = new Timeline(new KeyFrame(Duration.millis(timeout), event -> {
             removeImageView();
-            timeline.stop();
             listSun.remove(this);
+            timeline.stop();
         }));
         timeline.setCycleCount(1);  // Chỉ chạy một lần
         timeline.play();
