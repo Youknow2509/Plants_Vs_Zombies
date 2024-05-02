@@ -19,7 +19,7 @@ public class SunFlower extends Plant {
     public static final  int WIDTH = 60;
     public static final  int HEIGHT = 60;
     public static final int TIMEOUT_FLOWERSUN = 6000;
-    public static final int SPEED_ATTACK = 4500;
+    public static final int SPEED_ATTACK = 10000;
     public static final int DAME = 0;
     // Var
     private List<Sun> listSun = new ArrayList<Sun>();

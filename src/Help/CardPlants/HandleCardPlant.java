@@ -81,23 +81,20 @@ public class HandleCardPlant implements Serializable {
         double increment = 0.8 / time;
 
         double [] opacity = {0.2};
-        Thread [] threads = new Thread[1];
-        threads[0] = new Thread(() -> {
-            Platform.runLater(() -> {
-                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-                    if (opacity[0] >= 1) {
-                        cardPlant.setHaveBuy(true);
-                        threads[0].stop();
-                    } else {
-                        cardPlant.getImageView().setOpacity(opacity[0]);
-                        opacity[0] += increment;
-                    }
-                }));
-                timeline.setCycleCount(Timeline.INDEFINITE);
-                timeline.play();
-            });
-        });
-        threads[0].start();
+        Timeline [] timeline = new Timeline[1];
+        // Hai biến được lưu kiểu mảng để sử dụng trong hàm xử lý sự kiện của Timeline và thay đổi giá trị của chúng được.
+        timeline[0] = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            if (opacity[0] >= 1) {
+                cardPlant.setHaveBuy(true);
+                cardPlant.getImageView().setOpacity(1);
+                timeline[0].stop();
+            } else {
+                cardPlant.getImageView().setOpacity(opacity[0]);
+                opacity[0] += increment;
+            }
+        }));
+        timeline[0].setCycleCount(Timeline.INDEFINITE);
+        timeline[0].play();
     }
 
     // Getter - Setter
