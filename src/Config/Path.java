@@ -32,7 +32,8 @@ public class Path {
     public static final String ASSETS_Image_NormalZombie_Eat = "/Assets/images/Zombies/NormalZombieEat.gif";
     public static final String ASSETS_Image_ConeheadZombie_Run = "/Assets/images/Zombies/ConeheadZombieRun.gif";
     public static final String ASSETS_Image_ConeheadZombie_Eat = "/Assets/images/Zombies/ConeheadZombieEat.gif";
-
+    public static final String ASSETS_Image_FlagZombie_Run = "/Assets/images/Zombies/FlagZombie.gif"; // todo add
+    public static final String ASSETS_Image_FlagZombie_Eat = "/Assets/images/Zombies/FlagZombie.gif"; // todo add
     // Assets - Images Cards
     public static final String ASSETS_Image_Card_SunFlower = "/Assets/images/Cards/SunFlower.png";
     public static final String ASSETS_Image_Card_PeaShooter = "/Assets/images/Cards/PeaShooter.png";
