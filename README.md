@@ -1,7 +1,7 @@
 
 # TODO-List
 - [x] **Thêm thông số thời gian chờ cho từng cây**
-- [x] **Win lose**
+- [x] **Bug after win lose, dont new game**
 - [x] **Sound**
 - [x] **Effect**
 v.v

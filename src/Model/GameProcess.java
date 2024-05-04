@@ -79,10 +79,7 @@ public class GameProcess implements Serializable {
                     popupStage.initModality(Modality.APPLICATION_MODAL);
                     popupStage.setScene(new Scene(root));
 
-                    (popupStage.getScene().getWindow()).setOnCloseRequest(event -> {
-                        ChangeScene changeScene = new ChangeScene(GameMainController.getStage(), "Home", 1024, 576, Path.VIEW_Home);
-                        changeScene.change();
-                    });
+                    GameMainController.setWonGame(-1);
 
                     Platform.runLater(() -> {
                         popupStage.showAndWait();
@@ -108,10 +105,7 @@ public class GameProcess implements Serializable {
                     popupStage.initModality(Modality.APPLICATION_MODAL);
                     popupStage.setScene(new Scene(root));
 
-                    (popupStage.getScene().getWindow()).setOnCloseRequest(event -> {
-                        ChangeScene changeScene = new ChangeScene(GameMainController.getStage(), "Home", 1024, 576, Path.VIEW_Home);
-                        changeScene.change();
-                    });
+                    GameMainController.setWonGame(-1);
 
                     Platform.runLater(() -> {
                         popupStage.showAndWait();

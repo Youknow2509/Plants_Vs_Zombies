@@ -60,6 +60,7 @@ public class GameMainController {
     public void initialize(GameProcess gameProcess) {
         this.gameProcess = gameProcess;
         gameData = gameProcess.getGameData();
+        wonGame = -1;
         // Gán giá trị cho các biến static nắm giữ các element - để dễ dàng truy cập từ các class khác ( Thêm, xoá hình ảnh, v.v)
         anchorPane = GamePlayRoot;
         gridPane = lawnGrid;
