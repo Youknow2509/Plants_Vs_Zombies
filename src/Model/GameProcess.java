@@ -2,13 +2,23 @@ package src.Model;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import src.Config.Path;
+import src.Controller.Game.GameLoseController;
 import src.Controller.Game.GameMainController;
+import src.Controller.Game.GameWinController;
+import src.Controller.Game.MenuGameController;
 import src.Help.LawnMower.LawnMower;
 import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Zombies.Zombie;
 import src.Model.Characters.ZombieSpawner;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 public class GameProcess implements Serializable {
@@ -53,14 +63,56 @@ public class GameProcess implements Serializable {
                                                                         /gameData.getSumZombie());
             if (GameMainController.getWonGame() == 1 ||
                 (gameData.getZombieSpawner().size() == 0 && gameData.getZombieAlive().size() == 0)) {
-                // todo xử lí thắng
-                System.out.println("You win");
-                System.exit(0);
+
+                stopGame();
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.VIEW_GameWin));
+                    Parent root = loader.load();
+
+                    GameWinController gameWinController = loader.getController();
+                    gameWinController.initialize(GameMainController.getStage());
+
+                    Stage popupStage = new Stage();
+                    popupStage.initModality(Modality.APPLICATION_MODAL);
+
+                    (popupStage.getScene().getWindow()).setOnCloseRequest(event -> {
+                        gameWinController.helpChangToHome();
+                    });
+
+                    popupStage.setScene(new Scene(root));
+                    popupStage.showAndWait();
+                    popupStage.centerOnScreen();
+                    popupStage.setResizable(false);
+                } catch (IOException event) {
+                    event.printStackTrace();
+                }
             }
             if (GameMainController.getWonGame() == 0) {
-                // todo xử lí thua
-                System.out.println("You loss");
-                System.exit(0);
+
+                stopGame();
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(Path.VIEW_GameLose));
+                    Parent root = loader.load();
+
+                    GameLoseController gameLoseController = loader.getController();
+                    gameLoseController.initialize(GameMainController.getStage());
+
+                    Stage popupStage = new Stage();
+                    popupStage.initModality(Modality.APPLICATION_MODAL);
+
+                    (popupStage.getScene().getWindow()).setOnCloseRequest(event -> {
+                        gameLoseController.helpChangToHome();
+                    });
+
+                    popupStage.setScene(new Scene(root));
+                    popupStage.showAndWait();
+                    popupStage.centerOnScreen();
+                    popupStage.setResizable(false);
+                } catch (IOException event) {
+                    event.printStackTrace();
+                }
             }
             // Tang tick
             gameData.setTick(gameData.getTick() + 1);

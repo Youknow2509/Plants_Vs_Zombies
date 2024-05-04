@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="bg" stylesheets="@../CSS/GameLose.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Game.GameLoseController">
+    <children>
+        <ImageView fitHeight="241.0" fitWidth="241.0" layoutX="78.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" styleClass="div_lose">
+            <image>
+                <Image url="@../../../Assets/icon/face-sad-cry.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="74.0" fitWidth="65.0" layoutX="14.0" layoutY="369.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true" styleClass="div_back">
+            <image>
+                <Image url="@../../../Assets/icon/long-arrow-alt-left-solid.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

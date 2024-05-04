@@ -1,0 +1,15 @@
+.bg {
+    -fx-pref-width: 400px;
+    -fx-pref-height: 450px;
+    -fx-background-color: #711BB4;
+}
+
+.div_lose {
+    -fx-pref-width: 195px;
+    -fx-pref-height: 195px;
+}
+
+.div_back {
+    -fx-pref-width: 65px;
+    -fx-pref-height: 74px;
+}

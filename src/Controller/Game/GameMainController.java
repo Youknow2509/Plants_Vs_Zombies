@@ -167,6 +167,11 @@ public class GameMainController {
         }
     }
 
+    // Get Stage View
+    public static Stage getStage() {
+        return (Stage) anchorPane.getScene().getWindow();
+    }
+
 // Getter and setter
     public static int getSun() {
         return sun;
