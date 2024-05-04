@@ -2,6 +2,7 @@ package src.Model;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ import src.Help.LawnMower.LawnMower;
 import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Zombies.Zombie;
 import src.Model.Characters.ZombieSpawner;
+import src.Utils.ChangeScene;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -75,15 +77,18 @@ public class GameProcess implements Serializable {
 
                     Stage popupStage = new Stage();
                     popupStage.initModality(Modality.APPLICATION_MODAL);
+                    popupStage.setScene(new Scene(root));
 
                     (popupStage.getScene().getWindow()).setOnCloseRequest(event -> {
-                        gameWinController.helpChangToHome();
+                        ChangeScene changeScene = new ChangeScene(GameMainController.getStage(), "Home", 1024, 576, Path.VIEW_Home);
+                        changeScene.change();
                     });
 
-                    popupStage.setScene(new Scene(root));
-                    popupStage.showAndWait();
-                    popupStage.centerOnScreen();
-                    popupStage.setResizable(false);
+                    Platform.runLater(() -> {
+                        popupStage.showAndWait();
+                        popupStage.centerOnScreen();
+                        popupStage.setResizable(false);
+                    });
                 } catch (IOException event) {
                     event.printStackTrace();
                 }
@@ -101,15 +106,18 @@ public class GameProcess implements Serializable {
 
                     Stage popupStage = new Stage();
                     popupStage.initModality(Modality.APPLICATION_MODAL);
+                    popupStage.setScene(new Scene(root));
 
                     (popupStage.getScene().getWindow()).setOnCloseRequest(event -> {
-                        gameLoseController.helpChangToHome();
+                        ChangeScene changeScene = new ChangeScene(GameMainController.getStage(), "Home", 1024, 576, Path.VIEW_Home);
+                        changeScene.change();
                     });
 
-                    popupStage.setScene(new Scene(root));
-                    popupStage.showAndWait();
-                    popupStage.centerOnScreen();
-                    popupStage.setResizable(false);
+                    Platform.runLater(() -> {
+                        popupStage.showAndWait();
+                        popupStage.centerOnScreen();
+                        popupStage.setResizable(false);
+                    });
                 } catch (IOException event) {
                     event.printStackTrace();
                 }

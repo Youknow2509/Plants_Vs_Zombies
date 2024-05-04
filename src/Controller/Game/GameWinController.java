@@ -46,7 +46,9 @@ public class GameWinController {
     // Help change to home
     public void helpChangToHome() {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
-        stage.close();
+        if (stage != null) {
+            stage.close();
+        }
 
         ChangeScene changeScene = new ChangeScene(stageBefore, "Home", 1024, 576, Path.VIEW_Home);
         changeScene.change();
