@@ -19,6 +19,7 @@ public class Repeater extends Plant {
     private static final int SPEEDATTACK = 3;
     private static final int WIDTH = 60;
     private static final int HEIGHT = 60;
+    private static final int TIMEBUY = 10;
     // Var
     private List<Pea> listPea;
     // Constructor
@@ -27,7 +28,8 @@ public class Repeater extends Plant {
         listPea = new ArrayList<Pea>();
     }
     public Repeater(double x, double y, int col, int row) {
-        super(x, y, Path.ASSETS_Image_Repeater, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
+        super(x, y, Path.ASSETS_Image_Repeater, WIDTH, HEIGHT, HP
+                    , col, row, COST, SPEEDATTACK, DAME, TIMEBUY);
         listPea = new ArrayList<Pea>();
         setAct(new ActRepeater(this));
         setStageCharacter(new StageCharacterRepeater(this));

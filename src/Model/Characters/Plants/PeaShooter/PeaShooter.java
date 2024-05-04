@@ -11,12 +11,13 @@ import java.util.List;
 
 public class PeaShooter extends Plant {
     // Đặc điểm của PeaShooter
-    private static final  int HP = 100;
-    private static final  int DAME = 20;
-    private static final  int COST = 100;
-    private static final  int SPEEDATTACK = 3;
-    private static final  int WIDTH = 60;
-    private static final  int HEIGHT = 60;
+    private final static int HP = 100;
+    private final static int DAME = 20;
+    private final static int COST = 100;
+    private final static int SPEEDATTACK = 3;
+    private final static int WIDTH = 60;
+    private final static int HEIGHT = 60;
+    private final static int TIMEBUY = 10;
     // Var
     private List<Pea> listPea = null;
     // Constructor
@@ -25,7 +26,8 @@ public class PeaShooter extends Plant {
         listPea = new ArrayList<Pea>();
     }
     public PeaShooter(double x, double y, int col, int row) {
-        super(x, y, Path.ASSETS_Image_PeaShooter, WIDTH, HEIGHT, HP, col, row, COST, SPEEDATTACK, DAME);
+        super(x, y, Path.ASSETS_Image_PeaShooter, WIDTH, HEIGHT, HP
+                , col, row, COST, SPEEDATTACK, DAME, TIMEBUY);
 
         listPea = new ArrayList<Pea>();
         setAct(new ActPeaShooter(this));

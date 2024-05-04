@@ -14,13 +14,14 @@ import java.util.List;
 
 public class SunFlower extends Plant {
     // Var infomation of SunFlower
-    public static final  int HP = 100;
-    public static final  int COST = 50;
-    public static final  int WIDTH = 60;
-    public static final  int HEIGHT = 60;
-    public static final int TIMEOUT_FLOWERSUN = 6000;
-    public static final int SPEED_ATTACK = 10000;
-    public static final int DAME = 0;
+    public static int HP = 2000;
+    public static int COST = 50;
+    public static int WIDTH = 60;
+    public static int HEIGHT = 60;
+    public static int TIMEOUT_FLOWERSUN = 6000;
+    public static int SPEED_ATTACK = 10000;
+    public static int DAME = 0;
+    public static int TIMEBUY = 10; // todo
     // Var
     private List<Sun> listSun = new ArrayList<Sun>();
     private StageCharacter stageCharacter;
@@ -32,7 +33,9 @@ public class SunFlower extends Plant {
         this.stageCharacter = new StageFlowerSun(this);
     }
     public SunFlower(double x, double y, int col, int row) {
-        super(x, y, Path.ASSETS_Image_SunFlower, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAME);
+        //
+        super(x, y, Path.ASSETS_Image_SunFlower, WIDTH, HEIGHT, HP
+                , col, row, COST, SPEED_ATTACK, DAME, TIMEBUY);
         this.act = new ActSunFlower(this);
         this.stageCharacter = new StageFlowerSun(this);
     }

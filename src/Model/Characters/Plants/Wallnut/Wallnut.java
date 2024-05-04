@@ -12,6 +12,8 @@ public class Wallnut extends Plant {
     private static final int WIDTH = 60;
     private static final int HEIGHT = 60;
     private static final int SPEED_ATTACK = 0;
+    private static final int TIMEBUY = 10;
+
     //
 
     // Constructor of Wallnut
@@ -19,7 +21,8 @@ public class Wallnut extends Plant {
         super();
     }
     public Wallnut(double x, double y, int col, int row) {
-        super(x, y, Path.ASSETS_Image_Wallnut, WIDTH, HEIGHT, HP, col, row, COST, SPEED_ATTACK, DAMAGE);
+        super(x, y, Path.ASSETS_Image_Wallnut, WIDTH, HEIGHT, HP
+                , col, row, COST, SPEED_ATTACK, DAMAGE, TIMEBUY);
     }
 
     // Start tấn công

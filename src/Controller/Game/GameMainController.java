@@ -135,7 +135,7 @@ public class GameMainController {
 
                     setSun(sun - newPlant.getCost());
 
-                    cardPlantClicked.setTimeOutToBuyPlant(10);
+                    cardPlantClicked.setTimeOutToBuyPlant(newPlant.getTimeBuy());
                 }
             }
         }

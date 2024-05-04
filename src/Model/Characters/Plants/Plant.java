@@ -17,6 +17,7 @@ public class Plant extends GameElements implements Serializable {
     private int cost = 0;
     private int speedAttack = 0;
     private transient Timeline timeline = null;
+    private int timeBuy = 0;
     //
     private Act act = null;
     private StageCharacter stageCharacter = null;
@@ -26,7 +27,7 @@ public class Plant extends GameElements implements Serializable {
         super();
     }
     public Plant(double x, double y, String path, int width, int height, // lane == row
-                 int hp, int col, int row, int cost, int speedAttack, int dame) {
+                 int hp, int col, int row, int cost, int speedAttack, int dame, int timeBuy) {
 
         super(x, y, path, width, height, row);
         this.hp = hp;
@@ -35,6 +36,7 @@ public class Plant extends GameElements implements Serializable {
         this.cost = cost;
         this.speedAttack = speedAttack;
         this.dame = dame;
+        this.timeBuy = timeBuy;
         handleInGridPane = new HandleInGridPane(this);
     }
 
@@ -142,5 +144,21 @@ public class Plant extends GameElements implements Serializable {
 
     public void setStageCharacter(StageCharacter stageCharacter) {
         this.stageCharacter = stageCharacter;
+    }
+
+    public int getTimeBuy() {
+        return timeBuy;
+    }
+
+    public void setTimeBuy(int timeBuy) {
+        this.timeBuy = timeBuy;
+    }
+
+    public HandleInGridPane getHandleInGridPane() {
+        return handleInGridPane;
+    }
+
+    public void setHandleInGridPane(HandleInGridPane handleInGridPane) {
+        this.handleInGridPane = handleInGridPane;
     }
 }
