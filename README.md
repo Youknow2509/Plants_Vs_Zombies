@@ -1,7 +1,8 @@
 
 # TODO-List
-- [x] **Thêm thông số thời gian chờ cho từng cây**
-- [x] **Bug after win lose, dont new game**
+- [x] **Find bugs**
+- [x] **Vẽ lại Game level, load**
+- [x] **Thêm ảnh từng giai đoạn máu cho Sunflower**
 - [x] **Sound**
 - [x] **Effect**
 v.v
