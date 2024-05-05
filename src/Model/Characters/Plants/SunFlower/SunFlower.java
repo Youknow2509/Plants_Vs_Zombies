@@ -18,10 +18,10 @@ public class SunFlower extends Plant {
     public static int COST = 50;
     public static int WIDTH = 60;
     public static int HEIGHT = 60;
-    public static int TIMEOUT_FLOWERSUN = 6000;
-    public static int SPEED_ATTACK = 10000;
+    public static int TIMEOUT_FLOWERSUN = 10000;
+    public static int SPEED_ATTACK = 24000;
     public static int DAME = 0;
-    public static int TIMEBUY = 10; // todo
+    public static int TIMEBUY = 8;
     // Var
     private List<Sun> listSun = new ArrayList<Sun>();
     private StageCharacter stageCharacter;

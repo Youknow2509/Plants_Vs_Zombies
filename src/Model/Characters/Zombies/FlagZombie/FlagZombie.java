@@ -8,11 +8,11 @@ import src.Utils.LaneToLayoutY;
 
 public class FlagZombie extends Zombie {
     // Var information of normal zombie
-    private static final int HP = 120;
-    private static final int DAMAGE = 30;
+    private static final int HP = 200;
+    private static final int DAMAGE = 200;
     private static final int SPEED_MOVE = 2;
     private static final int SPEED_ATTACK = 1;
-    private static final int MOVE = 10;
+    private static final int MOVE = 8;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 130;
 

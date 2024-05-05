@@ -8,11 +8,11 @@ import src.Utils.LaneToLayoutY;
 
 public class ConeheadZombie extends Zombie { // Todo format lại code
     // Var information of ConeheadZombie
-    private static final int HP = 150;
-    private static final int DAMAGE = 10;
+    private static final int HP = 400;
+    private static final int DAMAGE = 640;
     private static final int SPEED_MOVE = 1;
     private static final int SPEED_ATTACK = 1;
-    private static final int MOVE = 1;
+    private static final int MOVE = 8;
     private static final int WIDTH = 100;
     private static final int HEIGHT = 130;
 
