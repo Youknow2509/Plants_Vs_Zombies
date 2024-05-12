@@ -44,7 +44,7 @@ public class ActPea implements Act {
             if ((GameMainController.getGameData()).getZombieAlive() != null && (GameMainController.getGameData()).getZombieAlive().size() > 0) {
                 for (int i = 0; i < (GameMainController.getGameData()).getZombieAlive().size(); i++) {
                     Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
-                    if (z.getLane() == pea.getLane() && pea.getX() - z.getX() <= 30 && pea.getX() - z.getX() >= 0) {
+                    if (z.getLane() == pea.getLane() && z.getX() - pea.getX() <= 5 && z.getX() - pea.getX() >= 0) {
                         z.setHealth(z.getHealth() - pea.getDAMAGE());
                         pea.remove();
                         //System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
