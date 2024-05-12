@@ -26,15 +26,15 @@ public class ActWallnut implements Act {
         if (wallnut.getHp() > 2667 && wallnut.getPath() != Path.ASSETS_Image_Wallnut) {
             wallnut.setPath(Path.ASSETS_Image_Wallnut);
         } else if (wallnut.getHp() <= 2667 && wallnut.getHp() > 1334
-                && wallnut.getPath() != Path.ASSETS_Image_Wallnut) // todo fix path
+                && wallnut.getPath() != Path.ASSETS_Image_Wallnut)
             {
-                wallnut.setPath(Path.ASSETS_Image_Wallnut);
-                System.out.println("set path wallnut 2");
+                wallnut.setPath(Path.ASSETS_Image_WallNut2);
+                wallnut.changeImageView(Path.ASSETS_Image_WallNut2);
         } else if (wallnut.getHp() <= 1334 && wallnut.getHp() > 0
                 && wallnut.getPath() != Path.ASSETS_Image_Wallnut)
             {
-                wallnut.setPath(Path.ASSETS_Image_Wallnut);
-                System.out.println("set path wallnut 3");
+                wallnut.setPath(Path.ASSETS_Image_WallNut3);
+                wallnut.changeImageView(Path.ASSETS_Image_WallNut3);
         }
     }
 }
