@@ -91,4 +91,21 @@ public class LevelController {
 
         cs.changeToGame(gameProcess);
     }
+
+    @FXML
+    public void clickLevel_test(MouseEvent event) {
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        ChangeScene cs = new ChangeScene(stage, "Game Test", 1024, 600, Path.VIEW_GameMain);
+
+        int level = 0;
+        GameProcess gameProcess = new GameProcess(
+                RandomListGameData.randomGameData(
+                        handleData.getDatalevel(level)
+                )
+        );
+        gameProcess.setLevel(level);
+        gameProcess.setNameGame("Game Test");
+
+        cs.changeToGame(gameProcess);
+    }
 }

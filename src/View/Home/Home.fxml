@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="576.0" prefWidth="1024.0" stylesheets="@../CSS/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Home.HomeController">
+<AnchorPane fx:id="anchorPane" maxHeight="576.0" maxWidth="1024.0" minHeight="576.0" minWidth="1024.0" prefHeight="576.0" prefWidth="1024.0" stylesheets="@../CSS/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Home.HomeController">
    <children>
       <ImageView fx:id="bg" fitHeight="576.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Assets/images/items/WallpaperGame.png" />
+            <Image url="@../../../Assets/images/items/plants-vs-zombies-wallpaper.jpg" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="bg_button">
+      <AnchorPane layoutX="418.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="270.0" prefWidth="210.0">
+            <VBox alignment="CENTER" prefHeight="270.0" prefWidth="210.0" spacing="25.0">
                <children>
                   <AnchorPane fx:id="load" onMouseClicked="#clickLoad" prefHeight="200.0" prefWidth="200.0" styleClass="btn">
                      <children>
