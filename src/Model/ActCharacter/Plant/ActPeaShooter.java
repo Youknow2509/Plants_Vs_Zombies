@@ -37,7 +37,7 @@ public class ActPeaShooter implements Act {
 
     @Override
     public void attack(Object object) {
-        Pea pea = new Pea((int) plant.getX() + 5, (int) plant.getY() + 25, plant.getLane(), ((PeaShooter)plant).getListPea());
+        Pea pea = new Pea((int) plant.getX() + 3, (int) plant.getY() + 25, plant.getLane(), ((PeaShooter)plant).getListPea());
         pea.start();
         ((PeaShooter)plant).getListPea().add(pea);
     }

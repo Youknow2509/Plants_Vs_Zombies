@@ -37,8 +37,8 @@ public class ActRepeater implements Act {
 
     @Override
     public void attack(Object object) {
-        Pea pea1 = new Pea((int) plant.getX() + 2, (int) plant.getY() + 25, plant.getLane(), ((Repeater)plant).getListPea());
-        Pea pea2 = new Pea((int) plant.getX() + 6, (int) plant.getY() + 25, plant.getLane(), ((Repeater)plant).getListPea());
+        Pea pea1 = new Pea((int) plant.getX() + 3, (int) plant.getY() + 20, plant.getLane(), ((Repeater)plant).getListPea());
+        Pea pea2 = new Pea((int) plant.getX() + 3, (int) plant.getY() + 34, plant.getLane(), ((Repeater)plant).getListPea());
         ((Repeater)plant).getListPea().add(pea1);
         ((Repeater)plant).getListPea().add(pea2);
         pea1.start();
