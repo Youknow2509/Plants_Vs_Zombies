@@ -26,6 +26,7 @@ public class ActRepeater implements Act {
                     Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
                     if (z.getLane() == plant.getLane() && z.getX() > plant.getX() + 2) {
                         attack(z);
+                        break;
                     }
                 }
         }
