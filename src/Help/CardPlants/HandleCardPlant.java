@@ -61,13 +61,16 @@ public class HandleCardPlant implements Serializable {
         if (cardPlant.isHaveBuy()) {
             if (GameMainController.getCardPlantClicked() == null) {
                 imageView.setOpacity(0.2);
+                cardPlant.setOpacity(0.2);
                 GameMainController.setCardPlantClicked(cardPlant);
             } else if (GameMainController.getCardPlantClicked().getName() != imageView.getId()) {
                 GameMainController.getCardPlantClicked().getImageView().setOpacity(1);
                 imageView.setOpacity(0.2);
+                cardPlant.setOpacity(0.2);
                 GameMainController.setCardPlantClicked(cardPlant);
             } else {
                 imageView.setOpacity(1);
+                cardPlant.setOpacity(1);
                 GameMainController.setCardPlantClicked(null);
             }
         }
@@ -78,20 +81,28 @@ public class HandleCardPlant implements Serializable {
 
         cardPlant.setHaveBuy(false);
         GameMainController.setCardPlantClicked(null);
-        double increment = 0.8 / time;
+        double increment = (1 - cardPlant.getOpacity()) / time;
 
-        double [] opacity = {0.2};
+        double [] opacity = {cardPlant.getOpacity()};
         Timeline [] timeline = new Timeline[1];
         // Hai biến được lưu kiểu mảng để sử dụng trong hàm xử lý sự kiện của Timeline và thay đổi giá trị của chúng được.
         timeline[0] = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             if (opacity[0] >= 1) {
                 cardPlant.setHaveBuy(true);
+
                 cardPlant.getImageView().setOpacity(1);
+
+                cardPlant.setOpacity(1);
+                cardPlant.setTimeBuy(0);
                 timeline[0].stop();
+
+                return;
             } else {
-                cardPlant.getImageView().setOpacity(opacity[0]);
                 opacity[0] += increment;
+                cardPlant.getImageView().setOpacity(opacity[0]);
+                cardPlant.setOpacity(opacity[0]);
             }
+            cardPlant.setTimeBuy(cardPlant.getTimeBuy() - 1);
         }));
         timeline[0].setCycleCount(Timeline.INDEFINITE);
         timeline[0].play();

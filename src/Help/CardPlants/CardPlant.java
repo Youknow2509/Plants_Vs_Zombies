@@ -20,6 +20,8 @@ public class CardPlant implements Serializable {
     private boolean haveBuy = true; // True: have buy, False: haven't buy
     private String path;
     private String name;
+    private int timeBuy;
+    private double opacity = 1.0;
     private HandleCardPlant handleCardPlant = new HandleCardPlant(this);
 
     // Constructor
@@ -47,6 +49,7 @@ public class CardPlant implements Serializable {
     // Set time out to buy Plant
     public void setTimeOutToBuyPlant(int time) {
         handleCardPlant.setTimeOutBuyPlant(time);
+        this.timeBuy = time;
     }
     // To string
     @Override
@@ -127,5 +130,28 @@ public class CardPlant implements Serializable {
     }
     public static int getFitHeight() {
         return fitHeight;
+    }
+    public HandleCardPlant getHandleCardPlant() {
+        return handleCardPlant;
+    }
+
+    public void setHandleCardPlant(HandleCardPlant handleCardPlant) {
+        this.handleCardPlant = handleCardPlant;
+    }
+
+    public double getOpacity() {
+        return opacity;
+    }
+
+    public void setOpacity(double opacity) {
+        this.opacity = opacity;
+    }
+
+    public int getTimeBuy() {
+        return timeBuy;
+    }
+
+    public void setTimeBuy(int timeBuy) {
+        this.timeBuy = timeBuy;
     }
 }
