@@ -3,7 +3,7 @@ package src.DataBase.Handle;
 import src.Help.CardPlants.FactoryListCardPlant;
 import src.Help.LawnMower.FactoryLawnMower;
 import src.Model.GameData;
-import src.Model.Characters.ZombieSpawner;
+import src.Model.ZombieSpawner;
 import src.Model.GameProcess;
 
 import java.io.*;

@@ -7,7 +7,7 @@ import src.Config.Path;
 import src.Controller.Game.GameMainController;
 import src.Model.ActCharacter.Act;
 import src.Model.ActCharacter.Plant.ActSun;
-import src.Model.Characters.GameElements;
+import src.Model.GameElements;
 import src.Model.StageCharacter.Plant.StageSun;
 import src.Model.StageCharacter.StageCharacter;
 import src.Utils.LaneToLayoutY;

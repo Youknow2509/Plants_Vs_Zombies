@@ -1,4 +1,4 @@
-package src.Model.Characters;
+package src.Model;
 
 import src.Model.Characters.Zombies.Zombie;
 import src.Model.Characters.Zombies.ZombieFactory;

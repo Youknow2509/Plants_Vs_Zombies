@@ -3,7 +3,7 @@ package src.Model.Characters.Plants;
 import javafx.animation.Timeline;
 
 import src.Model.ActCharacter.Act;
-import src.Model.Characters.GameElements;
+import src.Model.GameElements;
 import src.Model.StageCharacter.StageCharacter;
 import src.Utils.HandleInGridPane;
 

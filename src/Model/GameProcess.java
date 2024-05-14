@@ -13,12 +13,9 @@ import src.Config.Path;
 import src.Controller.Game.GameLoseController;
 import src.Controller.Game.GameMainController;
 import src.Controller.Game.GameWinController;
-import src.Controller.Game.MenuGameController;
 import src.Help.LawnMower.LawnMower;
 import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Zombies.Zombie;
-import src.Model.Characters.ZombieSpawner;
-import src.Utils.ChangeScene;
 
 import java.io.IOException;
 import java.io.Serializable;

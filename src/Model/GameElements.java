@@ -1,4 +1,4 @@
-package src.Model.Characters;
+package src.Model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

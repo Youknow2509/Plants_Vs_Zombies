@@ -4,7 +4,7 @@ import javafx.animation.Timeline;
 import src.Config.Path;
 import src.Model.ActCharacter.Act;
 import src.Model.ActCharacter.Plant.ActPea;
-import src.Model.Characters.GameElements;
+import src.Model.GameElements;
 import src.Model.StageCharacter.Plant.StageCharacterPea;
 import src.Model.StageCharacter.StageCharacter;
 

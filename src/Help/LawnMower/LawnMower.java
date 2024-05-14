@@ -2,7 +2,7 @@ package src.Help.LawnMower;
 
 import javafx.animation.Timeline;
 import src.Config.Path;
-import src.Model.Characters.GameElements;
+import src.Model.GameElements;
 import src.Model.StageCharacter.StageCharacter;
 
 import java.io.Serializable;

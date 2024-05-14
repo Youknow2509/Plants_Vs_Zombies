@@ -3,7 +3,7 @@ package src.Help.Shovel;
 
 import src.Config.Path;
 import src.Controller.Game.GameMainController;
-import src.Model.Characters.GameElements;
+import src.Model.GameElements;
 import src.Model.Characters.Plants.Plant;
 
 import java.util.List;
