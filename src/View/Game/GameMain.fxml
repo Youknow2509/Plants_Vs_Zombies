@@ -106,11 +106,6 @@
             <Region maxHeight="100.0" maxWidth="75.0" minHeight="100.0" minWidth="75.0" prefHeight="100.0" prefWidth="75.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="399.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../Assets/images/items/Flag.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="btnShovel" fitHeight="45.0" fitWidth="45.0" layoutX="455.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Assets/images/items/Shovel.png" />
