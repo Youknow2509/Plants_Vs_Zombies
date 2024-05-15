@@ -23,7 +23,7 @@ public class StageCharacterPea implements StageCharacter {
 
         helpStart();
 
-        pea.setTimeline(new Timeline((new KeyFrame(Duration.millis(pea.getSpeedAttack())
+        pea.setTimeline(new Timeline((new KeyFrame(Duration.millis(Pea.getSpeedAttack())
                 , e -> {
                     pea.getAct().handle();
                 }

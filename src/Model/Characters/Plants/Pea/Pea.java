@@ -62,13 +62,13 @@ public class Pea extends GameElements {
         return DAMAGE;
     }
     public void setDAMAGE(int DAMAGE) {
-        this.DAMAGE = DAMAGE;
+        Pea.DAMAGE = DAMAGE;
     }
     public int getSPEED() {
         return SPEED;
     }
     public void setSPEED(int SPEED) {
-        this.SPEED = SPEED;
+        Pea.SPEED = SPEED;
     }
 
     public static int getWIDTH() {

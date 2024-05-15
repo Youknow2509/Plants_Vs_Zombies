@@ -29,7 +29,7 @@ public class ActDropSun implements Act {
     public void handle() {
         int x = Config.getRandom().nextInt(665) + 320;
         int lane = Config.getRandom().nextInt(5);
-        Sun sun = new Sun(x, 0, lane, dropSun.TIMEOUT_DROPSUN, dropSun.getListSun());
+        Sun sun = new Sun(x, 0, lane, DropSun.TIMEOUT_DROPSUN, dropSun.getListSun());
         synchronized (dropSun.getListSun()) {
             sun.start2();
             dropSun.getListSun().add(sun);

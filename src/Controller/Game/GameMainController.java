@@ -99,8 +99,8 @@ public class GameMainController {
     private void handleInLawnGrid(MouseEvent e) {
         Node source = (Node) e.getSource();
         // Lấy ra vị trí ô đang được click
-        Integer x = lawnGrid.getColumnIndex(source);
-        Integer y = lawnGrid.getRowIndex(source);
+        Integer x = GridPane.getColumnIndex(source);
+        Integer y = GridPane.getRowIndex(source);
         // Lay ra loai cay dang duoc chon
         PlantType type = null;
         if (cardPlantClicked != null) {

@@ -2,11 +2,12 @@ package src.Model.ActCharacter.Plant;
 
 import src.Config.Path;
 import src.Model.ActCharacter.Act;
+import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Plants.Wallnut.Wallnut;
 
 public class ActWallnut implements Act {
     // Var
-    private Wallnut wallnut;
+    private final Plant wallnut;
     // Constructor
     public ActWallnut(Wallnut wallnut) {
         this.wallnut = wallnut;

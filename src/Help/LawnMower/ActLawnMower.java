@@ -50,7 +50,7 @@ public class ActLawnMower implements Serializable {
     // Move
     private void move() {
         if (lawnMower.getX() < 1010) {
-            lawnMower.setX(lawnMower.getX() + lawnMower.getSpeed());
+            lawnMower.setX(lawnMower.getX() + LawnMower.getSpeed());
         }
         else {
             lawnMower.removeImageView();
@@ -63,7 +63,7 @@ public class ActLawnMower implements Serializable {
     private void attack() {
 
         lawnMower.getTimeline().stop();
-        lawnMower.changeImageView(lawnMower.getPathImageActive());
+        lawnMower.changeImageView(LawnMower.getPathImageActive());
         lawnMower.setTimeline(new Timeline(new KeyFrame(Duration.millis(60)
                 , e -> {
                     synchronized (GameMainController.getGameData().getZombieAlive()) {

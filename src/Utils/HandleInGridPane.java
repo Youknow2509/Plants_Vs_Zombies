@@ -5,11 +5,15 @@ import javafx.scene.image.ImageView;
 import src.Controller.Game.GameMainController;
 import src.Model.Characters.Plants.Plant;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class HandleInGridPane implements Serializable {
+    // Serial
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Var
-    private Plant p;
+    private final Plant p;
 
     // Constructor
     public HandleInGridPane() {

@@ -22,7 +22,7 @@ public class StageFlowerSun implements StageCharacter {
 
         helpStart();
 
-        sunFlower.setTimeline(new Timeline(new KeyFrame(javafx.util.Duration.millis(sunFlower.SPEED_ATTACK),
+        sunFlower.setTimeline(new Timeline(new KeyFrame(javafx.util.Duration.millis(SunFlower.SPEED_ATTACK),
                 e -> {
                     sunFlower.getAct().handle();
                 }

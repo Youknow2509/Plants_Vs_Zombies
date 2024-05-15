@@ -8,7 +8,7 @@ import src.Model.StageCharacter.StageCharacter;
 
 public class StageCharacterWallnut implements StageCharacter {
     // Var
-    private Wallnut wallnut;
+    private final Wallnut wallnut;
 
     // Constructor
     public StageCharacterWallnut(Wallnut wallnut) {

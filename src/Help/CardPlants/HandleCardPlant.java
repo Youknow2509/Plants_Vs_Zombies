@@ -35,15 +35,15 @@ public class HandleCardPlant implements Serializable {
         cardPlant.setHaveBuy(true);
 
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
-        cardPlant.setImage(new Image(cardPlant.getPath(), cardPlant.getWidth(), cardPlant.getHeight(), false, false));
+        cardPlant.setImage(new Image(cardPlant.getPath(), CardPlant.getWidth(), CardPlant.getHeight(), false, false));
         // Tạo một ImageView để hiển thị hình ảnh
         cardPlant.setImageView( new ImageView(cardPlant.getImage())) ;
         cardPlant.getImageView().setImage(cardPlant.getImage());
         // Đặt vị trí của ImageView trong AnchorPane
         cardPlant.getImageView().setLayoutX(cardPlant.getX());
         cardPlant.getImageView().setLayoutY(cardPlant.getY());
-        cardPlant.getImageView().setFitWidth(cardPlant.getFitWidth());
-        cardPlant.getImageView().setFitHeight(cardPlant.getFitHeight());
+        cardPlant.getImageView().setFitWidth(CardPlant.getFitWidth());
+        cardPlant.getImageView().setFitHeight(CardPlant.getFitHeight());
         // Đặt id cho ImageView
         cardPlant.getImageView().setId(cardPlant.getName());
         // Thêm sự kiện vào ImageView

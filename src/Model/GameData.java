@@ -1,5 +1,6 @@
 package src.Model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
@@ -13,7 +14,9 @@ import src.Model.Characters.Zombies.Zombie;
 
 public class GameData implements Serializable {
 // Var
+    @Serial
     private static final long serialVersionUID = 1L;
+
     private int ID;
     private List<CardPlant> cardPlantList = null;
     private List<Plant> listPlant = null;
@@ -29,7 +32,7 @@ public class GameData implements Serializable {
         super();
         this.cardPlantList = new ArrayList<CardPlant>();
         this.listPlant = Collections.synchronizedList(new ArrayList<Plant>()); // Xử dụng Collections.synchronizedList để đồng bộ dữ liệu 
-        this.zombieAlive = Collections.synchronizedList(new ArrayList<Zombie>());;
+        this.zombieAlive = Collections.synchronizedList(new ArrayList<Zombie>());
         this.zombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());
         this.lawnMowers = new ArrayList<LawnMower>();
         this.dropSun = new DropSun();

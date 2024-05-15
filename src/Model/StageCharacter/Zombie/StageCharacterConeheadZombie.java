@@ -7,7 +7,7 @@ import src.Model.Characters.Zombies.Conehead.ConeheadZombie;
 import src.Model.StageCharacter.StageCharacter;
 
 public class StageCharacterConeheadZombie implements StageCharacter {
-    private ConeheadZombie coneheadZombie ;
+    private final ConeheadZombie coneheadZombie ;
     // Constructor
     public StageCharacterConeheadZombie(ConeheadZombie coneheadZombie ) {
         this.coneheadZombie = coneheadZombie ;
