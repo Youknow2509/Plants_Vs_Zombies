@@ -28,8 +28,8 @@ public class Path {
     public static final String ASSETS_Image_Sun = "/Assets/images/items/Sun.png";
     public static final String ASSETS_Image_SunFlower = "/Assets/images/Plants/SunFlower.gif";
     public static final String ASSETS_Image_Wallnut = "/Assets/images/Plants/Wallnut.gif";
-    public static final String ASSETS_Image_WallNut2 = "/Assets/images/Plants/Wallnut.gif"; // todo gif wallnut bị ăn khi máu <= 2667
-    public static final String ASSETS_Image_WallNut3 = "/Assets/images/Plants/Wallnut.gif"; // todo gif wallnut bị ăn khi máu <= 1334
+    public static final String ASSETS_Image_WallNut2 = "/Assets/images/Plants/Wallnut.gif"; // gif wallnut bị ăn khi máu <= 2667
+    public static final String ASSETS_Image_WallNut3 = "/Assets/images/Plants/Wallnut.gif"; // gif wallnut bị ăn khi máu <= 1334
 
     // Assets - Images Zombies
     public static final String ASSETS_Image_NormalZombie_Run = "/Assets/images/Zombies/NormalZombieRun.gif";
