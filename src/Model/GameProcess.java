@@ -41,6 +41,7 @@ public class GameProcess implements Serializable {
         super();
         this.gameData = gameData;
         gameData.loadSumZombie();
+        gameData.creatListPercentFlag();
     }
 
     public GameProcess(int idGame, String nameGame, int level, GameData gameData) {
@@ -63,7 +64,7 @@ public class GameProcess implements Serializable {
             }
             // Xử lí hiển thị phần trăm game
             GameMainController.getProgressBar().setProgress((double) (gameData.getSumZombie() - gameData.getZombieSpawner().size())
-                                                                        /gameData.getSumZombie());
+                                                                        / gameData.getSumZombie());
             if (GameMainController.getWonGame() == 1 ||
                 (gameData.getZombieSpawner().size() == 0 && gameData.getZombieAlive().size() == 0)) {
 

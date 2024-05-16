@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import src.Help.CardPlants.CardPlant;
 import src.Help.LawnMower.LawnMower;
@@ -27,6 +28,7 @@ public class GameData implements Serializable {
     private int sun = 0;
     private int tick = 0;
     private int sumZombie = 0;
+    private List<Double> listPercentFlag;
 // Construct
     public GameData() {
         super();
@@ -36,6 +38,7 @@ public class GameData implements Serializable {
         this.zombieSpawner = Collections.synchronizedList(new ArrayList<ZombieSpawner>());
         this.lawnMowers = new ArrayList<LawnMower>();
         this.dropSun = new DropSun();
+        this.listPercentFlag = new ArrayList<Double>();
     }
     public GameData(List<CardPlant> cardPlantList, List<Plant> listPlant, List<Zombie> zombieAlive
             , List<ZombieSpawner> zombieSpawner, List<LawnMower> lawnMowers, int sun, int tick) {
@@ -49,6 +52,9 @@ public class GameData implements Serializable {
         this.lawnMowers = lawnMowers;
         this.dropSun = new DropSun();
         loadSumZombie();
+
+        this.listPercentFlag = new ArrayList<Double>();
+        creatListPercentFlag();
     }
 
     // Thêm cây
@@ -84,6 +90,21 @@ public class GameData implements Serializable {
     // Lấy ra tổng số Zombie
     public void loadSumZombie() {
         this.sumZombie = zombieAlive.size() + zombieSpawner.size();
+    }
+
+    // creat list percent flag
+    public void creatListPercentFlag() {
+        for (int i = 0; i < sumZombie; i++) {
+            ZombieSpawner z = zombieSpawner.get(i);
+            if (z.getNameZombie()
+                    .toUpperCase()
+                    .equals("FLAGZOMBIE")
+            ) {
+                listPercentFlag.add(
+                        (double) (i + 1) / sumZombie
+                );
+            }
+        }
     }
 
     // To String
@@ -171,5 +192,13 @@ public class GameData implements Serializable {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public List<Double> getListPercentFlag() {
+        return listPercentFlag;
+    }
+
+    public void setListPercentFlag(List<Double> listPercentFlag) {
+        this.listPercentFlag = listPercentFlag;
     }
 }

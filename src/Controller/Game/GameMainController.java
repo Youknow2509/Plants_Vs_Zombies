@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import src.Config.Path;
 import src.Help.CardPlants.CardPlant;
 import src.Help.CardPlants.FactoryListCardPlant;
+import src.Help.FlagGameMain.FactoryFlagGameMain;
 import src.Model.GameData;
 import src.Model.GameProcess;
 import src.Help.Shovel.Shovel;
@@ -65,6 +66,8 @@ public class GameMainController {
         anchorPane = GamePlayRoot;
         gridPane = lawnGrid;
         progressBar = progressbarGame;
+        // Tải cờ
+        FactoryFlagGameMain.creat(gameData.getListPercentFlag());
         // Tải dữ liệu của Game vào Controller
         gameProcess.startGame();
         // Tải Sun từ Controller vào view và gán sự kiện
