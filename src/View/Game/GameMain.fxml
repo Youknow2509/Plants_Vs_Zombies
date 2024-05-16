@@ -38,7 +38,7 @@
             <Image url="@../../../Assets/images/items/Sun.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="progressbarGame" layoutX="207.0" layoutY="23.0" opacity="0.8" prefHeight="13.0" prefWidth="201.0" progress="0.8" />
+      <ProgressBar fx:id="progressbarGame" layoutX="207.0" layoutY="23.0" opacity="0.8" prefHeight="13.0" prefWidth="201.0" progress="0" />
       <GridPane fx:id="lawnGrid" layoutX="320.0" layoutY="85.0" prefHeight="489.0" prefWidth="694.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="74.0" />
