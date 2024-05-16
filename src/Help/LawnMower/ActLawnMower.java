@@ -6,9 +6,13 @@ import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
 import src.Model.Characters.Zombies.Zombie;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class ActLawnMower implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
 // Var
     private LawnMower lawnMower;
 // Constructor

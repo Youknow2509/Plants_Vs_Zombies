@@ -18,9 +18,13 @@ import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Zombies.Zombie;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 
 public class GameProcess implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Variables
     private int idGame;
     private String nameGame = null;

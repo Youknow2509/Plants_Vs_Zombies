@@ -10,9 +10,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class HandleCardPlant implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Var
     private CardPlant cardPlant;
 

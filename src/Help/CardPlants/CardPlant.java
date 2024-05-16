@@ -5,9 +5,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import src.Controller.Game.GameMainController;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class CardPlant implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Var
     private final static int width = 105;
     private final static int height = 67;

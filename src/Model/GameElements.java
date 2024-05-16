@@ -4,9 +4,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import src.Controller.Game.GameMainController;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public abstract class GameElements implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Variables
     private double x = 0, y = 0; // Lưu toạ độ phần tử
     private transient Image image = null; // Lưu hình ảnh

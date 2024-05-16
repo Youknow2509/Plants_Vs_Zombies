@@ -4,9 +4,13 @@ import src.Model.Characters.Zombies.Zombie;
 import src.Model.Characters.Zombies.ZombieFactory;
 import src.Model.Characters.Zombies.ZombieType;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class ZombieSpawner implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Var
     private int time;
     private Zombie zombie;

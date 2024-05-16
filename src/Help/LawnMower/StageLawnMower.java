@@ -2,9 +2,13 @@ package src.Help.LawnMower;
 
 import src.Model.StageCharacter.StageCharacter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class StageLawnMower implements StageCharacter, Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
 // Variables
     private LawnMower lawnMower;
 // Constructors

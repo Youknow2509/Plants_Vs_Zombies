@@ -7,9 +7,13 @@ import src.Model.GameElements;
 import src.Model.StageCharacter.StageCharacter;
 import src.Utils.HandleInGridPane;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Plant extends GameElements implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Variables
     private int col = 0, row = 0;
     private int hp = 0;

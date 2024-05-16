@@ -5,9 +5,13 @@ import src.Model.ActCharacter.Act;
 import src.Model.GameElements;
 import src.Model.StageCharacter.StageCharacter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Zombie extends GameElements implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Var
     private String path_run = "";
     private String path_eat = "";

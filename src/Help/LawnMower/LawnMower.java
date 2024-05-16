@@ -5,9 +5,13 @@ import src.Config.Path;
 import src.Model.GameElements;
 import src.Model.StageCharacter.StageCharacter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class LawnMower extends GameElements implements Serializable {
+    // SerialVersionUID
+    @Serial
+    private static final long serialVersionUID = 1L;
     // Var infor LawnMower
     private static final int WIDTH = 67;
     private static final int HEIGHT = 55;
