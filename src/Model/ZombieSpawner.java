@@ -13,6 +13,8 @@ public class ZombieSpawner implements Serializable {
     private static final long serialVersionUID = 1L;
     // Var
     private int time;
+    private int lane;
+    private String nameZombie;
     private Zombie zombie;
     // Constructor
     public ZombieSpawner() {
@@ -21,6 +23,8 @@ public class ZombieSpawner implements Serializable {
     public ZombieSpawner(int time, int lane, String nameZombie) {
         super();
         this.time = time;
+        this.lane = lane;
+        this.nameZombie = nameZombie;
         ZombieType zombieType = ZombieType.valueOf(nameZombie.toUpperCase());
         zombie = ZombieFactory.createZombie(zombieType, lane);
     }
@@ -38,5 +42,21 @@ public class ZombieSpawner implements Serializable {
 
     public void setZombie(Zombie zombie) {
         this.zombie = zombie;
+    }
+
+    public int getLane() {
+        return lane;
+    }
+
+    public void setLane(int lane) {
+        this.lane = lane;
+    }
+
+    public String getNameZombie() {
+        return nameZombie;
+    }
+
+    public void setNameZombie(String nameZombie) {
+        this.nameZombie = nameZombie;
     }
 }
