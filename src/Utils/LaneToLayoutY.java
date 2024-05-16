@@ -37,15 +37,15 @@ public class LaneToLayoutY {
     public static int lawnMowerGetLayoutY(int lane) {
         switch (lane) {
             case 0:
-                return 80;
+                return 93;
             case 1:
-                return 180;
+                return 193;
             case 2:
-                return 280;
+                return 293;
             case 3:
-                return 380;
+                return 393;
             case 4:
-                return 480;
+                return 493;
             default:
                 return 0;
         }

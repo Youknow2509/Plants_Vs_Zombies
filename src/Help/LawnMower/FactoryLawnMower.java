@@ -4,7 +4,7 @@ import src.Utils.LaneToLayoutY;
 
 public class FactoryLawnMower {
     // Var
-    private static final double x = 230;
+    private static final double x = 238;
     public static LawnMower createLawnMower(int lane) {
         double y = LaneToLayoutY.lawnMowerGetLayoutY(lane);
         return new LawnMower(x, y, lane);
