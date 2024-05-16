@@ -12,6 +12,11 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="850.0" maxWidth="1440.0" minHeight="850.0" minWidth="1440.0" prefHeight="850.0" prefWidth="1440.0" stylesheets="@../CSS/ListGameSave.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.LoadData.ListGameSaveController">
     <children>
+      <ImageView fitHeight="850.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Assets/images/items/loaddata_bg.png" />
+         </image>
+      </ImageView>
         <ImageView fx:id="backToHome" fitHeight="62.0" fitWidth="54.25" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true" styleClass="btn" x="30.0" y="19.0">
             <image>
                 <Image url="@../../../Assets/icon/long-arrow-alt-left-solid.png" />
