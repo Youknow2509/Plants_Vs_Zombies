@@ -34,8 +34,8 @@ public class Path {
     // Assets - Images Zombies
     public static final String ASSETS_Image_NormalZombie_Run = "/Assets/images/Zombies/NormalZombieRun.gif";
     public static final String ASSETS_Image_NormalZombie_Eat = "/Assets/images/Zombies/NormalZombieEat.gif";
-    public static final String ASSETS_Image_ConeheadZombie_Run = "/Assets/images/Zombies/NormalZombieRun.gif"; // todo chua co dung tam
-    public static final String ASSETS_Image_ConeheadZombie_Eat = "/Assets/images/Zombies/NormalZombieRun.gif"; // todo chua co dung tam
+    public static final String ASSETS_Image_ConeheadZombie_Run = "/Assets/images/Zombies/ConeheadZombie.gif";
+    public static final String ASSETS_Image_ConeheadZombie_Eat = "/Assets/images/Zombies/ConeheadZombie_Eat.gif"; 
     public static final String ASSETS_Image_FlagZombie_Run = "/Assets/images/Zombies/FlagZombie.gif"; // todo add
     public static final String ASSETS_Image_FlagZombie_Eat = "/Assets/images/Zombies/FlagZombie.gif"; // todo add
     // Assets - Images Cards

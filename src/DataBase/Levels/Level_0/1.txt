@@ -2,5 +2,5 @@
 SunFlower, PeaShooter, WallNut, Repeater
 2
 1, 0, NormalZombie
-12, 2, NormalZombie
+12, 2, CONEHEADZOMBIE
 0, 1, 2, 3, 4
