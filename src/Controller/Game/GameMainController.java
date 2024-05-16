@@ -180,6 +180,7 @@ public class GameMainController {
     public static void setSun(int s) {
         sun = s;
         sunDisplay.setText(String.valueOf(sun));
+        gameData.setSun(sun);
     }
 
     public AnchorPane getGamePlayRoot() {
