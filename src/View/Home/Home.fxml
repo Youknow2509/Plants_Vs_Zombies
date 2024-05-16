@@ -1,70 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="576.0" maxWidth="1024.0" minHeight="576.0" minWidth="1024.0" prefHeight="576.0" prefWidth="1024.0" stylesheets="@../CSS/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Home.HomeController">
+<AnchorPane fx:id="anchorPane" maxHeight="600.0" maxWidth="1024.0" minHeight="600.0" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" stylesheets="@../CSS/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Home.HomeController">
    <children>
-      <ImageView fx:id="bg" fitHeight="576.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bg" fitHeight="600.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Assets/images/items/plants-vs-zombies-wallpaper.jpg" />
+            <Image url="@../../../Assets/images/items/main_bg.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="418.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0">
+      <ImageView fitHeight="216.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true" x="45.0">
+         <image>
+            <Image url="@../../../Assets/images/items/welcome.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="547.0" layoutY="370.0" prefHeight="121.0" prefWidth="274.0" styleClass="btn">
          <children>
-            <VBox alignment="CENTER" prefHeight="270.0" prefWidth="210.0" spacing="25.0">
-               <children>
-                  <AnchorPane fx:id="load" onMouseClicked="#clickLoad" prefHeight="200.0" prefWidth="200.0" styleClass="btn">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="btn">
-                           <image>
-                              <Image url="@../../../Assets/images/items/Button1.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="80.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Load">
-                           <styleClass>
-                              <String fx:value="text" />
-                              <String fx:value="btn" />
-                           </styleClass>
-                        </Text>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane onMouseClicked="#clickNewGame" prefHeight="200.0" prefWidth="200.0" styleClass="btn">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="btn">
-                           <image>
-                              <Image url="@../../../Assets/images/items/Button1.png" />
-                           </image>
-                        </ImageView>
-                        <Text fx:id="newGame" layoutX="62.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Game">
-                           <styleClass>
-                              <String fx:value="text" />
-                              <String fx:value="btn" />
-                           </styleClass>
-                        </Text>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="btn">
-                     <children>
-                        <ImageView fx:id="exit" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#clickExit" pickOnBounds="true" preserveRatio="true" styleClass="btn">
-                           <image>
-                              <Image url="@../../../Assets/images/items/Button1.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="85.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit">
-                           <styleClass>
-                              <String fx:value="text" />
-                              <String fx:value="btn" />
-                           </styleClass>
-                        </Text>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
+            <ImageView fitHeight="151.0" fitWidth="287.0" layoutX="-519.0" layoutY="-233.0" onMouseClicked="#clickExit" pickOnBounds="true" preserveRatio="true" styleClass="btn" x="512.0" y="215.54">
+               <image>
+                  <Image url="@../../../Assets/images/items/exit_wall.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="504.0" layoutY="196.0" prefHeight="174.0" prefWidth="284.0" styleClass="btn">
+         <children>
+            <ImageView fitHeight="151.0" fitWidth="314.0" layoutX="-461.0" layoutY="-194.0" onMouseClicked="#clickNewGame" pickOnBounds="true" preserveRatio="true" styleClass="btn" x="512.0" y="215.54">
+               <image>
+                  <Image url="@../../../Assets/images/items/new_wall.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="560.0" layoutY="56.0" prefHeight="159.0" prefWidth="314.0" styleClass="btn">
+         <children>
+            <ImageView fitHeight="171.0" fitWidth="387.0" layoutX="3.0" layoutY="-4.0" onMouseClicked="#clickLoad" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+               <image>
+                  <Image url="@../../../Assets/images/items/load_wall.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
