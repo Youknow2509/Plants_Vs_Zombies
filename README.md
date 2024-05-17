@@ -1,6 +1,7 @@
 
 # TODO-List
-- [x] **Upgrade **
+- [x] **Tạo project**
+- [x] **Upgrade UML**
 - [x] **Find bugs**
 - [x] **Vẽ lại Game level, load**
 - [x] **Thêm ảnh từng giai đoạn máu cho Sunflower**
