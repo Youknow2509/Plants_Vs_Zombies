@@ -21,25 +21,4 @@ public class PlantFactory {
                 return null;
         }
     }
-    // Factory get Cost
-    public static int getCost(PlantType type) {
-        switch (type) {
-            case SUNFLOWER:
-                return 50;
-            case PEASHOOTER:
-                return 100;
-            case REPEATER:
-                return 200;
-            case POTATOMINE:
-                return 25;
-            case CHOMPER:
-                return 150;
-            case WALLNUT:
-                return 50;
-            case CHERRYBOMB:
-                return 150;
-            default:
-                return 0;
-        }
-    }
 }

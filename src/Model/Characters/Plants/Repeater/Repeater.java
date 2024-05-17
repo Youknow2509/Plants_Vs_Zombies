@@ -12,14 +12,14 @@ import java.util.List;
 
 public class Repeater extends Plant {
     // Var information of Repeater
-    private static final String PATH = "/Assets/images/Plants/Repeater.gif";
-    private static final int HP = 22000;
-    private static final int COST = 200;
-    private static final int DAME = 40;
-    private static final int SPEEDATTACK = 3;
-    private static final int WIDTH = 60;
-    private static final int HEIGHT = 60;
-    private static final int TIMEBUY = 8;
+    public static final String PATH = "/Assets/images/Plants/Repeater.gif";
+    public static final int HP = 22000;
+    public static final int COST = 200;
+    public static final int DAME = 40;
+    public static final int SPEEDATTACK = 3;
+    public static final int WIDTH = 60;
+    public static final int HEIGHT = 60;
+    public static final int TIMEBUY = 8;
     // Var
     private List<Pea> listPea;
     // Constructor

@@ -11,13 +11,13 @@ import java.util.List;
 
 public class PeaShooter extends Plant {
     // Đặc điểm của PeaShooter
-    private final static int HP = 2000;
-    private final static int DAME = 20;
-    private final static int COST = 100;
-    private final static int SPEEDATTACK = 3;
-    private final static int WIDTH = 60;
-    private final static int HEIGHT = 60;
-    private final static int TIMEBUY = 8;
+    public final static int HP = 2000;
+    public final static int DAME = 20;
+    public final static int COST = 100;
+    public final static int SPEEDATTACK = 3;
+    public final static int WIDTH = 60;
+    public final static int HEIGHT = 60;
+    public final static int TIMEBUY = 8;
     // Var
     private List<Pea> listPea = null;
     // Constructor
