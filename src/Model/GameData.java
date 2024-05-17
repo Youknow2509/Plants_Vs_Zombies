@@ -51,10 +51,10 @@ public class GameData implements Serializable {
         this.tick = tick;
         this.lawnMowers = lawnMowers;
         this.dropSun = new DropSun();
-        loadSumZombie();
 
         this.listPercentFlag = new ArrayList<Double>();
-        creatListPercentFlag();
+
+        loadDataAfterInit();
     }
 
     // Thêm cây
@@ -88,12 +88,12 @@ public class GameData implements Serializable {
     }
 
     // Lấy ra tổng số Zombie
-    public void loadSumZombie() {
+    private void loadSumZombie() {
         this.sumZombie = zombieAlive.size() + zombieSpawner.size();
     }
 
     // creat list percent flag
-    public void creatListPercentFlag() {
+    private void creatListPercentFlag() {
         for (int i = 0; i < sumZombie; i++) {
             ZombieSpawner z = zombieSpawner.get(i);
             if (z.getNameZombie()
@@ -105,6 +105,12 @@ public class GameData implements Serializable {
                 );
             }
         }
+    }
+
+    // LoadData after init
+    public void loadDataAfterInit() {
+        loadSumZombie();
+        creatListPercentFlag();
     }
 
     // To String

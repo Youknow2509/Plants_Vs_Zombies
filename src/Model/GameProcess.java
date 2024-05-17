@@ -40,8 +40,7 @@ public class GameProcess implements Serializable {
     public GameProcess(GameData gameData) {
         super();
         this.gameData = gameData;
-        gameData.loadSumZombie();
-        gameData.creatListPercentFlag();
+        gameData.loadDataAfterInit();
     }
 
     public GameProcess(int idGame, String nameGame, int level, GameData gameData) {
