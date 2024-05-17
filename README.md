@@ -1,6 +1,7 @@
 
 # TODO-List
-- [x] **Tạo project**
+- [x] **Chuyển hết thuộc tính nhân vật về một file**
+- [x] **Nâng cấp gridpane có trạng thái có thể đặt cây hay không - (Xử lí ví dụ màn game là nước thì phải đặt lá trc, v.v)**
 - [x] **Upgrade UML**
 - [x] **Find bugs**
 - [x] **Vẽ lại Game level, load**
