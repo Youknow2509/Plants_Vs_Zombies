@@ -24,6 +24,7 @@ public class HandleCardPlant implements Serializable {
     public HandleCardPlant() {
         super();
     }
+
     public HandleCardPlant(CardPlant cardPlant) {
         super();
         this.cardPlant = cardPlant;
@@ -32,7 +33,7 @@ public class HandleCardPlant implements Serializable {
     // Creat ImageView for CardPlant
     public void creatImageView() {
         if (cardPlant == null || cardPlant.getImage() != null || cardPlant.getImageView() != null
-        || (GameMainController.getAnchorPane()).getChildren().contains(cardPlant.getImageView())) {
+                || (GameMainController.getAnchorPane()).getChildren().contains(cardPlant.getImageView())) {
             return;
         }
 
@@ -41,7 +42,7 @@ public class HandleCardPlant implements Serializable {
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         cardPlant.setImage(new Image(cardPlant.getPath(), CardPlant.getWidth(), CardPlant.getHeight(), false, false));
         // Tạo một ImageView để hiển thị hình ảnh
-        cardPlant.setImageView( new ImageView(cardPlant.getImage())) ;
+        cardPlant.setImageView(new ImageView(cardPlant.getImage()));
         cardPlant.getImageView().setImage(cardPlant.getImage());
         // Đặt vị trí của ImageView trong AnchorPane
         cardPlant.getImageView().setLayoutX(cardPlant.getX());
@@ -64,17 +65,26 @@ public class HandleCardPlant implements Serializable {
         ImageView imageView = (ImageView) source;
         if (cardPlant.isHaveBuy()) {
             if (GameMainController.getCardPlantClicked() == null) {
-                imageView.setOpacity(0.2);
-                cardPlant.setOpacity(0.2);
+                cardPlant.setOpacity(0.1);
                 GameMainController.setCardPlantClicked(cardPlant);
             } else if (GameMainController.getCardPlantClicked().getName() != imageView.getId()) {
-                GameMainController.getCardPlantClicked().getImageView().setOpacity(1);
-                imageView.setOpacity(0.2);
-                cardPlant.setOpacity(0.2);
+
+                if (GameMainController.getCardPlantClicked().isHaveBuy()) {
+                    GameMainController.getCardPlantClicked().setOpacity(1);
+                } else {
+                    GameMainController.getCardPlantClicked().setOpacity(0.6);
+                }
+
+                cardPlant.setOpacity(0.1);
                 GameMainController.setCardPlantClicked(cardPlant);
             } else {
-                imageView.setOpacity(1);
-                cardPlant.setOpacity(1);
+
+                if (GameMainController.getCardPlantClicked().isHaveBuy()) {
+                    GameMainController.getCardPlantClicked().setOpacity(1);
+                } else {
+                    GameMainController.getCardPlantClicked().setOpacity(0.6);
+                }
+
                 GameMainController.setCardPlantClicked(null);
             }
         }
@@ -83,27 +93,32 @@ public class HandleCardPlant implements Serializable {
     // CardPlant set time out buy
     public void setTimeOutBuyPlant(int time) {
 
-        cardPlant.setHaveBuy(false);
         GameMainController.setCardPlantClicked(null);
-        double increment = (1 - cardPlant.getOpacity()) / time;
+        cardPlant.setHaveBuy(false);
 
-        double [] opacity = {cardPlant.getOpacity()};
-        Timeline [] timeline = new Timeline[1];
+        cardPlant.setOpacity(0);
+        double opacityEnd = 0.6;
+
+        double increment = (opacityEnd - cardPlant.getOpacity()) / time;
+
         // Hai biến được lưu kiểu mảng để sử dụng trong hàm xử lý sự kiện của Timeline và thay đổi giá trị của chúng được.
+        double[] opacity = {cardPlant.getOpacity()};
+        Timeline[] timeline = new Timeline[1];
+
+        //
         timeline[0] = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-            if (opacity[0] >= 1) {
+            if (opacity[0] >= opacityEnd) {
+
                 cardPlant.setHaveBuy(true);
-
-                cardPlant.getImageView().setOpacity(1);
-
-                cardPlant.setOpacity(1);
                 cardPlant.setTimeBuy(0);
+
+                cardPlant.setOpacity(opacityEnd);
+
                 timeline[0].stop();
 
                 return;
             } else {
                 opacity[0] += increment;
-                cardPlant.getImageView().setOpacity(opacity[0]);
                 cardPlant.setOpacity(opacity[0]);
             }
             cardPlant.setTimeBuy(cardPlant.getTimeBuy() - 1);
