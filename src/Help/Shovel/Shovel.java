@@ -3,6 +3,7 @@ package src.Help.Shovel;
 
 import src.Config.Path;
 import src.Controller.Game.GameMainController;
+import src.Help.CardPlants.CardPlant;
 import src.Model.GameElements;
 import src.Model.Characters.Plants.Plant;
 
@@ -50,10 +51,12 @@ public class Shovel extends GameElements {
     // Xử lí khi click
     public void handleClick() {
 
-        if (GameMainController.getCardPlantClicked() != null) {
-            GameMainController.getCardPlantClicked().getImageView().setOpacity(1);
+        if (GameMainController.getObjectClicked() != null &&
+            GameMainController.getObjectClicked() instanceof CardPlant)
+        {
+            ((CardPlant)GameMainController.getObjectClicked()).getImageView().setOpacity(1);
         }
-
+        GameMainController.setObjectClicked(this);
         helpHandleClick();
     }
     // Hàm hỗ trợ khi click
