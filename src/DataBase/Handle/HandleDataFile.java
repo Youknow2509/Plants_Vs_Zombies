@@ -78,9 +78,6 @@ public class HandleDataFile implements HandleData {
                             ));
                 }
 
-                // Load sumZombie
-                gameDataAdd.loadSumZombie();
-
                 listGameData.add(gameDataAdd);
             } catch (Exception e) {
                 e.printStackTrace();
