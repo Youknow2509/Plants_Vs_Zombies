@@ -19,12 +19,12 @@ public class FactoryListCardPlant {
         super();
         this.pathCardPlant = pathCardPlant;
         listCardPlant = new ArrayList<CardPlant>();
-        createListCardPlant();
+        create();
     }
 
     // Method
     // Them the cay vao list
-    public void createListCardPlant() {
+    public void create() {
         for (int i = 0; i < pathCardPlant.length; i++) {
             CardPlant cardPlant = FactoryCardPlant.createCardPlant(pathCardPlant[i]);
             cardPlant.setX(x);
@@ -32,6 +32,21 @@ public class FactoryListCardPlant {
             listCardPlant.add(cardPlant);
         }
     }
+
+    // Static unlock and lock card
+    public static void unlockCardAndLock(List<CardPlant> listCardPlant, int sun) {
+        for (int i = 0; i < listCardPlant.size(); i++) {
+            CardPlant c = listCardPlant.get(i);
+            if (c.isHaveBuy()) {
+                if (sun >= c.getCost()) {
+                    c.unlockCard();
+                } else {
+                    c.lockCard();
+                }
+            }
+        }
+    }
+
     // Getter and Setter
     public double getX() {
         return x;
