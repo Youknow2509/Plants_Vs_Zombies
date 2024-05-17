@@ -13,6 +13,7 @@ import src.Config.Path;
 import src.Controller.Game.GameLoseController;
 import src.Controller.Game.GameMainController;
 import src.Controller.Game.GameWinController;
+import src.Help.CardPlants.CardPlant;
 import src.Help.LawnMower.LawnMower;
 import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Zombies.Zombie;
@@ -138,9 +139,15 @@ public class GameProcess implements Serializable {
         for (Plant plant : gameData.getListPlant()) {
             plant.stop();
         }
-        // Stop LawnMower todo chua check
+        // Stop LawnMower
         for (LawnMower lawnMower : gameData.getLawnMowers()) {
             lawnMower.stop();
+        }
+        // Stop time out buy plant
+        for (CardPlant cardPlant : gameData.getCardPlantList()) {
+            if (cardPlant.getTimelineBuyPlant() != null) {
+                cardPlant.getTimelineBuyPlant().pause();
+            }
         }
         // Stop timeline
         timelineGame.stop();
@@ -158,11 +165,17 @@ public class GameProcess implements Serializable {
         for (Plant plant : gameData.getListPlant()) {
             plant.pause();
         }
-        // Pause LawnMower todo chua check
+        // Pause LawnMower
         for (LawnMower lawnMower : gameData.getLawnMowers()) {
             lawnMower.pause();
         }
-        // Stop timeline
+        // Stop time out buy plant
+        for (CardPlant cardPlant : gameData.getCardPlantList()) {
+            if (cardPlant.getTimelineBuyPlant() != null) {
+                cardPlant.getTimelineBuyPlant().pause();
+            }
+        }
+        // Pause timeline
         timelineGame.pause();
     }
 
@@ -178,9 +191,15 @@ public class GameProcess implements Serializable {
         for (Plant plant : gameData.getListPlant()) {
             plant.resume();
         }
-        // resume LawnMower todo chua check
+        // resume LawnMower
         for (LawnMower lawnMower : gameData.getLawnMowers()) {
             lawnMower.resume();
+        }
+        // resume time out buy plant
+        for (CardPlant cardPlant : gameData.getCardPlantList()) {
+            if (cardPlant.getTimelineBuyPlant() != null) {
+                cardPlant.getTimelineBuyPlant().play();
+            }
         }
         // resume timeline
         timelineGame.play();
@@ -192,7 +211,13 @@ public class GameProcess implements Serializable {
         gameData.getDropSun().start();
         // Tải các thẻ cây
         for (int i = 0; i < gameData.getCardPlantList().size(); i++) {
-            gameData.getCardPlantList().get(i).createImage(); // tái tạo lại hình ảnh
+            CardPlant cardPlant= gameData.getCardPlantList().get(i);
+            // Tái tạo lại hình ảnh
+            cardPlant.createImage();
+            // Tạo sự kiện nếu thẻ cây chưa được mua
+            if (!cardPlant.isHaveBuy()) {
+                cardPlant.setTimeOutToBuyPlant(cardPlant.getTimeBuy());
+            }
         }
         // Tải các zombie đang tồn tại
         for (int i = 0; i < gameData.getZombieAlive().size(); i++) {
