@@ -104,7 +104,6 @@ public class LevelController {
                 )
         );
         gameProcess.setLevel(level);
-        gameProcess.setNameGame("Game Test");
 
         cs.changeToGame(gameProcess);
     }
