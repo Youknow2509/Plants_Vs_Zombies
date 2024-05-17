@@ -5,17 +5,18 @@ import java.util.List;
 
 public class FactoryListCardPlant {
     // Var
-    private final double  x = 36; // Tọa độ x 36
-    private final double [] y = {90, 150, 210, 270, 330, 390, 450}; // Tọa độ y
+    private final double x = 36; // Tọa độ x 36
+    private final double[] y = {90, 150, 210, 270, 330, 390, 450}; // Tọa độ y
     private List<CardPlant> listCardPlant;
-    private String [] pathCardPlant;
+    private String[] pathCardPlant;
 
     // Constructor
     public FactoryListCardPlant() {
         super();
         listCardPlant = new ArrayList<CardPlant>();
     }
-    public FactoryListCardPlant(String [] pathCardPlant) {
+
+    public FactoryListCardPlant(String[] pathCardPlant) {
         super();
         this.pathCardPlant = pathCardPlant;
         listCardPlant = new ArrayList<CardPlant>();
@@ -35,9 +36,9 @@ public class FactoryListCardPlant {
 
     // Static unlock and lock card
     public static void unlockCardAndLock(List<CardPlant> listCardPlant, int sun) {
-        for (int i = 0; i < listCardPlant.size(); i++) {
-            CardPlant c = listCardPlant.get(i);
-            if (c.isHaveBuy()) {
+        synchronized (listCardPlant) {
+            for (int i = 0; i < listCardPlant.size(); i++) {
+                CardPlant c = listCardPlant.get(i);
                 if (sun >= c.getCost()) {
                     c.unlockCard();
                 } else {
