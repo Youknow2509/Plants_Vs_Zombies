@@ -64,9 +64,10 @@ public class ActLawnMower implements Serializable {
     }
 
     // Attack zombie
-    private void attack() {
-
-        lawnMower.getTimeline().stop();
+    public void attack() {
+        if (lawnMower.getTimeline() != null) {
+            lawnMower.getTimeline().stop();
+        }
         lawnMower.changeImageView(LawnMower.getPathImageActive());
         lawnMower.setTimeline(new Timeline(new KeyFrame(Duration.millis(60)
                 , e -> {

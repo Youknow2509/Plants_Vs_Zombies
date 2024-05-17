@@ -53,6 +53,9 @@ public class StageLawnMower implements StageCharacter, Serializable {
     // Help start the lawn mower
     public void helpStart() {
         lawnMower.createImageView();
+        if (lawnMower.getX() != 238) {
+            lawnMower.getActLawnMower().attack();
+        }
     }
 
 // Getters and Setters
