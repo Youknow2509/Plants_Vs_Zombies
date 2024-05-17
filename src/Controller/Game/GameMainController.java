@@ -68,12 +68,10 @@ public class GameMainController {
         progressBar = progressbarGame;
         // Tải cờ
         FactoryFlagGameMain.creat(gameData.getListPercentFlag());
-        // Tải dữ liệu của Game vào Controller
-        gameProcess.startGame();
         // Tải Sun từ Controller vào view và gán sự kiện
         sun = gameData.getSun();
-        sunCount.setText(String.valueOf(sun));
         sunDisplay = sunCount;
+        sunDisplay.setText(String.valueOf(sun));
         // Gắn sự kiện cho NodeGridPane
         addHandleGridPane();
         // Load Shovel to View - Tạo xẻng và gắn sự kiện cho xẻng
@@ -81,6 +79,12 @@ public class GameMainController {
         btnShovel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             shovel.handleClick();
         });
+
+        // Tải dữ liệu của Game vào Controller
+        gameProcess.startGame();
+
+        // Sau khi gameProcess.startGame() thì listCard đã được tạo và hiện -> set unlock - lock
+        FactoryListCardPlant.unlockCardAndLock(gameData.getCardPlantList(), sun);
     }
 // Handle action in view
     // Them su kien cho cac o trong lawnGrid
@@ -104,18 +108,12 @@ public class GameMainController {
         // Lấy ra vị trí ô đang được click
         Integer x = GridPane.getColumnIndex(source);
         Integer y = GridPane.getRowIndex(source);
-        // Lay ra loai cay dang duoc chon
-        PlantType type = null;
-        if (cardPlantClicked != null) {
-            type = PlantType.valueOf(cardPlantClicked.getName());
-        }
 
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
             shovel.rmPlant(gameData.getListPlant(), x, y);
         }
         else if (cardPlantClicked != null
-                && getSun() >= PlantFactory.getCost(type)) { // Xử lí việc tạo cây TODO: Thêm xét sun >= cost không để có thể mua cây - Hiện tại chưa để để debug và tạo base game
-           // ) {
+                && getSun() >= cardPlantClicked.getCost()) {
             if (x != null && y != null) {
                 boolean flag = true;
                 synchronized (gameData.getListPlant()) {
@@ -129,6 +127,7 @@ public class GameMainController {
                 // Tạo một cây mới thêm vào game
                 if (flag) {
 
+                    PlantType type = PlantType.valueOf(cardPlantClicked.getName());
                     Plant newPlant = PlantFactory.createPlant(type, (int) (source.getLayoutX() + source.getParent().getLayoutX())
                             , (int) (source.getLayoutY() + source.getParent().getLayoutY())
                             , y
@@ -184,6 +183,8 @@ public class GameMainController {
         sun = s;
         sunDisplay.setText(String.valueOf(sun));
         gameData.setSun(sun);
+
+        FactoryListCardPlant.unlockCardAndLock(gameData.getCardPlantList(), sun);
     }
 
     public AnchorPane getGamePlayRoot() {
@@ -311,6 +312,14 @@ public class GameMainController {
 
     public static void setCardPlantClicked(CardPlant cardPlantClicked) {
         GameMainController.cardPlantClicked = cardPlantClicked;
+    }
+
+    public FactoryListCardPlant getFactoryListCardPlant() {
+        return factoryListCardPlant;
+    }
+
+    public void setFactoryListCardPlant(FactoryListCardPlant factoryListCardPlant) {
+        this.factoryListCardPlant = factoryListCardPlant;
     }
 }
 
