@@ -2,13 +2,13 @@ package src.Help.CardPlants;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import src.Controller.Game.GameMainController;
+import src.Help.Shovel.Shovel;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -37,8 +37,6 @@ public class HandleCardPlant implements Serializable {
             return;
         }
 
-        cardPlant.setHaveBuy(true);
-
         // Tạo một hình ảnh từ một tệp hình ảnh trên đĩa
         cardPlant.setImage(new Image(cardPlant.getPath(), CardPlant.getWidth(), CardPlant.getHeight(), false, false));
         // Tạo một ImageView để hiển thị hình ảnh
@@ -51,6 +49,8 @@ public class HandleCardPlant implements Serializable {
         cardPlant.getImageView().setFitHeight(CardPlant.getFitHeight());
         // Đặt id cho ImageView
         cardPlant.getImageView().setId(cardPlant.getName());
+        // Đặt opacity cho ImageView
+        cardPlant.getImageView().setOpacity(cardPlant.getOpacity());
         // Thêm sự kiện vào ImageView
         cardPlant.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             HandleEventClickToCard(e);
@@ -63,58 +63,65 @@ public class HandleCardPlant implements Serializable {
     private void HandleEventClickToCard(MouseEvent e) {
         Node source = (Node) e.getSource();
         ImageView imageView = (ImageView) source;
-        if (cardPlant.isHaveBuy()) {
-            if (GameMainController.getCardPlantClicked() == null) {
+
+        Object object = GameMainController.getObjectClicked();
+
+        if (!cardPlant.isLock() && cardPlant.isHaveBuy()) {
+            if (object == null) {
+                // Nếu chưa có thẻ nào được chọn
                 cardPlant.setOpacity(0.1);
-                GameMainController.setCardPlantClicked(cardPlant);
-            } else if (GameMainController.getCardPlantClicked().getName() != imageView.getId()) {
-
-                if (GameMainController.getCardPlantClicked().isHaveBuy()) {
-                    GameMainController.getCardPlantClicked().setOpacity(1);
+                GameMainController.setObjectClicked(cardPlant);
+            } else if (object instanceof CardPlant) {
+                // Nếu đã có thẻ được chọn
+                CardPlant c = (CardPlant) object;
+                if (c.getName() == cardPlant.getName()) {
+                    // Nếu thẻ được chọn là thẻ đang được chọn
+                    cardPlant.setOpacity(1);
+                    GameMainController.setObjectClicked(null);
                 } else {
-                    GameMainController.getCardPlantClicked().setOpacity(0.6);
+                    // Nếu thẻ được chọn là thẻ khác
+                    c.setOpacity(1);
+                    cardPlant.setOpacity(0.1);
+                    GameMainController.setObjectClicked(cardPlant);
                 }
+            } else if (object instanceof Shovel) {
+                // Nếu thẻ trc đó được chọn là xẻng
+
+                ((Shovel) object).helpHandleClick();
 
                 cardPlant.setOpacity(0.1);
-                GameMainController.setCardPlantClicked(cardPlant);
-            } else {
-
-                if (GameMainController.getCardPlantClicked().isHaveBuy()) {
-                    GameMainController.getCardPlantClicked().setOpacity(1);
-                } else {
-                    GameMainController.getCardPlantClicked().setOpacity(0.6);
-                }
-
-                GameMainController.setCardPlantClicked(null);
+                GameMainController.setObjectClicked(cardPlant);
+                System.out.println(GameMainController.getObjectClicked());
             }
         }
+
     }
 
     // CardPlant set time out buy
     public void setTimeOutBuyPlant(int time) {
 
-        GameMainController.setCardPlantClicked(null);
+        GameMainController.setObjectClicked(null);
         cardPlant.setHaveBuy(false);
 
-        cardPlant.setOpacity(0);
-        double opacityEnd = 0.6;
-
-        double increment = (opacityEnd - cardPlant.getOpacity()) / time;
+        double increment = (0.6 - cardPlant.getOpacity()) / time;
 
         // Hai biến được lưu kiểu mảng để sử dụng trong hàm xử lý sự kiện của Timeline và thay đổi giá trị của chúng được.
         double[] opacity = {cardPlant.getOpacity()};
-        Timeline[] timeline = new Timeline[1];
 
         //
-        timeline[0] = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-            if (opacity[0] >= opacityEnd) {
+        cardPlant.setTimelineBuyPlant(new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            if (cardPlant.getTimeBuy() <= 0) {
 
                 cardPlant.setHaveBuy(true);
-                cardPlant.setTimeBuy(0);
 
-                cardPlant.setOpacity(opacityEnd);
+                if (cardPlant.isLock()) {
+                    cardPlant.setOpacity(0.6);
+                } else {
+                    cardPlant.setOpacity(1);
+                }
 
-                timeline[0].stop();
+                cardPlant.getTimelineBuyPlant().stop();
+                cardPlant.setTimelineBuyPlant(null);
 
                 return;
             } else {
@@ -122,9 +129,9 @@ public class HandleCardPlant implements Serializable {
                 cardPlant.setOpacity(opacity[0]);
             }
             cardPlant.setTimeBuy(cardPlant.getTimeBuy() - 1);
-        }));
-        timeline[0].setCycleCount(Timeline.INDEFINITE);
-        timeline[0].play();
+        })));
+        cardPlant.getTimelineBuyPlant().setCycleCount(Timeline.INDEFINITE);
+        cardPlant.getTimelineBuyPlant().play();
     }
 
     // Getter - Setter
