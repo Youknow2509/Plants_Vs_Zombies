@@ -17,11 +17,13 @@ public class CardPlant implements Serializable {
     private final static int height = 67;
     private final static int fitWidth = 85;
     private final static int fitHeight = 50;
-
+    private transient Timeline timelineBuyPlant;
     private transient ImageView imageView;
     private transient Image image;
     private double x, y;
     private boolean haveBuy = true; // True: have buy, False: haven't buy
+    private boolean lock = false;
+
     private String path;
     private String name;
     private int timeBuy;
@@ -32,26 +34,38 @@ public class CardPlant implements Serializable {
     // Constructor
     public CardPlant() {
         super();
+        this.haveBuy = true;
+        this.lock = false;
+        this.opacity = 0.6;
     }
     public CardPlant(String path, String name, int cost) {
         super();
         this.path = path;
         this.name = name;
         this.cost = cost;
+        this.haveBuy = true;
+        this.lock = false;
+        this.opacity = 0.6;
     }
 
-    public CardPlant(double x, double y, String path, String name, int cost) {
+    public CardPlant(double x, double y, String path, String name, int cost, int timeBuy
+            , double opacity, boolean haveBuy, boolean lock) {
         super();
         this.x = x;
         this.y = y;
         this.path = path;
         this.name = name;
         this.cost = cost;
+        this.timeBuy = timeBuy;
+        this.opacity = opacity;
+        this.haveBuy = haveBuy;
+        this.lock = lock;
     }
 
     // Method
     public void createImage() {
         handleCardPlant.creatImageView();
+
     }
     // Set time out to buy Plant
     public void setTimeOutToBuyPlant(int time) {
@@ -62,16 +76,20 @@ public class CardPlant implements Serializable {
     // Lock card
     public void lockCard() {
         if (imageView != null) {
-            imageView.setOpacity(0.6);
-            imageView.setDisable(true);
+            if (imageView.getOpacity() == 1) {
+                imageView.setOpacity(0.6);
+            }
+            this.lock = true;
         }
     }
 
     // Unlock card
     public void unlockCard() {
         if (imageView != null) {
-            imageView.setOpacity(1);
-            imageView.setDisable(false);
+            if (imageView.getOpacity() == 0.6) {
+                imageView.setOpacity(1);
+            }
+            this.lock = false;
         }
     }
 
@@ -186,5 +204,21 @@ public class CardPlant implements Serializable {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public boolean isLock() {
+        return lock;
+    }
+
+    public void setLock(boolean lock) {
+        this.lock = lock;
+    }
+
+    public Timeline getTimelineBuyPlant() {
+        return timelineBuyPlant;
+    }
+
+    public void setTimelineBuyPlant(Timeline timelineBuyPlant) {
+        this.timelineBuyPlant = timelineBuyPlant;
     }
 }
