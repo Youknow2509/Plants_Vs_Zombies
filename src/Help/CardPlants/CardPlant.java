@@ -25,25 +25,28 @@ public class CardPlant implements Serializable {
     private String path;
     private String name;
     private int timeBuy;
-    private double opacity = 1.0;
+    private double opacity = 0.6;
+    private int cost;
     private HandleCardPlant handleCardPlant = new HandleCardPlant(this);
 
     // Constructor
     public CardPlant() {
         super();
     }
-    public CardPlant(String path, String name) {
+    public CardPlant(String path, String name, int cost) {
         super();
         this.path = path;
         this.name = name;
+        this.cost = cost;
     }
 
-    public CardPlant(double x, double y, String path, String name) {
+    public CardPlant(double x, double y, String path, String name, int cost) {
         super();
         this.x = x;
         this.y = y;
         this.path = path;
         this.name = name;
+        this.cost = cost;
     }
 
     // Method
@@ -55,6 +58,23 @@ public class CardPlant implements Serializable {
         handleCardPlant.setTimeOutBuyPlant(time);
         this.timeBuy = time;
     }
+
+    // Lock card
+    public void lockCard() {
+        if (imageView != null) {
+            imageView.setOpacity(0.6);
+            imageView.setDisable(true);
+        }
+    }
+
+    // Unlock card
+    public void unlockCard() {
+        if (imageView != null) {
+            imageView.setOpacity(1);
+            imageView.setDisable(false);
+        }
+    }
+
     // To string
     @Override
     public String toString() {
@@ -149,6 +169,7 @@ public class CardPlant implements Serializable {
 
     public void setOpacity(double opacity) {
         this.opacity = opacity;
+        this.imageView.setOpacity(opacity);
     }
 
     public int getTimeBuy() {
@@ -157,5 +178,13 @@ public class CardPlant implements Serializable {
 
     public void setTimeBuy(int timeBuy) {
         this.timeBuy = timeBuy;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 }
