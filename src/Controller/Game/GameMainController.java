@@ -26,6 +26,7 @@ import src.Model.Characters.Plants.PlantType;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class GameMainController {
     // Variables FXML
@@ -48,7 +49,7 @@ public class GameMainController {
     private static ProgressBar progressBar = null;
     private static GameData gameData; // Dữ liệu game
     private static int wonGame = -1; // 0: thua, 1: thắng, -1: chưa kết thúc
-    private static CardPlant cardPlantClicked = null; // CardPlant đang được chọn
+    private static Object objectClicked = null; // CardPlant đang được chọn
     private static int sun = 0;
     private static Label sunDisplay;
 
@@ -111,9 +112,10 @@ public class GameMainController {
 
         if (!shovel.getIsDisabled()) { // Xử lí việc xoá cây
             shovel.rmPlant(gameData.getListPlant(), x, y);
+            objectClicked = null;
         }
-        else if (cardPlantClicked != null
-                && getSun() >= cardPlantClicked.getCost()) {
+        else if (objectClicked != null
+                && getSun() >= ((CardPlant)objectClicked).getCost()) {
             if (x != null && y != null) {
                 boolean flag = true;
                 synchronized (gameData.getListPlant()) {
@@ -127,7 +129,7 @@ public class GameMainController {
                 // Tạo một cây mới thêm vào game
                 if (flag) {
 
-                    PlantType type = PlantType.valueOf(cardPlantClicked.getName());
+                    PlantType type = PlantType.valueOf(((CardPlant)objectClicked).getName());
                     Plant newPlant = PlantFactory.createPlant(type, (int) (source.getLayoutX() + source.getParent().getLayoutX())
                             , (int) (source.getLayoutY() + source.getParent().getLayoutY())
                             , y
@@ -137,8 +139,9 @@ public class GameMainController {
                     newPlant.start();
 
                     setSun(sun - newPlant.getCost());
-
-                    cardPlantClicked.setTimeOutToBuyPlant(newPlant.getTimeBuy());
+                    
+                    ((CardPlant)objectClicked).setOpacity(0);
+                    ((CardPlant)objectClicked).setTimeOutToBuyPlant(newPlant.getTimeBuy());
                 }
             }
         }
@@ -306,12 +309,12 @@ public class GameMainController {
         GameMainController.wonGame = wonGame;
     }
 
-    public static CardPlant getCardPlantClicked() {
-        return cardPlantClicked;
+    public static Object getObjectClicked() {
+        return objectClicked;
     }
 
-    public static void setCardPlantClicked(CardPlant cardPlantClicked) {
-        GameMainController.cardPlantClicked = cardPlantClicked;
+    public static void setObjectClicked(Object o) {
+        objectClicked = o;
     }
 
     public FactoryListCardPlant getFactoryListCardPlant() {
