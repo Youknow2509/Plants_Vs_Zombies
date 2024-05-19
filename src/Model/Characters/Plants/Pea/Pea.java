@@ -14,6 +14,9 @@ import java.util.List;
 public class Pea extends GameElements {
 
     // Var
+    private int DAMAGE = 20;
+    private int SPEED = 1;
+    private int SPEED_ATTACK = 5;
     private transient Timeline timeline;
     private List<Pea> listPea = null; // Danh sách đạn của đối tượng đang xử dụng nó
     private Act act;
@@ -23,6 +26,9 @@ public class Pea extends GameElements {
                List<Pea> listPea) {
         super(x, y, Path.ASSETS_Image_Pea, DefaultValue.Pea_WIDTH, DefaultValue.Pea_HEIGHT, lane);
         this.listPea = listPea;
+        this.DAMAGE = DefaultValue.Pea_DAMAGE;
+        this.SPEED = DefaultValue.Pea_SPEED;
+        this.SPEED_ATTACK = DefaultValue.Pea_SPEED_ATTACK;
         act = new ActPea(this);
         stageCharacter = new StageCharacterPea(this);
     }
@@ -77,5 +83,37 @@ public class Pea extends GameElements {
 
     public void setStageCharacter(StageCharacter stageCharacter) {
         this.stageCharacter = stageCharacter;
+    }
+
+    public int getDAMAGE() {
+        return DAMAGE;
+    }
+
+    public void setDAMAGE(int DAMAGE) {
+        this.DAMAGE = DAMAGE;
+    }
+
+    public int getSPEED() {
+        return SPEED;
+    }
+
+    public void setSPEED(int SPEED) {
+        this.SPEED = SPEED;
+    }
+
+    public int getSPEED_ATTACK() {
+        return SPEED_ATTACK;
+    }
+
+    public void setSPEED_ATTACK(int SPEED_ATTACK) {
+        this.SPEED_ATTACK = SPEED_ATTACK;
+    }
+
+    public List<Pea> getListPea() {
+        return listPea;
+    }
+
+    public void setListPea(List<Pea> listPea) {
+        this.listPea = listPea;
     }
 }
