@@ -1,5 +1,6 @@
 package src.Model.Characters.Plants.Repeater;
 
+import src.Config.DefaultValue;
 import src.Config.Path;
 import src.Model.ActCharacter.Plant.ActRepeater;
 import src.Model.Characters.Plants.Pea.Pea;
@@ -11,15 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Repeater extends Plant {
-    // Var information of Repeater
-    public static final String PATH = "/Assets/images/Plants/Repeater.gif";
-    public static final int HP = 22000;
-    public static final int COST = 200;
-    public static final int DAME = 40;
-    public static final int SPEEDATTACK = 3;
-    public static final int WIDTH = 60;
-    public static final int HEIGHT = 60;
-    public static final int TIMEBUY = 8;
     // Var
     private List<Pea> listPea;
     // Constructor
@@ -28,8 +20,9 @@ public class Repeater extends Plant {
         listPea = new ArrayList<Pea>();
     }
     public Repeater(double x, double y, int col, int row) {
-        super(x, y, Path.ASSETS_Image_Repeater, WIDTH, HEIGHT, HP
-                    , col, row, COST, SPEEDATTACK, DAME, TIMEBUY);
+        super(x, y, Path.ASSETS_Image_Repeater, DefaultValue.Repeater_WIDTH, DefaultValue.Repeater_HEIGHT
+                , DefaultValue.Repeater_HP, col, row, DefaultValue.Repeater_COST, DefaultValue.Repeater_SPEEDATTACK
+                , DefaultValue.Repeater_DAME, DefaultValue.Repeater_TIMEBUY);
         listPea = new ArrayList<Pea>();
         setAct(new ActRepeater(this));
         setStageCharacter(new StageCharacterRepeater(this));
