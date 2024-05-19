@@ -1,5 +1,6 @@
 package src.Model.ActCharacter.Plant;
 
+import src.Config.DefaultValue;
 import src.Controller.Game.GameMainController;
 import src.Model.ActCharacter.Act;
 import src.Model.Characters.Plants.Pea.Pea;
@@ -27,7 +28,7 @@ public class ActPea implements Act {
     public void move() {
         // Nếu đạn ra khỏi màn hình thì xóa đạn
         if (pea.getX() < 1010) {
-            pea.setX(pea.getX() + pea.getSPEED());
+            pea.setX(pea.getX() + DefaultValue.Pea_SPEED);
         }
         else {
             pea.remove();
@@ -45,7 +46,7 @@ public class ActPea implements Act {
                 for (int i = 0; i < (GameMainController.getGameData()).getZombieAlive().size(); i++) {
                     Zombie z = (GameMainController.getGameData()).getZombieAlive().get(i);
                     if (z.getLane() == pea.getLane() && z.getX() - pea.getX() <= 5 && z.getX() - pea.getX() >= 0) {
-                        z.setHealth(z.getHealth() - pea.getDAMAGE());
+                        z.setHealth(z.getHealth() - DefaultValue.Pea_DAMAGE);
                         pea.remove();
                         //System.out.println("Zb + " + z +  " hp: " + z.getHealth()); // TODO: Để debug xem máu của zombie còn lại bao nhiêu
                         if (z.getHealth() <= 0) {

@@ -3,6 +3,7 @@ package src.Model.StageCharacter.Plant;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+import src.Config.DefaultValue;
 import src.Model.Characters.Plants.Pea.Pea;
 import src.Model.StageCharacter.StageCharacter;
 
@@ -23,7 +24,7 @@ public class StageCharacterPea implements StageCharacter {
 
         helpStart();
 
-        pea.setTimeline(new Timeline((new KeyFrame(Duration.millis(Pea.getSpeedAttack())
+        pea.setTimeline(new Timeline((new KeyFrame(Duration.millis(DefaultValue.Pea_SPEED_ATTACK)
                 , e -> {
                     pea.getAct().handle();
                 }

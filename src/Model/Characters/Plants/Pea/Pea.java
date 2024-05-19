@@ -1,6 +1,7 @@
 package src.Model.Characters.Plants.Pea;
 
 import javafx.animation.Timeline;
+import src.Config.DefaultValue;
 import src.Config.Path;
 import src.Model.ActCharacter.Act;
 import src.Model.ActCharacter.Plant.ActPea;
@@ -11,21 +12,16 @@ import src.Model.StageCharacter.StageCharacter;
 import java.util.List;
 
 public class Pea extends GameElements {
-    // Đặc điểm của đạn
-    private static int DAMAGE = 20;
-    private static int SPEED = 1;
-    private static int SPEED_ATTACK = 5;
-    private static int WIDTH = 20;
-    private static int HEIGHT = 20;
-    private transient Timeline timeline;
+
     // Var
+    private transient Timeline timeline;
     private List<Pea> listPea = null; // Danh sách đạn của đối tượng đang xử dụng nó
     private Act act;
     private StageCharacter stageCharacter;
     // Constructor
     public Pea(double x, double y, int lane,
                List<Pea> listPea) {
-        super(x, y, Path.ASSETS_Image_Pea, WIDTH, HEIGHT, lane);
+        super(x, y, Path.ASSETS_Image_Pea, DefaultValue.Pea_WIDTH, DefaultValue.Pea_HEIGHT, lane);
         this.listPea = listPea;
         act = new ActPea(this);
         stageCharacter = new StageCharacterPea(this);
@@ -57,35 +53,7 @@ public class Pea extends GameElements {
         timeline.stop();
     }
 
-    // Get và set các thuộc tính
-    public int getDAMAGE() {
-        return DAMAGE;
-    }
-    public void setDAMAGE(int DAMAGE) {
-        Pea.DAMAGE = DAMAGE;
-    }
-    public int getSPEED() {
-        return SPEED;
-    }
-    public void setSPEED(int SPEED) {
-        Pea.SPEED = SPEED;
-    }
-
-    public static int getWIDTH() {
-        return WIDTH;
-    }
-
-    public static void setWIDTH(int WIDTH) {
-        Pea.WIDTH = WIDTH;
-    }
-
-    public static int getHEIGHT() {
-        return HEIGHT;
-    }
-
-    public static void setHEIGHT(int HEIGHT) {
-        Pea.HEIGHT = HEIGHT;
-    }
+    // Getter - Setter
 
     public Timeline getTimeline() {
         return timeline;
@@ -93,14 +61,6 @@ public class Pea extends GameElements {
 
     public void setTimeline(Timeline timeline) {
         this.timeline = timeline;
-    }
-
-    public static int getSpeedAttack() {
-        return SPEED_ATTACK;
-    }
-
-    public static void setSpeedAttack(int speedAttack) {
-        SPEED_ATTACK = speedAttack;
     }
 
     public Act getAct() {
