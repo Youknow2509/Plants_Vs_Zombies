@@ -1,5 +1,6 @@
 package src.Model.Characters.Plants.PeaShooter;
 
+import src.Config.DefaultValue;
 import src.Config.Path;
 import src.Model.ActCharacter.Plant.ActPeaShooter;
 import src.Model.Characters.Plants.Pea.Pea;
@@ -10,14 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PeaShooter extends Plant {
-    // Đặc điểm của PeaShooter
-    public final static int HP = 2000;
-    public final static int DAME = 20;
-    public final static int COST = 100;
-    public final static int SPEEDATTACK = 3;
-    public final static int WIDTH = 60;
-    public final static int HEIGHT = 60;
-    public final static int TIMEBUY = 8;
+
     // Var
     private List<Pea> listPea = null;
     // Constructor
@@ -26,8 +20,8 @@ public class PeaShooter extends Plant {
         listPea = new ArrayList<Pea>();
     }
     public PeaShooter(double x, double y, int col, int row) {
-        super(x, y, Path.ASSETS_Image_PeaShooter, WIDTH, HEIGHT, HP
-                , col, row, COST, SPEEDATTACK, DAME, TIMEBUY);
+        super(x, y, Path.ASSETS_Image_PeaShooter, DefaultValue.PeaShooter_WIDTH, DefaultValue.PeaShooter_HEIGHT, DefaultValue.PeaShooter_HP
+                , col, row, DefaultValue.PeaShooter_COST, DefaultValue.PeaShooter_SPEEDATTACK, DefaultValue.PeaShooter_DAME, DefaultValue.PeaShooter_TIMEBUY);
 
         listPea = new ArrayList<Pea>();
         setAct(new ActPeaShooter(this));
