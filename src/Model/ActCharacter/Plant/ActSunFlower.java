@@ -28,7 +28,9 @@ public class ActSunFlower implements Act {
 
     @Override
     public void handle() {
-        Sun sun = new Sun((int)sunFlower.getX() - 5, (int)sunFlower.getY() + 30, sunFlower.getRow(), SunFlower.TIMEOUT_FLOWERSUN
+        Sun sun = new Sun((int)sunFlower.getX() - 5, (int)sunFlower.getY() + 30
+                , sunFlower.getLane(), sunFlower.getTimeOut(), sunFlower.getDx()
+                , sunFlower.getDy(), sunFlower.getTimeKeyFrame()
                 , sunFlower.getListSun());
         sun.start1();
         sunFlower.getListSun().add(sun);

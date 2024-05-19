@@ -1,8 +1,5 @@
 package src.Model.Characters.Plants.SunDrop;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 import src.Config.DefaultValue;
 import src.Model.ActCharacter.Act;
 import src.Model.ActCharacter.Plant.ActDropSun;
@@ -17,24 +14,30 @@ import src.Model.Characters.Plants.Sun.Sun;
 import src.Model.StageCharacter.Plant.StageDropSun;
 import src.Model.StageCharacter.StageCharacter;
 
-public class DropSun extends Plant implements Serializable { // todo
+public class DropSun extends Plant implements Serializable {
     // Var of
     private List<Sun> listSun = new ArrayList<Sun>();
     private StageCharacter stageCharacter;
     private Act act;
-    private int durationDropSun = 0;
-    private int min_timeDrop;
-    private int max_timeDrop;
-    private int timeOut_Drop;
-    private double speed;
+    private int durationDropSun = 0; // Khoang thoi gian random drop sun
+    private int min_timeDrop; // Thoi gian drop sun nho nhat
+    private int max_timeDrop; // Thoi gian drop sun lon nhat
+    private int timeOut; // Thoi gian ton tai cua sun
+    private double timeKeyFrame;
+    private double dx;
+    private double dy;
+
     // Constructor
     public DropSun(){
         super();
 
         this.min_timeDrop = DefaultValue.DropSun_MIN_TIME_DROP;
         this.max_timeDrop = DefaultValue.DropSun_MAX_TIME_DROP;
-        this.timeOut_Drop = DefaultValue.DropSun_TIMEOUT_DROPSUN;
-        this.speed = DefaultValue.DropSun_SPEED;
+        this.timeOut = DefaultValue.DropSun_TIMEOUT_DROPSUN;
+        this.timeKeyFrame = DefaultValue.DropSun_SUN_TIME_KEYFRAME;
+        this.dy = DefaultValue.DropSun_SUN_DY;
+        this.dx = DefaultValue.DropSun_SUN_DX;
+
 
         this.act = new ActDropSun(this);
         this.stageCharacter = new StageDropSun(this);
@@ -106,19 +109,36 @@ public class DropSun extends Plant implements Serializable { // todo
         this.max_timeDrop = max_timeDrop;
     }
 
-    public int getTimeOut_Drop() {
-        return timeOut_Drop;
+    public int getTimeOut() {
+        return timeOut;
     }
 
-    public void setTimeOut_Drop(int timeOut_Drop) {
-        this.timeOut_Drop = timeOut_Drop;
+    public void setTimeOut(int timeOut) {
+        this.timeOut = timeOut;
     }
 
-    public double getSpeed() {
-        return speed;
+    public double getTimeKeyFrame() {
+        return timeKeyFrame;
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
+    public void setTimeKeyFrame(double timeKeyFrame) {
+        this.timeKeyFrame = timeKeyFrame;
     }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public void setDx(double dx) {
+        this.dx = dx;
+    }
+
+    public double getDy() {
+        return dy;
+    }
+
+    public void setDy(double dy) {
+        this.dy = dy;
+    }
+
 }

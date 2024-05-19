@@ -13,18 +13,28 @@ public class ActSun implements Act {
     }
 
     // Method
+    // Xử lí của sun khi rơi từ SunFlower
     public void handle1() {
         if (sun.getY() < sun.getLayoutYEnd()) {
-            sun.setY(sun.getY() + 1);
-            sun.setX(sun.getX() - 0.2);
+
+            sun.setY(
+                    sun.getY() + sun.getDy()
+            );
+
+            sun.setX(
+                    sun.getX() + sun.getDx()
+            );
         } else {
             sun.DisappearSun();
         }
     }
-
+    // Xử lí của sun khi rơi từ DropSun
     public void handle2() {
         if (sun.getY() <= sun.getLayoutYEnd()) {
-            sun.setY(sun.getY() + 1);
+
+            sun.setY(
+                    sun.getY() + sun.getDy()
+            );
         } else {
             sun.DisappearSun();
         }

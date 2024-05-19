@@ -1,6 +1,7 @@
 package src.Model.Characters.Plants.SunFlower;
 
 import javafx.animation.Timeline;
+import src.Config.DefaultValue;
 import src.Config.Path;
 import src.Model.ActCharacter.Act;
 import src.Model.ActCharacter.Plant.ActSunFlower;
@@ -13,31 +14,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SunFlower extends Plant {
-    // Var infomation of SunFlower
-    public static int HP = 2000;
-    public static int COST = 50;
-    public static int WIDTH = 60;
-    public static int HEIGHT = 60;
-    public static int TIMEOUT_FLOWERSUN = 10000;
-    public static int SPEED_ATTACK = 24000;
-    public static int DAME = 0;
-    public static int TIMEBUY = 8;
+
     // Var
+    private int timeOut;
+    private double timeKeyFrame;
+    private double dx;
+    private double dy;
     private List<Sun> listSun = new ArrayList<Sun>();
 
     // Constructor
-    public SunFlower() {
-        super();
-        this.setAct(new ActSunFlower(this));
-        this.setStageCharacter(new StageFlowerSun(this));
-    }
     public SunFlower(double x, double y, int col, int row) {
         //
-        super(x, y, Path.ASSETS_Image_SunFlower, WIDTH, HEIGHT, HP
-                , col, row, COST, SPEED_ATTACK, DAME, TIMEBUY);
+        super(x, y, Path.ASSETS_Image_SunFlower, DefaultValue.SunFlower_WIDTH, DefaultValue.SunFlower_HEIGHT
+                , DefaultValue.SunFlower_HP, col, row
+                , DefaultValue.SunFlower_COST, DefaultValue.SunFlower_TIME_CREAT_SUN
+                , DefaultValue.SunFlower_DAME, DefaultValue.SunFlower_TIMEBUY);
+
+        helpConstructor();
+    }
+
+    // Help Constructor
+    private void helpConstructor() {
+        this.timeOut = DefaultValue.SunFlower_SUN_TIMEOUT;
+        this.timeKeyFrame = DefaultValue.SunFlower_SUN_TIME_KEYFRAME;
+        this.dx = DefaultValue.SunFlower_SUN_DX;
+        this.dy = DefaultValue.SunFlower_SUN_DY;
         this.setAct(new ActSunFlower(this));
         this.setStageCharacter(new StageFlowerSun(this));
     }
+
     // Tạo ra mặt trời - Adapter Pattern
     @Override
     public void start() {
@@ -58,6 +63,38 @@ public class SunFlower extends Plant {
     }
 
     // Getter - Setter
+    public int getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(int timeOut) {
+        this.timeOut = timeOut;
+    }
+
+    public double getTimeKeyFrame() {
+        return timeKeyFrame;
+    }
+
+    public void setTimeKeyFrame(double timeKeyFrame) {
+        this.timeKeyFrame = timeKeyFrame;
+    }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public void setDx(double dx) {
+        this.dx = dx;
+    }
+
+    public double getDy() {
+        return dy;
+    }
+
+    public void setDy(double dy) {
+        this.dy = dy;
+    }
+
     public List<Sun> getListSun() {
         return listSun;
     }
@@ -65,4 +102,5 @@ public class SunFlower extends Plant {
     public void setListSun(List<Sun> listSun) {
         this.listSun = listSun;
     }
+
 }

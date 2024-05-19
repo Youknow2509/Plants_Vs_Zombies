@@ -27,7 +27,7 @@ public class StageSun implements StageCharacter {
 
         helpStart();
 
-        this.sun.setTimeline(new Timeline(new KeyFrame(Duration.millis(30),
+        this.sun.setTimeline(new Timeline(new KeyFrame(Duration.millis(sun.getTimeKeyFrame()),
                 e -> {
                     ((ActSun)sun.getAct()).handle1();
                 }
@@ -40,7 +40,7 @@ public class StageSun implements StageCharacter {
 
         helpStart();
 
-        this.sun.setTimeline(new Timeline(new KeyFrame(Duration.millis(30),
+        this.sun.setTimeline(new Timeline(new KeyFrame(Duration.millis(sun.getTimeKeyFrame()),
                 e -> {
                     ((ActSun)sun.getAct()).handle2();
                 }

@@ -15,12 +15,15 @@ import src.Utils.LaneToLayoutY;
 
 import java.util.List;
 
-public class Sun extends GameElements { // todo
+public class Sun extends GameElements {
 
     // Var
     private int layoutXEnd = 0; // Vị trí x của sun sau khi rơi
     private int layoutYEnd = 0; // Vị trí y của sun sau khi rơi
     private int timeout = 0; // Thời gian mờ và xoá sun
+    private double dx = 0;
+    private double dy = 0;
+    private double timeKeyFrame = 0;
     private transient Timeline timeline = null;
     private Act act;
     private StageCharacter stageCharacter;
@@ -29,17 +32,34 @@ public class Sun extends GameElements { // todo
     private List<Sun> listSun;
 
     // Constructor
-    public Sun() {
-        super();
-        act = new ActSun(this);
-        stageCharacter = new StageSun(this);
-    }
-    public Sun(int x, int y, int lane, int timeOutDisappear , List<Sun> listSun) {
+    // Xử dụng để tạo Sun từ SunFlower
+    public Sun(int x, int y, int lane, int timeOutDisappear, double dx, double dy
+            , double timeKeyFrame, List<Sun> listSun)
+    {
         super(x, y, Path.ASSETS_Image_Sun, DefaultValue.Sun_WIDTH, DefaultValue.Sun_HEIGHT, lane);
         this.layoutYEnd = LaneToLayoutY.sunGetLayoutY(lane);
         this.layoutXEnd = x - 15;
         this.timeout = timeOutDisappear;
         this.listSun = listSun;
+        this.dx = dx;
+        this.dy = dy;
+        this.timeKeyFrame = timeKeyFrame;
+
+        act = new ActSun(this);
+        stageCharacter = new StageSun(this);
+    }
+    // Xử dụng để tạo Sun từ Drop Sun
+    public Sun(double x, double y, int lane, int layoutXEnd, int layoutYEnd
+            , int timeout, double dy, double timeKeyFrame, List<Sun> listSun)
+    {
+        super(x, y, Path.ASSETS_Image_Sun, DefaultValue.Sun_WIDTH, DefaultValue.Sun_HEIGHT, lane);
+        this.layoutXEnd = layoutXEnd;
+        this.layoutYEnd = layoutYEnd;
+        this.timeout = timeout;
+        this.dx = 0;
+        this.dy = dy;
+        this.listSun = listSun;
+        this.timeKeyFrame = timeKeyFrame;
 
         act = new ActSun(this);
         stageCharacter = new StageSun(this);
@@ -147,4 +167,29 @@ public class Sun extends GameElements { // todo
     public void setTimeline(Timeline timeline) {
         this.timeline = timeline;
     }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public void setDx(double dx) {
+        this.dx = dx;
+    }
+
+    public double getDy() {
+        return dy;
+    }
+
+    public void setDy(double dy) {
+        this.dy = dy;
+    }
+
+    public double getTimeKeyFrame() {
+        return timeKeyFrame;
+    }
+
+    public void setTimeKeyFrame(double timeKeyFrame) {
+        this.timeKeyFrame = timeKeyFrame;
+    }
+
 }
