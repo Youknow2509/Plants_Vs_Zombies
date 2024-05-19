@@ -30,26 +30,31 @@ public class DefaultValue {
     public static int Repeater_HEIGHT = 60;
     public static int Repeater_TIMEBUY = 8;
 
-    // Sun todo
+    // Sun u
     public static int Sun_VALUE = 25;
     public static int Sun_WIDTH = 45;
     public static int Sun_HEIGHT = 45;
 
-    // Drop Sun todo
+    // Drop Sun
     public static int DropSun_TIMEOUT_DROPSUN = 14000;
     public static int DropSun_MIN_TIME_DROP = 12;
     public static int DropSun_MAX_TIME_DROP = 18;
-    public static double DropSun_SPEED = 1;
+    public static double DropSun_SUN_TIME_KEYFRAME = 30; // ms
+    public static double DropSun_SUN_DY = 1;
+    public static double DropSun_SUN_DX = 0;
 
     // SunFlower
     public static int SunFlower_HP = 2000;
     public static int SunFlower_COST = 50;
     public static int SunFlower_WIDTH = 60;
     public static int SunFlower_HEIGHT = 60;
-    public static int SunFlower_TIMEOUT_FLOWERSUN = 10000;
-    public static int SunFlower_SPEED_ATTACK = 24000;
     public static int SunFlower_DAME = 0;
     public static int SunFlower_TIMEBUY = 8;
+    public static int SunFlower_TIME_CREAT_SUN = 24000;
+    public static int SunFlower_SUN_TIMEOUT = 10000;
+    public static double SunFlower_SUN_TIME_KEYFRAME = 30; // ms
+    public static double SunFlower_SUN_DY = 1;
+    public static double SunFlower_SUN_DX = -0.2;
 
     // Wallnut
     public static int Wallnut_HP = 4000;
@@ -87,5 +92,5 @@ public class DefaultValue {
     public static int FlagZombie_MOVE = 8;
     public static int FlagZombie_WIDTH = 100;
     public static int FlagZombie_HEIGHT = 130;
-    
+
 }
