@@ -1,5 +1,6 @@
 
 # TODO-List
+- [x] **Xử lí lưu game tên trùng nhau thì không cho lưu**
 - [x] **Nâng cấp gridpane có trạng thái có thể đặt cây hay không - (Xử lí ví dụ màn game là nước thì phải đặt lá trc, v.v)**
 - [x] **Upgrade UML**
 - [x] **Find bugs**
