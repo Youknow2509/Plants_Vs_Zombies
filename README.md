@@ -1,6 +1,7 @@
 
 # TODO-List
 - [x] **Chuyển hết thuộc tính nhân vật về một file**
+- [x] **Viết lại Sun, DropSun, SunFl - Tách biệt các phương thức ra ngoài**
 - [x] **Nâng cấp gridpane có trạng thái có thể đặt cây hay không - (Xử lí ví dụ màn game là nước thì phải đặt lá trc, v.v)**
 - [x] **Upgrade UML**
 - [x] **Find bugs**
