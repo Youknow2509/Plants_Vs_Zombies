@@ -3,6 +3,7 @@ package src.Model.Characters.Plants.Sun;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+import src.Config.DefaultValue;
 import src.Config.Path;
 import src.Controller.Game.GameMainController;
 import src.Model.ActCharacter.Act;
@@ -15,13 +16,8 @@ import src.Utils.LaneToLayoutY;
 import java.util.List;
 
 public class Sun extends GameElements {
-    // Var infomation of sun
-    private static final int VALUE = 25;
-    private static final int WIDTH = 45;
-    private static final int HEIGHT = 45;
 
     // Var
-    private int lane = 0;
     private int layoutXEnd = 0; // Vị trí x của sun sau khi rơi
     private int layoutYEnd = 0; // Vị trí y của sun sau khi rơi
     private int timeout = 0; // Thời gian mờ và xoá sun
@@ -39,8 +35,7 @@ public class Sun extends GameElements {
         stageCharacter = new StageSun(this);
     }
     public Sun(int x, int y, int lane, int timeOutDisappear , List<Sun> listSun) {
-        super(x, y, Path.ASSETS_Image_Sun, WIDTH, HEIGHT, lane);
-        this.lane = lane;
+        super(x, y, Path.ASSETS_Image_Sun, DefaultValue.Sun_WIDTH, DefaultValue.Sun_HEIGHT, lane);
         this.layoutYEnd = LaneToLayoutY.sunGetLayoutY(lane);
         this.layoutXEnd = x - 15;
         this.timeout = timeOutDisappear;
@@ -56,7 +51,7 @@ public class Sun extends GameElements {
         if (getImageView() == null) {
             super.createImageView();
             getImageView().setOnMouseClicked((e) -> {
-                GameMainController.setSun(GameMainController.getSun() + VALUE);
+                GameMainController.setSun(GameMainController.getSun() + DefaultValue.Sun_VALUE);
                 removeImageView();
                 listSun.remove(this);
             });
@@ -97,16 +92,6 @@ public class Sun extends GameElements {
 
 
     // Getter - Setter
-    @Override
-    public int getLane() {
-        return lane;
-    }
-
-    @Override
-    public void setLane(int lane) {
-        this.lane = lane;
-    }
-
     public int getLayoutXEnd() {
         return layoutXEnd;
     }
