@@ -46,8 +46,8 @@ public class Path {
     public static final String ASSETS_Image_Card_Repeater = "/Assets/images/Cards/Repeater.png";
 
     // Assets - Images Items
-    public static final String ASSETS_Image_LawnMower = "/Assets/images/items/lawnMower_Idle.png"; // todo sua net hon
-    public static final String ASSETS_Image_LawnMower_Active = "/Assets/images/items/lawnMower_Active.gif"; // todo sua net hon
+    public static final String ASSETS_Image_LawnMower = "/Assets/images/items/lawnMower_Idle.png";
+    public static final String ASSETS_Image_LawnMower_Active = "/Assets/images/items/lawnMower_Active.gif";
     public static final String ASSETS_Image_Shovel = "/Assets/images/items/Shovel.png";
     public static final String ASSETS_Image_Flag = "/Assets/images/items/Flag.png";
 }
