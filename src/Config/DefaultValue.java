@@ -71,9 +71,21 @@ public class DefaultValue {
     public static int NormalZombie_HEIGHT = 130;
 
     // Conehead zombie
+    public static int Conehead_HP = 400;
+    public static int Conehead_DAMAGE = 640;
+    public static int Conehead_SPEED_MOVE = 1;
+    public static int Conehead_SPEED_ATTACK = 1;
+    public static int Conehead_MOVE = 8;
+    public static int Conehead_WIDTH = 100;
+    public static int Conehead_HEIGHT = 130;
 
     // Flag zombie
-
-// v.v
-    // LawnMower
+    public static int FlagZombie_HP = 200;
+    public static int FlagZombie_DAMAGE = 200;
+    public static int FlagZombie_SPEED_MOVE = 2;
+    public static int FlagZombie_SPEED_ATTACK = 1;
+    public static int FlagZombie_MOVE = 8;
+    public static int FlagZombie_WIDTH = 100;
+    public static int FlagZombie_HEIGHT = 130;
+    
 }
