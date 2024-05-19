@@ -15,7 +15,7 @@ import src.Utils.LaneToLayoutY;
 
 import java.util.List;
 
-public class Sun extends GameElements {
+public class Sun extends GameElements { // todo
 
     // Var
     private int layoutXEnd = 0; // Vị trí x của sun sau khi rơi
