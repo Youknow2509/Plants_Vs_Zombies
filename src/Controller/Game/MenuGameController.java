@@ -52,7 +52,7 @@ public class MenuGameController {
         handleData = new HandleDataFile();
     }
 
-
+    // Xử lí tiếp tục game - Khi game đã được lưu
     @FXML
     public void tiepTuc(ActionEvent event) {
         Stage stage = (Stage) hBox.getScene().getWindow();
@@ -60,6 +60,7 @@ public class MenuGameController {
         gameProcess.resumeGame();
     }
 
+    // Xử lí lưu game
     @FXML
     public void luu(ActionEvent event) {
         String nameGameData = gameProcess.getNameGame();
@@ -79,11 +80,13 @@ public class MenuGameController {
         changeScene.change();
     }
 
+    // Xử lí input name game - Khi chưa có tên game ( Sự kiện tiếp theo chỉ diễn ra khi tên không tồn tại, không phải khoảng trắng, ... )
     @FXML
     public void inputNameGame(MouseEvent event) {
         String nameInput = textNameGame.getText();
-        if (nameInput != null && !nameInput.equals("") &&
-                FindFileinFolder.findFile(Path.PATH_GameSave, nameInput + ".ser") == null) {
+        if ((nameInput != null || !nameInput.equals("")) &&
+                FindFileinFolder.findFile(Path.PATH_GameSave, nameInput + ".ser") == null
+        ) {
             gameProcess.setNameGame(nameInput);
             handleData.addDataSave(gameProcess);
             changeInputNameGame_save();
@@ -91,6 +94,7 @@ public class MenuGameController {
         } else {
             System.out.println("Tên game đã tồn tại hoặc không hợp lệ");
             textNameGame.setStyle("-fx-border-color: red;");
+            textNameGame.setText("");
         }
     }
 

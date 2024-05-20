@@ -8,9 +8,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.Config.Path;
 import src.DataBase.Handle.HandleData;
 import src.DataBase.Handle.HandleDataFile;
 import src.Model.GameProcess;
+import src.Utils.FindFileinFolder;
 
 public class EditGameSaveController {
     // Var fxml
@@ -54,7 +56,11 @@ public class EditGameSaveController {
     @FXML
     public void updateGameUser(MouseEvent event) {
         String nameNew = nameEdit.getText();
-        if (nameNew.equals("")) {
+        if (nameNew.equals("") ||
+                FindFileinFolder.findFile(Path.PATH_GameSave, nameNew + ".ser") != null
+        ) {
+            nameEdit.setStyle("-fx-border-color: red;");
+            nameEdit.setText("");
             return;
         }
         String nameOld = gameProcess.getNameGame();
