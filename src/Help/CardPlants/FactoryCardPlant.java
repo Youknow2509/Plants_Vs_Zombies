@@ -2,10 +2,6 @@ package src.Help.CardPlants;
 
 import src.Config.DefaultValue;
 import src.Config.Path;
-import src.Model.Characters.Plants.PeaShooter.PeaShooter;
-import src.Model.Characters.Plants.Repeater.Repeater;
-import src.Model.Characters.Plants.SunFlower.SunFlower;
-import src.Model.Characters.Plants.Wallnut.Wallnut;
 
 public class FactoryCardPlant {
     public static CardPlant createCardPlant(String name) {

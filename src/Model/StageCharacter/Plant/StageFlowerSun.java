@@ -5,8 +5,6 @@ import javafx.animation.Timeline;
 import src.Model.Characters.Plants.SunFlower.SunFlower;
 import src.Model.StageCharacter.StageCharacter;
 
-import java.util.ArrayList;
-
 public class StageFlowerSun implements StageCharacter {
     // Var
     private SunFlower sunFlower;

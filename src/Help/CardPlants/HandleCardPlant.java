@@ -71,9 +71,8 @@ public class HandleCardPlant implements Serializable {
                 // Nếu chưa có thẻ nào được chọn
                 cardPlant.setOpacity(0.1);
                 GameMainController.setObjectClicked(cardPlant);
-            } else if (object instanceof CardPlant) {
+            } else if (object instanceof CardPlant c) {
                 // Nếu đã có thẻ được chọn
-                CardPlant c = (CardPlant) object;
                 if (c.getName() == cardPlant.getName()) {
                     // Nếu thẻ được chọn là thẻ đang được chọn
                     cardPlant.setOpacity(1);

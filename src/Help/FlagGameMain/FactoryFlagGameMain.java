@@ -1,7 +1,5 @@
 package src.Help.FlagGameMain;
 
-import src.Model.GameData;
-
 import java.util.List;
 
 public class FactoryFlagGameMain {

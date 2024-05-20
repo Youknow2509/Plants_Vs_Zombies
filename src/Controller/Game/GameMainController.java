@@ -16,17 +16,15 @@ import src.Config.Path;
 import src.Help.CardPlants.CardPlant;
 import src.Help.CardPlants.FactoryListCardPlant;
 import src.Help.FlagGameMain.FactoryFlagGameMain;
-import src.Model.GameData;
-import src.Model.GameProcess;
 import src.Help.Shovel.Shovel;
 import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Plants.PlantFactory;
 import src.Model.Characters.Plants.PlantType;
-
+import src.Model.GameData;
+import src.Model.GameProcess;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 public class GameMainController {
     // Variables FXML

@@ -2,7 +2,6 @@ package src.Model.Characters.Plants.Wallnut;
 
 import src.Config.DefaultValue;
 import src.Config.Path;
-import src.Model.ActCharacter.Act;
 import src.Model.ActCharacter.Plant.ActWallnut;
 import src.Model.Characters.Plants.Plant;
 import src.Model.StageCharacter.Plant.StageCharacterWallnut;

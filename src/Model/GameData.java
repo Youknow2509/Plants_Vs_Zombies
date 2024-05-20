@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Locale;
 
 import src.Help.CardPlants.CardPlant;
 import src.Help.LawnMower.LawnMower;
@@ -97,8 +96,7 @@ public class GameData implements Serializable {
         for (int i = 0; i < sumZombie; i++) {
             ZombieSpawner z = zombieSpawner.get(i);
             if (z.getNameZombie()
-                    .toUpperCase()
-                    .equals("FLAGZOMBIE")
+                    .equalsIgnoreCase("FLAGZOMBIE")
             ) {
                 listPercentFlag.add(
                         (double) (i + 1) / sumZombie

@@ -1,8 +1,6 @@
 package src.Help.FlagGameMain;
 
-import src.Config.Config;
 import src.Config.Path;
-import src.Model.GameData;
 import src.Model.GameElements;
 
 public class FlagGameMain extends GameElements {

@@ -1,6 +1,5 @@
 package src.Model.ActCharacter.Plant;
 
-import src.Config.DefaultValue;
 import src.Controller.Game.GameMainController;
 import src.Model.ActCharacter.Act;
 import src.Model.Characters.Plants.Pea.Pea;

@@ -1,7 +1,5 @@
 package src.Model.ActCharacter.Plant;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import src.Model.ActCharacter.Act;
 import src.Model.Characters.Plants.Sun.Sun;
 import src.Model.Characters.Plants.SunFlower.SunFlower;

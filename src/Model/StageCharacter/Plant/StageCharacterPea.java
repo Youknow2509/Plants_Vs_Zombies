@@ -3,7 +3,6 @@ package src.Model.StageCharacter.Plant;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import src.Config.DefaultValue;
 import src.Model.Characters.Plants.Pea.Pea;
 import src.Model.StageCharacter.StageCharacter;
 

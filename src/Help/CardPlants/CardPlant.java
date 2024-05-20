@@ -3,7 +3,6 @@ package src.Help.CardPlants;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import src.Controller.Game.GameMainController;
 
 import java.io.Serial;
 import java.io.Serializable;

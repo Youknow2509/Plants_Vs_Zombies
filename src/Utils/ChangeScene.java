@@ -5,7 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import src.Controller.Game.GameMainController;
-import src.Model.GameData;
 import src.Model.GameProcess;
 
 import java.io.IOException;

@@ -1,14 +1,11 @@
 package src.Model.Characters.Plants.SunFlower;
 
-import javafx.animation.Timeline;
 import src.Config.DefaultValue;
 import src.Config.Path;
-import src.Model.ActCharacter.Act;
 import src.Model.ActCharacter.Plant.ActSunFlower;
 import src.Model.Characters.Plants.Plant;
 import src.Model.Characters.Plants.Sun.Sun;
 import src.Model.StageCharacter.Plant.StageFlowerSun;
-import src.Model.StageCharacter.StageCharacter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,11 +4,8 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import src.Config.Config;
 import src.Model.Characters.Plants.SunDrop.DropSun;
 import src.Model.StageCharacter.StageCharacter;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class StageDropSun implements StageCharacter {
     // Var
