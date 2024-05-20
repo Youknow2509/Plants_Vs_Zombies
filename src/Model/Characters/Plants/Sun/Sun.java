@@ -25,6 +25,7 @@ public class Sun extends GameElements {
     private double dy = 0;
     private double timeKeyFrame = 0;
     private transient Timeline timeline = null;
+    private int sunValue;
     private Act act;
     private StageCharacter stageCharacter;
 
@@ -44,6 +45,7 @@ public class Sun extends GameElements {
         this.dx = dx;
         this.dy = dy;
         this.timeKeyFrame = timeKeyFrame;
+        this.sunValue = DefaultValue.Sun_VALUE;
 
         act = new ActSun(this);
         stageCharacter = new StageSun(this);
@@ -60,6 +62,7 @@ public class Sun extends GameElements {
         this.dy = dy;
         this.listSun = listSun;
         this.timeKeyFrame = timeKeyFrame;
+        this.sunValue = DefaultValue.Sun_VALUE;
 
         act = new ActSun(this);
         stageCharacter = new StageSun(this);
@@ -71,7 +74,7 @@ public class Sun extends GameElements {
         if (getImageView() == null) {
             super.createImageView();
             getImageView().setOnMouseClicked((e) -> {
-                GameMainController.setSun(GameMainController.getSun() + DefaultValue.Sun_VALUE);
+                GameMainController.setSun(GameMainController.getSun() + sunValue);
                 removeImageView();
                 listSun.remove(this);
             });
@@ -133,7 +136,7 @@ public class Sun extends GameElements {
     }
 
     public void setTimeout(int timeout) {
-        this.timeout = timeout;
+            this.timeout = timeout;
     }
 
     public List<Sun> getListSun() {
@@ -192,4 +195,11 @@ public class Sun extends GameElements {
         this.timeKeyFrame = timeKeyFrame;
     }
 
+    public int getSunValue() {
+        return sunValue;
+    }
+
+    public void setSunValue(int sunValue) {
+        this.sunValue = sunValue;
+    }
 }

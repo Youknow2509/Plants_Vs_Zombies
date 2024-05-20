@@ -30,7 +30,7 @@ public class DefaultValue {
     public static int Repeater_HEIGHT = 60;
     public static int Repeater_TIMEBUY = 8;
 
-    // Sun u
+    // Sun
     public static int Sun_VALUE = 25;
     public static int Sun_WIDTH = 45;
     public static int Sun_HEIGHT = 45;
