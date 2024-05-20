@@ -15,6 +15,7 @@ import src.DataBase.Handle.HandleDataFile;
 import src.Model.GameData;
 import src.Model.GameProcess;
 import src.Utils.ChangeScene;
+import src.Utils.FindFileinFolder;
 
 public class MenuGameController {
     // Var fxml
@@ -81,10 +82,15 @@ public class MenuGameController {
     @FXML
     public void inputNameGame(MouseEvent event) {
         String nameInput = textNameGame.getText();
-        if (nameInput != null && !nameInput.equals("")) {
+        if (nameInput != null && !nameInput.equals("") &&
+                FindFileinFolder.findFile(Path.PATH_GameSave, nameInput + ".ser") == null) {
             gameProcess.setNameGame(nameInput);
             handleData.addDataSave(gameProcess);
             changeInputNameGame_save();
+            System.out.println("Đã lưu game: " + nameInput);
+        } else {
+            System.out.println("Tên game đã tồn tại hoặc không hợp lệ");
+            textNameGame.setStyle("-fx-border-color: red;");
         }
     }
 
