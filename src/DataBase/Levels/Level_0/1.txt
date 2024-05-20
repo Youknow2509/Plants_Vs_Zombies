@@ -1,6 +1,7 @@
 1000, 0
 SunFlower, PeaShooter, WallNut, Repeater
-2
+3
 1, 0, NormalZombie
 12, 2, CONEHEADZOMBIE
+15, 3, FLAGZOMBIE
 0, 1, 2, 3, 4
