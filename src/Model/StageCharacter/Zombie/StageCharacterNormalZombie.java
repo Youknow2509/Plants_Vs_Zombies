@@ -7,7 +7,7 @@ import src.Model.Characters.Zombies.Normal.NormalZombie;
 import src.Model.StageCharacter.StageCharacter;
 
 public class StageCharacterNormalZombie implements StageCharacter {
-    private final NormalZombie normalZombie;
+    private NormalZombie normalZombie;
     // Constructor
     public StageCharacterNormalZombie(NormalZombie normalZombie) {
         this.normalZombie = normalZombie;

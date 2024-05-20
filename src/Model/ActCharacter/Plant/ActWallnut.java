@@ -7,7 +7,7 @@ import src.Model.Characters.Plants.Wallnut.Wallnut;
 
 public class ActWallnut implements Act {
     // Var
-    private final Plant wallnut;
+    private Plant wallnut;
     // Constructor
     public ActWallnut(Wallnut wallnut) {
         this.wallnut = wallnut;

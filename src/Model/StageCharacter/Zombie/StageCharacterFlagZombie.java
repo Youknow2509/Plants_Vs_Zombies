@@ -7,7 +7,7 @@ import src.Model.Characters.Zombies.FlagZombie.FlagZombie;
 import src.Model.StageCharacter.StageCharacter;
 
 public class StageCharacterFlagZombie implements StageCharacter {
-    private final FlagZombie flagZombie;
+    private FlagZombie flagZombie;
     // Constructor
     public StageCharacterFlagZombie(FlagZombie flagZombie) {
         this.flagZombie = flagZombie;

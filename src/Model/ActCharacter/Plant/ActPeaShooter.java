@@ -9,7 +9,7 @@ import src.Model.Characters.Zombies.Zombie;
 
 public class ActPeaShooter implements Act {
     // Var
-    Plant plant;
+    private Plant plant;
     // Constructor
     public ActPeaShooter() {
         super();

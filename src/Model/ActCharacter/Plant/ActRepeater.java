@@ -9,7 +9,7 @@ import src.Model.Characters.Zombies.Zombie;
 
 public class ActRepeater implements Act {
     // Var
-    Plant plant;
+    private Plant plant;
     // Constructor
     public ActRepeater() {
         super();
