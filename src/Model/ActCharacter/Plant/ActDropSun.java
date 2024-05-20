@@ -26,6 +26,7 @@ public class ActDropSun implements Act {
 
     }
 
+    // Tạo ra 1 sun rơi từ trên xuống vị trí ngẫu nhiên
     @Override
     public void handle() {
 

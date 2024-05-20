@@ -19,7 +19,7 @@ public class StageFlowerSun implements StageCharacter {
     public void start() {
 
         helpStart();
-
+        // Timeline tạo sun sau mỗi khoảng thời gian SpeedAttack millis giây
         sunFlower.setTimeline(new Timeline(new KeyFrame(javafx.util.Duration.millis(
                         sunFlower.getSpeedAttack()
                 ), e -> {

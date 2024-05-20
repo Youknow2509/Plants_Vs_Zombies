@@ -20,7 +20,7 @@ public class StageCharacterPeaShooter implements StageCharacter {
     public void start() {
 
         helpStart();
-
+        // Timeline tạo ra đạn sau mỗi SeedAttack giây
         peaShooter.setTimeline(new Timeline(new KeyFrame(Duration.seconds(peaShooter.getSpeedAttack()),
                 e -> {
                     peaShooter.getAct().handle();

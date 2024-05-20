@@ -86,7 +86,7 @@ public class GameMainController {
         FactoryListCardPlant.unlockCardAndLock(gameData.getCardPlantList(), sun);
     }
 // Handle action in view
-    // Them su kien cho cac o trong lawnGrid
+    // Gán các sự kiện vào các ô trong lawnGrid
     private void addHandleGridPane() {
         List<Node> lNode = lawnGrid.getChildren();
         for (int i = 0; i < 5; i++) {
@@ -101,7 +101,7 @@ public class GameMainController {
         }
     }
 
-    // Su kien trong o lawnGrid
+    // Sự kiện trong mỗi ô
     private void handleInLawnGrid(MouseEvent e) {
         Node source = (Node) e.getSource();
         // Lấy ra vị trí ô đang được click

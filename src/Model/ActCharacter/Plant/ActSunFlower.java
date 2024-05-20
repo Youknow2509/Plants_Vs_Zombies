@@ -24,6 +24,7 @@ public class ActSunFlower implements Act {
 
     }
 
+    // Tạo ra 1 sun từ SunFlower
     @Override
     public void handle() {
         Sun sun = new Sun((int)sunFlower.getX() - 5, (int)sunFlower.getY() + 30

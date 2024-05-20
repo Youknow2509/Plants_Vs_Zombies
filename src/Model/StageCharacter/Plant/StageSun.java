@@ -26,7 +26,7 @@ public class StageSun implements StageCharacter {
     public void start1() {
 
         helpStart();
-
+        // TimeLine xử lí sự kiện, mỗi TimeKeyFrame millis giây thì sự kiện xảy ra ( handle1() )
         this.sun.setTimeline(new Timeline(new KeyFrame(Duration.millis(sun.getTimeKeyFrame()),
                 e -> {
                     ((ActSun)sun.getAct()).handle1();
@@ -39,7 +39,7 @@ public class StageSun implements StageCharacter {
     public void start2() {
 
         helpStart();
-
+        // TimeLine xử lí sự kiện, mỗi TimeKeyFrame millis giây thì sự kiện xảy ra ( handle2() )
         this.sun.setTimeline(new Timeline(new KeyFrame(Duration.millis(sun.getTimeKeyFrame()),
                 e -> {
                     ((ActSun)sun.getAct()).handle2();

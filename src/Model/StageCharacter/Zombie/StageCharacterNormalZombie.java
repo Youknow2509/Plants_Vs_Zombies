@@ -15,6 +15,7 @@ public class StageCharacterNormalZombie implements StageCharacter {
     @Override
     public void start() {
         helpStart();
+        // TimeLine xử lí sự kiện, mỗi SpeedAttack seconds giây thì sự kiện xảy ra ( handle() - Di chuyển hoặc tấn công tuỳ theo vị trí Zombie)
         normalZombie.setTimeline(new Timeline(new KeyFrame(Duration.seconds(normalZombie.getSpeedAttack()),
                 e -> {
                     normalZombie.getAct().handle();

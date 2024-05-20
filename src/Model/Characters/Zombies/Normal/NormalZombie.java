@@ -13,6 +13,8 @@ public class NormalZombie extends Zombie {
     public NormalZombie() {
         super();
     }
+
+    // Dùng để khởi tạo lần đầu tiên - chưa di chuyển
     public NormalZombie(int lane) {
         super(975, 0, Path.ASSETS_Image_NormalZombie_Run, DefaultValue.NormalZombie_WIDTH
                 , DefaultValue.NormalZombie_HEIGHT, lane, DefaultValue.NormalZombie_HP
@@ -23,6 +25,8 @@ public class NormalZombie extends Zombie {
         setAct(new ActNormalZombie(this));
         setStageCharacter(new StageCharacterNormalZombie(this));
     }
+
+    // Dùng để khởi tạo khi có vị trí cụ thể
     public NormalZombie(double x, double y, int lane) {
 
         super(x, y, Path.ASSETS_Image_NormalZombie_Run, DefaultValue.NormalZombie_WIDTH

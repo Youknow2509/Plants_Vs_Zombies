@@ -19,7 +19,7 @@ public class StageCharacterWallnut implements StageCharacter {
     public void start() {
 
         helpStart();
-
+        // Timeline lắng nghe máu của Wallnut sau mỗi 500ms
         wallnut.setTimeline(new Timeline(new KeyFrame(
                 Duration.millis(500),
                     e -> {

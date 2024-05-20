@@ -22,7 +22,7 @@ public class StageCharacterPea implements StageCharacter {
     public void start() {
 
         helpStart();
-
+        // Timeline tạo ra sự kiện bắn đạn sau mỗi khoảng thời gian SPEED_ATTACK - Di chuyển của đạn mỗi SPEED_ATTACK, gặp zombie thì gây dame
         pea.setTimeline(new Timeline((new KeyFrame(Duration.millis(pea.getSPEED_ATTACK())
                 , e -> {
                     pea.getAct().handle();

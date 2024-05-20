@@ -18,7 +18,7 @@ public class ActNormalZombie implements Act {
         this.zombie = zombie;
     }
     @Override
-    // handle chọn trạng thái
+    // handle chọn trạng thái - Tìm plant trước mặt khoảng cách thoã mãn thì tấn công, không thì di chuyển
     public void handle() {
         boolean flag = true;
         synchronized ((GameMainController.getGameData()).getListPlant()) {
@@ -35,7 +35,7 @@ public class ActNormalZombie implements Act {
         }
     }
 
-    // Attack
+    // Attack - xử lí tấn công của plant - 1 lần tấn công chỉ tấn công 1 plant
     @Override
     public void attack(Object object) {
         if (zombie.getPath() != zombie.getPath_eat()) { // Fix load lai nhieu anh bi giat
@@ -51,7 +51,7 @@ public class ActNormalZombie implements Act {
             (GameMainController.getGameData()).getListPlant().remove(plant);
         }
     }
-    // Move
+    // Move - xử lí di chuyển của zombie - 1 lần di chuyển
     @Override
     public void move() {
         if (zombie.getPath() != zombie.getPath_run()) { // Fix load lai nhieu anh bi giat

@@ -18,6 +18,8 @@ public class ActRepeater implements Act {
         super();
         this.plant = plant;
     }
+
+    // Tìm zombie để tấn công - mỗi lần chỉ tìm 1 zombie để tấn công - 2 đạn chỉ tấn công 1 zombie
     @Override
     public void handle() {
         synchronized ((GameMainController.getGameData()).getZombieAlive()) {
@@ -35,6 +37,7 @@ public class ActRepeater implements Act {
     public void move() {
     }
 
+    // Tạo 2 đạn tấn công cùng 1 lúc zombie
     @Override
     public void attack(Object object) {
         Pea pea1 = new Pea((int) plant.getX() + 3, (int) plant.getY() + 20, plant.getLane(), ((Repeater)plant).getListPea());

@@ -37,6 +37,7 @@ public class CardPlant implements Serializable {
         this.lock = false;
         this.opacity = 0.6;
     }
+    // Dùng để khởi tạo qua FactoryCardPlant
     public CardPlant(String path, String name, int cost) {
         super();
         this.path = path;
@@ -46,7 +47,7 @@ public class CardPlant implements Serializable {
         this.lock = false;
         this.opacity = 0.6;
     }
-
+    // Dùng để khởi tạo khi có hết các thông số
     public CardPlant(double x, double y, String path, String name, int cost, int timeBuy
             , double opacity, boolean haveBuy, boolean lock) {
         super();

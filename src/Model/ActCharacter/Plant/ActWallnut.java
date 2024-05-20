@@ -22,6 +22,7 @@ public class ActWallnut implements Act {
 
     }
 
+    // Xử lí của Wallnut khi bị zombie tấn công - xử lí thay đổi hình ảnh của Wallnut
     @Override
     public void handle() {
         if (wallnut.getHp() > 2667 && wallnut.getPath() != Path.ASSETS_Image_Wallnut) {

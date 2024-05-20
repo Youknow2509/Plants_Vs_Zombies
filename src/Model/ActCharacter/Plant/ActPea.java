@@ -23,6 +23,7 @@ public class ActPea implements Act {
         move();
     }
 
+    // Xử lí di chuyển của đạn
     @Override
     public void move() {
         // Nếu đạn ra khỏi màn hình thì xóa đạn
@@ -39,6 +40,8 @@ public class ActPea implements Act {
     public void attack(Object object) {
 
     }
+
+    // Xử lí tấn công của đạn khi gặp zombie
     public void attack() {
         synchronized ((GameMainController.getGameData()).getZombieAlive()) {
             if ((GameMainController.getGameData()).getZombieAlive() != null && (GameMainController.getGameData()).getZombieAlive().size() > 0) {

@@ -41,7 +41,7 @@ public class ListGameSaveController implements Initializable {
     private TableColumn<GameProcess, Integer> colZombieSpawner;
 
     // Var
-    private ObservableList<GameProcess> observableList;
+    private ObservableList<GameProcess> observableList; // Dùng để chứa dữ liệu đổ vào TableView
     private final HandleData handleData = new HandleDataFile();
     private List<GameProcess> listGameProsess;
 

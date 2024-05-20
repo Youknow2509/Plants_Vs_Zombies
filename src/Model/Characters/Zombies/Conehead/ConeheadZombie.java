@@ -12,6 +12,8 @@ public class ConeheadZombie extends Zombie {
     public ConeheadZombie() {
         super();
     }
+
+    // Dùng để khởi tạo lần đầu tiên - chưa di chuyển
     public ConeheadZombie(int lane) {
         super(975, 0, Path.ASSETS_Image_ConeheadZombie_Run, DefaultValue.Conehead_WIDTH
                 , DefaultValue.Conehead_HEIGHT, lane, DefaultValue.Conehead_HP
@@ -22,6 +24,8 @@ public class ConeheadZombie extends Zombie {
         setAct(new ActConeheadZombie(this));
         setStageCharacter(new StageCharacterConeheadZombie(this));
     }
+
+    // Dùng để khởi tạo khi có vị trí cụ thể
     public ConeheadZombie(double x, double y, int lane) {
         super(x, y, Path.ASSETS_Image_ConeheadZombie_Run, DefaultValue.Conehead_WIDTH
                 , DefaultValue.Conehead_HEIGHT, lane, DefaultValue.Conehead_HP

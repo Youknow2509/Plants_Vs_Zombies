@@ -21,7 +21,7 @@ public class StageDropSun implements StageCharacter {
     public void start() {
 
         helpStart();
-
+        // TimeLine tạo ra Sun sau mỗi DurationDropSun giây - TimeLine sẽ trừ 1 giây mỗi lần của DurationDropSun: nếu DurationDropSun = 0 thì tạo ra Sun và tạo mới DurationDropSun.
         dropSun.setTimeline(new Timeline(new KeyFrame(
                  Duration.seconds(1),
                     event -> {

@@ -15,6 +15,7 @@ public class StageCharacterFlagZombie implements StageCharacter {
     @Override
     public void start() {
         helpStart();
+        // TimeLine xử lí sự kiện, mỗi SpeedAttack seconds giây thì sự kiện xảy ra ( handle() - Di chuyển hoặc tấn công tuỳ theo vị trí Zombie)
         flagZombie.setTimeline(new Timeline(new KeyFrame(Duration.seconds(flagZombie.getSpeedAttack()),
                 e -> {
                     flagZombie.getAct().handle();

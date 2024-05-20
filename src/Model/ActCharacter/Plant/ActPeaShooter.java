@@ -18,6 +18,8 @@ public class ActPeaShooter implements Act {
         super();
         this.plant = plant;
     }
+
+    // Tìm zombie để tấn công - mỗi lần chỉ tìm 1 zombie để tấn công - 1 đạn chỉ tấn công 1 zombie
     @Override
     public void handle() {
         synchronized ((GameMainController.getGameData()).getZombieAlive()) {
@@ -35,6 +37,7 @@ public class ActPeaShooter implements Act {
     public void move() {
     }
 
+    // Tạo đạn tấn công
     @Override
     public void attack(Object object) {
         Pea pea = new Pea((int) plant.getX() + 3, (int) plant.getY() + 25, plant.getLane(), ((PeaShooter)plant).getListPea());

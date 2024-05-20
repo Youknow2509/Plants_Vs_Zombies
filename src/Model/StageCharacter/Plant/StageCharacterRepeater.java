@@ -19,6 +19,7 @@ public class StageCharacterRepeater implements StageCharacter {
     @Override
     public void start() {
         helpStart();
+        // Timeline tạo ra đạn sau mỗi SpeedAttack
         repeater.setTimeline(new Timeline(new KeyFrame(Duration.seconds(repeater.getSpeedAttack()),
                 e -> {
                     repeater.getAct().handle();

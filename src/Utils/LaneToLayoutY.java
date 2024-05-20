@@ -2,7 +2,7 @@ package src.Utils;
 
 public class LaneToLayoutY {
     // Lấy ra vị trí điểm rơi y với mỗi lane tương ứng truyền vào
-    public static int sunGetLayoutY(int lane) {
+    public static int sunGetLayoutY(int lane) { // Trả về vị trí y của điểm rơi Sun theo lane
         switch (lane) {
             case 0:
                 return 140; // x0 : 315  320 - 85
@@ -18,7 +18,7 @@ public class LaneToLayoutY {
                 return 0;
         }
     }
-    public static int zombieGetLayoutY(int lane) {
+    public static int zombieGetLayoutY(int lane) { // Trả về vị trí y của Zombie theo lane
         switch (lane) {
             case 0:
                 return 35;
@@ -34,7 +34,7 @@ public class LaneToLayoutY {
                 return 0;
         }
     }
-    public static int lawnMowerGetLayoutY(int lane) {
+    public static int lawnMowerGetLayoutY(int lane) { // Trả về vị trí y của LawnMower theo lane
         switch (lane) {
             case 0:
                 return 93;

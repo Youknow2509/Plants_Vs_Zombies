@@ -95,7 +95,7 @@ public class GameData implements Serializable {
     private void creatListPercentFlag() {
         for (int i = 0; i < sumZombie; i++) {
             ZombieSpawner z = zombieSpawner.get(i);
-            if (z.getNameZombie()
+            if ((z.getNameZombie().toUpperCase())
                     .equalsIgnoreCase("FLAGZOMBIE")
             ) {
                 listPercentFlag.add(

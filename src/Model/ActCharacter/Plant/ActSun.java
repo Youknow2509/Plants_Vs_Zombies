@@ -13,7 +13,7 @@ public class ActSun implements Act {
     }
 
     // Method
-    // Xử lí của sun khi rơi từ SunFlower
+    // Xử lí của sun khi rơi từ SunFlower - xử lí di chuyển của sun
     public void handle1() {
         if (sun.getY() < sun.getLayoutYEnd()) {
 
@@ -28,7 +28,7 @@ public class ActSun implements Act {
             sun.DisappearSun();
         }
     }
-    // Xử lí của sun khi rơi từ DropSun
+    // Xử lí của sun khi rơi từ DropSun - xử lí di chuyển của sun
     public void handle2() {
         if (sun.getY() <= sun.getLayoutYEnd()) {
 
