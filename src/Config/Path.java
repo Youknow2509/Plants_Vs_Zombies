@@ -50,4 +50,7 @@ public class Path {
     public static final String ASSETS_Image_LawnMower_Active = "/Assets/images/items/lawnMower_Active.gif";
     public static final String ASSETS_Image_Shovel = "/Assets/images/items/Shovel.png";
     public static final String ASSETS_Image_Flag = "/Assets/images/items/Flag.png";
+
+    // Path Game Save
+    public static final String PATH_GameSave = "src/DataBase/SaveGames/";
 }
