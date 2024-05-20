@@ -1,11 +1,8 @@
 
 # TODO-List
-- [x] **Xử lí lưu game tên trùng nhau thì không cho lưu**
-- [x] **Nâng cấp gridpane có trạng thái có thể đặt cây hay không - (Xử lí ví dụ màn game là nước thì phải đặt lá trc, v.v)**
 - [x] **Upgrade UML**
 - [x] **Find bugs**
-- [x] **Vẽ lại Game level, load**
-- [x] **Thêm ảnh từng giai đoạn máu cho Sunflower**
+- [x] **Nâng cấp gridpane có trạng thái có thể đặt cây hay không - (Xử lí ví dụ màn game là nước thì phải đặt lá trc, v.v)**
 - [x] **Sound**
 - [x] **Effect**
 v.v
