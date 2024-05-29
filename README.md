@@ -2,6 +2,7 @@
 # TODO-List
 - [x] **Upgrade UML**
 - [x] **Find bugs**
+- [x] **Áp dụng: `Spatial Partiton` tối ưu game - Chia các đối tượng theo các lane -> Giảm truy xuất.**
 - [x] **Nâng cấp gridpane có trạng thái có thể đặt cây hay không - (Xử lí ví dụ màn game là nước thì phải đặt lá trc, v.v)**
 - [x] **Sound**
 - [x] **Effect**
