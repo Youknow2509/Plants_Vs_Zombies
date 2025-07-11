@@ -12,10 +12,15 @@ v.v
 - **Mail**: *lytranvinh.work@gmail.com*
 - **Github**: *https://github.com/Youknow2509*
 
+# UML:
+![UML](./plantsvszombie.drawio)
+
 # Use:
 ## Libary:
-    javafx-sdk-22.0.1 ( it fix err open window for macos 14) 
+    javafx-sdk-22.0.1 ( it fix err open window for macos 14) [Download](https://gluonhq.com/products/javafx/)
     Java OpenJDK 17.0.10 Corretto
 ## Scene Builder 21.0.0
 
+# Demo:
+[Demo](https://youtu.be/8M7DO5jHl7s)
 
